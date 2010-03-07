@@ -10,5 +10,4 @@ public interface UserPermission {
 
 	public void reply(Message aParent_msg, String aSbj, String aCont);
 
-	public UserPermission getInstance();
 }
