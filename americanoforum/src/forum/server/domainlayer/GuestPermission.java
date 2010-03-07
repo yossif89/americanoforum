@@ -1,6 +1,9 @@
 package forum.server.domainlayer;
 
 public class GuestPermission implements UserPermission {
+ private static GuestPermission instance=null;
+
+
 
 	public void addMessage(String aSbj, String aCont) {
 		throw new UnsupportedOperationException();
@@ -18,7 +21,21 @@ public class GuestPermission implements UserPermission {
 		throw new UnsupportedOperationException();
 	}
 
-	public UserPermission getInstance() {
-		throw new UnsupportedOperationException();
+	public static UserPermission getInstance() {
+		if (getInstanceField()==null){
+                    setInstance(new GuestPermission());
+                    return getInstanceField();
+                }
+                else
+                    return getInstanceField();
 	}
+
+    public static GuestPermission getInstanceField() {
+        return instance;
+    }
+
+    public static void setInstance(GuestPermission instance) {
+        GuestPermission.instance = instance;
+    }
+
 }
