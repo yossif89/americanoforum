@@ -5,6 +5,7 @@
 
 package forum.server.domainlayer;
 
+import java.util.HashMap;
 import java.util.Vector;
 import junit.framework.TestCase;
 
@@ -43,12 +44,12 @@ public class ForumTest extends TestCase{
     public void testLogin() {
         System.out.println("login");
         this._forum.login("shassaf", "123");
-        Vector<User> online_users = this._forum.getOnlineUsers();
-        Vector<User> registered_users = this._forum.getRegisteredUsers();
-        assertTrue(online_users.contains(_u1));
-        assertFalse(online_users.contains(_u2));
-        assertTrue(registered_users.contains(_u1));
-        assertTrue(registered_users.contains(_u2));
+        HashMap<String,User> online_users = this._forum.getOnlineUsers();
+        HashMap<String,User> registered_users = this._forum.getRegisteredUsers();
+        assertTrue(online_users.containsKey(_u1.getDetails().getUsername()));
+        assertFalse(online_users.containsKey(_u2.getDetails().getUsername()));
+        assertTrue(registered_users.containsKey(_u1.getDetails().getUsername()));
+        assertTrue(registered_users.containsKey(_u2.getDetails().getUsername()));
         assertTrue(online_users.size()==1);
         assertTrue(_u1.getUp() instanceof LoggedInPermission);
         assertTrue(_u2.getUp() instanceof GuestPermission);
@@ -62,12 +63,12 @@ public class ForumTest extends TestCase{
         this._forum.login("shassaf", "123");
         this._forum.login("felberba", "1233");
         this._forum.logoff(_u1);
-        Vector<User> online_users = this._forum.getOnlineUsers();
-        Vector<User> registered_users = this._forum.getRegisteredUsers();
-        assertFalse(online_users.contains(_u1));
-        assertTrue(online_users.contains(_u2));
-        assertTrue(registered_users.contains(_u1));
-        assertTrue(registered_users.contains(_u2));
+        HashMap<String,User> online_users = this._forum.getOnlineUsers();
+        HashMap<String,User> registered_users = this._forum.getRegisteredUsers();
+        assertFalse(online_users.containsKey(_u1.getDetails().getUsername()));
+        assertTrue(online_users.containsKey(_u2.getDetails().getUsername()));
+        assertTrue(registered_users.containsKey(_u1.getDetails().getUsername()));
+        assertTrue(registered_users.containsKey(_u2.getDetails().getUsername()));
         assertTrue(online_users.size()==0);
         assertTrue(_u1.getUp() instanceof GuestPermission);
         assertTrue(_u2.getUp() instanceof LoggedInPermission);
@@ -78,13 +79,14 @@ public class ForumTest extends TestCase{
      */
     public void testRegister() {
         System.out.println("register");
-        this._forum.register("boli", "111", "2@hotmail.com","david", "d", "b", "male");
-        Vector<User> online_users = this._forum.getOnlineUsers();
-        Vector<User> registered_users = this._forum.getRegisteredUsers();
+        User t = new User();
+        this._forum.register(t,"boli", "111", "2@hotmail.com","david", "d", "b", "male");
+        HashMap<String,User> online_users = this._forum.getOnlineUsers();
+        HashMap<String,User> registered_users = this._forum.getRegisteredUsers();
         assertTrue(online_users.size()==1);
         assertTrue(registered_users.size()==3);
-        assertTrue(online_users.firstElement().getUp() instanceof LoggedInPermission);
-        Details d3 = online_users.firstElement().getDetails();
+        assertTrue(online_users.get("boli").getUp() instanceof LoggedInPermission);
+        Details d3 = online_users.get("boli").getDetails();
         assertTrue(d3.getAddress().equals("b"));
         assertTrue(d3.getEmail().equals("2@hotmail.com"));
         assertTrue(d3.getFirst_name().equals("david"));
@@ -92,12 +94,6 @@ public class ForumTest extends TestCase{
         assertTrue(d3.getLast_name().equals("d"));
         assertTrue(d3.getPassword().equals("111"));
         assertTrue(d3.getUsername().equals("boli"));
-
-
-
-
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
 }
