@@ -19,10 +19,11 @@ public class User {
          * @param aCont the content
          * @throws UnsupportedOperationException
          */
-	public void addMessage(String aSbj, String aCont)  throws UnsupportedOperationException{
+	public Message addMessage(String aSbj, String aCont)  throws UnsupportedOperationException{
                _up.addMessage(aSbj, aCont);
                Message m = new Message(aSbj, aCont, this);
                this._myMessages.put(m.getMsg_id(), m);
+               return m;
 
 	}
         /**
