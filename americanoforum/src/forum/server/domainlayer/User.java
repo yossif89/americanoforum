@@ -57,11 +57,12 @@ public class User {
          * @param aCont the content
          * @throws UnsupportedOperationException
          */
-	public void reply(Message aParent_msg, String aSbj, String aCont)  throws UnsupportedOperationException{
+	public Message reply(Message aParent_msg, String aSbj, String aCont)  throws UnsupportedOperationException{
 	       _up.reply(aParent_msg, aSbj, aCont);
                Message m = new Message(aSbj, aCont, this);
                m.setParent(aParent_msg);
                this._myMessages.put(m.getMsg_id(), m);
+               return m;
 	}
 
         public Details getDetails() {
