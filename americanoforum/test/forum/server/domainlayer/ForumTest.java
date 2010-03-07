@@ -29,6 +29,8 @@ public class ForumTest extends TestCase{
         Details d2 = new Details("felberba", "1233", "1", "yossi", "sun", "b", "male");
         _u1 = new User();
         _u2 = new User();
+        _u1.setDetails(d1);
+        _u2.setDetails(d2);
         this._forum=new Forum();
         this._forum.addToRegistered(_u1);
         this._forum.addToRegistered(_u2);
@@ -70,7 +72,7 @@ public class ForumTest extends TestCase{
         assertTrue(online_users.containsKey(_u2.getDetails().getUsername()));
         assertTrue(registered_users.containsKey(_u1.getDetails().getUsername()));
         assertTrue(registered_users.containsKey(_u2.getDetails().getUsername()));
-        assertTrue(online_users.size()==0);
+        assertTrue(online_users.size()==1);
         assertTrue(_u1.getUp() instanceof GuestPermission);
         assertTrue(_u2.getUp() instanceof LoggedInPermission);
     }

@@ -50,7 +50,8 @@ public class Forum {
                throw new IllegalAccessError();
            if ( !tUsr.getDetails().getPassword().equals(aPass))
                throw new IllegalAccessError();
-           this._online_users.put(aPass, tUsr);
+           this._online_users.put(aUsername, tUsr);
+           tUsr.setUp(LoggedInPermission.getInstance());
           return tUsr;
 	}
 
@@ -59,7 +60,8 @@ public class Forum {
          * @param aUser
          */
 	public void logoff(User aUser) {
-		this._online_users.remove(aUser);
+		this._online_users.remove(aUser.getDetails().getUsername());
+                aUser.setUp(GuestPermission.getInstance());
 	}
 
         /**

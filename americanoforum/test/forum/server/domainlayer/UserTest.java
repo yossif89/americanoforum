@@ -29,6 +29,9 @@ public class UserTest extends TestCase {
         Details d2 = new Details("felberba", "1233", "1", "yossi", "sun", "b", "male");
         _u1 = new User();
         _u2 = new User();
+        _u1.setDetails(d1);
+        _u2.setDetails(d2);
+        this._forum=new Forum();
         this._forum.addToRegistered(_u1);
         this._forum.addToRegistered(_u2);
         this._forum.login("shassaf", "123");
