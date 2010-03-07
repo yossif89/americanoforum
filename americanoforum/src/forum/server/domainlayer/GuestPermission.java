@@ -14,7 +14,7 @@ public class GuestPermission implements UserPermission {
 	}
 
 	public void viewMessage(Message aMsg) {
-		throw new UnsupportedOperationException();
+	    return;
 	}
 
 	public void reply(Message aParent_msg, String aSbj, String aCont) {
