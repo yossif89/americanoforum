@@ -36,15 +36,49 @@ public class Forum {
             return this._registered;
         }
 
-	public User login(String aUsername, String aPass) {
-		throw new UnsupportedOperationException();
+        /**
+         * In case the username exists , and it fits the password , the username instance is being added to the onlineusers
+         * in any other case , an exception is thrown
+         * @param aUsername
+         * @param aPass
+         * @return the user that logged in
+         * @throws IllegalAccessError
+         */
+	public User login(String aUsername, String aPass) throws IllegalAccessError {
+	   User tUsr = this._registered.get(aUsername);
+           if (tUsr==null)
+               throw new IllegalAccessError();
+           if ( !tUsr.getDetails().getPassword().equals(aPass))
+               throw new IllegalAccessError();
+           this._online_users.put(aPass, tUsr);
+          return tUsr;
 	}
 
+        /**
+         * assumes that the user is in the logged in db , and removes it from that list
+         * @param aUser
+         */
 	public void logoff(User aUser) {
-		throw new UnsupportedOperationException();
+		this._online_users.remove(aUser);
 	}
 
-	public void register(String aUsername, String aPass, String aEmail, String aFirstName, String aLastName, String aAddress, String aGender) {
-		throw new UnsupportedOperationException();
+        /**
+         * creates an instance of the users details from the given data , and adds it to the owner user given
+         * in addition it changes the users permission to logged in permission
+         * and adds the user to the relevant to dbs: logged-in , registers.
+         * @param aUsername
+         * @param aPass
+         * @param aEmail
+         * @param aFirstName
+         * @param aLastName
+         * @param aAddress
+         * @param aGender
+         */
+	public void register(User aUsr,String aUsername, String aPass, String aEmail, String aFirstName, String aLastName, String aAddress, String aGender) {
+		Details d = new Details(aUsername, aPass, aEmail, aFirstName, aLastName, aAddress, aGender);
+                aUsr.setDetails(d);
+                aUsr.setUp(LoggedInPermission.getInstance());
+                this._online_users.put(aUsername, aUsr);
+                this._registered.put(aUsername, aUsr);
 	}
 }
