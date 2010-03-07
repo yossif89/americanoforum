@@ -13,20 +13,54 @@ public class User {
         this._details=null;
     }
 
-	public void addMessage(String aSbj, String aCont) {
-		throw new UnsupportedOperationException();
+        /**
+         * Creates and adds the message to the db , creates a link between  the user and the message
+         * @param aSbj the subject
+         * @param aCont the content
+         * @throws UnsupportedOperationException
+         */
+	public void addMessage(String aSbj, String aCont)  throws UnsupportedOperationException{
+               _up.addMessage(aSbj, aCont);
+               Message m = new Message(aSbj, aCont, this);
+               this._myMessages.put(m.getMsg_id(), m);
+
+	}
+        /**
+         * modifies an existing message only if the user is the creator.
+         * @param aMsg the existing message
+         * @param aCont the content
+         * @throws UnsupportedOperationException
+         */
+	public void modifyMessage(Message aMsg, String aCont) throws UnsupportedOperationException {
+		_up.modifyMessage(aMsg, aCont);
+                if (this==aMsg.getCreator()){
+                     aMsg.setContent(aCont);
+                }
+                else{
+                    throw new UnsupportedOperationException();
+                }
 	}
 
-	public void modifyMessage(Message aMsg, String aCont) {
-		throw new UnsupportedOperationException();
+        /**
+         * Only checks if the user is authorized to view the message
+         * @param aMsg the message
+         * @throws UnsupportedOperationException
+         */
+	public void viewMessage(Message aMsg) throws UnsupportedOperationException {
+		_up.viewMessage(aMsg);
 	}
-
-	public void viewMessage(Message aMsg) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void reply(Message aParent_msg, String aSbj, String aCont) {
-		throw new UnsupportedOperationException();
+        /**
+         * adds the reply to the parent message and adds the message to the users vector
+         * @param aParent_msg
+         * @param aSbj the subject
+         * @param aCont the content
+         * @throws UnsupportedOperationException
+         */
+	public void reply(Message aParent_msg, String aSbj, String aCont)  throws UnsupportedOperationException{
+	       _up.reply(aParent_msg, aSbj, aCont);
+               Message m = new Message(aSbj, aCont, this);
+               m.setParent(aParent_msg);
+               this._myMessages.put(m.getMsg_id(), m);
 	}
 
         public Details getDetails() {
