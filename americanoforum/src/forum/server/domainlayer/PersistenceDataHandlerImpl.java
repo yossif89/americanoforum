@@ -10,14 +10,20 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import forum.server.persistencelayer.*;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  *
@@ -37,6 +43,8 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
         for (MessageType msg : msgs){
             User creator = users.get(msg.getCreator());
             Message newMsg = new Message(msg.getSubject(), msg.getContent(), users.get(msg.getCreator()));
+            GregorianCalendar c = msg.getDate().toGregorianCalendar();
+            newMsg.setDate(c.getTime());
             all_messages.put(new Integer(msg.getMessageId()), newMsg);
             creator.getMyMessages().put(newMsg.getMsg_id(), newMsg);
         }
@@ -105,6 +113,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
     public void addRegUserToXml(String username, String password, String email, String firstname, String lastname, String address, String gender, String up) {
         UserType data_user = new UserType();
         FileInputStream in = null;
+        FileOutputStream out = null;
         Forum forum = null;
 	try {
 
@@ -130,9 +139,9 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
             // Write al; the data back to the XML file.
-            out = new FileOutputStream("bengurion.xml");
-	    m.marshal(uni,out);
-			out.close();
+            out = new FileOutputStream("forum.xml");
+	    m.marshal(data_forum,out);
+            out.close();
 
 
         }
@@ -151,16 +160,97 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
     }
 
     public void addMsgToXml(String sbj, String cont, int msg_id, int parent_id, String username, Date datetime) {
-        MessageType msg = new MessageType();
-	msg.setContent(cont);
-	msg.setAuthor(username);
-        msg.setSubject(sbj);
-        msg.setMsgId(msg_id);
-        
+        MessageType data_msg = new MessageType();
+        FileInputStream in = null;
+        FileOutputStream out = null;
+	try {
+
+            JAXBContext jc = JAXBContext.newInstance("forum.server.domainlayer");
+            Unmarshaller u = jc.createUnmarshaller();
+
+            in = new FileInputStream("forum.xml");
+
+            // Obtain the data from the XML file.
+            ForumType data_forum = (ForumType)u.unmarshal(in);
+
+            data_msg.setContent(cont);
+            data_msg.setCreator(username);
+            GregorianCalendar c = new GregorianCalendar();
+            c.setTime(datetime);
+            XMLGregorianCalendar date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+            data_msg.setDate(date2);
+            data_msg.setFather(parent_id);
+            data_msg.setMessageId(msg_id);
+            data_msg.setSubject(sbj);
+
+            data_forum.getAllMessages().add(data_msg);
+            Marshaller m = jc.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+            // Write al; the data back to the XML file.
+            out = new FileOutputStream("forum.xml");
+	    m.marshal(data_forum,out);
+            out.close();
+
+
+        }
+        catch (DatatypeConfigurationException ex) {
+            ex.printStackTrace();
+        }          catch (JAXBException e) {
+            e.printStackTrace();
+	} catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+	} catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+	}
+	finally {
+		System.exit(0);
+	}
     }
 
     public void modifyMsgInXml(int id_toChange, String newCont) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        FileInputStream in = null;
+        FileOutputStream out = null;
+	try {
+
+            JAXBContext jc = JAXBContext.newInstance("forum.server.domainlayer");
+            Unmarshaller u = jc.createUnmarshaller();
+
+            in = new FileInputStream("forum.xml");
+
+            // Obtain the data from the XML file.
+            ForumType data_forum = (ForumType)u.unmarshal(in);
+            List<MessageType> msgs = data_forum.getAllMessages();
+            for (MessageType msg : msgs){
+                if (msg.getMessageId() == id_toChange){
+                    msg.setContent(newCont);
+                }
+            }
+
+            Marshaller m = jc.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+            // Write al; the data back to the XML file.
+            out = new FileOutputStream("forum.xml");
+	    m.marshal(data_forum,out);
+            out.close();
+
+
+        }
+          catch (JAXBException e) {
+            e.printStackTrace();
+	} catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+	} catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+	}
+	finally {
+		System.exit(0);
+	}
     }
 
 
