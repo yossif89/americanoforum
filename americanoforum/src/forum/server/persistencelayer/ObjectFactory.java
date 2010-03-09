@@ -6,7 +6,7 @@
 //
 
 
-package generated;
+package forum.server.persistencelayer;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

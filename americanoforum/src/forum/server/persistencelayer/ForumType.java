@@ -6,7 +6,7 @@
 //
 
 
-package generated;
+package forum.server.persistencelayer;
 
 import java.util.ArrayList;
 import java.util.List;

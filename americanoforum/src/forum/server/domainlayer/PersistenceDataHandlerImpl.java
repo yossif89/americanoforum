@@ -15,6 +15,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import forum.server.persistencelayer.*;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -28,6 +31,17 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
     //    this._forum=null;
    // }
 
+    //creates all the messages and adds them to the users. not links the msgs to their parents
+    private HashMap<Integer, Message> getMsgs(List<MessageType> msgs, HashMap<String,User> users){
+        HashMap<Integer, Message> messages = new HashMap<Integer,Message>();
+        for (MessageType msg : msgs){
+            Message newMsg = new Message(msg.getSubject(), msg.getContent(), users.get(msg.getCreator()));
+            messages.put(new Integer(msg.getMessageId()), newMsg);
+
+
+        }
+    }
+
     public Forum getForumFromXml() {
         FileInputStream in = null;
 	FileOutputStream out = null;
@@ -40,8 +54,15 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             in = new FileInputStream("forum.xml");
 
             // Obtain the data from the XML file.
-            forum.server.persistencelayer.Forum forum = (forum.server.persistencelayer.Forum)u.unmarshal(in);
+            ForumType data_forum = (ForumType)u.unmarshal(in);
 
+            Forum forum = new Forum();
+
+            for (MessageType msg : msgs){
+               Message newMsg = new Message(msg.getSubject(), msg.getContent(), msg.getContent());
+                forum.addMessage(msg.getSubject(), msg.getContent(), msg.get);
+            }
+        }
 
 
     }
