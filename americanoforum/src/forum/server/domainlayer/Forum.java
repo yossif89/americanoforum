@@ -20,7 +20,7 @@ public class Forum {
         public void addMessage (String aSbj,String aCont , User aUsr){
            Message tMsg =  aUsr.addMessage(aSbj,aCont);
            _messages.put(tMsg.getMsg_id(), tMsg);
-
+           Message.incId();
         }
 
         public void addToRegistered (User aUser){

@@ -42,11 +42,13 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
         HashMap<Integer, Message> all_messages = new HashMap<Integer,Message>();
         for (MessageType msg : msgs){
             User creator = users.get(msg.getCreator());
-            Message newMsg = new Message(msg.getSubject(), msg.getContent(), users.get(msg.getCreator()));
+            Message newMsg = new Message(msg.getSubject(), msg.getContent(), creator);
+            newMsg.setMsg_id(msg.getMessageId());
             GregorianCalendar c = msg.getDate().toGregorianCalendar();
             newMsg.setDate(c.getTime());
             all_messages.put(new Integer(msg.getMessageId()), newMsg);
-            creator.getMyMessages().put(newMsg.getMsg_id(), newMsg);
+            creator.getMyMessages().put(new Integer(newMsg.getMsg_id()), newMsg);
+
         }
         HashMap<Integer, Message> root_messages = new HashMap<Integer,Message>();
         for (MessageType msg : msgs){
@@ -70,6 +72,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             user.setUp(PermissionFactory.getUserPermission(user_data.getPermission()));
             Details details = new Details(user_data.getUsername(), user_data.getPassword(), user_data.getEmail(), user_data.getFirstName(), user_data.getLastName(), user_data.getAddress(), user_data.getGender());
             user.setDetails(details);
+            users.put(user.getDetails().getUsername(), user);
         }
         return users;
     }
@@ -79,15 +82,16 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
         Forum forum = null;
 	try {
 
-            JAXBContext jc = JAXBContext.newInstance("forum.server.domainlayer");
+            JAXBContext jc = JAXBContext.newInstance("forum.server.persistencelayer");
             Unmarshaller u = jc.createUnmarshaller();
 
-            in = new FileInputStream("../persistencelayer/forum.xml");
+            in = new FileInputStream("forum.xml");
 
             // Obtain the data from the XML file.
             ForumType data_forum = (ForumType)u.unmarshal(in);
 
             forum = new Forum();
+            Message.setGensym(new Integer(data_forum.getNumOfMsgs()));
             HashMap<String,User> users = getUsers(data_forum.getAllUsers());
             HashMap<Integer,Message> messages = getMsgs(data_forum.getAllMessages(), users);
             forum.setMessages(messages);
@@ -103,7 +107,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             e.printStackTrace();
 	}
 	finally {
-		System.exit(0);
+	//	System.exit(0);
 	}
 
         return forum;
@@ -117,10 +121,10 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
         Forum forum = null;
 	try {
 
-            JAXBContext jc = JAXBContext.newInstance("forum.server.domainlayer");
+           JAXBContext jc = JAXBContext.newInstance("forum.server.persistencelayer");
             Unmarshaller u = jc.createUnmarshaller();
 
-            in = new FileInputStream("../persistencelayer/forum.xml");
+            in = new FileInputStream("forum.xml");
 
             // Obtain the data from the XML file.
             ForumType data_forum = (ForumType)u.unmarshal(in);
@@ -139,7 +143,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
             // Write al; the data back to the XML file.
-            out = new FileOutputStream("../persistencelayer/forum.xml");
+            out = new FileOutputStream("forum.xml");
 	    m.marshal(data_forum,out);
             out.close();
 
@@ -155,7 +159,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             e.printStackTrace();
 	}
 	finally {
-		System.exit(0);
+		//System.exit(0);
 	}
     }
 
@@ -165,10 +169,10 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
         FileOutputStream out = null;
 	try {
 
-            JAXBContext jc = JAXBContext.newInstance("forum.server.domainlayer");
+        JAXBContext jc = JAXBContext.newInstance("forum.server.persistencelayer");
             Unmarshaller u = jc.createUnmarshaller();
 
-            in = new FileInputStream("../persistencelayer/forum.xml");
+                   in = new FileInputStream("forum.xml");
 
             // Obtain the data from the XML file.
             ForumType data_forum = (ForumType)u.unmarshal(in);
@@ -188,7 +192,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
             // Write al; the data back to the XML file.
-            out = new FileOutputStream("../persistencelayer/forum.xml");
+            out = new FileOutputStream("forum.xml");
 	    m.marshal(data_forum,out);
             out.close();
 
@@ -206,7 +210,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             e.printStackTrace();
 	}
 	finally {
-		System.exit(0);
+	//	System.exit(0);
 	}
     }
 
@@ -215,10 +219,10 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
         FileOutputStream out = null;
 	try {
 
-            JAXBContext jc = JAXBContext.newInstance("forum.server.domainlayer");
+   JAXBContext jc = JAXBContext.newInstance("forum.server.persistencelayer");
             Unmarshaller u = jc.createUnmarshaller();
 
-            in = new FileInputStream("../persistencelayer/forum.xml");
+                        in = new FileInputStream("forum.xml");
 
             // Obtain the data from the XML file.
             ForumType data_forum = (ForumType)u.unmarshal(in);
@@ -233,7 +237,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
             // Write al; the data back to the XML file.
-            out = new FileOutputStream("../persistencelayer/forum.xml");
+            out = new FileOutputStream("forum.xml");
 	    m.marshal(data_forum,out);
             out.close();
 
@@ -249,7 +253,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             e.printStackTrace();
 	}
 	finally {
-		System.exit(0);
+		//System.exit(0);
 	}
     }
 
