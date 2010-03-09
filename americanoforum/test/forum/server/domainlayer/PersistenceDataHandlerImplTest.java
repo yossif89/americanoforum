@@ -3,19 +3,18 @@
  * and open the template in the editor.
  */
 
-package forum.server.persistencelayer;
+package forum.server.domainlayer;
 
 import java.util.Date;
 import junit.framework.TestCase;
 import java.util.HashMap;
-import forum.server.domainlayer.*;
 /**
  *
  * @author visan
  */
 public class PersistenceDataHandlerImplTest extends TestCase {
 
-    public PersistenceDataHandlerImpl pipe;
+    PersistenceDataHandlerImpl pipe;
 
     public PersistenceDataHandlerImplTest(String testName) {
         super(testName);
