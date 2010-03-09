@@ -82,7 +82,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             JAXBContext jc = JAXBContext.newInstance("forum.server.domainlayer");
             Unmarshaller u = jc.createUnmarshaller();
 
-            in = new FileInputStream("forum.xml");
+            in = new FileInputStream("../persistencelayer/forum.xml");
 
             // Obtain the data from the XML file.
             ForumType data_forum = (ForumType)u.unmarshal(in);
@@ -120,7 +120,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             JAXBContext jc = JAXBContext.newInstance("forum.server.domainlayer");
             Unmarshaller u = jc.createUnmarshaller();
 
-            in = new FileInputStream("forum.xml");
+            in = new FileInputStream("../persistencelayer/forum.xml");
 
             // Obtain the data from the XML file.
             ForumType data_forum = (ForumType)u.unmarshal(in);
@@ -139,7 +139,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
             // Write al; the data back to the XML file.
-            out = new FileOutputStream("forum.xml");
+            out = new FileOutputStream("../persistencelayer/forum.xml");
 	    m.marshal(data_forum,out);
             out.close();
 
@@ -168,7 +168,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             JAXBContext jc = JAXBContext.newInstance("forum.server.domainlayer");
             Unmarshaller u = jc.createUnmarshaller();
 
-            in = new FileInputStream("forum.xml");
+            in = new FileInputStream("../persistencelayer/forum.xml");
 
             // Obtain the data from the XML file.
             ForumType data_forum = (ForumType)u.unmarshal(in);
@@ -188,7 +188,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
             // Write al; the data back to the XML file.
-            out = new FileOutputStream("forum.xml");
+            out = new FileOutputStream("../persistencelayer/forum.xml");
 	    m.marshal(data_forum,out);
             out.close();
 
@@ -218,7 +218,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             JAXBContext jc = JAXBContext.newInstance("forum.server.domainlayer");
             Unmarshaller u = jc.createUnmarshaller();
 
-            in = new FileInputStream("forum.xml");
+            in = new FileInputStream("../persistencelayer/forum.xml");
 
             // Obtain the data from the XML file.
             ForumType data_forum = (ForumType)u.unmarshal(in);
@@ -233,7 +233,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
             // Write al; the data back to the XML file.
-            out = new FileOutputStream("forum.xml");
+            out = new FileOutputStream("../persistencelayer/forum.xml");
 	    m.marshal(data_forum,out);
             out.close();
 
