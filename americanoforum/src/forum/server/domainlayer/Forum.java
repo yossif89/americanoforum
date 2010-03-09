@@ -9,6 +9,14 @@ public class Forum {
 
 
 
+        public void setMessages(HashMap<Integer, Message> msgs){
+            this._messages=msgs;
+        }
+
+        public void setRegistered(HashMap<String, User> users){
+            this._registered=users;
+        }
+
         public void addMessage (String aSbj,String aCont , User aUsr){
            Message tMsg =  aUsr.addMessage(aSbj,aCont);
            _messages.put(tMsg.getMsg_id(), tMsg);
@@ -35,7 +43,9 @@ public class Forum {
         public HashMap<String, User> getRegisteredUsers(){
             return this._registered;
         }
-
+        public HashMap<Integer, Message> getMessages(){
+            return this._messages;
+        }
         /**
          * In case the username exists , and it fits the password , the username instance is being added to the onlineusers
          * in any other case , an exception is thrown

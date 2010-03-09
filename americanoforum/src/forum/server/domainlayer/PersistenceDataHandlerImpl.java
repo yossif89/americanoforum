@@ -31,21 +31,44 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
     //    this._forum=null;
    // }
 
-    //creates all the messages and adds them to the users. not links the msgs to their parents
+    //creates all the messages and adds them to the users.
     private HashMap<Integer, Message> getMsgs(List<MessageType> msgs, HashMap<String,User> users){
-        HashMap<Integer, Message> messages = new HashMap<Integer,Message>();
+        HashMap<Integer, Message> all_messages = new HashMap<Integer,Message>();
         for (MessageType msg : msgs){
+            User creator = users.get(msg.getCreator());
             Message newMsg = new Message(msg.getSubject(), msg.getContent(), users.get(msg.getCreator()));
-            messages.put(new Integer(msg.getMessageId()), newMsg);
-
-
+            all_messages.put(new Integer(msg.getMessageId()), newMsg);
+            creator.getMyMessages().put(newMsg.getMsg_id(), newMsg);
         }
+        HashMap<Integer, Message> root_messages = new HashMap<Integer,Message>();
+        for (MessageType msg : msgs){
+            Message parent = all_messages.get(new Integer(msg.getFather()));
+            Message child = all_messages.get(new Integer(msg.getMessageId()));
+            if (parent != null){
+                parent.getChild().add(child);
+                child.setParent(parent);
+            }
+            else
+                root_messages.put(new Integer(child.getMsg_id()), child);
+        }
+
+        return root_messages;
+    }
+
+    private HashMap<String, User> getUsers(List<UserType> allUsers) {
+        HashMap<String, User> users = new HashMap<String, User>();
+        for (UserType user_data : allUsers){
+            User user = new User();
+            user.setUp(PermissionFactory.getUserPermission(user_data.getPermission()));
+            Details details = new Details(user_data.getUsername(), user_data.getPassword(), user_data.getEmail(), user_data.getFirstName(), user_data.getLastName(), user_data.getAddress(), user_data.getGender());
+            user.setDetails(details);
+        }
+        return users;
     }
 
     public Forum getForumFromXml() {
         FileInputStream in = null;
-	FileOutputStream out = null;
-
+        Forum forum = null;
 	try {
 
             JAXBContext jc = JAXBContext.newInstance("forum.server.domainlayer");
@@ -56,19 +79,75 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             // Obtain the data from the XML file.
             ForumType data_forum = (ForumType)u.unmarshal(in);
 
-            Forum forum = new Forum();
-
-            for (MessageType msg : msgs){
-               Message newMsg = new Message(msg.getSubject(), msg.getContent(), msg.getContent());
-                forum.addMessage(msg.getSubject(), msg.getContent(), msg.get);
-            }
+            forum = new Forum();
+            HashMap<String,User> users = getUsers(data_forum.getAllUsers());
+            HashMap<Integer,Message> messages = getMsgs(data_forum.getAllMessages(), users);
+            forum.setMessages(messages);
+            forum.setRegistered(users);
         }
+          catch (JAXBException e) {
+            e.printStackTrace();
+	} catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+	} catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+	}
+	finally {
+		System.exit(0);
+	}
 
+        return forum;
 
     }
 
     public void addRegUserToXml(String username, String password, String email, String firstname, String lastname, String address, String gender, String up) {
-        
+        UserType data_user = new UserType();
+        FileInputStream in = null;
+        Forum forum = null;
+	try {
+
+            JAXBContext jc = JAXBContext.newInstance("forum.server.domainlayer");
+            Unmarshaller u = jc.createUnmarshaller();
+
+            in = new FileInputStream("forum.xml");
+
+            // Obtain the data from the XML file.
+            ForumType data_forum = (ForumType)u.unmarshal(in);
+
+            data_user.setUsername(username);
+            data_user.setPassword(password);
+            data_user.setEmail(email);
+            data_user.setFirstName(firstname);
+            data_user.setLastName(lastname);
+            data_user.setAddress(address);
+            data_user.setGender(gender);
+            data_user.setPermission(up);
+
+            data_forum.getAllUsers().add(data_user);
+            Marshaller m = jc.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+            // Write al; the data back to the XML file.
+            out = new FileOutputStream("bengurion.xml");
+	    m.marshal(uni,out);
+			out.close();
+
+
+        }
+          catch (JAXBException e) {
+            e.printStackTrace();
+	} catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+	} catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+	}
+	finally {
+		System.exit(0);
+	}
     }
 
     public void addMsgToXml(String sbj, String cont, int msg_id, int parent_id, String username, Date datetime) {
@@ -83,6 +162,8 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
     public void modifyMsgInXml(int id_toChange, String newCont) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+
 
 
 

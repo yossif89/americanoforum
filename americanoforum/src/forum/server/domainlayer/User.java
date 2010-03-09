@@ -66,12 +66,12 @@ public class User {
 	}
 
         public Details getDetails() {
-        return _details;
-    }
+            return _details;
+        }
 
-    public void setDetails(Details _details) {
-        this._details = _details;
-    }
+        public void setDetails(Details _details) {
+            this._details = _details;
+        }
 
     public void setUp(UserPermission _up) {
         this._up = _up;
