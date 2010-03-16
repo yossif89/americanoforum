@@ -5,10 +5,6 @@
 
 package forum.server.domainlayer;
 
-/**
- *
- * @author Yossi
- */
 public class PermissionFactory {
 
     public static UserPermission getUserPermission(String permission){
@@ -21,4 +17,4 @@ public class PermissionFactory {
         else return null;
 
     }
-}
+}//class

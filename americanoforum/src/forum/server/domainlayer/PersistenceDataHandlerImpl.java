@@ -64,7 +64,11 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 
         return root_messages;
     }
-
+/**
+ * gets the users from the xml
+ * @param allUsers - the list of all users type 
+ * @return
+ */
     private HashMap<String, User> getUsers(List<UserType> allUsers) {
         HashMap<String, User> users = new HashMap<String, User>();
         for (UserType user_data : allUsers){
@@ -76,7 +80,11 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
         }
         return users;
     }
-
+/**
+ * gets the forum from xml to a object forum
+ * where all the fields are initializeds
+ * @return the forum as an object from xml
+ */
     public Forum getForumFromXml() {
         FileInputStream in = null;
         Forum forum = null;
@@ -109,11 +117,20 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 	finally {
 	//	System.exit(0);
 	}
-
         return forum;
-
     }
 
+    /**
+     * adds to the xml a registerd user
+     * @param username - nick name
+     * @param password
+     * @param email
+     * @param firstname
+     * @param lastname
+     * @param address
+     * @param gender - male or female
+     * @param up - user permission, the authorization the user has
+     */
     public void addRegUserToXml(String username, String password, String email, String firstname, String lastname, String address, String gender, String up) {
         UserType data_user = new UserType();
         FileInputStream in = null;
@@ -162,7 +179,15 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 		//System.exit(0);
 	}
     }
-
+/**
+ * adds a message to the xml
+ * @param sbj - the subject
+ * @param cont - the content
+ * @param msg_id - the message id
+ * @param parent_id
+ * @param username
+ * @param datetime
+ */
     public void addMsgToXml(String sbj, String cont, int msg_id, int parent_id, String username, Date datetime) {
         MessageType data_msg = new MessageType();
         FileInputStream in = null;
@@ -187,6 +212,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             data_msg.setMessageId(msg_id);
             data_msg.setSubject(sbj);
 
+            data_forum.setNumOfMsgs(Message.getGensym().intValue());
             data_forum.getAllMessages().add(data_msg);
             Marshaller m = jc.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -213,7 +239,11 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 	//	System.exit(0);
 	}
     }
-
+/**
+ * modify a msg in the xml
+ * @param id_toChange - the message id we want to change
+ * @param newCont - the new content
+ */
     public void modifyMsgInXml(int id_toChange, String newCont) {
         FileInputStream in = null;
         FileOutputStream out = null;
@@ -255,7 +285,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 	finally {
 		//System.exit(0);
 	}
-    }
+    }//class
 
 
 

@@ -7,7 +7,9 @@ public class User {
 	private UserPermission _up;
 	private Details _details;
 	private HashMap<Integer, Message> _myMessages = new HashMap<Integer, Message>();
-
+/**
+ * constractor
+ */
     public User() {
         this._up = GuestPermission.getInstance();
         this._details=null;
@@ -64,26 +66,39 @@ public class User {
                this._myMessages.put(m.getMsg_id(), m);
                return m;
 	}
-
+/**
+ * gets the details of the user
+ * @return - the details
+ */
         public Details getDetails() {
             return _details;
         }
-
+/**
+ * sets the details of the user
+ * @param _details - the new details
+ */
         public void setDetails(Details _details) {
             this._details = _details;
         }
-
+/**
+ * sets the user permission
+ * @param _up - the new user permission
+ */
     public void setUp(UserPermission _up) {
         this._up = _up;
     }
-
+/**
+ * gets the message of the user
+ * @return - a hashmap of the messages of the user
+ */
     public HashMap<Integer, Message> getMyMessages() {
         return _myMessages;
     }
-
+/**
+ * gets the user permission
+ * @return the user permission
+ */
     public UserPermission getUp() {
         return _up;
     }
-    
-
-}
+}//class

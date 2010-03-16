@@ -6,43 +6,88 @@ public class Forum {
 	HashMap<Integer, Message> _messages = new HashMap<Integer,Message>();
 	HashMap<String, User> _registered = new HashMap<String, User>();
 	HashMap<String, User> _online_users = new HashMap<String, User>();
+    PersistenceDataHandler pipe = new PersistenceDataHandlerImpl();
 
-
-
+    /**
+     * sets a collection (hash map)  of messages in the forum
+     * @param msgs
+     */
         public void setMessages(HashMap<Integer, Message> msgs){
             this._messages=msgs;
         }
-
+/**
+ *  sets a collection (hash map)  ofregistered users in the forum
+ * @param users
+ */
         public void setRegistered(HashMap<String, User> users){
             this._registered=users;
         }
-
+/**
+ * adds a new message to the forum, the messsage will be added as a root message
+ * @param aSbj - the subject of the mesage
+ * @param aCont - the content of the message
+ * @param aUsr - the user that adds the message
+ */
         public void addMessage (String aSbj,String aCont , User aUsr){
            Message tMsg =  aUsr.addMessage(aSbj,aCont);
            _messages.put(tMsg.getMsg_id(), tMsg);
            Message.incId();
+           pipe.addMsgToXml(aSbj, aCont, tMsg.getMsg_id(), -1, aUsr.getDetails().getUsername(), tMsg.getDate());
         }
-
+/**
+ * adds a new reply to a message in the forum
+ * @param aSbj- the subject of the mesage
+ * @param aCont-  the content of the message
+ * @param aUsr- the user that adds the message
+ * @param parent - the parent message
+ */
+        public void addReply(String aSbj,String aCont,User aUsr, Message parent){
+            Message tMsg =  aUsr.addMessage(aSbj,aCont);
+            Message.incId();
+            tMsg.setParent(parent);
+            parent.getChild().add(tMsg);
+            pipe.addMsgToXml(aSbj, aCont,tMsg.getMsg_id(), parent.getMsg_id(), aUsr.getDetails().getUsername(), tMsg.getDate());
+        }
+/**
+ * adds a new user as a register user
+ * @param aUser - the user we want to add
+ */
         public void addToRegistered (User aUser){
             this._registered.put(aUser.getDetails().getUsername(),aUser);
         }
-
+/**
+ * adds a new user as a on line user
+ * @param aUser -the user we want to add
+ */
          public void addToOnline (User aUser){
             this._online_users.put(aUser.getDetails().getUsername(),aUser);
         }
-
+/**
+ * log off a user
+ * @param aUser - the user
+ */
          public void turnOffline(User aUser){
              this._online_users.remove(aUser);
          }
 
-
+/**
+ * gets the on line users
+ * @return - a hash map of on line users
+ */
         public HashMap<String, User> getOnlineUsers(){
             return this._online_users;
         }
-
+/**
+ * gets the registerd users
+ * @return - a hash map of registerd users
+ */
         public HashMap<String, User> getRegisteredUsers(){
             return this._registered;
         }
+ /**
+  * .gets the root messages
+  * @return a hash map with the root messages
+  */
         public HashMap<Integer, Message> getMessages(){
             return this._messages;
         }
@@ -92,5 +137,20 @@ public class Forum {
                 aUsr.setUp(LoggedInPermission.getInstance());
                 this._online_users.put(aUsername, aUsr);
                 this._registered.put(aUsername, aUsr);
+                pipe.addRegUserToXml(aUsername, aPass, aEmail, aFirstName, aLastName, aAddress, aGender,"LoggedInPermission");
 	}
-}
+
+    @Override
+    public String toString(){
+        String ans="";
+        ans = ans+ "There are: "+ this._online_users.size() + " online users: \n";
+        for(User user : this._online_users.values()){
+            ans = ans+user.getDetails().getUsername()+ " ";
+        }
+        ans = ans + "\nSubjects: \n";
+        for (Message msg : this._messages.values()){
+               ans = ans + msg.getSubject() + "  msg_id:" + msg.getMsg_id() + "\n";
+        }
+        return ans;
+    }
+}//class
