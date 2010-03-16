@@ -5,7 +5,10 @@
 
 package forum.server.domainlayer;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import junit.framework.TestCase;
 import java.util.HashMap;
 /**
@@ -36,8 +39,13 @@ public class PersistenceDataHandlerImplTest extends TestCase {
      * Test of addRegUserToXml method, of class PersistenceDataHandlerImpl.
      */
     public void testAddRegUserToXml() {
-       pipe.addRegUserToXml("shassaf","123", "1@gmail.com", "assaf", "s", "b", "male", "LoggedInPermission");
-       pipe.addRegUserToXml("sun","123", "1@gmail.com", "assaf", "s", "b", "male", "LoggedInPermission");
+        try {
+            pipe.addRegUserToXml("shassaf", Forum.encryptPassword("123"), "1@gmail.com", "assaf", "s", "b", "male", "LoggedInPermission");
+            pipe.addRegUserToXml("sun",Forum.encryptPassword("123"), "1@gmail.com", "assaf", "s", "b", "male", "LoggedInPermission");
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+        }
+       
         
        Forum  forum = pipe.getForumFromXml();
        HashMap<String,User>  registers  = forum.getRegisteredUsers();
@@ -46,7 +54,11 @@ public class PersistenceDataHandlerImplTest extends TestCase {
        assertTrue(u1.getUp() instanceof  LoggedInPermission);
        Details d1 = u1.getDetails();
        assertTrue(d1.getUsername().equals("shassaf"));
-       assertTrue(d1.getPassword().equals("123"));
+        try {
+            assertTrue(d1.getPassword().equals(Forum.encryptPassword("123")));
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+        }
        assertTrue(d1.getEmail().equals("1@gmail.com"));
        assertTrue(d1.getFirst_name().equals("assaf"));
        assertTrue(d1.getLast_name().equals("s"));
@@ -59,7 +71,11 @@ public class PersistenceDataHandlerImplTest extends TestCase {
         assertTrue(u3.getUp() instanceof  LoggedInPermission);
        Details d3 = u3.getDetails();
        assertTrue(d3.getUsername().equals("sun"));
-       assertTrue(d3.getPassword().equals("123"));
+        try {
+            assertTrue(d3.getPassword().equals(Forum.encryptPassword("123")));
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+        }
        assertTrue(d3.getEmail().equals("1@gmail.com"));
        assertTrue(d3.getFirst_name().equals("assaf"));
        assertTrue(d3.getLast_name().equals("s"));
@@ -72,7 +88,11 @@ public class PersistenceDataHandlerImplTest extends TestCase {
      * Test of addMsgToXml method, of class PersistenceDataHandlerImpl. */
      
     public void testAddMsgToXml() {
-        pipe.addRegUserToXml("shassaf","123", "1@gmail.com", "assaf", "s", "b", "male", "LoggedInPermission");
+        try {
+            pipe.addRegUserToXml("shassaf", Forum.encryptPassword("123"), "1@gmail.com", "assaf", "s", "b", "male", "LoggedInPermission");
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+        }
         pipe.addMsgToXml("test", "test1", 1, -1, "shassaf", new Date());
          pipe.addMsgToXml("test2", "test22", 2, 1, "shassaf", new Date());
         Forum  forum = pipe.getForumFromXml();
@@ -105,7 +125,11 @@ public class PersistenceDataHandlerImplTest extends TestCase {
      * Test of modifyMsgInXml method, of class PersistenceDataHandlerImpl.
      */
     public void testModifyMsgInXml() {
-          pipe.addRegUserToXml("shassaf","123", "1@gmail.com", "assaf", "s", "b", "male", "LoggedInPermission");
+        try {
+            pipe.addRegUserToXml("shassaf", Forum.encryptPassword("123"), "1@gmail.com", "assaf", "s", "b", "male", "LoggedInPermission");
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+        }
           pipe.addMsgToXml("test", "test1", 1, -1, "shassaf", new Date());
           pipe.addMsgToXml("test2", "test22", 2, 1, "shassaf", new Date());
           pipe.modifyMsgInXml(2, "modi1");

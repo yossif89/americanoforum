@@ -1,7 +1,7 @@
 package forum.server.domainlayer;
 
 public class LoggedInPermission implements UserPermission {
-    
+ 
  private static LoggedInPermission instance=null;
 /**
   * approve to adds a new message as logged in user

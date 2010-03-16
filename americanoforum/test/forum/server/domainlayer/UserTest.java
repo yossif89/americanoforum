@@ -25,8 +25,8 @@ public class UserTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        Details d1 = new Details("shassaf", "123", "1", "assaf", "sun", "b", "male");
-        Details d2 = new Details("felberba", "1233", "1", "yossi", "sun", "b", "male");
+        Details d1 = new Details("shassaf", Forum.encryptPassword("123"), "1", "assaf", "sun", "b", "male");
+        Details d2 = new Details("felberba", Forum.encryptPassword("1233"), "1", "yossi", "sun", "b", "male");
         _u1 = new User();
         _u2 = new User();
         _u1.setDetails(d1);

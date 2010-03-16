@@ -2,6 +2,7 @@ package forum.server.domainlayer;
 
 import java.util.HashMap;
 import java.util.Vector;
+import java.util.logging.Level;
 
 public class User {
 	private UserPermission _up;
@@ -22,10 +23,18 @@ public class User {
          * @throws UnsupportedOperationException
          */
 	public Message addMessage(String aSbj, String aCont)  throws UnsupportedOperationException{
+           Message m=null;
+            try{
                _up.addMessage(aSbj, aCont);
-               Message m = new Message(aSbj, aCont, this);
+               m = new Message(aSbj, aCont, this);
                Message.incId();
                this._myMessages.put(m.getMsg_id(), m);
+                Forum.logger.log(Level.INFO, "succesfully added  message number "+m.getMsg_id());
+            }
+            catch(UnsupportedOperationException e){
+                    Forum.logger.log(Level.SEVERE, "problem adding a message with the subject " + aSbj);
+                    throw new UnsupportedOperationException();
+            }
                return m;
 
 	}
@@ -36,8 +45,15 @@ public class User {
          * @throws UnsupportedOperationException
          */
 	public void modifyMessage(Message aMsg, String aCont) throws UnsupportedOperationException {
-		_up.modifyMessage(this, aMsg, aCont);
-                aMsg.setContent(aCont);
+            try{
+                _up.modifyMessage(this, aMsg, aCont);
+              Forum.logger.log(Level.INFO, "succesfully modifing message number "+aMsg.getMsg_id());
+               aMsg.setContent(aCont);
+            }
+            catch(UnsupportedOperationException e ){
+                Forum.logger.log(Level.SEVERE, "unauthorized user is trying to modify a message");
+                throw new UnsupportedOperationException();
+            }
                 
 	}
 
@@ -48,6 +64,7 @@ public class User {
          */
 	public void viewMessage(Message aMsg) throws UnsupportedOperationException {
 		_up.viewMessage(aMsg);
+                  Forum.logger.log(Level.INFO, "message "+aMsg.getMsg_id()+" was viewed");
 	}
         /**
          * adds the reply to the parent message and adds the message to the users vector
@@ -57,12 +74,20 @@ public class User {
          * @throws UnsupportedOperationException
          */
 	public Message reply(Message aParent_msg, String aSbj, String aCont)  throws UnsupportedOperationException{
+             Message m =null;
+            try{
 	       _up.reply(aParent_msg, aSbj, aCont);
-               Message m = new Message(aSbj, aCont, this);
+               m = new Message(aSbj, aCont, this);
                Message.incId();
                m.setParent(aParent_msg);
                aParent_msg.getChild().add(m);
                this._myMessages.put(m.getMsg_id(), m);
+               Forum.logger.log(Level.INFO,this.getDetails().getUsername() +" has replied to message number "+aParent_msg.getMsg_id());
+            }
+            catch(UnsupportedOperationException e){
+                 Forum.logger.log(Level.SEVERE, "unauthorized user trying to reply to a message ");
+                 throw new UnsupportedOperationException();
+            }
                return m;
 	}
 

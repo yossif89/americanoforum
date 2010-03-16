@@ -7,10 +7,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Forum {
+        static Logger logger = Logger.getLogger("americanoforum");
 	HashMap<Integer, Message> _messages = new HashMap<Integer,Message>();
 	HashMap<String, User> _registered = new HashMap<String, User>();
 	HashMap<String, User> _online_users = new HashMap<String, User>();
-    PersistenceDataHandler pipe = new PersistenceDataHandlerImpl();
+       PersistenceDataHandler pipe = new PersistenceDataHandlerImpl();
+
 
     /**
 	 * A function that receives a password in String representation and returns
@@ -20,7 +22,7 @@ public class Forum {
 	 * @return the encrypted password in hex representation
 	 * @throws NoSuchAlgorithmException MD5 is not supported by this version of java
 	 */
-	private String encryptPassword(String password) throws NoSuchAlgorithmException {
+	public static String encryptPassword(String password) throws NoSuchAlgorithmException {
 		String encryptedPassword = "";
 
 		byte[] b = password.getBytes();
@@ -55,11 +57,17 @@ public class Forum {
  * @param aCont - the content of the message
  * @param aUsr - the user that adds the message
  */
-        public void addMessage (String aSbj,String aCont , User aUsr){
+        public void addMessage (String aSbj,String aCont , User aUsr) throws Exception{
+            try{
            Message tMsg =  aUsr.addMessage(aSbj,aCont);
            _messages.put(tMsg.getMsg_id(), tMsg);
            Message.incId();
            pipe.addMsgToXml(aSbj, aCont, tMsg.getMsg_id(), -1, aUsr.getDetails().getUsername(), tMsg.getDate());
+            }
+            catch(Exception e){
+            Forum.logger.log(Level.FINE, "Forum:couldn't add a message with the header : "+aSbj);
+            throw e;
+            }
         }
 
         public void modifyMessage(Message aMsg, String aNewCont, User aUsr){
@@ -74,10 +82,22 @@ public class Forum {
  * @param aUsr- the user that adds the message
  * @param parent - the parent message
  */
-        public void addReply(String aSbj,String aCont,User aUsr, Message parent){
-            Message tMsg = aUsr.reply(parent,aSbj,aCont);
-            pipe.addMsgToXml(aSbj, aCont,tMsg.getMsg_id(), parent.getMsg_id(), aUsr.getDetails().getUsername(), tMsg.getDate());
-        }
+        public void addReply(String aSbj,String aCont,User aUsr, Message parent) throws Exception{
+            try{
+                Message tMsg =  aUsr.addMessage(aSbj,aCont);
+                Message.incId();
+                tMsg.setParent(parent);
+                parent.getChild().add(tMsg);
+                pipe.addMsgToXml(aSbj, aCont,tMsg.getMsg_id(), parent.getMsg_id(), aUsr.getDetails().getUsername(), tMsg.getDate());
+              
+            }
+            catch(Exception e){
+                 Forum.logger.log(Level.FINE, "Forum:couldn't add a reply  message with the header : "+aSbj);
+                 throw e;
+            }
+
+            }
+        
 
         public void deleteMessage(Message msg, User tUsr){
             tUsr.deleteMessage(msg);
@@ -95,6 +115,7 @@ public class Forum {
  * @param aUser - the user we want to add
  */
         public void addToRegistered (User aUser){
+            Forum.logger.log(Level.INFO, "Forum:is adding a new registered user : "+aUser.getDetails().getUsername());
             this._registered.put(aUser.getDetails().getUsername(),aUser);
         }
 /**
@@ -102,6 +123,7 @@ public class Forum {
  * @param aUser -the user we want to add
  */
          public void addToOnline (User aUser){
+            Forum.logger.log(Level.INFO, "Forum: registered user : "+aUser.getDetails().getUsername() +"is online!");
             this._online_users.put(aUser.getDetails().getUsername(),aUser);
         }
 /**
@@ -109,7 +131,8 @@ public class Forum {
  * @param aUser - the user
  */
          public void turnOffline(User aUser){
-             this._online_users.remove(aUser.getDetails().getUsername());
+             Forum.logger.log(Level.INFO, "Forum: registered user : "+aUser.getDetails().getUsername() +"is offline!");
+             this._online_users.remove(aUser);
          }
 
 /**
@@ -143,18 +166,23 @@ public class Forum {
          */
 	public User login(String aUsername, String aPass) throws IllegalAccessError {
 	   User tUsr = this._registered.get(aUsername);
-           if (tUsr==null)
+           if (tUsr==null){
+               Forum.logger.log(Level.SEVERE,"Forum: unregistered user trying to login");
                throw new IllegalAccessError();
+           }
            String encryptedPass="";
             try {
                 encryptedPass = this.encryptPassword(aPass);
             } catch (NoSuchAlgorithmException ex) {
                 //Logger.getLogger(Forum.class.getName()).log(Level.SEVERE, null, ex);
             }
-           if ( !tUsr.getDetails().getPassword().equals(encryptedPass))
+           if ( !tUsr.getDetails().getPassword().equals(encryptedPass)){
+               Forum.logger.log(Level.SEVERE,"Forum: unregistered user" + aUsername +" entered unvalid password");
                throw new IllegalAccessError();
+           }
            this._online_users.put(aUsername, tUsr);
            tUsr.setUp(LoggedInPermission.getInstance());
+           Forum.logger.log(Level.INFO, "Forum: registered user : "+aUsername+"is logged in and online");
           return tUsr;
 	}
 
@@ -165,6 +193,7 @@ public class Forum {
 	public void logoff(User aUser) {
 		this._online_users.remove(aUser.getDetails().getUsername());
                 aUser.setUp(GuestPermission.getInstance());
+               Forum.logger.log(Level.INFO, "Forum: registered user : "+aUser.getDetails().getUsername()+"has logged off");
 	}
 
         /**
@@ -179,19 +208,26 @@ public class Forum {
          * @param aAddress
          * @param aGender
          */
-	public void register(User aUsr,String aUsername, String aPass, String aEmail, String aFirstName, String aLastName, String aAddress, String aGender) {
+	public void register(User aUsr,String aUsername, String aPass, String aEmail, String aFirstName, String aLastName, String aAddress, String aGender)  throws Exception{
                 String encryptedPass="";
                 try {
                     encryptedPass = this.encryptPassword(aPass);
                 } catch (NoSuchAlgorithmException ex) {
-                    //Logger.getLogger(Forum.class.getName()).log(Level.SEVERE, null, ex);
+                 Forum.logger.log(Level.FINE, "no such algorithm: "+ ex.toString());
                 }
+                try{
                 Details d = new Details(aUsername, encryptedPass, aEmail, aFirstName, aLastName, aAddress, aGender);
                 aUsr.setDetails(d);
                 aUsr.setUp(LoggedInPermission.getInstance());
                 this._online_users.put(aUsername, aUsr);
                 this._registered.put(aUsername, aUsr);
                 pipe.addRegUserToXml(aUsername, encryptedPass, aEmail, aFirstName, aLastName, aAddress, aGender,"LoggedInPermission");
+                 Forum.logger.log(Level.INFO, "Forum: guest user : "+aUsr.getDetails().getUsername()+" registered successfuly");
+              }
+              catch(Exception e){
+                     Forum.logger.log(Level.FINE, "Forum: problem registering : " + aUsr.getDetails().getUsername() + ": " + e.toString());
+                     throw e;
+              }
 	}
 
         public void changeToModerator(User curr_user, User to_change){

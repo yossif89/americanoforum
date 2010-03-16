@@ -1,5 +1,7 @@
 package forum.server.domainlayer;
 
+import java.util.logging.Level;
+
 public class GuestPermission implements UserPermission {
  private static GuestPermission instance=null;
 

@@ -21,6 +21,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -225,18 +226,14 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 
         }
         catch (DatatypeConfigurationException ex) {
-            ex.printStackTrace();
+            Forum.logger.log(Level.SEVERE,"Failed adding message number "+ msg_id +" to xml : "+ex.toString());
+           
         }          catch (JAXBException e) {
-            e.printStackTrace();
+           Forum.logger.log(Level.SEVERE,"Failed adding message number "+ msg_id +" to xml : "+e.toString());
 	} catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            Forum.logger.log(Level.SEVERE,"Failed adding message number "+ msg_id +" to xml : "+e.toString());
 	} catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-	}
-	finally {
-	//	System.exit(0);
+           Forum.logger.log(Level.SEVERE,"Failed adding message number "+ msg_id +" to xml : "+e.toString());
 	}
     }
 /**
@@ -274,17 +271,13 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 
         }
           catch (JAXBException e) {
-            e.printStackTrace();
+              Forum.logger.log(Level.SEVERE,"Failed modifying message number "+ id_toChange +" in xml : "+e.toString());
 	} catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+       Forum.logger.log(Level.SEVERE,"Failed modifying message number "+ id_toChange +" in xml : "+e.toString());
 	} catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            Forum.logger.log(Level.SEVERE,"Failed modifying message number "+ id_toChange +" in xml : "+e.toString());
 	}
-	finally {
-		//System.exit(0);
-	}
+	
     }//class
 
     public void changeUserPermission(String username, String permission) {

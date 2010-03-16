@@ -1,10 +1,14 @@
 
 import forum.server.domainlayer.*;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
-
+    private static  Logger logger;
     private static User curr_user;
     private static Forum forum;
 /**
@@ -60,6 +64,20 @@ public class Main {
     }
 
     public static void main(String[] args){
+        try {
+        // Create an appending file handler
+        boolean append = true;
+        FileHandler handler = new FileHandler("forumAmericano.log", append);
+
+        // Add to the desired logger
+        logger = Logger.getLogger("americanoforum");
+        logger.addHandler(handler);
+    } catch (IOException e) {
+        /////how to log exception in creating logger?
+    }
+ logger.setLevel(Level.ALL);
+ 
+
         curr_user=null;
         int mode=0;//mode 0 for guest, mode 1 for user
         PersistenceDataHandler pipe = new PersistenceDataHandlerImpl();
@@ -152,5 +170,6 @@ public class Main {
                 }
            }
         }
+
     }
 }//class
