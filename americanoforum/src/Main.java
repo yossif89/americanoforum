@@ -54,7 +54,11 @@ public class Main {
                         String subject=scanner.next() + scanner.nextLine();
                         System.out.println("Please enter the content of your message: ");
                         String content=scanner.next()+scanner.nextLine();
-                        forum.addReply(subject, content, curr_user, msg);
+            try {
+                forum.addReply(subject, content, curr_user, msg);
+            } catch (Exception ex) {
+                // for the future GUI
+            }
                         return;
                     }
                     else{
@@ -121,7 +125,11 @@ public class Main {
                     System.out.println("Please enter your gender [male/female]: ");
                     String gender=scanner.next();
                     curr_user=new User();
-                    forum.register(curr_user,username, password, email, first_name, last_name, address, gender);
+                    try {
+                        forum.register(curr_user, username, password, email, first_name, last_name, address, gender);
+                    } catch (Exception ex) {
+                        //for future GUI
+                    }
                     mode=1;
                 }
                 if (choice ==3){
@@ -157,7 +165,11 @@ public class Main {
                     String subject=scanner.next() + scanner.nextLine();
                     System.out.println("Please enter the content of your message: ");
                     String content= scanner.next() + scanner.nextLine();
-                    forum.addMessage(subject, content, curr_user);
+                    try {
+                        forum.addMessage(subject, content, curr_user);
+                    } catch (Exception ex) {
+                        //for future GUI
+                    }
                 }
                 if (choice==3){
                     view__and_handle_messages(null,null);

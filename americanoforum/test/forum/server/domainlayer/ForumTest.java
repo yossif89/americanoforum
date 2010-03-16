@@ -7,6 +7,8 @@ package forum.server.domainlayer;
 
 import java.util.HashMap;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import junit.framework.TestCase;
 
 /**
@@ -83,7 +85,11 @@ public class ForumTest extends TestCase{
     public void testRegister() {
         System.out.println("register");
         User t = new User();
-        this._forum.register(t,"boli", "111", "2@hotmail.com","david", "d", "b", "male");
+        try {
+            this._forum.register(t, "boli", "111", "2@hotmail.com", "david", "d", "b", "male");
+        } catch (Exception ex) {
+            
+        }
         HashMap<String,User> online_users = this._forum.getOnlineUsers();
         HashMap<String,User> registered_users = this._forum.getRegisteredUsers();
         assertTrue(online_users.size()==1);
