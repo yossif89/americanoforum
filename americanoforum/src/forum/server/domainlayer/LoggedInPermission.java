@@ -65,4 +65,12 @@ public class LoggedInPermission implements UserPermission {
     public static void setInstance(LoggedInPermission instance) {
         LoggedInPermission.instance = instance;
     }
+
+    public void deleteMessage(Message msg) {
+        throw new UnsupportedOperationException();
+    }
+
+    public void changeToModerator(User tUsr) {
+        throw new UnsupportedOperationException();
+    }
 }//class

@@ -1,12 +1,39 @@
 package forum.server.domainlayer;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Forum {
 	HashMap<Integer, Message> _messages = new HashMap<Integer,Message>();
 	HashMap<String, User> _registered = new HashMap<String, User>();
 	HashMap<String, User> _online_users = new HashMap<String, User>();
     PersistenceDataHandler pipe = new PersistenceDataHandlerImpl();
+
+    /**
+	 * A function that receives a password in String representation and returns
+	 * the encryption of the password in hex representation.
+	 *
+	 * @param password The password which we want to encrypt
+	 * @return the encrypted password in hex representation
+	 * @throws NoSuchAlgorithmException MD5 is not supported by this version of java
+	 */
+	private String encryptPassword(String password) throws NoSuchAlgorithmException {
+		String encryptedPassword = "";
+
+		byte[] b = password.getBytes();
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update(b);
+		b = md.digest();
+
+		for (int i = 0; i < b.length; i++) {
+			encryptedPassword += String.format("%02x",0xFF & b[i]);
+		}
+
+		return encryptedPassword;
+	}
 
     /**
      * sets a collection (hash map)  of messages in the forum
@@ -48,12 +75,21 @@ public class Forum {
  * @param parent - the parent message
  */
         public void addReply(String aSbj,String aCont,User aUsr, Message parent){
-            Message tMsg =  aUsr.addMessage(aSbj,aCont);
-            Message.incId();
-            tMsg.setParent(parent);
-            parent.getChild().add(tMsg);
+            Message tMsg = aUsr.reply(parent,aSbj,aCont);
             pipe.addMsgToXml(aSbj, aCont,tMsg.getMsg_id(), parent.getMsg_id(), aUsr.getDetails().getUsername(), tMsg.getDate());
         }
+
+        public void deleteMessage(Message msg, User tUsr){
+            tUsr.deleteMessage(msg);
+            if (msg.getParent() == null){
+                this._messages.remove(msg.getMsg_id());
+            }
+            else{
+                msg.getParent().getChild().remove(msg);
+            }
+        }
+
+
 /**
  * adds a new user as a register user
  * @param aUser - the user we want to add
@@ -73,7 +109,7 @@ public class Forum {
  * @param aUser - the user
  */
          public void turnOffline(User aUser){
-             this._online_users.remove(aUser);
+             this._online_users.remove(aUser.getDetails().getUsername());
          }
 
 /**
@@ -109,7 +145,13 @@ public class Forum {
 	   User tUsr = this._registered.get(aUsername);
            if (tUsr==null)
                throw new IllegalAccessError();
-           if ( !tUsr.getDetails().getPassword().equals(aPass))
+           String encryptedPass="";
+            try {
+                encryptedPass = this.encryptPassword(aPass);
+            } catch (NoSuchAlgorithmException ex) {
+                //Logger.getLogger(Forum.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           if ( !tUsr.getDetails().getPassword().equals(encryptedPass))
                throw new IllegalAccessError();
            this._online_users.put(aUsername, tUsr);
            tUsr.setUp(LoggedInPermission.getInstance());
@@ -138,13 +180,24 @@ public class Forum {
          * @param aGender
          */
 	public void register(User aUsr,String aUsername, String aPass, String aEmail, String aFirstName, String aLastName, String aAddress, String aGender) {
-		Details d = new Details(aUsername, aPass, aEmail, aFirstName, aLastName, aAddress, aGender);
+                String encryptedPass="";
+                try {
+                    encryptedPass = this.encryptPassword(aPass);
+                } catch (NoSuchAlgorithmException ex) {
+                    //Logger.getLogger(Forum.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Details d = new Details(aUsername, encryptedPass, aEmail, aFirstName, aLastName, aAddress, aGender);
                 aUsr.setDetails(d);
                 aUsr.setUp(LoggedInPermission.getInstance());
                 this._online_users.put(aUsername, aUsr);
                 this._registered.put(aUsername, aUsr);
-                pipe.addRegUserToXml(aUsername, aPass, aEmail, aFirstName, aLastName, aAddress, aGender,"LoggedInPermission");
+                pipe.addRegUserToXml(aUsername, encryptedPass, aEmail, aFirstName, aLastName, aAddress, aGender,"LoggedInPermission");
 	}
+
+        public void changeToModerator(User curr_user, User to_change){
+            curr_user.changeToModerator(to_change);
+            pipe.changeUserPermission(to_change.getDetails().getUsername(), "ModeratorPermission");
+        }
 
     @Override
     public String toString(){

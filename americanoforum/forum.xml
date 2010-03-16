@@ -1,38 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ForumType>
-    <_numOfMsgs>3</_numOfMsgs>
+    <_numOfMsgs>0</_numOfMsgs>
     <_allUsers>
-        <_username>a</_username>
-        <_password>2</_password>
-        <_email>3</_email>
-        <_firstName>3</_firstName>
-        <_lastName>3</_lastName>
-        <_address>3</_address>
+        <_username>felberba</_username>
+        <_password>a1158810badc9f1634d655e2a0d142c7</_password>
+        <_email>1</_email>
+        <_firstName>1</_firstName>
+        <_lastName>1</_lastName>
+        <_address>1</_address>
         <_gender>male</_gender>
         <_permission>LoggedInPermission</_permission>
     </_allUsers>
-    <_allMessages>
-        <_messageId>0</_messageId>
-        <_subject>test</_subject>
-        <_content>test test test</_content>
-        <_date>2010-03-16T17:25:10.437+02:00</_date>
-        <_father>-1</_father>
-        <_creator>a</_creator>
-    </_allMessages>
-    <_allMessages>
-        <_messageId>1</_messageId>
-        <_subject>reaply1</_subject>
-        <_content>bla bla bla</_content>
-        <_date>2010-03-16T17:27:22.781+02:00</_date>
-        <_father>0</_father>
-        <_creator>a</_creator>
-    </_allMessages>
-    <_allMessages>
-        <_messageId>2</_messageId>
-        <_subject>reply2</_subject>
-        <_content>sadf</_content>
-        <_date>2010-03-16T17:27:54.218+02:00</_date>
-        <_father>0</_father>
-        <_creator>a</_creator>
-    </_allMessages>
 </ForumType>

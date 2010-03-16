@@ -65,4 +65,12 @@ public class GuestPermission implements UserPermission {
         GuestPermission.instance = instance;
     }
 
+    public void deleteMessage(Message msg) {
+        throw new UnsupportedOperationException();
+    }
+
+    public void changeToModerator(User tUsr) {
+        throw new UnsupportedOperationException();
+    }
+
 }//class

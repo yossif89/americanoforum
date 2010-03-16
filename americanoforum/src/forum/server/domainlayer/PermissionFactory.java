@@ -14,6 +14,12 @@ public class PermissionFactory {
         else if (permission.equals("LoggedInPermission")){
             return LoggedInPermission.getInstance();
         }
+        else if (permission.equals("ModeratorPermission")){
+            return ModeratorPermission.getInstance();
+        }
+        else if (permission.equals("AdminPermission")){
+            return AdminPermission.getInstance();
+        }
         else return null;
 
     }

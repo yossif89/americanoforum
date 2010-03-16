@@ -24,6 +24,7 @@ public class User {
 	public Message addMessage(String aSbj, String aCont)  throws UnsupportedOperationException{
                _up.addMessage(aSbj, aCont);
                Message m = new Message(aSbj, aCont, this);
+               Message.incId();
                this._myMessages.put(m.getMsg_id(), m);
                return m;
 
@@ -58,10 +59,22 @@ public class User {
 	public Message reply(Message aParent_msg, String aSbj, String aCont)  throws UnsupportedOperationException{
 	       _up.reply(aParent_msg, aSbj, aCont);
                Message m = new Message(aSbj, aCont, this);
+               Message.incId();
                m.setParent(aParent_msg);
+               aParent_msg.getChild().add(m);
                this._myMessages.put(m.getMsg_id(), m);
                return m;
 	}
+
+        public void deleteMessage(Message msg){
+            _up.deleteMessage(msg);
+            msg.getCreator().getMyMessages().remove(msg.getMsg_id());
+        }
+
+        public void changeToModerator(User aUsr){
+            _up.changeToModerator(aUsr);
+            aUsr.setUp(PermissionFactory.getUserPermission("ModeratorPermission"));
+        }
 /**
  * gets the details of the user
  * @return - the details

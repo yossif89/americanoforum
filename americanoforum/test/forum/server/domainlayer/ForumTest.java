@@ -99,4 +99,13 @@ public class ForumTest extends TestCase{
         assertTrue(d3.getUsername().equals("boli"));
     }
 
+    public void testModifyMessage() {
+        this._forum.login(_u1.getDetails().getUsername(), _u1.getDetails().getPassword());
+        this._forum.addMessage("test", "test test test", _u1);
+        Message tMsg = this._forum._messages.get(new Integer(0));
+        this._forum.addReply("reply1", "reply1 reply", _u1, tMsg);
+        Message tReply = _u1.getMyMessages().get(new Integer(1));
+        this._forum.modifyMessage(tMsg, "bla bla bla", _u1);
+
+    }
 }

@@ -287,6 +287,49 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 	}
     }//class
 
+    public void changeUserPermission(String username, String permission) {
+        FileInputStream in = null;
+        FileOutputStream out = null;
+	try {
+
+            JAXBContext jc = JAXBContext.newInstance("forum.server.persistencelayer");
+            Unmarshaller u = jc.createUnmarshaller();
+
+                        in = new FileInputStream("forum.xml");
+
+            // Obtain the data from the XML file.
+            ForumType data_forum = (ForumType)u.unmarshal(in);
+            List<UserType> users = data_forum.getAllUsers();
+            for (UserType user : users){
+                if (user.getUsername().equals(username)){
+                    user.setPermission(permission);
+                }
+            }
+
+            Marshaller m = jc.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+            // Write al; the data back to the XML file.
+            out = new FileOutputStream("forum.xml");
+	    m.marshal(data_forum,out);
+            out.close();
+
+
+        }
+          catch (JAXBException e) {
+            e.printStackTrace();
+	} catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+	} catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+	}
+	finally {
+		//System.exit(0);
+	}
+    }
+
 
 
 
