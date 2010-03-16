@@ -35,13 +35,9 @@ public class User {
          * @throws UnsupportedOperationException
          */
 	public void modifyMessage(Message aMsg, String aCont) throws UnsupportedOperationException {
-		_up.modifyMessage(aMsg, aCont);
-                if (this==aMsg.getCreator()){
-                     aMsg.setContent(aCont);
-                }
-                else{
-                    throw new UnsupportedOperationException();
-                }
+		_up.modifyMessage(this, aMsg, aCont);
+                aMsg.setContent(aCont);
+                
 	}
 
         /**

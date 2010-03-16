@@ -4,7 +4,7 @@ public interface UserPermission {
 
 	public void addMessage(String aSbj, String aCont);
 
-	public void modifyMessage(Message aMsg, String aCont);
+	public void modifyMessage(User aUsr, Message aMsg, String aCont);
 
 	public void viewMessage(Message aMsg);
 

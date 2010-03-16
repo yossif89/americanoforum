@@ -16,8 +16,12 @@ public class LoggedInPermission implements UserPermission {
  * @param aMsg - the message to modify
  * @param aCont - the  new content
  */
-	public void modifyMessage(Message aMsg, String aCont) {
-		return;
+	public void modifyMessage(User aUsr, Message aMsg, String aCont) {
+		if (aUsr == aMsg.getCreator())
+                    return;
+                else{
+                    throw new UnsupportedOperationException();
+                }
 	}
 /**
  * view a message

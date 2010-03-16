@@ -1,86 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ForumType>
-    <_numOfMsgs>0</_numOfMsgs>
+    <_numOfMsgs>3</_numOfMsgs>
     <_allUsers>
-        <_username>boli</_username>
-        <_password>111</_password>
-        <_email>2@hotmail.com</_email>
-        <_firstName>david</_firstName>
-        <_lastName>d</_lastName>
-        <_address>b</_address>
-        <_gender>male</_gender>
-        <_permission>LoggedInPermission</_permission>
-    </_allUsers>
-    <_allUsers>
-        <_username>shassaf</_username>
-        <_password>123</_password>
-        <_email>1@gmail.com</_email>
-        <_firstName>assaf</_firstName>
-        <_lastName>s</_lastName>
-        <_address>b</_address>
-        <_gender>male</_gender>
-        <_permission>LoggedInPermission</_permission>
-    </_allUsers>
-    <_allUsers>
-        <_username>sun</_username>
-        <_password>123</_password>
-        <_email>1@gmail.com</_email>
-        <_firstName>assaf</_firstName>
-        <_lastName>s</_lastName>
-        <_address>b</_address>
-        <_gender>male</_gender>
-        <_permission>LoggedInPermission</_permission>
-    </_allUsers>
-    <_allUsers>
-        <_username>shassaf</_username>
-        <_password>123</_password>
-        <_email>1@gmail.com</_email>
-        <_firstName>assaf</_firstName>
-        <_lastName>s</_lastName>
-        <_address>b</_address>
-        <_gender>male</_gender>
-        <_permission>LoggedInPermission</_permission>
-    </_allUsers>
-    <_allUsers>
-        <_username>shassaf</_username>
-        <_password>123</_password>
-        <_email>1@gmail.com</_email>
-        <_firstName>assaf</_firstName>
-        <_lastName>s</_lastName>
-        <_address>b</_address>
+        <_username>a</_username>
+        <_password>2</_password>
+        <_email>3</_email>
+        <_firstName>3</_firstName>
+        <_lastName>3</_lastName>
+        <_address>3</_address>
         <_gender>male</_gender>
         <_permission>LoggedInPermission</_permission>
     </_allUsers>
     <_allMessages>
-        <_messageId>1</_messageId>
+        <_messageId>0</_messageId>
         <_subject>test</_subject>
-        <_content>modi3</_content>
-        <_date>2010-03-16T13:42:24.375+02:00</_date>
+        <_content>test test test</_content>
+        <_date>2010-03-16T17:25:10.437+02:00</_date>
         <_father>-1</_father>
-        <_creator>shassaf</_creator>
-    </_allMessages>
-    <_allMessages>
-        <_messageId>2</_messageId>
-        <_subject>test2</_subject>
-        <_content>modi2</_content>
-        <_date>2010-03-16T13:42:24.500+02:00</_date>
-        <_father>1</_father>
-        <_creator>shassaf</_creator>
+        <_creator>a</_creator>
     </_allMessages>
     <_allMessages>
         <_messageId>1</_messageId>
-        <_subject>test</_subject>
-        <_content>modi3</_content>
-        <_date>2010-03-16T13:42:24.656+02:00</_date>
-        <_father>-1</_father>
-        <_creator>shassaf</_creator>
+        <_subject>reaply1</_subject>
+        <_content>bla bla bla</_content>
+        <_date>2010-03-16T17:27:22.781+02:00</_date>
+        <_father>0</_father>
+        <_creator>a</_creator>
     </_allMessages>
     <_allMessages>
         <_messageId>2</_messageId>
-        <_subject>test2</_subject>
-        <_content>modi2</_content>
-        <_date>2010-03-16T13:42:24.703+02:00</_date>
-        <_father>1</_father>
-        <_creator>shassaf</_creator>
+        <_subject>reply2</_subject>
+        <_content>sadf</_content>
+        <_date>2010-03-16T17:27:54.218+02:00</_date>
+        <_father>0</_father>
+        <_creator>a</_creator>
     </_allMessages>
 </ForumType>

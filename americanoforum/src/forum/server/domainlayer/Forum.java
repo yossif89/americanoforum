@@ -34,6 +34,12 @@ public class Forum {
            Message.incId();
            pipe.addMsgToXml(aSbj, aCont, tMsg.getMsg_id(), -1, aUsr.getDetails().getUsername(), tMsg.getDate());
         }
+
+        public void modifyMessage(Message aMsg, String aNewCont, User aUsr){
+            aUsr.modifyMessage(aMsg, aNewCont);
+            pipe.modifyMsgInXml(aMsg.getMsg_id(), aNewCont);
+        }
+
 /**
  * adds a new reply to a message in the forum
  * @param aSbj- the subject of the mesage

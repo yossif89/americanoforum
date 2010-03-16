@@ -18,7 +18,7 @@ public class GuestPermission implements UserPermission {
  * @param aCont - the  new content
  * @throws exception because its not allowed for a guest user
  */
-	public void modifyMessage(Message aMsg, String aCont) {
+	public void modifyMessage(User aUsr, Message aMsg, String aCont) {
 		throw new UnsupportedOperationException();
 	}
 /**
