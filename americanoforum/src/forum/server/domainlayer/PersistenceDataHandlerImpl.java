@@ -107,17 +107,13 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             forum.setRegistered(users);
         }
           catch (JAXBException e) {
-            e.printStackTrace();
+            Forum.logger.log(Level.FINE,"DataHandler: cannot get forum from xml: "+e.toString());
 	} catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            Forum.logger.log(Level.FINE,"DataHandler: cannot get forum from xml: "+e.toString());
 	} catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+             Forum.logger.log(Level.FINE,"DataHandler: cannot get forum from xml: "+e.toString());
 	}
-	finally {
-	//	System.exit(0);
-	}
+
         return forum;
     }
 
@@ -164,17 +160,15 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             out = new FileOutputStream("forum.xml");
 	    m.marshal(data_forum,out);
             out.close();
-
-
         }
           catch (JAXBException e) {
-            e.printStackTrace();
+            Forum.logger.log(Level.FINE,"DataHandler: cannot add reg user to xml: "+e.toString());
 	} catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+          Forum.logger.log(Level.FINE,"DataHandler: cannot add reg user to xml: "+e.toString());
 	} catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+              Forum.logger.log(Level.FINE,"DataHandler:cannot add reg user to xml: "+e.toString());
 	}
 	finally {
 		//System.exit(0);
@@ -306,17 +300,13 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             out = new FileOutputStream("forum.xml");
 	    m.marshal(data_forum,out);
             out.close();
-
-
         }
           catch (JAXBException e) {
-            e.printStackTrace();
+            Forum.logger.log(Level.SEVERE,"Data Handler: Failed to change user permission :"+e.toString());
 	} catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+                     Forum.logger.log(Level.SEVERE,"Data Handler: Failed to change user permission :"+e.toString());
 	} catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+                  Forum.logger.log(Level.SEVERE,"Data Handler: Failed to change user permission :"+e.toString());
 	}
 	finally {
 		//System.exit(0);
@@ -353,11 +343,11 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 
         }
           catch (JAXBException e) {
-              Forum.logger.log(Level.SEVERE,"Failed modifying message number "+ id_toChange +" in xml : "+e.toString());
+              Forum.logger.log(Level.SEVERE,"Failed deleting  message number "+e.toString());
 	} catch (FileNotFoundException e) {
-       Forum.logger.log(Level.SEVERE,"Failed modifying message number "+ id_toChange +" in xml : "+e.toString());
+             Forum.logger.log(Level.SEVERE,"Failed deleting  message number "+e.toString());
 	} catch (IOException e) {
-            Forum.logger.log(Level.SEVERE,"Failed modifying message number "+ id_toChange +" in xml : "+e.toString());
+              Forum.logger.log(Level.SEVERE,"Failed deleting  message number "+e.toString());
 	}
 
     }
