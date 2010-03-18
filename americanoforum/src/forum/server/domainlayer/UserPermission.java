@@ -14,5 +14,5 @@ public interface UserPermission {
 
         public void changeToModerator(User tUsr);
 
-        public String toString();
+        
 }

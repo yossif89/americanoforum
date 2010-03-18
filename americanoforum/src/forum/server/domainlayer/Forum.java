@@ -107,6 +107,8 @@ public class Forum {
             else{
                 msg.getParent().getChild().remove(msg);
             }
+            pipe.deleteMsgFromXml(msg.getMsg_id());
+            msg.getChild()
         }
 
 
