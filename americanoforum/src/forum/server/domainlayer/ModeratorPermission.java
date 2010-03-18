@@ -10,7 +10,7 @@ package forum.server.domainlayer;
  * @author Yossi
  */
 public class ModeratorPermission implements UserPermission{
-    private static GuestPermission instance=null;
+    private static ModeratorPermission instance=null;
 
     public void addMessage(String aSbj, String aCont) {
         return;
@@ -34,7 +34,7 @@ public class ModeratorPermission implements UserPermission{
  */
 	public static UserPermission getInstance() {
 		if (getInstanceField()==null){
-                    setInstance(new GuestPermission());
+                    setInstance(new ModeratorPermission());
                     return getInstanceField();
                 }
                 else
@@ -45,14 +45,14 @@ public class ModeratorPermission implements UserPermission{
  * get the instance
  * @return the guest permission
  */
-    public static GuestPermission getInstanceField() {
+    public static ModeratorPermission getInstanceField() {
         return instance;
     }
 /**
  * sets the instance of the permission
  * @param instance - the new insance
  */
-    public static void setInstance(GuestPermission instance) {
+    public static void setInstance(ModeratorPermission instance) {
         ModeratorPermission.instance = instance;
     }
 
