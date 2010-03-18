@@ -323,6 +323,45 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 	}
     }
 
+    public void deleteMsgFromXml(int msg_id) {
+        FileInputStream in = null;
+        FileOutputStream out = null;
+	try {
+
+            JAXBContext jc = JAXBContext.newInstance("forum.server.persistencelayer");
+            Unmarshaller u = jc.createUnmarshaller();
+
+            in = new FileInputStream("forum.xml");
+
+            // Obtain the data from the XML file.
+            ForumType data_forum = (ForumType)u.unmarshal(in);
+            List<MessageType> msgs = data_forum.getAllMessages();
+            for (MessageType msg : msgs){
+                if (msg.getMessageId() == msg_id){
+                    msgs.remove(msg);
+                }
+            }
+
+            Marshaller m = jc.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+            // Write al; the data back to the XML file.
+            out = new FileOutputStream("forum.xml");
+	    m.marshal(data_forum,out);
+            out.close();
+
+
+        }
+          catch (JAXBException e) {
+              Forum.logger.log(Level.SEVERE,"Failed modifying message number "+ id_toChange +" in xml : "+e.toString());
+	} catch (FileNotFoundException e) {
+       Forum.logger.log(Level.SEVERE,"Failed modifying message number "+ id_toChange +" in xml : "+e.toString());
+	} catch (IOException e) {
+            Forum.logger.log(Level.SEVERE,"Failed modifying message number "+ id_toChange +" in xml : "+e.toString());
+	}
+
+    }
+
 
 
 

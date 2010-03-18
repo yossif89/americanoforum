@@ -3,6 +3,7 @@ package forum.server.domainlayer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -101,6 +102,10 @@ public class Forum {
 
         public void deleteMessage(Message msg, User tUsr){
             tUsr.deleteMessage(msg);
+            Vector<Message> child = msg.getChild();
+            for (int i=0; i<child.size(); i++){
+                deleteMessage(child.elementAt(i), child.elementAt(i).getCreator());
+            }
             if (msg.getParent() == null){
                 this._messages.remove(msg.getMsg_id());
             }
@@ -108,7 +113,6 @@ public class Forum {
                 msg.getParent().getChild().remove(msg);
             }
             pipe.deleteMsgFromXml(msg.getMsg_id());
-            msg.getChild()
         }
 
 
