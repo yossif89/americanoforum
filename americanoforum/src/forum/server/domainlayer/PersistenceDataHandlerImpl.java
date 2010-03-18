@@ -34,6 +34,8 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 
    // private forum.server.persistencelayer.Forum _forum; // the data forum
 
+    ObjectFactory oFactory = new ObjectFactory();
+
    // public PersistenceDataHandlerImpl(){
     //    this._forum=null;
    // }
@@ -129,7 +131,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
      * @param up - user permission, the authorization the user has
      */
     public void addRegUserToXml(String username, String password, String email, String firstname, String lastname, String address, String gender, String up) {
-        UserType data_user = new UserType();
+        UserType data_user = oFactory.createUserType();
         FileInputStream in = null;
         FileOutputStream out = null;
         Forum forum = null;
@@ -184,7 +186,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
  * @param datetime
  */
     public void addMsgToXml(String sbj, String cont, int msg_id, int parent_id, String username, Date datetime) {
-        MessageType data_msg = new MessageType();
+        MessageType data_msg =  oFactory.createMessageType();
         FileInputStream in = null;
         FileOutputStream out = null;
 	try {
@@ -326,12 +328,18 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             // Obtain the data from the XML file.
             ForumType data_forum = (ForumType)u.unmarshal(in);
             List<MessageType> msgs = data_forum.getAllMessages();
+       
+               
             for (MessageType msg : msgs){
+               
                 if (msg.getMessageId() == msg_id){
+                      
+
                     msgs.remove(msg);
+                    break;
                 }
             }
-
+    
             Marshaller m = jc.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
@@ -349,11 +357,8 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 	} catch (IOException e) {
               Forum.logger.log(Level.SEVERE,"Failed deleting  message number "+e.toString());
 	}
-
+       // catch(Exception e){
+           
+    //    }
     }
-
-
-
-
-
 }

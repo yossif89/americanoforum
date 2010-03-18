@@ -5,10 +5,14 @@
 
 package forum.server.domainlayer;
 
+import forum.server.persistencelayer.ForumType;
+import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 import junit.framework.TestCase;
 
 /**
@@ -19,7 +23,8 @@ public class ForumTest extends TestCase{
     private Forum _forum;
     private User _u1;
     private User _u2;
-
+    private User _u3;
+    private User _u4;
     public ForumTest(String testName) {
         super(testName);
     }
@@ -30,35 +35,45 @@ public class ForumTest extends TestCase{
          this._forum=new Forum();
         Details d1 = new Details("shassaf", Forum.encryptPassword("123") , "1", "assaf", "sun", "b", "male");
         Details d2 = new Details("felberba", Forum.encryptPassword("1233"), "1", "yossi", "sun", "b", "male");
+         Details d3 = new Details("iluxa13", Forum.encryptPassword("8888"), "4", "ilya", "g", "b", "male");
+          Details d4 = new Details("visan", Forum.encryptPassword("7777"), "5", "hila", "v", "b", "female");
         _u1 = new User();
         _u2 = new User();
+        _u3 = new User();
+        _u4 = new User();
         _u1.setDetails(d1);
         _u2.setDetails(d2);
+         _u3.setDetails(d3);
+         _u4.setDetails(d4);
         this._forum.addToRegistered(_u1);
         this._forum.addToRegistered(_u2);
+        this._forum.addToRegistered(_u3);
+       
+        _u1.setUp(PermissionFactory.getUserPermission("LoggedInPermission"));
+         _u2.setUp(PermissionFactory.getUserPermission("AdminPermission"));
+          _u3.setUp(PermissionFactory.getUserPermission("ModeratorPermission"));
+           _u4.setUp(PermissionFactory.getUserPermission("GuestPermission"));
     }
 
     @Override
     protected void tearDown() throws Exception {
-        super.tearDown();
+              super.tearDown();
+
+        FileOutputStream out = null;
+  
+        ForumType forumtype = new ForumType();
+        JAXBContext jc = JAXBContext.newInstance("forum.server.persistencelayer");
+        Marshaller m = jc.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+            // Write al; the data back to the XML file.
+            out = new FileOutputStream("forum.xml");
+	    m.marshal(forumtype,out);
+            out.close();
+
+    //    this._forum.setMessages(new HashMap<Integer, Message>());
     }
 
-    /**
-     * Test of login method, of class Forum.
-     */
-    public void testLogin() {
-        System.out.println("login");
-        this._forum.login("shassaf", "123");
-        HashMap<String,User> online_users = this._forum.getOnlineUsers();
-        HashMap<String,User> registered_users = this._forum.getRegisteredUsers();
-        assertTrue(online_users.containsKey(_u1.getDetails().getUsername()));
-        assertFalse(online_users.containsKey(_u2.getDetails().getUsername()));
-        assertTrue(registered_users.containsKey(_u1.getDetails().getUsername()));
-        assertTrue(registered_users.containsKey(_u2.getDetails().getUsername()));
-        assertTrue(online_users.size()==1);
-        assertTrue(_u1.getUp() instanceof LoggedInPermission);
-        assertTrue(_u2.getUp() instanceof GuestPermission);
-    }
 
     /**
      * Test of logoff method, of class Forum.
@@ -79,43 +94,133 @@ public class ForumTest extends TestCase{
         assertTrue(_u2.getUp() instanceof LoggedInPermission);
     }
 
-    /**
-     * Test of register method, of class Forum.
+     /**
+     * Test of logoff method, of class Forum.
      */
-    public void testRegister() {
-        System.out.println("register");
-        User t = new User();
-        try {
-            this._forum.register(t, "boli", "111", "2@hotmail.com", "david", "d", "b", "male");
-        } catch (Exception ex) {
-            
-        }
-        HashMap<String,User> online_users = this._forum.getOnlineUsers();
-        HashMap<String,User> registered_users = this._forum.getRegisteredUsers();
-        assertTrue(online_users.size()==1);
-        assertTrue(registered_users.size()==3);
-        assertTrue(online_users.get("boli").getUp() instanceof LoggedInPermission);
-        Details d3 = online_users.get("boli").getDetails();
-        assertTrue(d3.getAddress().equals("b"));
-        assertTrue(d3.getEmail().equals("2@hotmail.com"));
-        assertTrue(d3.getFirst_name().equals("david"));
-        assertTrue(d3.getGender().equals("male"));
-        assertTrue(d3.getLast_name().equals("d"));
+    public void testAddMessage() {
+
+        System.out.println("add message test: ");
         try{
-            assertTrue(d3.getPassword().equals(Forum.encryptPassword("111")));
-        } catch (Exception e){
-            e.printStackTrace();
+              this._forum.addMessage("subj", "cont", _u4);
         }
-        assertTrue(d3.getUsername().equals("boli"));
+        catch(Exception e){
+               assertTrue(true);
+        }
+        try{
+         this._forum.addMessage("subj1", "cont1", _u1);
+         Message m1 = _forum.getMessages().get(Message.getGensym()-1);
+        this._forum.addMessage("subj2", "cont2", _u2);
+        this._forum.addMessage("subj3", "cont3", _u3);
+        this._forum.addReply("test", "test", _u1, m1);
+        }
+        catch(Exception e){
+                 assertTrue(false);
+        }
+        assertEquals(this._forum.getMessages().size(),3);
+        assertEquals(_u1.getMyMessages().size(),2);
+         assertEquals(_u2.getMyMessages().size(),1);
+          assertEquals(_u3.getMyMessages().size(),1);
+           assertEquals(_u4.getMyMessages().size(),0);
     }
 
- /*   public void testModifyMessage() {
-        this._forum.login(_u1.getDetails().getUsername(), _u1.getDetails().getPassword());
-        this._forum.addMessage("test", "test test test", _u1);
-        Message tMsg = this._forum._messages.get(new Integer(0));
-        this._forum.addReply("reply1", "reply1 reply", _u1, tMsg);
-        Message tReply = _u1.getMyMessages().get(new Integer(1));
-        this._forum.modifyMessage(tMsg, "bla bla bla", _u1);
+      /**
+     * Test of register method, of class Forum.
+     */
+    public void testDelete() {
+           System.out.println("delete test: ");
+       Integer n1=0,n2=0,n3=0;
+        try{
+            n1=Message.getGensym();
 
-    }*/
+        this._forum.addMessage("subj", "cont", _u1);
+            n2=Message.getGensym();
+        this._forum.addMessage("odtaot", "shonot", _u3);
+            n3=Message.getGensym();
+        this._forum.addMessage("odaa", "shon", _u1);
+
+        }
+        catch(Exception e){
+            assertTrue(false);
+        }
+        assertEquals(this._forum.getMessages().size(), 3);
+        HashMap<Integer,Message>  forumMess =  this._forum.getMessages();
+        Message m1 = forumMess.get(n1);
+        Message m2 = forumMess.get(n2);
+        Message m3 = forumMess.get(n3);
+        this._u1.reply(m3, "replay", "test");
+
+        try{
+        this._forum.deleteMessage(m2, _u1);
+        assertTrue(false);
+        }
+        catch(Exception e){
+            assertTrue(true);
+        }
+        try{
+        this._forum.deleteMessage(m1, _u3);
+        this._forum.deleteMessage(m2, _u3);
+       this._forum.deleteMessage(m3, _u3);
+        }
+        catch(Exception e){
+
+            assertTrue(false);
+        }
+        assertEquals(forumMess.size(), 0);
+        assertEquals(this._u1.getMyMessages().size(), 0);
+        assertEquals(this._u3.getMyMessages().size(), 0);
+    }
+
+     /**
+     * Test of login method, of class Forum.
+     */
+    public void testLogin() {
+        System.out.println("login");
+        this._forum.login("shassaf", "123");
+        HashMap<String,User> online_users = this._forum.getOnlineUsers();
+        HashMap<String,User> registered_users = this._forum.getRegisteredUsers();
+        assertTrue(online_users.containsKey(_u1.getDetails().getUsername()));
+        assertFalse(online_users.containsKey(_u2.getDetails().getUsername()));
+        assertTrue(registered_users.containsKey(_u1.getDetails().getUsername()));
+        assertTrue(registered_users.containsKey(_u2.getDetails().getUsername()));
+        assertTrue(online_users.size()==1);
+        assertTrue(_u1.getUp() instanceof LoggedInPermission);
+        assertTrue(_u4.getUp() instanceof GuestPermission);
+    }
+
+
+    public void testChangePermission() {
+        Integer n1 = Message.getGensym();
+        try{
+          this._forum.addMessage("shemesh", "cont", _u1);
+        }
+        catch(Exception e){
+            assertTrue(false);
+        }
+        try{
+        this._u3.changeToModerator(_u4);
+        }
+        catch(Exception e){
+            assertTrue(true);
+        }
+
+        try{
+            this._u2.changeToModerator(_u4);
+        }
+        catch(Exception e){
+            assertTrue(false);
+        }
+
+        try{
+            this._u4.deleteMessage(_forum.getMessages().get(n1));
+        }
+        catch(Exception e){
+            assertTrue(false);
+        }
+    }
+
+    
+
+  
+
+    
 }

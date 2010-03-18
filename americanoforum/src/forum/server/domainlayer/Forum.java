@@ -62,7 +62,6 @@ public class Forum {
             try{
            Message tMsg =  aUsr.addMessage(aSbj,aCont);
            _messages.put(tMsg.getMsg_id(), tMsg);
-           Message.incId();
            pipe.addMsgToXml(aSbj, aCont, tMsg.getMsg_id(), -1, aUsr.getDetails().getUsername(), tMsg.getDate());
             }
             catch(Exception e){
@@ -86,11 +85,9 @@ public class Forum {
         public void addReply(String aSbj,String aCont,User aUsr, Message parent) throws Exception{
             try{
                 Message tMsg =  aUsr.addMessage(aSbj,aCont);
-                Message.incId();
                 tMsg.setParent(parent);
                 parent.getChild().add(tMsg);
                 pipe.addMsgToXml(aSbj, aCont,tMsg.getMsg_id(), parent.getMsg_id(), aUsr.getDetails().getUsername(), tMsg.getDate());
-              
             }
             catch(Exception e){
                  Forum.logger.log(Level.FINE, "Forum:couldn't add a reply  message with the header : "+aSbj);
@@ -103,8 +100,9 @@ public class Forum {
         public void deleteMessage(Message msg, User tUsr){
             tUsr.deleteMessage(msg);
             Vector<Message> child = msg.getChild();
+            
             for (int i=0; i<child.size(); i++){
-                deleteMessage(child.elementAt(i), child.elementAt(i).getCreator());
+                deleteMessage(child.elementAt(i), tUsr);
             }
             if (msg.getParent() == null){
                 this._messages.remove(msg.getMsg_id());
@@ -112,7 +110,8 @@ public class Forum {
             else{
                 msg.getParent().getChild().remove(msg);
             }
-            pipe.deleteMsgFromXml(msg.getMsg_id());
+            pipe.deleteMsgFromXml(msg.getMsg_id()); 
+
         }
 
 

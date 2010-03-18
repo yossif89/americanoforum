@@ -32,7 +32,7 @@ public class User {
                 Forum.logger.log(Level.INFO, "succesfully added  message number "+m.getMsg_id());
             }
             catch(UnsupportedOperationException e){
-                    Forum.logger.log(Level.SEVERE, "problem adding a message with the subject " + aSbj);
+                    Forum.logger.log(Level.SEVERE, "problem adding a message with the subject " + aSbj+ "  "+e.toString());
                     throw new UnsupportedOperationException();
             }
                return m;

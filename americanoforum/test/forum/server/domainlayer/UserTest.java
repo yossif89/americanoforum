@@ -5,7 +5,11 @@
 
 package forum.server.domainlayer;
 
+import forum.server.persistencelayer.ForumType;
+import java.io.FileOutputStream;
 import java.util.HashMap;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 import junit.framework.TestCase;
 
 /**
@@ -39,7 +43,17 @@ public class UserTest extends TestCase {
 
     @Override
     protected void tearDown() throws Exception {
+               FileOutputStream out = null;
         super.tearDown();
+        ForumType forumtype = new ForumType();
+        JAXBContext jc = JAXBContext.newInstance("forum.server.persistencelayer");
+        Marshaller m = jc.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+            // Write al; the data back to the XML file.
+            out = new FileOutputStream("forum.xml");
+	    m.marshal(forumtype,out);
+            out.close();
     }
 
     /**
@@ -91,5 +105,6 @@ public class UserTest extends TestCase {
         Message m3 = this._u1.getMyMessages().get(new Integer(m2.getMsg_id()));
         assertEquals(m3,m2);
     }
+
 
 }

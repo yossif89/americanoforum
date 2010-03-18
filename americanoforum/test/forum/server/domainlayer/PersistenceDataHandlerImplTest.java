@@ -5,12 +5,16 @@
 
 package forum.server.domainlayer;
 
+import forum.server.persistencelayer.ForumType;
+import java.io.FileOutputStream;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import junit.framework.TestCase;
 import java.util.HashMap;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 /**
  *
  * @author visan
@@ -31,7 +35,18 @@ public class PersistenceDataHandlerImplTest extends TestCase {
 
     @Override
     protected void tearDown() throws Exception {
+            FileOutputStream out = null;
         super.tearDown();
+        ForumType forumtype = new ForumType();
+        JAXBContext jc = JAXBContext.newInstance("forum.server.persistencelayer");
+        Marshaller m = jc.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+            // Write al; the data back to the XML file.
+            out = new FileOutputStream("forum.xml");
+	    m.marshal(forumtype,out);
+            out.close();
+
     }
 
 
