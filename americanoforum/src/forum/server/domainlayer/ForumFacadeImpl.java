@@ -17,6 +17,16 @@ public class ForumFacadeImpl implements ForumFacade{
     public ForumFacadeImpl() {
              _pipe = new PersistenceDataHandlerImpl();
              _facadeForum = _pipe.getForumFromXml();
+              User u = _facadeForum.getRegisteredUsers().get("sepetnit");
+              if (u==null){
+                  _facadeForum.addVitaly();
+
+              }
+               u = _facadeForum.getRegisteredUsers().get("dahany");
+              if (u==null){
+                  _facadeForum.addYakir();
+              }
+
     }
 
     public ServerResponse addMessage(String aSubj,String aCont,String us) {
@@ -56,10 +66,14 @@ public class ForumFacadeImpl implements ForumFacade{
     public ServerResponse login(String user,String pass) {
           ServerResponse toRet = new ServerResponse();
         try{
-          _facadeForum.login(user, pass);
+         User a = _facadeForum.login(user, pass);
         }
         catch(Exception e){
+           
             toRet.setEx(e);
+            return toRet;
+        }
+          catch(IllegalAccessError e){
             return toRet;
         }
        toRet.setResponse(user);
@@ -124,7 +138,7 @@ public class ForumFacadeImpl implements ForumFacade{
         }
         ServerResponse toRet = new ServerResponse();
         try{
-          _facadeForum.register(u, username, last, email, first, last, address, gender);
+          _facadeForum.register(u, username, password, email, first, last, address, gender);
         }
         catch(Exception e){
             toRet.setEx(e);

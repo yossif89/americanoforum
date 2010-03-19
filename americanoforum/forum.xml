@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ForumType>
-    <_numOfMsgs>0</_numOfMsgs>
+    <_numOfMsgs>5</_numOfMsgs>
     <_allUsers>
         <_username>a</_username>
-        <_password>e1671797c52e15f763380b45e841ec32</_password>
+        <_password>92eb5ffee6ae2fec3ad71c777531578f</_password>
         <_email>c</_email>
         <_firstName>d</_firstName>
         <_lastName>e</_lastName>
@@ -11,4 +11,74 @@
         <_gender>g</_gender>
         <_permission>LoggedInPermission</_permission>
     </_allUsers>
+    <_allUsers>
+        <_username>sepetnit</_username>
+        <_password>b59c67bf196a4758191e42f76670ceba</_password>
+        <_email>@</_email>
+        <_firstName>vitaly</_firstName>
+        <_lastName>sepetnizki</_lastName>
+        <_address>bash</_address>
+        <_gender>male</_gender>
+        <_permission>AdminPermission</_permission>
+    </_allUsers>
+    <_allUsers>
+        <_username>dahany</_username>
+        <_password>934b535800b1cba8f96a5d72f72f1611</_password>
+        <_email>@</_email>
+        <_firstName>yakir</_firstName>
+        <_lastName>dahan</_lastName>
+        <_address>bash</_address>
+        <_gender>male</_gender>
+        <_permission>ModeratorPermission</_permission>
+    </_allUsers>
+    <_allUsers>
+        <_username>p</_username>
+        <_password>d95679752134a2d9eb61dbd7b91c4bcc</_password>
+        <_email>i</_email>
+        <_firstName>u</_firstName>
+        <_lastName>y</_lastName>
+        <_address>t</_address>
+        <_gender>r</_gender>
+        <_permission>LoggedInPermission</_permission>
+    </_allUsers>
+    <_allMessages>
+        <_messageId>0</_messageId>
+        <_subject>subj</_subject>
+        <_content>new content</_content>
+        <_date>2010-03-19T18:29:10.858+02:00</_date>
+        <_father>-1</_father>
+        <_creator>a</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>1</_messageId>
+        <_subject>uu</_subject>
+        <_content>yyyy</_content>
+        <_date>2010-03-19T18:31:10.597+02:00</_date>
+        <_father>0</_father>
+        <_creator>a</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>2</_messageId>
+        <_subject>hey</_subject>
+        <_content>there what is up</_content>
+        <_date>2010-03-19T19:12:24.174+02:00</_date>
+        <_father>-1</_father>
+        <_creator>a</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>3</_messageId>
+        <_subject>heyback</_subject>
+        <_content>Im ok</_content>
+        <_date>2010-03-19T19:13:12.422+02:00</_date>
+        <_father>2</_father>
+        <_creator>a</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>4</_messageId>
+        <_subject>I</_subject>
+        <_content>am new</_content>
+        <_date>2010-03-19T19:34:21.169+02:00</_date>
+        <_father>-1</_father>
+        <_creator>p</_creator>
+    </_allMessages>
 </ForumType>

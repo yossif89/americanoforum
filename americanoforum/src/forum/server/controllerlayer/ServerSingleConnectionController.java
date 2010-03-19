@@ -62,7 +62,6 @@ public class ServerSingleConnectionController implements Runnable {
 	@Override
 	public void run() {		
 		log.info("Communication has started between "+m_socket.getInetAddress()+" and the server.");
-		
 		try {
 			while (true) {
 				/* Receive a message from the client */

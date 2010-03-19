@@ -201,7 +201,7 @@ public class Forum {
                Forum.logger.severe("no such algorithm for encryption!");
             }
            if ( !tUsr.getDetails().getPassword().equals(encryptedPass)){
-               Forum.logger.log(Level.SEVERE,"Forum: registered user" + aUsername +" entered unvalid password");
+               Forum.logger.log(Level.SEVERE,"Forum: registered user" + aUsername +" entered unvalid password "+encryptedPass+" =? " +tUsr.getDetails().getPassword());
                throw new IllegalAccessError();
            }
            this._online_users.put(aUsername, tUsr);
@@ -262,6 +262,37 @@ public class Forum {
             pipe.changeUserPermission(to_change.getDetails().getUsername(), "ModeratorPermission");
         }
 
+   public void addVitaly(){
+       User vit=new User();
+       String encryptedPass="";
+                try {
+                    encryptedPass = this.encryptPassword("1111");
+                } catch (NoSuchAlgorithmException ex) {
+                 Forum.logger.log(Level.FINE, "no such algorithm: "+ ex.toString());
+                }
+       Details d = new Details("sepetnit", encryptedPass, "@", "vitaly", "sepetnizki", "bash", "male");
+       vit.setDetails(d);
+       vit.setUp(new AdminPermission());
+       this.addToRegistered(vit);
+        pipe.addRegUserToXml("sepetnit", encryptedPass, "@","vitaly","sepetnizki", "bash", "male","AdminPermission");
+
+   }
+
+   public void addYakir(){
+         String encryptedPass="";
+                try {
+                    encryptedPass = this.encryptPassword("2222");
+                } catch (NoSuchAlgorithmException ex) {
+                 Forum.logger.log(Level.FINE, "no such algorithm: "+ ex.toString());
+                }
+       User yak=new User();
+       Details d = new Details("dahany",encryptedPass, "@", "yakir", "dahan", "bash", "male");
+       yak.setDetails(d);
+       yak.setUp(new ModeratorPermission());
+         this.addToRegistered(yak);
+       pipe.addRegUserToXml("dahany", encryptedPass, "@","yakir","dahan", "bash", "male","ModeratorPermission");
+   }
+
     @Override
     public String toString(){
         String ans="";
@@ -273,6 +304,12 @@ public class Forum {
 
         for (Message msg : this._messages.values()){
                ans = ans + msg.getSubject() + "  msg_id:" + msg.getMsg_id() + "\n";
+        }
+
+        ans+= "********************* \n";
+
+        for (Message msg : this._allMessages.values()){
+               ans = ans +  "  msg_id:" + msg.getMsg_id() + "  "+msg.getSubject()+ "   :   "+msg.getContent()  +"\n";
         }
         
         

@@ -8,6 +8,7 @@ public class User {
 	private UserPermission _up;
 	private Details _details;
 	private HashMap<Integer, Message> _myMessages = new HashMap<Integer, Message>();
+        
 /**
  * constractor
  */

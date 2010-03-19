@@ -137,9 +137,9 @@ public class ClientConnectionController extends Thread {
 		System.out.println(
 				"help menu:" + "\n" +
 				"- help " +  "\n" +
-				"- add_message <message content>" + "\n" +
-				"- add_reply <message id to reply to> <message content>" + "\n" +
-				"- modify_message <message id to modify> <new message content>" + "\n" +
+				"- add_message <subject> <message content>" + "\n" +
+				"- add_reply <message id to reply to> <subject> <message content>" + "\n" +
+				"- modify_message <message id to modify>  <new message content>" + "\n" +
 				"- view_forum" + "\n" +
 				"- logoff" + "\n" +
 				"- login <username> <password>" + "\n" +
