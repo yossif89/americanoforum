@@ -17,6 +17,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import forum.server.persistencelayer.*;
+import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -41,7 +42,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
    // }
 
     //creates all the messages and adds them to the users.
-    private HashMap<Integer, Message> getMsgs(List<MessageType> msgs, HashMap<String,User> users){
+    private HashMap<Integer, Message>[] getMsgs(List<MessageType> msgs, HashMap<String,User> users){
         HashMap<Integer, Message> all_messages = new HashMap<Integer,Message>();
         for (MessageType msg : msgs){
             User creator = users.get(msg.getCreator());
@@ -53,19 +54,23 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             creator.getMyMessages().put(new Integer(newMsg.getMsg_id()), newMsg);
 
         }
-        HashMap<Integer, Message> root_messages = new HashMap<Integer,Message>();
+        HashMap<Integer,Message>[] myarr = (HashMap<Integer,Message>[])Array.newInstance(HashMap.class,2);
+        myarr[0]=new HashMap<Integer,Message>();
+        myarr[1]=new HashMap<Integer,Message>();
         for (MessageType msg : msgs){
             Message parent = all_messages.get(new Integer(msg.getFather()));
             Message child = all_messages.get(new Integer(msg.getMessageId()));
             if (parent != null){
                 parent.getChild().add(child);
                 child.setParent(parent);
+                myarr[1].put(new Integer(child.getMsg_id()), child);
             }
-            else
-                root_messages.put(new Integer(child.getMsg_id()), child);
+            else{
+                myarr[0].put(new Integer(child.getMsg_id()), child);
+                myarr[1].put(new Integer(child.getMsg_id()), child);
+            }
         }
-
-        return root_messages;
+        return myarr;
     }
 /**
  * gets the users from the xml
@@ -104,8 +109,9 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             forum = new Forum();
             Message.setGensym(new Integer(data_forum.getNumOfMsgs()));
             HashMap<String,User> users = getUsers(data_forum.getAllUsers());
-            HashMap<Integer,Message> messages = getMsgs(data_forum.getAllMessages(), users);
-            forum.setMessages(messages);
+            HashMap<Integer,Message>[] messages = getMsgs(data_forum.getAllMessages(), users);
+            forum.setMessages(messages[0]);
+            forum.setAllMessages(messages[1]);
             forum.setRegistered(users);
         }
           catch (JAXBException e) {

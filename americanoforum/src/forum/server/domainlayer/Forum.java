@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 public class Forum {
         static Logger logger = Logger.getLogger("americanoforum");
 	HashMap<Integer, Message> _messages = new HashMap<Integer,Message>();
+        HashMap<Integer, Message> _allMessages = new HashMap<Integer,Message>();
 	HashMap<String, User> _registered = new HashMap<String, User>();
 	HashMap<String, User> _online_users = new HashMap<String, User>();
        PersistenceDataHandler pipe = new PersistenceDataHandlerImpl();
@@ -45,6 +46,11 @@ public class Forum {
         public void setMessages(HashMap<Integer, Message> msgs){
             this._messages=msgs;
         }
+
+    public void setAllMessages(HashMap<Integer, Message> _allMessages) {
+        this._allMessages = _allMessages;
+    }
+
 /**
  *  sets a collection (hash map)  ofregistered users in the forum
  * @param users
@@ -62,6 +68,7 @@ public class Forum {
             try{
            Message tMsg =  aUsr.addMessage(aSbj,aCont);
            _messages.put(tMsg.getMsg_id(), tMsg);
+           _allMessages.put(tMsg.getMsg_id(), tMsg);
            pipe.addMsgToXml(aSbj, aCont, tMsg.getMsg_id(), -1, aUsr.getDetails().getUsername(), tMsg.getDate());
             }
             catch(Exception e){
@@ -87,6 +94,7 @@ public class Forum {
                 Message tMsg =  aUsr.addMessage(aSbj,aCont);
                 tMsg.setParent(parent);
                 parent.getChild().add(tMsg);
+                _allMessages.put(tMsg.getMsg_id(), tMsg);
                 pipe.addMsgToXml(aSbj, aCont,tMsg.getMsg_id(), parent.getMsg_id(), aUsr.getDetails().getUsername(), tMsg.getDate());
             }
             catch(Exception e){
@@ -96,7 +104,11 @@ public class Forum {
 
             }
         
-
+/**
+ * recursive method that deletes the message and its replies
+ * @param msg
+ * @param tUsr
+ */
         public void deleteMessage(Message msg, User tUsr){
             tUsr.deleteMessage(msg);
             Vector<Message> child = msg.getChild();
@@ -109,6 +121,7 @@ public class Forum {
             }
             else{
                 msg.getParent().getChild().remove(msg);
+                _allMessages.remove(msg);
             }
             pipe.deleteMsgFromXml(msg.getMsg_id()); 
 
@@ -161,6 +174,12 @@ public class Forum {
         public HashMap<Integer, Message> getMessages(){
             return this._messages;
         }
+
+    public HashMap<Integer, Message> getAllMessages() {
+        return _allMessages;
+    }
+
+        
         /**
          * In case the username exists , and it fits the password , the username instance is being added to the onlineusers
          * in any other case , an exception is thrown
@@ -179,10 +198,10 @@ public class Forum {
             try {
                 encryptedPass = this.encryptPassword(aPass);
             } catch (NoSuchAlgorithmException ex) {
-                //Logger.getLogger(Forum.class.getName()).log(Level.SEVERE, null, ex);
+               Forum.logger.severe("no such algorithm for encryption!");
             }
            if ( !tUsr.getDetails().getPassword().equals(encryptedPass)){
-               Forum.logger.log(Level.SEVERE,"Forum: unregistered user" + aUsername +" entered unvalid password");
+               Forum.logger.log(Level.SEVERE,"Forum: registered user" + aUsername +" entered unvalid password");
                throw new IllegalAccessError();
            }
            this._online_users.put(aUsername, tUsr);
@@ -195,7 +214,10 @@ public class Forum {
          * assumes that the user is in the logged in db , and removes it from that list
          * @param aUser
          */
-	public void logoff(User aUser) {
+	public void logoff(User aUser)  {
+                if (aUser.getUp() instanceof GuestPermission){
+                   return;
+                }
 		this._online_users.remove(aUser.getDetails().getUsername());
                 aUser.setUp(GuestPermission.getInstance());
                Forum.logger.log(Level.INFO, "Forum: registered user : "+aUser.getDetails().getUsername()+"has logged off");
@@ -248,9 +270,12 @@ public class Forum {
             ans = ans+user.getDetails().getUsername()+ " ";
         }
         ans = ans + "\nSubjects: \n";
+
         for (Message msg : this._messages.values()){
                ans = ans + msg.getSubject() + "  msg_id:" + msg.getMsg_id() + "\n";
         }
+        
+        
         return ans;
     }
 }//class

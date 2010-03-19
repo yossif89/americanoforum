@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ForumType>
     <_numOfMsgs>0</_numOfMsgs>
+    <_allUsers>
+        <_username>a</_username>
+        <_password>e1671797c52e15f763380b45e841ec32</_password>
+        <_email>c</_email>
+        <_firstName>d</_firstName>
+        <_lastName>e</_lastName>
+        <_address>f</_address>
+        <_gender>g</_gender>
+        <_permission>LoggedInPermission</_permission>
+    </_allUsers>
 </ForumType>
