@@ -108,7 +108,16 @@ public class ClientConnectionController extends Thread {
                                       this._user = null;
                                     log.log(Level.INFO,"Changed username to null");
                                 }
-				
+                                else if (msg instanceof RegisterMessage){
+                                    if (res.getResponse().equals("")){
+                                          log.log(Level.INFO,"didn't change the user in the client");
+                                    }
+                                    else{
+                                      this._user = res.getResponse();
+
+                                    log.log(Level.INFO,"Changed username to "+this._user);
+                                }
+                                }
 			}
 		} catch (ClassNotFoundException e) {
 			log.severe("Received an invalid object from the server.");
@@ -144,6 +153,8 @@ public class ClientConnectionController extends Thread {
 				"- logoff" + "\n" +
 				"- login <username> <password>" + "\n" +
 				"- register <username> <password> <email> <first> <last> <address> <gender>" + "\n" +
+                                "- delete_message <message id to delete>\n"+
+                                "- promote <userName to promote>"+"\n" +
 				"- disconnect" + "\n" +
 				"//TODO add more operations (Admin, Moderator, Search)"	+ "\n"			
 		);								
@@ -203,9 +214,13 @@ public class ClientConnectionController extends Thread {
 				int messageId = Integer.parseInt(messageIdS);
 				return new ModifyMessageMessage(messageId,message,this.getUser());
 			}
-                        if (command.equals("promote_message")) {
+                        if (command.equals("promote")) {
 				String userName = st.nextToken(); 
                                 return new PromoteMessage(userName,this.getUser());
+			}
+                         if (command.equals("delete_message")) {
+				int idToDelate = Integer.parseInt(st.nextToken());
+                                return new DeleteMessageMessage(idToDelate,this.getUser());
 			}
 			
 			// TODO Add Search messages.

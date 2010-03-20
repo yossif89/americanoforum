@@ -1,9 +1,10 @@
 package forum.server.domainlayer;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Vector;
 
-public class Message {
+public class Message implements Serializable{
         private static Integer gensym = 0;
 	private int _msg_id;
 	private String _subject;

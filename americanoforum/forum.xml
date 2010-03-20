@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ForumType>
-    <_numOfMsgs>5</_numOfMsgs>
-    <_allUsers>
-        <_username>a</_username>
-        <_password>92eb5ffee6ae2fec3ad71c777531578f</_password>
-        <_email>c</_email>
-        <_firstName>d</_firstName>
-        <_lastName>e</_lastName>
-        <_address>f</_address>
-        <_gender>g</_gender>
-        <_permission>LoggedInPermission</_permission>
-    </_allUsers>
+    <_numOfMsgs>9</_numOfMsgs>
     <_allUsers>
         <_username>sepetnit</_username>
         <_password>b59c67bf196a4758191e42f76670ceba</_password>
@@ -32,53 +22,53 @@
         <_permission>ModeratorPermission</_permission>
     </_allUsers>
     <_allUsers>
-        <_username>p</_username>
-        <_password>d95679752134a2d9eb61dbd7b91c4bcc</_password>
-        <_email>i</_email>
-        <_firstName>u</_firstName>
-        <_lastName>y</_lastName>
-        <_address>t</_address>
-        <_gender>r</_gender>
+        <_username>1</_username>
+        <_password>c81e728d9d4c2f636f067f89cc14862c</_password>
+        <_email>3</_email>
+        <_firstName>4</_firstName>
+        <_lastName>5</_lastName>
+        <_address>6</_address>
+        <_gender>7</_gender>
+        <_permission>ModeratorPermission</_permission>
+    </_allUsers>
+    <_allUsers>
+        <_username>10</_username>
+        <_password>6512bd43d9caa6e02c990b0a82652dca</_password>
+        <_email>12</_email>
+        <_firstName>13</_firstName>
+        <_lastName>14</_lastName>
+        <_address>15</_address>
+        <_gender>16</_gender>
         <_permission>LoggedInPermission</_permission>
     </_allUsers>
-    <_allMessages>
-        <_messageId>0</_messageId>
-        <_subject>subj</_subject>
-        <_content>new content</_content>
-        <_date>2010-03-19T18:29:10.858+02:00</_date>
-        <_father>-1</_father>
-        <_creator>a</_creator>
-    </_allMessages>
-    <_allMessages>
-        <_messageId>1</_messageId>
-        <_subject>uu</_subject>
-        <_content>yyyy</_content>
-        <_date>2010-03-19T18:31:10.597+02:00</_date>
-        <_father>0</_father>
-        <_creator>a</_creator>
-    </_allMessages>
-    <_allMessages>
-        <_messageId>2</_messageId>
-        <_subject>hey</_subject>
-        <_content>there what is up</_content>
-        <_date>2010-03-19T19:12:24.174+02:00</_date>
-        <_father>-1</_father>
-        <_creator>a</_creator>
-    </_allMessages>
-    <_allMessages>
-        <_messageId>3</_messageId>
-        <_subject>heyback</_subject>
-        <_content>Im ok</_content>
-        <_date>2010-03-19T19:13:12.422+02:00</_date>
-        <_father>2</_father>
-        <_creator>a</_creator>
-    </_allMessages>
-    <_allMessages>
-        <_messageId>4</_messageId>
-        <_subject>I</_subject>
-        <_content>am new</_content>
-        <_date>2010-03-19T19:34:21.169+02:00</_date>
-        <_father>-1</_father>
-        <_creator>p</_creator>
-    </_allMessages>
+    <_allUsers>
+        <_username>k</_username>
+        <_password>8ce4b16b22b58894aa86c421e8759df3</_password>
+        <_email>k</_email>
+        <_firstName>k</_firstName>
+        <_lastName>k</_lastName>
+        <_address>k</_address>
+        <_gender>k</_gender>
+        <_permission>LoggedInPermission</_permission>
+    </_allUsers>
+    <_allUsers>
+        <_username>h</_username>
+        <_password>363b122c528f54df4a0446b6bab05515</_password>
+        <_email>k</_email>
+        <_firstName>l</_firstName>
+        <_lastName>;</_lastName>
+        <_address>p</_address>
+        <_gender>o</_gender>
+        <_permission>ModeratorPermission</_permission>
+    </_allUsers>
+    <_allUsers>
+        <_username>2</_username>
+        <_password>eccbc87e4b5ce2fe28308fd9f2a7baf3</_password>
+        <_email>4</_email>
+        <_firstName>5</_firstName>
+        <_lastName>6</_lastName>
+        <_address>7</_address>
+        <_gender>8</_gender>
+        <_permission>ModeratorPermission</_permission>
+    </_allUsers>
 </ForumType>

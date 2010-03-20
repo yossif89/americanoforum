@@ -20,6 +20,7 @@ public class LoggedInPermission implements UserPermission {
 		if (aUsr == aMsg.getCreator())
                     return;
                 else{
+                    Forum.logger.severe("LoggedIn Permission: the user isn't the creator of thus message");
                     throw new UnsupportedOperationException();
                 }
 	}

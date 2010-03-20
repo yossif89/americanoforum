@@ -21,6 +21,7 @@ public class GuestPermission implements UserPermission {
  * @throws exception because its not allowed for a guest user
  */
 	public void modifyMessage(User aUsr, Message aMsg, String aCont) {
+                    Forum.logger.severe("Guest Permission: the user isn't the creator of thus message");
 		throw new UnsupportedOperationException();
 	}
 /**

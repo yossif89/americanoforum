@@ -6,6 +6,7 @@
 package forum.server.domainlayer;
 
 import forum.tcpcommunicationlayer.ServerResponse;
+import forum.tcpcommunicationlayer.ServerSearchResponse;
 import java.util.logging.Level;
 
 
@@ -20,7 +21,6 @@ public class ForumFacadeImpl implements ForumFacade{
               User u = _facadeForum.getRegisteredUsers().get("sepetnit");
               if (u==null){
                   _facadeForum.addVitaly();
-
               }
                u = _facadeForum.getRegisteredUsers().get("dahany");
               if (u==null){
@@ -32,7 +32,7 @@ public class ForumFacadeImpl implements ForumFacade{
     public ServerResponse addMessage(String aSubj,String aCont,String us) {
         User u = _facadeForum.getRegisteredUsers().get(us);
         if (u==null){
-            Forum.logger.log(Level.INFO,"FacadeForum.addmessage: couldn't find user");
+            Forum.logger.log(Level.INFO,"FacadeForum.addmessage: couldn't find user: "+ us);
             u= new User();
         }
         ServerResponse toRet = new ServerResponse();
@@ -81,12 +81,13 @@ public class ForumFacadeImpl implements ForumFacade{
     }
 
     public ServerResponse logoff(String us) {
-         User u = _facadeForum.getRegisteredUsers().get(us);
+         ServerResponse toRet = new ServerResponse();
+         User u = _facadeForum.getOnlineUsers().get(us);
         if (u==null){
             Forum.logger.log(Level.INFO,"FacadeForum.logoff: couldn't find the logged in user");
-            u= new User();
+           toRet.setEx(new IllegalAccessException());
+            return toRet;
         }
-         ServerResponse toRet = new ServerResponse();
         try{
           _facadeForum.logoff(u);
         }
@@ -131,12 +132,18 @@ public class ForumFacadeImpl implements ForumFacade{
     }
 
     public ServerResponse register(String us,String username,String password,String email,String first,String last , String address,String gender) {
-         User u = _facadeForum.getRegisteredUsers().get(us);
+         User u = _facadeForum.getRegisteredUsers().get(username);
+          ServerResponse toRet = new ServerResponse();
         if (u==null){
             Forum.logger.log(Level.INFO,"ForumFacade: didnt find the user.");
             u= new User();
         }
-        ServerResponse toRet = new ServerResponse();
+        else{
+            Forum.logger.log(Level.SEVERE,"ForumFacade:couldn't register,user exists.");
+            toRet.setEx(new IllegalArgumentException());
+            return toRet;
+        }
+       
         try{
           _facadeForum.register(u, username, password, email, first, last, address, gender);
         }
@@ -144,7 +151,7 @@ public class ForumFacadeImpl implements ForumFacade{
             toRet.setEx(e);
             return toRet;
         }
-       toRet.setResponse("ok");
+       toRet.setResponse(username);
        return toRet;
     }
 
@@ -171,6 +178,21 @@ public class ForumFacadeImpl implements ForumFacade{
        return toRet;
     }
 
-
+ public ServerResponse search(String toSearch, String us ) {
+         User u = _facadeForum.getRegisteredUsers().get(us);
+        if (u==null)
+            u= new User();
+        ServerResponse toRet=new ServerResponse();
+        try{
+          Message[] results = _facadeForum.search(toSearch,u);
+          toRet = new ServerSearchResponse(results);
+        }
+        catch(Exception e){
+            toRet.setEx(e);
+            return toRet;
+        }
+       toRet.setResponse("ok");
+       return toRet;
+    }
 
 }

@@ -117,14 +117,14 @@ public class Forum {
                 deleteMessage(child.elementAt(i), tUsr);
             }
             if (msg.getParent() == null){
-                this._messages.remove(msg.getMsg_id());
+                this._messages.remove(new Integer(msg.getMsg_id()));
+                _allMessages.remove(new Integer(msg.getMsg_id()));
             }
             else{
                 msg.getParent().getChild().remove(msg);
-                _allMessages.remove(msg);
+                _allMessages.remove(new Integer(msg.getMsg_id()));
             }
             pipe.deleteMsgFromXml(msg.getMsg_id()); 
-
         }
 
 
@@ -205,7 +205,7 @@ public class Forum {
                throw new IllegalAccessError();
            }
            this._online_users.put(aUsername, tUsr);
-           tUsr.setUp(LoggedInPermission.getInstance());
+          // tUsr.setUp(LoggedInPermission.getInstance());
            Forum.logger.log(Level.INFO, "Forum: registered user : "+aUsername+"is logged in and online");
           return tUsr;
 	}
@@ -216,10 +216,10 @@ public class Forum {
          */
 	public void logoff(User aUser)  {
                 if (aUser.getUp() instanceof GuestPermission){
-                   return;
+                   throw new IllegalArgumentException();
                 }
 		this._online_users.remove(aUser.getDetails().getUsername());
-                aUser.setUp(GuestPermission.getInstance());
+         //       aUser.setUp(GuestPermission.getInstance());
                Forum.logger.log(Level.INFO, "Forum: registered user : "+aUser.getDetails().getUsername()+"has logged off");
 	}
 
@@ -243,6 +243,9 @@ public class Forum {
                  Forum.logger.log(Level.FINE, "no such algorithm: "+ ex.toString());
                 }
                 try{
+                User tried = this.getRegisteredUsers().get(aUsername);
+                if (tried!=null)
+                    throw new IllegalArgumentException();
                 Details d = new Details(aUsername, encryptedPass, aEmail, aFirstName, aLastName, aAddress, aGender);
                 aUsr.setDetails(d);
                 aUsr.setUp(LoggedInPermission.getInstance());
@@ -251,6 +254,10 @@ public class Forum {
                 pipe.addRegUserToXml(aUsername, encryptedPass, aEmail, aFirstName, aLastName, aAddress, aGender,"LoggedInPermission");
                  Forum.logger.log(Level.INFO, "Forum: guest user : "+aUsr.getDetails().getUsername()+" registered successfuly");
               }
+               catch(IllegalArgumentException e){
+                     Forum.logger.log(Level.FINE, "Forum:couldn't register, username exists : " + aUsr.getDetails().getUsername() );
+                     throw e;
+               }
               catch(Exception e){
                      Forum.logger.log(Level.FINE, "Forum: problem registering : " + aUsr.getDetails().getUsername() + ": " + e.toString());
                      throw e;
@@ -272,7 +279,7 @@ public class Forum {
                 }
        Details d = new Details("sepetnit", encryptedPass, "@", "vitaly", "sepetnizki", "bash", "male");
        vit.setDetails(d);
-       vit.setUp(new AdminPermission());
+       vit.setUp(PermissionFactory.getUserPermission("AdminPermission"));
        this.addToRegistered(vit);
         pipe.addRegUserToXml("sepetnit", encryptedPass, "@","vitaly","sepetnizki", "bash", "male","AdminPermission");
 
@@ -288,7 +295,7 @@ public class Forum {
        User yak=new User();
        Details d = new Details("dahany",encryptedPass, "@", "yakir", "dahan", "bash", "male");
        yak.setDetails(d);
-       yak.setUp(new ModeratorPermission());
+       yak.setUp(PermissionFactory.getUserPermission("ModeratorPermission"));
          this.addToRegistered(yak);
        pipe.addRegUserToXml("dahany", encryptedPass, "@","yakir","dahan", "bash", "male","ModeratorPermission");
    }
@@ -314,5 +321,9 @@ public class Forum {
         
         
         return ans;
+    }
+
+    Message[] search(String toSearch, User u) {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }//class
