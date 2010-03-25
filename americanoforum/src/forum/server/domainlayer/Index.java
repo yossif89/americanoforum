@@ -76,6 +76,17 @@ public class Index {
         return this.words.get(word);
     }
 
+    public void removeWord(String word, Integer word_id, Integer msg_id) {
+        Vector<Integer> msg_vect = this.relations.get(word_id);
+        if (msg_vect.size() == 1){
+            this.relations.remove(word_id);
+            this.words.remove(word);
+        }
+        else{
+            msg_vect.remove(msg_id);
+        }
+    }
+
     
 
 }

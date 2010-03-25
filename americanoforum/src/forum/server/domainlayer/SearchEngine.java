@@ -51,4 +51,6 @@ public interface SearchEngine {
 	 */
 	public SearchHit[] searchByContent(String phrase, int from, int to);
 
+        public void removeMessage(Message msg);
+
 }

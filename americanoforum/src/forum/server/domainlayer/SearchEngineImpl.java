@@ -71,8 +71,6 @@ public class SearchEngineImpl implements SearchEngine{
     public SearchHit[] searchByContent(String phrase, int from, int to) {
         Vector<SearchHit> relevant_msgs = new Vector<SearchHit>();
         StringTokenizer toki_phrase = new StringTokenizer(phrase,"[ \t\n\r\f.-]");
-
-
         while(toki_phrase.hasMoreTokens()){
             String word = toki_phrase.nextToken();
             Integer word_id = this._index.getWordID(word);
@@ -104,6 +102,21 @@ public class SearchEngineImpl implements SearchEngine{
             result[i] = relevant_msgs.get(from + i);
         }
         return result;
+    }
+
+    public void removeMessage(Message msg) {
+        StringTokenizer toki_sbj = new StringTokenizer(msg.getSubject(),"[ \t\n\r\f.-]");
+        StringTokenizer toki_cont = new StringTokenizer(msg.getContent(),"[ \t\n\r\f.-]");
+        while(toki_cont.hasMoreTokens()){
+            String word = toki_cont.nextToken();
+            Integer word_id = this._index.getWordID(word);
+            this._index.removeWord(word,word_id,msg.getMsg_id());
+        }
+        while(toki_sbj.hasMoreTokens()){
+            String word = toki_sbj.nextToken();
+            Integer word_id = this._index.getWordID(word);
+            this._index.removeWord(word,word_id,msg.getMsg_id());
+        }
     }
 
     

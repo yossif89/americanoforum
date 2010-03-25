@@ -16,6 +16,7 @@ public class Forum {
         HashMap<Integer, Message> _allMessages = new HashMap<Integer,Message>();
 	HashMap<String, User> _registered = new HashMap<String, User>();
 	HashMap<String, User> _online_users = new HashMap<String, User>();
+        SearchEngine _searchEng = new SearchEngineImpl(_allMessages);
        PersistenceDataHandler pipe = new PersistenceDataHandlerImpl();
 
 
@@ -72,6 +73,7 @@ public class Forum {
            Message tMsg =  aUsr.addMessage(aSbj,aCont);
            _messages.put(tMsg.getMsg_id(), tMsg);
            _allMessages.put(tMsg.getMsg_id(), tMsg);
+           _searchEng.addData(tMsg);
            pipe.addMsgToXml(aSbj, aCont, tMsg.getMsg_id(), -1, aUsr.getDetails().getUsername(), tMsg.getDate());
             }
             catch(Exception e){
@@ -87,7 +89,10 @@ public class Forum {
          * @param aUsr , the user that initiated the modification
          */
         public void modifyMessage(Message aMsg, String aNewCont, User aUsr){
+            this._searchEng.removeMessage(aMsg);
             aUsr.modifyMessage(aMsg, aNewCont);
+            //exceptions!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            this._searchEng.addData(aMsg);
             pipe.modifyMsgInXml(aMsg.getMsg_id(), aNewCont);
         }
 
@@ -104,6 +109,7 @@ public class Forum {
                 tMsg.setParent(parent);
                 parent.getChild().add(tMsg);
                 _allMessages.put(tMsg.getMsg_id(), tMsg);
+                this._searchEng.addData(tMsg);
                 pipe.addMsgToXml(aSbj, aCont,tMsg.getMsg_id(), parent.getMsg_id(), aUsr.getDetails().getUsername(), tMsg.getDate());
             }
             catch(Exception e){
@@ -133,6 +139,7 @@ public class Forum {
                 msg.getParent().getChild().remove(msg);
                 _allMessages.remove(new Integer(msg.getMsg_id()));
             }
+            this._searchEng.removeMessage(msg);
             pipe.deleteMsgFromXml(msg.getMsg_id()); 
         }
 
