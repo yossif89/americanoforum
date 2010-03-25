@@ -38,6 +38,8 @@ public class UserTest extends TestCase {
         this._forum=new Forum();
         this._forum.addToRegistered(_u1);
         this._forum.addToRegistered(_u2);
+        _u1.setUp(PermissionFactory.getUserPermission("LoggedInPermission"));
+        _u2.setUp(PermissionFactory.getUserPermission("GuestPermission"));
         this._forum.login("shassaf", "123");
     }
 

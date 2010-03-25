@@ -90,8 +90,8 @@ public class ForumTest extends TestCase{
         assertTrue(registered_users.containsKey(_u1.getDetails().getUsername()));
         assertTrue(registered_users.containsKey(_u2.getDetails().getUsername()));
         assertTrue(online_users.size()==1);
-        assertTrue(_u1.getUp() instanceof GuestPermission);
-        assertTrue(_u2.getUp() instanceof LoggedInPermission);
+        //assertTrue(_u1.getUp() instanceof GuestPermission);
+        assertTrue(_u2.getUp() instanceof AdminPermission);
     }
 
      /**

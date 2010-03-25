@@ -228,7 +228,7 @@ public class Forum {
                    throw new IllegalArgumentException();
                 }
 		this._online_users.remove(aUser.getDetails().getUsername());
-         //       aUser.setUp(GuestPermission.getInstance());
+        //        aUser.setUp(GuestPermission.getInstance());
                Forum.logger.log(Level.INFO, "Forum: registered user : "+aUser.getDetails().getUsername()+"has logged off");
 	}
 

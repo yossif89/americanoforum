@@ -18,12 +18,12 @@ public class Index {
     private static Integer curr_word_id =0;
 
     private HashMap<String,Integer> words;
-    //private HashMap<Integer,Message> messages; no need - in the forum.
+    private HashMap<Integer, Message> _allMessages;
     private Hashtable<Integer, Vector<Integer>> relations;
 
-    public Index(){
+    public Index(HashMap<Integer, Message> allMsgs){
         this.words = new HashMap<String,Integer>();
-        //this.messages = new HashMap<Integer,Message>(); // needs to add messages in every getForum!!!!!!!!
+        this._allMessages = allMsgs; 
         this.relations = new Hashtable<Integer, Vector<Integer>>();
     }
 
@@ -50,6 +50,23 @@ public class Index {
 
     public Vector<Integer> getMsgsIDsForWord(Integer word_id){
         return this.relations.get(word_id);
+    }
+
+    public Vector<Message> getMsgsByWordID(Integer word_id){
+        Vector<Integer> msgs_ids = this.getMsgsIDsForWord(word_id);
+        Vector<Message> result = new Vector<Message>();
+        for(Integer id : msgs_ids){
+            result.add(this._allMessages.get(id));
+        }
+        return result;
+    }
+
+    public HashMap<Integer, Message> getAllMsgs(){
+        return this._allMessages;
+    }
+
+    public Integer getWordID(String word) {
+        return this.words.get(word);
     }
 
     
