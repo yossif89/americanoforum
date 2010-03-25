@@ -23,9 +23,9 @@ class SearchHitComparator implements Comparator{
             return 1;
         Date d1 = sh1.getMessage().getDate();
         Date d2 = sh2.getMessage().getDate();
-        if (d1.before(d2))
+        if (d1.after(d2))
             return -1;
-        if (d2.before(d1))
+        if (d1.before(d2))
             return 1;
         return 0;
     }

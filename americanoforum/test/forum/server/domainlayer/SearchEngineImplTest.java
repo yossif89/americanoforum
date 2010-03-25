@@ -98,34 +98,23 @@ public class SearchEngineImplTest extends TestCase {
     /**
      * Test of searchByAuthor method, of class SearchEngineImpl.
      */
-    public void testSearchByAuthor() {
-          Message m1 = new Message("test","bla bla",_u1);
+    public void testSearchByAuthor() throws InterruptedException {
+         Message m1 = new Message("test","bla bla",_u1);
          Message.incId();
+         Thread.sleep(2000);
          Message m2 = new Message("test2","bla2 bla2",_u1);
          Message.incId();
 
          this.allMsgs.put(m1.getMsg_id(), m1);
          this.allMsgs.put(m2.getMsg_id(), m2);
 
-         this.searchEngine.addData(m1); //?????
+         this.searchEngine.addData(m1); 
          this.searchEngine.addData(m2);
 
-
-
-
-
-
-
-        System.out.println("searchByAuthor");
-        String username = "";
-        int from = 0;
-        int to = 0;
-        SearchEngineImpl instance = null;
-        SearchHit[] expResult = null;
-        SearchHit[] result = instance.searchByAuthor(username, from, to);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+         SearchHit[] msgs = this.searchEngine.searchByAuthor(_u1.getDetails().getUsername(), 0, 2);
+         assertTrue(msgs.length == 2);
+         assertTrue(msgs[0].getMessage().equals(m2));
+         assertTrue(msgs[1].getMessage().equals(m1));
     }
 
     /**
@@ -134,7 +123,7 @@ public class SearchEngineImplTest extends TestCase {
     public void testSearchByContent() {
          Message m1 = new Message("test","bla bla david",_u1);
          Message.incId();
-         Message m2 = new Message("test2","bla2 bla2 david david",_u1);
+         Message m2 = new Message("test2","bla2 bla david tikva",_u1);
          Message.incId();
 
          this.allMsgs.put(m1.getMsg_id(), m1);
@@ -147,8 +136,10 @@ public class SearchEngineImplTest extends TestCase {
          assertTrue(result.length==1);
          assertTrue(result[0].getMessage().equals(m2));
 
-         SearchHit[] result2 = this.searchEngine.searchByContent("david", 0,2);
+         SearchHit[] result2 = this.searchEngine.searchByContent("bla david tikva", 0,2);
          assertTrue(result2.length==2);
+         assertEquals(result2[0].getScore(),3.0);
+         assertEquals(result2[1].getScore(),2.0);
          assertTrue(result2[0].getMessage().equals(m2));
          assertTrue(result2[1].getMessage().equals(m1));
     }

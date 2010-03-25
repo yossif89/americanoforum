@@ -36,7 +36,6 @@ public class Index {
             words.put(word, curr_word_id);
             int tmp = curr_word_id.intValue();
             curr_word_id++;
-            System.out.println("8888 " + tmp);
             return new Integer(tmp);
         }
         else
@@ -47,11 +46,9 @@ public class Index {
         if (!this.relations.containsKey(word_id)){
             Vector<Integer> msg_ids = new Vector<Integer>();
             msg_ids.add(message_id);
-            System.out.println("enter to rela");
             this.relations.put(word_id, msg_ids);
         }
         else{
-            System.out.println("in the rele else");
             if(!this.relations.get(word_id).contains(message_id)){
                 this.relations.get(word_id).add(message_id);
             }
@@ -64,10 +61,8 @@ public class Index {
 
     public Vector<Message> getMsgsByWordID(Integer word_id){
         Vector<Integer> msgs_ids = this.getMsgsIDsForWord(word_id);
-        //System.out.println(msgs_ids.elementAt(0));
         Vector<Message> result = new Vector<Message>();
         for(Integer id : msgs_ids){
-            System.out.println(id);
             result.add(this._allMessages.get(id));
         }
         return result;

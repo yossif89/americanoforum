@@ -5,6 +5,7 @@
 
 package forum.server.domainlayer;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -34,20 +35,18 @@ public class SearchEngineImpl implements SearchEngine{
         StringTokenizer toki_cont = new StringTokenizer(cont,"[ \t\n\r\f.-]");
         while(toki_sbj.hasMoreTokens()){
             String tmp = toki_sbj.nextToken();
-            System.out.println(tmp);
             Integer word_id = this._index.addWord(tmp);
             this._index.addRelation(word_id, new Integer(msg.getMsg_id()));
         }
         while(toki_cont.hasMoreTokens()){
             String tmp = toki_cont.nextToken();
-            System.out.println(tmp);
             Integer word_id = this._index.addWord(tmp);
             this._index.addRelation(word_id, new Integer(msg.getMsg_id()));
         }
     }
 
     public SearchHit[] searchByAuthor(String username, int from, int to) {
-        SearchHit[] result = new SearchHit[to-from];
+        //SearchHit[] result = new SearchHit[to-from];
         Vector<SearchHit> author_msgs = new Vector<SearchHit>();
         int index = 0;
         Collection<Message> all_msgs = this._index.getAllMsgs().values();
@@ -57,14 +56,19 @@ public class SearchEngineImpl implements SearchEngine{
             }
         }
         Collections.sort(author_msgs, new SearchHitComparator());
-        for(int i=0; i<(to-from); i++){
-            result[i] = author_msgs.get(to + i);
+        int size;
+        if ((to-from) > author_msgs.size())
+            size = author_msgs.size();
+        else
+            size = to-from;
+        SearchHit[] result = new SearchHit[size];
+        for(int i=0; i<size; i++){
+            result[i] = author_msgs.get(from + i);
         }
         return result;
     }
 
     public SearchHit[] searchByContent(String phrase, int from, int to) {
-        SearchHit[] result = new SearchHit[to-from];
         Vector<SearchHit> relevant_msgs = new Vector<SearchHit>();
         StringTokenizer toki_phrase = new StringTokenizer(phrase,"[ \t\n\r\f.-]");
 
@@ -88,7 +92,12 @@ public class SearchEngineImpl implements SearchEngine{
                 flag=0;
             }
         }
-
+        int size;
+        if ((to-from) > relevant_msgs.size())
+            size = relevant_msgs.size();
+        else
+            size = to-from;
+        SearchHit[] result = new SearchHit[size];
         Collections.sort(relevant_msgs, new SearchHitComparator());
         //Exception!! if the number of requested results is not available!!!!
         for(int i=0; i<(to-from); i++){
