@@ -6,8 +6,7 @@
 package forum.server.domainlayer;
 
 /**
- *
- * @author Yossi
+ * A class that represents a user permission of the type "moderator"
  */
 public class ModeratorPermission implements UserPermission{
     private static ModeratorPermission instance=null;

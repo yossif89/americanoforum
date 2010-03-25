@@ -2,6 +2,9 @@ package forum.server.domainlayer;
 
 import java.util.logging.Level;
 
+/**
+ * A class that represents a user permission of the type "guest"
+ */
 public class GuestPermission implements UserPermission {
  private static GuestPermission instance=null;
 

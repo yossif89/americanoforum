@@ -6,7 +6,10 @@ import java.util.HashMap;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ * This class represents the main class of the forum, all the operations on the forum are done through this
+ * class.
+ * */
 public class Forum {
         static Logger logger = Logger.getLogger("americanoforum");
 	HashMap<Integer, Message> _messages = new HashMap<Integer,Message>();
@@ -77,6 +80,12 @@ public class Forum {
             }
         }
 
+        /**
+         * modifies only the content of the message with the given params
+         * @param aMsg , the object that represents the message to be changed
+         * @param aNewCont , the new content
+         * @param aUsr , the user that initiated the modification
+         */
         public void modifyMessage(Message aMsg, String aNewCont, User aUsr){
             aUsr.modifyMessage(aMsg, aNewCont);
             pipe.modifyMsgInXml(aMsg.getMsg_id(), aNewCont);
@@ -264,11 +273,19 @@ public class Forum {
               }
 	}
 
+        /**
+         * The method changes the user permission of the given user to "Moderator"
+         * @param curr_user , the user that initiated the change
+         * @param to_change , the user that is to be come moderator
+         */
         public void changeToModerator(User curr_user, User to_change){
             curr_user.changeToModerator(to_change);
             pipe.changeUserPermission(to_change.getDetails().getUsername(), "ModeratorPermission");
         }
 
+   /**
+    * Adds a permanent admin to our forum
+    */
    public void addVitaly(){
        User vit=new User();
        String encryptedPass="";
@@ -285,6 +302,9 @@ public class Forum {
 
    }
 
+   /**
+    * Adds a permanent moderator to our forum
+    */
    public void addYakir(){
          String encryptedPass="";
                 try {
@@ -323,6 +343,12 @@ public class Forum {
         return ans;
     }
 
+    /**
+     * under construction!
+     * @param toSearch
+     * @param u
+     * @return
+     */
     Message[] search(String toSearch, User u) {
         throw new UnsupportedOperationException("Not yet implemented");
     }

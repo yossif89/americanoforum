@@ -1,42 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ForumType>
-    <_numOfMsgs>4</_numOfMsgs>
-    <_allUsers>
-        <_username>sepetnit</_username>
-        <_password>b59c67bf196a4758191e42f76670ceba</_password>
-        <_email>@</_email>
-        <_firstName>vitaly</_firstName>
-        <_lastName>sepetnizki</_lastName>
-        <_address>bash</_address>
-        <_gender>male</_gender>
-        <_permission>AdminPermission</_permission>
-    </_allUsers>
-    <_allUsers>
-        <_username>dahany</_username>
-        <_password>934b535800b1cba8f96a5d72f72f1611</_password>
-        <_email>@</_email>
-        <_firstName>yakir</_firstName>
-        <_lastName>dahan</_lastName>
-        <_address>bash</_address>
-        <_gender>male</_gender>
-        <_permission>ModeratorPermission</_permission>
-    </_allUsers>
-    <_allUsers>
-        <_username>1</_username>
-        <_password>c81e728d9d4c2f636f067f89cc14862c</_password>
-        <_email>3</_email>
-        <_firstName>4</_firstName>
-        <_lastName>5</_lastName>
-        <_address>6</_address>
-        <_gender>7</_gender>
-        <_permission>ModeratorPermission</_permission>
-    </_allUsers>
-    <_allMessages>
-        <_messageId>3</_messageId>
-        <_subject>test</_subject>
-        <_content>test</_content>
-        <_date>2010-03-21T19:27:55.171+02:00</_date>
-        <_father>-1</_father>
-        <_creator>dahany</_creator>
-    </_allMessages>
+    <_numOfMsgs>0</_numOfMsgs>
 </ForumType>

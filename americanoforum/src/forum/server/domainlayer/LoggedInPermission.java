@@ -1,5 +1,8 @@
 package forum.server.domainlayer;
 
+/**
+ * A class that represents a user permission of the type "logged in user"
+ */
 public class LoggedInPermission implements UserPermission {
  
  private static LoggedInPermission instance=null;
