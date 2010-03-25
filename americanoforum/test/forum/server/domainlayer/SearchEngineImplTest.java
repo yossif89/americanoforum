@@ -79,12 +79,20 @@ public class SearchEngineImplTest extends TestCase {
          assertEquals(1, msgs1.size());
          assertTrue(msgs1.contains(m1));
 
-         int w2 = this.ind.getWordID("bla2");
-         Vector<Message>  msgs2 =this.ind.getMsgsByWordID(new Integer(w2));
+         Integer w2 = this.ind.getWordID("bla2");
+         Vector<Message>  msgs2 =this.ind.getMsgsByWordID(w2);
          assertEquals(1, msgs2.size());
          assertTrue(msgs2.contains(m2));
 
+         Integer w3 = this.ind.getWordID("david");
+         Vector<Message>  msgs3 =this.ind.getMsgsByWordID(w3);
+         assertEquals(2, msgs3.size());
+         assertTrue(msgs3.contains(m2));
+         assertTrue(msgs3.contains(m1));
 
+          Integer w4 = this.ind.getWordID("nothing");
+         assertEquals(null,w4);
+       
     }
 
     /**
@@ -124,16 +132,25 @@ public class SearchEngineImplTest extends TestCase {
      * Test of searchByContent method, of class SearchEngineImpl.
      */
     public void testSearchByContent() {
-        System.out.println("searchByContent");
-        String phrase = "";
-        int from = 0;
-        int to = 0;
-        SearchEngineImpl instance = null;
-        SearchHit[] expResult = null;
-        SearchHit[] result = instance.searchByContent(phrase, from, to);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+         Message m1 = new Message("test","bla bla david",_u1);
+         Message.incId();
+         Message m2 = new Message("test2","bla2 bla2 david david",_u1);
+         Message.incId();
+
+         this.allMsgs.put(m1.getMsg_id(), m1);
+         this.allMsgs.put(m2.getMsg_id(), m2);
+
+         this.searchEngine.addData(m1);
+         this.searchEngine.addData(m2);
+
+         SearchHit[] result = this.searchEngine.searchByContent("bla2", 0,1);
+         assertTrue(result.length==1);
+         assertTrue(result[0].getMessage().equals(m2));
+
+         SearchHit[] result2 = this.searchEngine.searchByContent("david", 0,2);
+         assertTrue(result2.length==2);
+         assertTrue(result2[0].getMessage().equals(m2));
+         assertTrue(result2[1].getMessage().equals(m1));
     }
 
 }

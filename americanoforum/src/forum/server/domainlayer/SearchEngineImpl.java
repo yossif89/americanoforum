@@ -66,7 +66,9 @@ public class SearchEngineImpl implements SearchEngine{
     public SearchHit[] searchByContent(String phrase, int from, int to) {
         SearchHit[] result = new SearchHit[to-from];
         Vector<SearchHit> relevant_msgs = new Vector<SearchHit>();
-        StringTokenizer toki_phrase = new StringTokenizer(phrase,"[\t\n\r\f.-]");
+        StringTokenizer toki_phrase = new StringTokenizer(phrase,"[ \t\n\r\f.-]");
+
+
         while(toki_phrase.hasMoreTokens()){
             String word = toki_phrase.nextToken();
             Integer word_id = this._index.getWordID(word);
@@ -87,9 +89,10 @@ public class SearchEngineImpl implements SearchEngine{
             }
         }
 
-        //Exception!! if the number of requested results is not available!!!!!
+        Collections.sort(relevant_msgs, new SearchHitComparator());
+        //Exception!! if the number of requested results is not available!!!!
         for(int i=0; i<(to-from); i++){
-            result[i] = relevant_msgs.get(to + i);
+            result[i] = relevant_msgs.get(from + i);
         }
         return result;
     }
