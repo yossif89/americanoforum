@@ -43,6 +43,9 @@ public class SearchHit {
         public void incScore() {
             this.m_score++;
         }
-        
+
+        public String toString(){
+            return "msg_id: " + this.m_message.getMsg_id()+ "---> " +this.m_message.getSubject();
+        }
 
 }

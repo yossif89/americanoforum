@@ -118,6 +118,12 @@ public class ClientConnectionController extends Thread {
                                     log.log(Level.INFO,"Changed username to "+this._user);
                                 }
                                 }
+                                // *~*~*~*~*~*~*~**~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+                                //*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+                                else if (msg instanceof SearchByAuthorMessage){
+                                    System.out.println(res.getResponse());
+
+                                }
 			}
 		} catch (ClassNotFoundException e) {
 			log.severe("Received an invalid object from the server.");
@@ -155,6 +161,7 @@ public class ClientConnectionController extends Thread {
 				"- register <username> <password> <email> <first> <last> <address> <gender>" + "\n" +
                                 "- delete_message <message id to delete>\n"+
                                 "- promote <userName to promote>"+"\n" +
+                                "- searchByAuthor <username to search> <from index> <to index>" + "\n" +
 				"- disconnect" + "\n" +
 				"//TODO add more operations (Admin, Moderator, Search)"	+ "\n"			
 		);								
@@ -222,6 +229,12 @@ public class ClientConnectionController extends Thread {
 				int idToDelate = Integer.parseInt(st.nextToken());
                                 return new DeleteMessageMessage(idToDelate,this.getUser());
 			}
+                         if (command.equals("searchByAuthor")) {
+                             String username = st.nextToken();
+                             int fromInd = Integer.parseInt(st.nextToken());
+                             int toInd = Integer.parseInt(st.nextToken());
+                             return new SearchByAuthorMessage(username, fromInd, toInd);
+                         }
 			
 			// TODO Add Search messages.
 			// TODO Add Admin messages

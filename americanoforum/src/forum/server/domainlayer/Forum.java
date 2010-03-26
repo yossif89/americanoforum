@@ -356,7 +356,13 @@ public class Forum {
      * @param u
      * @return
      */
-    Message[] search(String toSearch, User u) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    SearchHit[] searchByAuthor(String username, int from, int to) {
+        SearchHit[] result = this._searchEng.searchByAuthor(username, from, to);
+        //String[] stringMsgs = new String[result.length];
+        System.out.println("***************************************");
+        for(int i=0; i<result.length; i++){
+            System.out.println(result[i]);
+        }
+        return result;
     }
 }//class

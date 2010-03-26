@@ -178,20 +178,26 @@ public class ForumFacadeImpl implements ForumFacade{
        return toRet;
     }
 
- public ServerResponse search(String toSearch, String us ) {
-         User u = _facadeForum.getRegisteredUsers().get(us);
-        if (u==null)
-            u= new User();
+ public ServerResponse searchByAuthor(String username, int from, int to) {
+        // User u = _facadeForum.getRegisteredUsers().get(us);
+        //if (u==null)
+        //    u= new User();
         ServerResponse toRet=new ServerResponse();
         try{
-          Message[] results = _facadeForum.search(toSearch,u);
+          SearchHit[] results = _facadeForum.searchByAuthor(username, from, to);
           toRet = new ServerSearchResponse(results);
+           String ans="";
+           for (int i=0; i<results.length; i++){
+            ans = ans + results[i].toString() + "\n";
+           }
+           toRet.setResponse(ans);
+
         }
         catch(Exception e){
             toRet.setEx(e);
             return toRet;
         }
-       toRet.setResponse("ok");
+       //toRet.setResponse("ok");
        return toRet;
     }
 
