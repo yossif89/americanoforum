@@ -2,6 +2,7 @@ package forum.server.domainlayer;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -12,13 +13,22 @@ import java.util.logging.Logger;
  * */
 public class Forum {
         static Logger logger = Logger.getLogger("americanoforum");
-	HashMap<Integer, Message> _messages = new HashMap<Integer,Message>();
-        HashMap<Integer, Message> _allMessages = new HashMap<Integer,Message>();
-	HashMap<String, User> _registered = new HashMap<String, User>();
-	HashMap<String, User> _online_users = new HashMap<String, User>();
-        SearchEngine _searchEng = new SearchEngineImpl(_allMessages);
-       PersistenceDataHandler pipe = new PersistenceDataHandlerImpl();
+	HashMap<Integer, Message> _messages;
+        HashMap<Integer, Message> _allMessages;
+	HashMap<String, User> _registered;
+	HashMap<String, User> _online_users;
+        SearchEngine _searchEng;
+       PersistenceDataHandler pipe;
 
+       public Forum(){
+           _messages = new HashMap<Integer,Message>();
+         _allMessages = new HashMap<Integer,Message>();
+	 _registered = new HashMap<String, User>();
+	 _online_users = new HashMap<String, User>();
+         System.out.println("ktovet "+_allMessages);
+         _searchEng = new SearchEngineImpl(_allMessages);
+        pipe = new PersistenceDataHandlerImpl();
+       }
 
     /**
 	 * A function that receives a password in String representation and returns
@@ -53,8 +63,17 @@ public class Forum {
 
     public void setAllMessages(HashMap<Integer, Message> _allMessages) {
         this._allMessages = _allMessages;
+        this._searchEng.setAllMessages(_allMessages);
     }
 
+    public void updateSearchEngine(){
+
+        Collection<Message> msgs = _allMessages.values();
+        for(Message msg: msgs){
+              System.out.println("i"+msg);
+            this._searchEng.addData(msg);
+        }
+    }
 /**
  *  sets a collection (hash map)  ofregistered users in the forum
  * @param users
@@ -363,6 +382,11 @@ public class Forum {
         for(int i=0; i<result.length; i++){
             System.out.println(result[i]);
         }
+        return result;
+    }
+
+    SearchHit[] searchByContent(String toSearch, int from, int to) {
+        SearchHit[] result = this._searchEng.searchByContent(toSearch, from, to);
         return result;
     }
 }//class

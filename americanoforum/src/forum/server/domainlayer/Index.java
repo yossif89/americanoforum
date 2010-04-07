@@ -23,7 +23,8 @@ public class Index {
 
     public Index(HashMap<Integer, Message> allMsgs){
         this.words = new HashMap<String,Integer>();
-        this._allMessages = allMsgs; 
+        this._allMessages = allMsgs;
+        System.out.println("index ktovet "+allMsgs);
         this.relations = new Hashtable<Integer, Vector<Integer>>();
     }
 

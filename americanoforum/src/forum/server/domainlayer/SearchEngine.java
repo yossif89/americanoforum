@@ -1,5 +1,7 @@
 package forum.server.domainlayer;
 
+import java.util.HashMap;
+
 /**
  * @author Tomer Heber
  *
@@ -52,5 +54,7 @@ public interface SearchEngine {
 	public SearchHit[] searchByContent(String phrase, int from, int to);
 
         public void removeMessage(Message msg);
+
+    public void setAllMessages(HashMap<Integer, Message> _allMessages);
 
 }

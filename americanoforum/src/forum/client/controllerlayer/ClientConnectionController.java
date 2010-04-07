@@ -68,7 +68,7 @@ public class ClientConnectionController extends Thread {
 					msg = handleCommand(str);						
 				} catch (BadCommandException e) {
 					log.info("The user has inputed an invalid command.");
-					e.printStackTrace();
+					//e.printStackTrace();
 					System.out.println();
 					continue;
 				}
@@ -124,6 +124,10 @@ public class ClientConnectionController extends Thread {
                                     System.out.println(res.getResponse());
 
                                 }
+                                else if (msg instanceof SearchByContentMessage){
+                                    System.out.println(res.getResponse());
+
+                                }
 			}
 		} catch (ClassNotFoundException e) {
 			log.severe("Received an invalid object from the server.");
@@ -162,6 +166,7 @@ public class ClientConnectionController extends Thread {
                                 "- delete_message <message id to delete>\n"+
                                 "- promote <userName to promote>"+"\n" +
                                 "- searchByAuthor <username to search> <from index> <to index>" + "\n" +
+                                "- searchByContent <from index> <to index> <phrase to search>" + "\n" +
 				"- disconnect" + "\n" +
 				"//TODO add more operations (Admin, Moderator, Search)"	+ "\n"			
 		);								
@@ -234,6 +239,14 @@ public class ClientConnectionController extends Thread {
                              int fromInd = Integer.parseInt(st.nextToken());
                              int toInd = Integer.parseInt(st.nextToken());
                              return new SearchByAuthorMessage(username, fromInd, toInd);
+                         }
+                        if (command.equals("searchByContent")) {
+                            String from = st.nextToken();
+                            String to = st.nextToken();
+                            int fromInd = Integer.parseInt(from);
+                             int toInd = Integer.parseInt(to);
+                             String toSearch = str.substring(command.length() + from.length() + to.length() + 3);
+                             return new SearchByContentMessage(toSearch, fromInd, toInd);
                          }
 			
 			// TODO Add Search messages.

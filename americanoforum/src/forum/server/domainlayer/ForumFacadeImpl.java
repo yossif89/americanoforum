@@ -12,8 +12,19 @@ import java.util.logging.Level;
 
 
 public class ForumFacadeImpl implements ForumFacade{
-        public Forum _facadeForum;
+    static ForumFacade _instance = null;
+
+    public Forum _facadeForum;
        PersistenceDataHandler _pipe;
+
+    public static ForumFacade getInstance(){
+        if (_instance == null){
+            _instance = new ForumFacadeImpl();
+            return _instance;
+        }
+        return _instance;
+
+    }
 
     public ForumFacadeImpl() {
              _pipe = new PersistenceDataHandlerImpl();
@@ -185,11 +196,36 @@ public class ForumFacadeImpl implements ForumFacade{
         ServerResponse toRet=new ServerResponse();
         try{
           SearchHit[] results = _facadeForum.searchByAuthor(username, from, to);
-          toRet = new ServerSearchResponse(results);
+          //toRet = new ServerSearchResponse(results);
            String ans="";
+
            for (int i=0; i<results.length; i++){
-            ans = ans + results[i].toString() + "\n";
+               ans = ans + results[i].toString() + "\n";
            }
+           System.out.println("ans = "+ans);
+           toRet.setResponse(ans);
+
+        }
+        catch(Exception e){
+            toRet.setEx(e);
+            return toRet;
+        }
+       //toRet.setResponse("ok");
+       return toRet;
+    }
+
+    public ServerResponse searchByContent(String toSearch, int from, int to) {
+        ServerResponse toRet=new ServerResponse();
+        try{
+            System.out.println("in search by content");
+          SearchHit[] results = _facadeForum.searchByContent(toSearch,from,to);
+          //toRet = new ServerSearchResponse(results);
+           String ans="";
+
+           for (int i=0; i<results.length; i++){
+               ans = ans + results[i].toString() + "\n";
+           }
+           System.out.println("ans = "+ans);
            toRet.setResponse(ans);
 
         }

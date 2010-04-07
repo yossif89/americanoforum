@@ -20,5 +20,6 @@ public interface ForumFacade {
                ServerResponse modifyMessage(int messageId,String cont,String u) ;
                ServerResponse reply(String subj,String cont,String u , int id);
                ServerResponse searchByAuthor(String username, int from, int to);
+               ServerResponse searchByContent(String toSearch, int from, int to);
 	
 }

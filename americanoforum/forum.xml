@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ForumType>
-    <_numOfMsgs>2</_numOfMsgs>
+    <_numOfMsgs>5</_numOfMsgs>
     <_allUsers>
         <_username>sepetnit</_username>
         <_password>b59c67bf196a4758191e42f76670ceba</_password>
@@ -34,6 +34,30 @@
         <_subject>test2</_subject>
         <_content>test2 test2</_content>
         <_date>2010-03-26T11:00:01.031+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>2</_messageId>
+        <_subject>new</_subject>
+        <_content>newmessage</_content>
+        <_date>2010-04-07T22:01:41.067+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>3</_messageId>
+        <_subject>nana</_subject>
+        <_content>banana banana ba</_content>
+        <_date>2010-04-07T23:13:13.926+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>4</_messageId>
+        <_subject>tik</_subject>
+        <_content>tak</_content>
+        <_date>2010-04-08T00:03:40.239+03:00</_date>
         <_father>-1</_father>
         <_creator>dahany</_creator>
     </_allMessages>

@@ -110,9 +110,12 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             Message.setGensym(new Integer(data_forum.getNumOfMsgs()));
             HashMap<String,User> users = getUsers(data_forum.getAllUsers());
             HashMap<Integer,Message>[] messages = getMsgs(data_forum.getAllMessages(), users);
+
             forum.setMessages(messages[0]);
             forum.setAllMessages(messages[1]);
+            System.out.println("Handler "+messages[1]);
             forum.setRegistered(users);
+            forum.updateSearchEngine();
         }
           catch (JAXBException e) {
             Forum.logger.log(Level.FINE,"DataHandler: cannot get forum from xml: "+e.toString());

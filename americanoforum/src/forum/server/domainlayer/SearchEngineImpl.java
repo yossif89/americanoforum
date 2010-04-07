@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -22,6 +23,11 @@ public class SearchEngineImpl implements SearchEngine{
 
     public SearchEngineImpl(HashMap<Integer, Message> allMsgs){
         this._index = new Index(allMsgs);
+        Collection<Message> msgs = allMsgs.values();
+        for(Message msg : msgs){
+            addData(msg);
+            System.out.println("msg: "+msg);
+        }
     }
 
    public Index getIndex(){
@@ -29,6 +35,7 @@ public class SearchEngineImpl implements SearchEngine{
    }
 
     public void addData(Message msg){
+        System.out.println("adding msg to index: "+msg);
         String sbj = msg.getSubject();
         String cont = msg.getContent();
         StringTokenizer toki_sbj = new StringTokenizer(sbj,"[ \t\n\r\f.-]");
@@ -47,10 +54,13 @@ public class SearchEngineImpl implements SearchEngine{
 
     public SearchHit[] searchByAuthor(String username, int from, int to) {
         //SearchHit[] result = new SearchHit[to-from];
+        System.out.println("searching for msgs");
         Vector<SearchHit> author_msgs = new Vector<SearchHit>();
         int index = 0;
         Collection<Message> all_msgs = this._index.getAllMsgs().values();
+        System.out.println("searchengine "+((Object)this._index.getAllMsgs()).toString());
         for(Message msg : all_msgs){
+            System.out.println("msg = "+msg);
             if (msg.getCreator().getDetails().getUsername().equals(username)){
                 author_msgs.add(new SearchHit(msg, 0, msg.getMsg_id()));
             }
@@ -117,6 +127,10 @@ public class SearchEngineImpl implements SearchEngine{
             Integer word_id = this._index.getWordID(word);
             this._index.removeWord(word,word_id,msg.getMsg_id());
         }
+    }
+
+    public void setAllMessages(HashMap<Integer, Message> _allMessages) {
+        this._index.setAllMegs(_allMessages);
     }
 
     

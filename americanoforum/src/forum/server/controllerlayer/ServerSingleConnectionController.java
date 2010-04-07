@@ -35,7 +35,7 @@ public class ServerSingleConnectionController implements Runnable {
 		out = new ObjectOutputStream(m_socket.getOutputStream());
 		out.flush();
 		in = new ObjectInputStream(m_socket.getInputStream());
-                forum = new ForumFacadeImpl();
+                forum = ForumFacadeImpl.getInstance();
 	}
 	
 	/**
