@@ -78,10 +78,21 @@ public class SearchEngineImpl implements SearchEngine{
         return result;
     }
 
+
+
+    //basic searchByContent
     public SearchHit[] searchByContent(String phrase, int from, int to) {
         Vector<SearchHit> relevant_msgs = new Vector<SearchHit>();
         StringTokenizer toki_phrase = new StringTokenizer(phrase,"[ \t\n\r\f.-]");
+        int numOfTokInPhrase = 0;
+        if(phrase.contains(" OR ")){
+            return searchByContentOR(phrase,from,to);
+        }
+        if(phrase.contains(" AND ")){
+            return searchByContentAND(phrase,from,to);
+        }
         while(toki_phrase.hasMoreTokens()){
+            numOfTokInPhrase++;
             String word = toki_phrase.nextToken();
             Integer word_id = this._index.getWordID(word);
             Vector<Message> word_msgs = this._index.getMsgsByWordID(word_id);
@@ -100,16 +111,29 @@ public class SearchEngineImpl implements SearchEngine{
                 flag=0;
             }
         }
+        Vector<SearchHit> final_msgs = new Vector<SearchHit>();
+        for(SearchHit hit : relevant_msgs){
+            if(hit.getScore()==numOfTokInPhrase){ //ifthe score is max
+                if ((hit.getMessage().getContent().contains(phrase))
+                    || (hit.getMessage().getSubject().contains(phrase))){
+                    final_msgs.add(hit);
+                }
+            }
+        }
         int size;
-        if ((to-from) > relevant_msgs.size())
-            size = relevant_msgs.size();
+        if ((to-from) > final_msgs.size())
+            size = final_msgs.size();
         else
             size = to-from;
         SearchHit[] result = new SearchHit[size];
-        Collections.sort(relevant_msgs, new SearchHitComparator());
+        Collections.sort(final_msgs, new SearchHitComparator());
         //Exception!! if the number of requested results is not available!!!!
-        for(int i=0; i<(to-from); i++){
-            result[i] = relevant_msgs.get(from + i);
+        try{
+            for(int i=0; i<size; i++){
+                result[i] = final_msgs.get(from + i);
+            }
+        } catch(ArrayIndexOutOfBoundsException e){
+            e.printStackTrace(); //to implement a user interface message
         }
         return result;
     }
@@ -131,6 +155,78 @@ public class SearchEngineImpl implements SearchEngine{
 
     public void setAllMessages(HashMap<Integer, Message> _allMessages) {
         this._index.setAllMegs(_allMessages);
+    }
+
+    private SearchHit[] searchByContentOR(String phrase, int from, int to) {
+        int OR_index = phrase.indexOf("OR");
+        String first_phrase = phrase.substring(0, OR_index);
+        String second_phrase = phrase.substring(OR_index+3, phrase.length());
+        SearchHit[] first_search = searchByContent(first_phrase,0,to);
+        SearchHit[] second_search = searchByContent(second_phrase, 0, to);
+        Vector<SearchHit> final_ans = new Vector<SearchHit>();
+        for(int i=0; i<first_search.length; i++){
+            final_ans.add(first_search[i]);
+        }
+        for(int i=0; i<second_search.length; i++){
+            //final_ans.add(second_search[i]);
+            boolean flag_found = false;
+            for(int j=0; j<final_ans.size(); j++){
+                if(final_ans.elementAt(j).getMessage().getMsg_id() == second_search[i].getMessage().getMsg_id()){
+                    final_ans.elementAt(j).addToScore(second_search[i].getScore());
+                    flag_found=true;
+                }
+            }
+            if (flag_found == false){
+                final_ans.add(second_search[i]);
+            }
+        }
+        Collections.sort(final_ans, new SearchHitComparator());
+        int size;
+        if ((to-from) > final_ans.size())
+            size = final_ans.size();
+        else
+            size = to-from;
+        SearchHit[] result = new SearchHit[size];
+        try{
+            for(int i=0; i<size; i++){
+                result[i] = final_ans.get(from + i);
+            }
+        } catch(ArrayIndexOutOfBoundsException e){
+            e.printStackTrace(); //to implement a user interface message
+        }
+        return result;
+    }
+
+    private SearchHit[] searchByContentAND(String phrase, int from, int to) {
+        int AND_index = phrase.indexOf("AND");
+        String first_phrase = phrase.substring(0, AND_index);
+        String second_phrase = phrase.substring(AND_index+4, phrase.length());
+        SearchHit[] first_search = searchByContent(first_phrase,0,to);
+        SearchHit[] second_search = searchByContent(second_phrase, 0, to);
+        Vector<SearchHit> final_ans = new Vector<SearchHit>();
+        for(int i=0; i<first_search.length; i++){
+            for(int j=0; j<second_search.length; j++){
+                if(first_search[i].getMessage().getMsg_id() == second_search[j].getMessage().getMsg_id()){
+                    first_search[i].addToScore(second_search[j].getScore());
+                    final_ans.add(first_search[i]);
+                }
+            }
+        }
+        Collections.sort(final_ans, new SearchHitComparator());
+        int size;
+        if ((to-from) > final_ans.size())
+            size = final_ans.size();
+        else
+            size = to-from;
+        SearchHit[] result = new SearchHit[size];
+        try{
+            for(int i=0; i<size; i++){
+                result[i] = final_ans.get(from + i);
+            }
+        } catch(ArrayIndexOutOfBoundsException e){
+            e.printStackTrace(); //to implement a user interface message
+        }
+        return result;
     }
 
     

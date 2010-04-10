@@ -48,4 +48,19 @@ public class SearchHit {
             return "msg_id: " + this.m_message.getMsg_id()+ "---> " +this.m_message.getSubject();
         }
 
+        public boolean equals(Object o){
+            if (!(o instanceof SearchHit)){
+                return false;
+            }
+            SearchHit sh_o = (SearchHit)o;
+            if((this.m_message == sh_o.m_message) && (this.msg_id == sh_o.msg_id))
+                return true;
+            return false;
+        }
+
+        public void addToScore(double newScore){
+            this.m_score = this.m_score + newScore;
+        }
+
+
 }
