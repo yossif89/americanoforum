@@ -8,6 +8,8 @@ package forum.server.domainlayer;
 
 import java.util.HashMap;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import junit.framework.TestCase;
 
 /**
@@ -121,16 +123,25 @@ public class SearchEngineImplTest extends TestCase {
      * Test of searchByContent method, of class SearchEngineImpl.
      */
     public void testSearchByContent() {
-         Message m1 = new Message("test","bla bla david",_u1);
+         Message m1 = new Message("test","bla bla david moshe",_u1);
          Message.incId();
-         Message m2 = new Message("test2","bla2 bla david tikva",_u1);
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+         Message m2 = new Message("test2","bla2 bla david tikva moshe",_u1);
+         Message.incId();
+         Message m3 = new Message("test2","moshe cohen",_u1);
          Message.incId();
 
          this.allMsgs.put(m1.getMsg_id(), m1);
          this.allMsgs.put(m2.getMsg_id(), m2);
+         this.allMsgs.put(m3.getMsg_id(), m3);
 
          this.searchEngine.addData(m1);
          this.searchEngine.addData(m2);
+         this.searchEngine.addData(m3);
 
          SearchHit[] result = this.searchEngine.searchByContent("bla2", 0,1);
          assertTrue(result.length==1);
@@ -142,6 +153,26 @@ public class SearchEngineImplTest extends TestCase {
          //assertEquals(result2[1].getScore(),2.0);
          assertTrue(result2[0].getMessage().equals(m2));
          //assertTrue(result2[1].getMessage().equals(m1));
+
+         SearchHit[] result3 = this.searchEngine.searchByContent("bla2 tikva", 0, 5);
+         assertTrue(result3.length==0);
+
+         SearchHit[] result4 = this.searchEngine.searchByContent("bla OR tikva", 0, 5);
+         assertTrue(result4.length==2);
+         assertTrue(result4[0].getMessage().equals(m2));
+         assertTrue(result4[1].getMessage().equals(m1));
+
+         SearchHit[] result5 = this.searchEngine.searchByContent("bla AND cohen", 0, 5);
+         assertTrue(result5.length==0);
+
+         result5 = this.searchEngine.searchByContent("bla AND moshe",0,5);
+         assertTrue(result5.length==2);
+         assertTrue(result5[0].getScore() == result5[1].getScore());
+         assertTrue(result5[0].getMessage().equals(m2));
+         assertTrue(result5[1].getMessage().equals(m1));
+
+         result5 = this.searchEngine.searchByContent("bla AND moshe", 10, 11);
+         assertTrue(result5.length==0);
     }
 
 }

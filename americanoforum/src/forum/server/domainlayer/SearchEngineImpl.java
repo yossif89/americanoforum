@@ -218,6 +218,12 @@ public class SearchEngineImpl implements SearchEngine{
             size = final_ans.size();
         else
             size = to-from;
+       for(int i=0; i<size; i++){
+            if(from+i >= final_ans.size()){
+                size = i;
+                break;
+            }
+        }
         SearchHit[] result = new SearchHit[size];
         try{
             for(int i=0; i<size; i++){
