@@ -217,7 +217,7 @@ public class ForumFacadeImpl implements ForumFacade{
     public ServerResponse searchByContent(String toSearch, int from, int to) {
         ServerResponse toRet=new ServerResponse();
         try{
-            System.out.println("in search by content");
+           // System.out.println("in search by content");
           SearchHit[] results = _facadeForum.searchByContent(toSearch,from,to);
           //toRet = new ServerSearchResponse(results);
            String ans="";

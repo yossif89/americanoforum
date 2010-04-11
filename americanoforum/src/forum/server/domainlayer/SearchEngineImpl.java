@@ -220,8 +220,9 @@ public class SearchEngineImpl implements SearchEngine{
      */
     private SearchHit[] searchByContentOR(String phrase, int from, int to) {
         int OR_index = phrase.indexOf("OR");
-        String first_phrase = phrase.substring(0, OR_index);
+        String first_phrase = phrase.substring(0, OR_index-1);
         String second_phrase = phrase.substring(OR_index+3, phrase.length());
+        System.out.println("first="+first_phrase+" second="+second_phrase);
         SearchHit[] first_search = searchByContent(first_phrase,0,to);
         SearchHit[] second_search = searchByContent(second_phrase, 0, to);
         Vector<SearchHit> final_ans = new Vector<SearchHit>();
@@ -267,7 +268,7 @@ public class SearchEngineImpl implements SearchEngine{
      */
     private SearchHit[] searchByContentAND(String phrase, int from, int to) {
         int AND_index = phrase.indexOf("AND");
-        String first_phrase = phrase.substring(0, AND_index);
+        String first_phrase = phrase.substring(0, AND_index-1);
         String second_phrase = phrase.substring(AND_index+4, phrase.length());
         SearchHit[] first_search = searchByContent(first_phrase,0,to);
         SearchHit[] second_search = searchByContent(second_phrase, 0, to);
