@@ -70,10 +70,18 @@ public class LoggedInPermission implements UserPermission {
         LoggedInPermission.instance = instance;
     }
 
+    /**
+     * approves deleting a message as a logged-in user
+     * @param msg the message to delete
+     */
     public void deleteMessage(Message msg) {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * approves granting moderator permissions
+     * @param tUsr
+     */
     public void changeToModerator(User tUsr) {
         throw new UnsupportedOperationException();
     }

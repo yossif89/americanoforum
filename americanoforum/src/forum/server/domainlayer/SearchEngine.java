@@ -53,8 +53,16 @@ public interface SearchEngine {
 	 */
 	public SearchHit[] searchByContent(String phrase, int from, int to);
 
+        /**
+         * removing a message fro DB
+         * @param msg the message to remove
+         */
         public void removeMessage(Message msg);
 
-    public void setAllMessages(HashMap<Integer, Message> _allMessages);
+        /**
+         * set the all messages field
+         * @param _allMessages the new all messages DB
+         */
+        public void setAllMessages(HashMap<Integer, Message> _allMessages);
 
 }
