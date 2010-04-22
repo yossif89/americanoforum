@@ -61,7 +61,13 @@ public class ForumTree implements ForumTreeHandler {
 		m_tree = new JTree();
 		m_tree.putClientProperty("JTree.lineStyle", "None");		
 
-		refreshForum(m_pipe.getForumView());
+                m_pool.execute(new Runnable() {
+			@Override
+			public void run() {
+                                refreshForum(m_pipe.getForumView());
+			}
+		});
+		
 		
 		ForumTreeCellRenderer renderer = new ForumTreeCellRenderer(this);
 		m_tree.setCellRenderer(renderer);
@@ -96,7 +102,7 @@ public class ForumTree implements ForumTreeHandler {
 	}
 	
 	@Override
-	public void refreshForum(String encodedView) {	
+	public synchronized void refreshForum(String encodedView) {
 		ForumCell rootCell = decodeView(encodedView);
 		DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode(rootCell); 
 		
