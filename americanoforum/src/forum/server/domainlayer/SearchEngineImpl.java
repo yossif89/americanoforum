@@ -194,10 +194,12 @@ public class SearchEngineImpl implements SearchEngine{
         while(toki_cont.hasMoreTokens()){
             String word = toki_cont.nextToken();
             Long word_id = this._index.getWordID(word);
+            System.out.println("word to delete: "+word);
             this._index.removeWord(word,word_id,msg.getMsg_id());
         }
         while(toki_sbj.hasMoreTokens()){
             String word = toki_sbj.nextToken();
+            System.out.println("word to delete: "+word);
             Long word_id = this._index.getWordID(word);
             this._index.removeWord(word,word_id,msg.getMsg_id());
         }

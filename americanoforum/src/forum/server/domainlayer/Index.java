@@ -78,6 +78,8 @@ public class Index {
     }
 
     public void removeWord(String word, Long word_id, Long msg_id) {
+        if ((word_id==null) || (!this.relations.containsKey(word_id)))
+            return;
         Vector<Long> msg_vect = this.relations.get(word_id);
         if (msg_vect.size() == 1){
             this.relations.remove(word_id);

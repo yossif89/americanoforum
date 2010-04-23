@@ -217,7 +217,7 @@ public class ForumTree implements ForumTreeHandler {
 	 */
 	private ForumCell decodeView(String encodedView) {
             HashMap<Long,ForumCell> mapping = new HashMap<Long, ForumCell>();
-            ForumCell toRet=new ForumCell(-2,"666666666666","66666666666","66666666666666666");;
+            ForumCell toRet=new ForumCell(-2,"666666666666","66666666666","66666666666666666");
              ForumCell temp;
             StringTokenizer lineTok = new StringTokenizer(encodedView,"\n");
             lineTok.nextToken();
