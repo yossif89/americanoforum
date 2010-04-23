@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -28,8 +29,12 @@ public class ForumTreeRootPanel extends JPanel {
 		m_addMessageButton.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {				
-				m_forumTree.addNewMessage(m_addMessageButton);
+			public void actionPerformed(ActionEvent e) {
+                                 java.awt.EventQueue.invokeLater(new Runnable() {
+                                 public void run() {
+                                  new NewMessageForm(m_forumTree,m_addMessageButton).setVisible(true);
+                                     }
+                                    });
 			}
 		});
 		

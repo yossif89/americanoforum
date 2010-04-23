@@ -58,6 +58,6 @@ public abstract class ControllerHandler extends Observable {
 	/**
 	 * Adds a new message to the forum.
 	 */
-	public abstract void addNewMessage(Component comp);
+	public abstract void addNewMessage(String subj,String cont , Component comp);
 
 }

@@ -1,5 +1,7 @@
 package forum.client.ui;
 
+import javax.swing.JButton;
+
 /**
  * @author Tomer Heber
  *
@@ -15,6 +17,8 @@ public interface ForumTreeHandler {
 	 * @param encodedView The encoding of the forum view.
 	 */
 	public void refreshForum(String encodedView);
+
+         public void addNewMessage(final String subj,final String cont, final JButton button) ;
 	
 	/**
 	 * An error message that appears in case of an error (e.g. an operation failed).

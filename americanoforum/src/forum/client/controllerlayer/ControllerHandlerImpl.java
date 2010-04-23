@@ -29,60 +29,56 @@ public class ControllerHandlerImpl extends ControllerHandler {
 	 */
 	@Override
 	public String getForumView( ) {
-             return   this._connectionController.communicate("view_forum");
+           String ans=  this._connectionController.communicate("view_forum",null);
+           System.out.println("Forum view : \n "+ans);
+           return ans;
 	}
 
 	@Override
-	public void modifyMessage(long id, String newContent, Component comp) {		
-	        this._connectionController.communicate("modify_message");
-
-		notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
-		if (Math.random() > 0.5) {	
-			notifyObservers(new ForumTreeErrorEvent("Failed to modify a message"));
-		}
+	public void modifyMessage(long id, String newContent, Component comp) {
+                Object[] args = new Object[2];
+                args[0]= id;
+                args[1] = newContent;
+	        if ((this._connectionController.communicate("modify_message",args)).equals("ok"))
+                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
+                else{
+                    ClientConnectionController.log.severe("Client: couldn't modify message");
+                }
 	}
 
 	@Override
 	public void addReplyToMessage(long id, String string, Component comp) {
-		try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
-		if (Math.random() > 0.5) {	
-			notifyObservers(new ForumTreeErrorEvent("Failed to reply to a message"));
-		}
+		Object[] args = new Object[2];
+                args[0]= id;
+                args[1] = string;
+	        if ((this._connectionController.communicate("add_reply",args)).equals("ok"))
+                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
+                else{
+                    ClientConnectionController.log.severe("Client: couldn't reply to the  message");
+                }
 	}
 
 	@Override
 	public void deleteMessage(long id, Component comp) {
-		try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
-		if (Math.random() > 0.5) {	
-			notifyObservers(new ForumTreeErrorEvent("Failed to delete message"));
-		}
-		
+		Object[] args = new Object[1];
+                args[0]= id;
+	        if ((this._connectionController.communicate("delete_message",args)).equals("ok"))
+                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
+                else{
+                    ClientConnectionController.log.severe("Client: couldn't delete to the  message");
+                }
 	}
 
 	@Override
-	public void addNewMessage(Component comp) {
-		try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-				
-		notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
-		if (Math.random() > 0.5) {	
-			notifyObservers(new ForumTreeErrorEvent("Failed to add a new message"));
-		}
+	public void addNewMessage(String subj , String cont ,Component comp) {
+		Object[] args = new Object[2];
+                args[0]= subj  ;
+                args[1] = cont;
+	        if ((this._connectionController.communicate("add_message",args)).equals("ok"))
+                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
+                else{
+                    ClientConnectionController.log.severe("Client: couldn't add to the  message");
+                }
 		
 	}
 

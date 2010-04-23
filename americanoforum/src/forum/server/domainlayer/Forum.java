@@ -346,26 +346,62 @@ public class Forum {
        pipe.addRegUserToXml("dahany", encryptedPass, "@","yakir","dahan", "bash", "male","ModeratorPermission");
    }
 
+   /**
+    * creates the format of a message and its sons:
+    *      7,8$$subj$$cont
+    * @param message
+    * @param fatherId
+    * @return
+    */
+   private String createString(Message message,int fatherId){
+       String toRet="";
+       String subj,cont;
+           if (message.getSubject().equals(""))
+                    subj="EMPTY SUBJECT";
+           else
+               subj = message.getSubject();
+           if (message.getContent().equals(""))
+                    cont="EMPTY CONTENT";
+           else
+               cont = message.getContent();
+        toRet = fatherId+","+message.getMsg_id()+"$$"+subj+"$$"+cont+"\n";
+        if (message.getChild().size() ==0){
+            return toRet;
+        }
+
+        for(Message m : message.getChild()){
+            toRet+= createString(m, message.getMsg_id());
+        }
+
+       return toRet;
+   }
+
     @Override
     public String toString(){
         String ans="";
-        ans = ans+ "There are: "+ this._online_users.size() + " online users: \n";
-        for(User user : this._online_users.values()){
-            ans = ans+user.getDetails().getUsername()+ " ";
-        }
-        ans = ans + "\nSubjects: \n";
+        String subj="";
+        String cont = "";
+        ans = "onlineUsers$$"+this._online_users.size() + "\n";
+//        for(User user : this._online_users.values()){
+//            ans = ans+user.getDetails().getUsername()+ " ";
+//        }
+
 
         for (Message msg : this._messages.values()){
-               ans = ans + msg.getSubject() + "  msg_id:" + msg.getMsg_id() + "\n";
+            if (msg.getSubject().equals(""))
+                    subj="EMPTY SUBJECT";
+           else
+               subj = msg.getSubject();
+           if (msg.getContent().equals(""))
+                    cont="EMPTY CONTENT";
+           else
+               cont = msg.getContent();
+               ans +=  msg.getMsg_id()+"$$"+subj+"$$"+cont+"\n";
+                if (msg.getChild().size() !=0)
+                for(Message m : msg.getChild()){
+                    ans+= createString(m, msg.getMsg_id());
+                }
         }
-
-        ans+= "********************* \n";
-
-        for (Message msg : this._allMessages.values()){
-               ans = ans +  "  msg_id:" + msg.getMsg_id() + "  "+msg.getSubject()+ "   :   "+msg.getContent()  +"\n";
-        }
-        
-        
         return ans;
     }
 

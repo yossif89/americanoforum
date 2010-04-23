@@ -33,22 +33,34 @@ public class ClientConnectionController extends Thread {
 	public static Logger log = Logger.getLogger(Settings.loggerName);
 
 	public ClientConnectionController(String addr, short port) throws IOException {
+            String logFileName = "forumAmericano.log";
+				try {
+					/* Create a logger for the client (to a file...). */
+					FileHandler handler = new FileHandler(logFileName,true);
+					log.addHandler(handler);
+				} catch (SecurityException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 		InetAddress ia = InetAddress.getByName(addr);
 		connect(ia,port);
-		_user= null;
+		_user= "dahany";
 	}
 
-	public String communicate(String operation){
+	public String communicate(String operation,Object[] args){
 		ClientMessage msg=null;
 		try {
 			/* Handles the command. */
-			msg = handleCommand(operation);
+			msg = handleCommand(operation,args);
+
 			out.writeObject(msg);
 			this.log.log(Level.INFO, "sent command from client");
 			/* receive response from the server. */
 			Object o = in.readObject();
 			this.log.log(Level.INFO, "recieved response from server");
 			if (o == null) {
+                              
 				log.severe("Lost connection to server.");
 				return "";
 			}
@@ -76,8 +88,10 @@ public class ClientConnectionController extends Thread {
                                         this._user = res.getResponse();
                                         log.log(Level.INFO,"Changed username to "+this._user);
                                     }
-                                    return res.getResponse();
+          
+                                  
                             }
+                              return res.getResponse();
 		}
                 }
                         catch(Exception e){
@@ -199,22 +213,21 @@ public class ClientConnectionController extends Thread {
 		 * @return The message to send back to the server.
 		 * @throws BadCommandException This exception is thrown is the command given by the user is invalid.
 		 */
-		private ClientMessage handleCommand(String str) throws BadCommandException {
+		private ClientMessage handleCommand(String command,Object[] args) throws BadCommandException {
 			try {
-				StringTokenizer st = new StringTokenizer(str);
-				String command = st.nextToken();
+	
 				this.log.log(Level.INFO,"handle command: the command is: "+command);
 				if (command.equals("add_message")) {
-					String subject = st.nextToken();
-					String message = str.substring(command.length()+subject.length()+2);
+					String subject =(String)args[0];
+					String message = (String)args[1];
 					return new AddMessageMessage(subject,message,this.getUser());
 				}
 				if (command.equals("view_forum")) {
 					return new ViewForumMessage();
 				}
 				if (command.equals("login")) {
-					String a=st.nextToken();
-					String b=st.nextToken();
+					String a=(String)args[0];
+					String b=(String)args[1];
 					return new LoginMessage(a,b,this.getUser());
 				}
 				if (command.equals("logoff")) {
@@ -222,49 +235,49 @@ public class ClientConnectionController extends Thread {
 				}
 				if (command.equals("register")) {
 					this.log.log(Level.INFO,"entered correct if: ");
-					String a=st.nextToken();
-					String b=st.nextToken();
-					String c=st.nextToken();
-					String d=st.nextToken();
-					String e=st.nextToken();
-					String f=st.nextToken();
-					String g=st.nextToken();
+					String a=(String)args[0];
+					String b=(String)args[1];
+					String c=(String)args[2];
+					String d=(String)args[3];
+					String e=(String)args[4];
+					String f=(String)args[5];
+					String g=(String)args[6];
 					this.log.log(Level.INFO,"entering constructor: ");
 					return new RegisterMessage(a,b,c,d,e,f,g,this.getUser());
 				}
 				if (command.equals("add_reply")) {
-					String messageIdS = st.nextToken();
-					String subject = st.nextToken();
-					String message = str.substring(command.length()+messageIdS.length()+subject.length()+3);
+					String messageIdS = (String)args[0];
+					String subject = (String)args[1];
+					String message = (String)args[2];
 					int messageId = Integer.parseInt(messageIdS);
 					return new AddReplyMessage(messageId,subject,message,this.getUser());
 				}
 				if (command.equals("modify_message")) {
-					String messageIdS = st.nextToken();
-					String message = str.substring(command.length()+messageIdS.length()+2);
+					String messageIdS =(String)args[0];
+					String message = (String)args[1];
 					int messageId = Integer.parseInt(messageIdS);
 					return new ModifyMessageMessage(messageId,message,this.getUser());
 				}
 				if (command.equals("promote")) {
-					String userName = st.nextToken();
+					String userName = (String)args[0];
 					return new PromoteMessage(userName,this.getUser());
 				}
 				if (command.equals("delete_message")) {
-					int idToDelate = Integer.parseInt(st.nextToken());
+					int idToDelate = Integer.parseInt((String)args[0]);
 					return new DeleteMessageMessage(idToDelate,this.getUser());
 				}
 				if (command.equals("searchByAuthor")) {
-					String username = st.nextToken();
-					int fromInd = Integer.parseInt(st.nextToken());
-					int toInd = Integer.parseInt(st.nextToken());
+					String username = (String)args[0];
+					int fromInd = Integer.parseInt((String)args[0]);
+					int toInd = Integer.parseInt((String)args[1]);
 					return new SearchByAuthorMessage(username, fromInd, toInd);
 				}
 				if (command.equals("searchByContent")) {
-					String from = st.nextToken();
-					String to = st.nextToken();
+					String from = (String)args[0];
+					String to = (String)args[1];
 					int fromInd = Integer.parseInt(from);
 					int toInd = Integer.parseInt(to);
-					String toSearch = str.substring(command.length() + from.length() + to.length() + 3);
+					String toSearch = (String)args[2];
 					return new SearchByContentMessage(toSearch, fromInd, toInd);
 				}
 
@@ -273,10 +286,10 @@ public class ClientConnectionController extends Thread {
 				// TODO Add Moderator messages.
 			}
 			catch(Exception e) {
-				throw new BadCommandException("The command "+str+" is invalid.");
+				throw new BadCommandException("The command "+command+" is invalid.");
 			}
 
-			throw new BadCommandException("The command "+str+" is unknown.");
+			throw new BadCommandException("The command "+command+" is unknown.");
 		}
 
 		private void connect(InetAddress addr, short port) throws IOException {

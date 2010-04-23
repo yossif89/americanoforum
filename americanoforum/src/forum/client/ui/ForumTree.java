@@ -23,6 +23,10 @@ import javax.swing.tree.DefaultTreeModel;
 
 import forum.client.controllerlayer.ControllerHandler;
 import forum.client.controllerlayer.ControllerHandlerFactory;
+import forum.client.controllerlayer.ControllerHandlerImpl;
+import java.util.HashMap;
+import java.util.StringTokenizer;
+import java.util.logging.Handler;
 
 /**
  * @author Tomer Heber
@@ -55,18 +59,17 @@ public class ForumTree implements ForumTreeHandler {
 		UIManager.put("Tree.expandedIcon", new ImageIcon("./images/minus-8.png"));
 		
 		m_pipe = ControllerHandlerFactory.getPipe();
+            //    m_pipe = new ControllerHandlerImpl();
 		/* Add an observer to the controller (The observable). */
 		m_pipe.addObserver(new ForumTreeObserver(this));
 		
 		m_tree = new JTree();
 		m_tree.putClientProperty("JTree.lineStyle", "None");		
 
-                m_pool.execute(new Runnable() {
-			@Override
-			public void run() {
-                                refreshForum(m_pipe.getForumView());
-			}
-		});
+                 String ans = m_pipe.getForumView();
+                  refreshForum(ans);
+
+       
 		
 		
 		ForumTreeCellRenderer renderer = new ForumTreeCellRenderer(this);
@@ -103,6 +106,7 @@ public class ForumTree implements ForumTreeHandler {
 	
 	@Override
 	public synchronized void refreshForum(String encodedView) {
+                System.out.println("encoded \n"+ encodedView);
 		ForumCell rootCell = decodeView(encodedView);
 		DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode(rootCell); 
 		
@@ -136,6 +140,24 @@ public class ForumTree implements ForumTreeHandler {
 			    JOptionPane.WARNING_MESSAGE);
 	}
 
+        public ForumCell  getDataFromLine(String line){
+            ForumCell toRet=null;
+               System.out.println("line "+line);
+               StringTokenizer tempTok = new StringTokenizer(line, "$$");
+               String num = tempTok.nextToken();
+               System.out.println("next token"+num);
+               long id = Long.parseLong(num);
+               String subject = tempTok.nextToken();
+               System.out.println("suBjEct= "+subject);
+                 String cont="";
+               if (tempTok.hasMoreTokens())
+                    cont = tempTok.nextToken();
+
+                   System.out.println("ConTent= "+cont);
+               toRet = new ForumCell(id, subject, cont);
+                return  toRet;
+        }
+
 	/**
 	 * Receives an encoding describing the forum tree.<br>
 	 * It decodes the description and returns the tree representation in a ForumCell instance.
@@ -143,21 +165,33 @@ public class ForumTree implements ForumTreeHandler {
 	 * @return The tree representing the forum.
 	 */
 	private ForumCell decodeView(String encodedView) {
-		// TODO implement the decoder (based on the encoding your write.
-		//return null;
-		// Delete the below line codes.
-		ForumCell fc1 = new ForumCell(2,"fsdf","fsdfsd");
-		ForumCell fc2 = new ForumCell(1,"fsdf","fsdfsd");
-		ForumCell fc3 = new ForumCell(5,"fsfsdfsddf","fsdvccxvfsd");
-		ForumCell fc4 = new ForumCell(7,"fsfsdfsddf","fsdvccxvfsd");
-		ForumCell fc5= new ForumCell(0,"bcvfsddf","fsdvccxvfsdcxvcx");
+            HashMap<Long,ForumCell> mapping = new HashMap<Long, ForumCell>();
+            ForumCell toRet=new ForumCell(-2,"66666666666","66666666666666666");;
+             ForumCell temp;
+            StringTokenizer lineTok = new StringTokenizer(encodedView,"\n");
+            lineTok.nextToken();
+              StringTokenizer tempTok;
+            while(lineTok.hasMoreTokens()){
 
-		fc3.add(fc4);
-		fc2.add(fc3);
-		fc1.add(fc2);
-		fc1.add(fc5);
-		
-		return fc1;
+                String line = lineTok.nextToken();
+                System.out.println("aaaaaaaaaa line = "+line);
+                tempTok = new StringTokenizer(line, "$$");
+                String first = tempTok.nextToken();
+                if(first.indexOf(",")<=0){
+                        temp = getDataFromLine(line);
+                        toRet.add(temp);
+                        mapping.put(temp.getId(), temp);
+                }
+                else{
+                        temp = getDataFromLine(line.substring(line.indexOf(",")+1));
+                        tempTok = new StringTokenizer(first, ",");
+                        long fatherId = Long.parseLong(tempTok.nextToken());
+                        mapping.get(fatherId).add(temp);
+                        mapping.put(temp.getId(), temp);
+                }
+            }
+
+            return toRet;
 	}
 
 	/**
@@ -213,13 +247,13 @@ public class ForumTree implements ForumTreeHandler {
 	/**
 	 * Adds a new message.
 	 */
-	public void addNewMessage(final JButton button) {
+	public void addNewMessage(final String subj,final String cont, final JButton button) {
 		button.setEnabled(false);
 		m_pool.execute(new Runnable() {
 			
 			@Override
 			public void run() {				
-				m_pipe.addNewMessage(button);				
+				m_pipe.addNewMessage(subj,cont,button);
 			}
 		});
 	}

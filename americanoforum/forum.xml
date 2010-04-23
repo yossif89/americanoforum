@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ForumType>
-    <_numOfMsgs>7</_numOfMsgs>
+    <_numOfMsgs>17</_numOfMsgs>
     <_allUsers>
         <_username>sepetnit</_username>
         <_password>b59c67bf196a4758191e42f76670ceba</_password>
@@ -50,7 +50,7 @@
         <_subject>nana</_subject>
         <_content>banana banana ba</_content>
         <_date>2010-04-07T23:13:13.926+03:00</_date>
-        <_father>-1</_father>
+        <_father>4</_father>
         <_creator>dahany</_creator>
     </_allMessages>
     <_allMessages>
@@ -66,7 +66,7 @@
         <_subject>ba</_subject>
         <_content>test a b ba</_content>
         <_date>2010-04-11T15:43:52.265+03:00</_date>
-        <_father>-1</_father>
+        <_father>4</_father>
         <_creator>dahany</_creator>
     </_allMessages>
     <_allMessages>
@@ -74,6 +74,86 @@
         <_subject>x</_subject>
         <_content>a test</_content>
         <_date>2010-04-11T15:55:56.656+03:00</_date>
+        <_father>5</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>7</_messageId>
+        <_subject>NOT IMPLEMENTED</_subject>
+        <_content>NOT IMPLEMENTED</_content>
+        <_date>2010-04-23T13:08:43.115+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>8</_messageId>
+        <_subject>NOT IMPLEMENTED</_subject>
+        <_content>NOT IMPLEMENTED</_content>
+        <_date>2010-04-23T13:08:54.135+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>9</_messageId>
+        <_subject>Shemot</_subject>
+        <_content>She od ein</_content>
+        <_date>2010-04-23T13:55:44.150+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>10</_messageId>
+        <_subject>jTextField1</_subject>
+        <_content></_content>
+        <_date>2010-04-23T13:58:11.257+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>11</_messageId>
+        <_subject></_subject>
+        <_content>kkkkkkkkkkkkkkkkkkkkkkk</_content>
+        <_date>2010-04-23T14:06:35.195+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>12</_messageId>
+        <_subject></_subject>
+        <_content>jjjjj</_content>
+        <_date>2010-04-23T14:08:24.414+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>13</_messageId>
+        <_subject></_subject>
+        <_content></_content>
+        <_date>2010-04-23T14:14:26.245+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>14</_messageId>
+        <_subject></_subject>
+        <_content></_content>
+        <_date>2010-04-23T14:15:21.911+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>15</_messageId>
+        <_subject>adfasdf</_subject>
+        <_content></_content>
+        <_date>2010-04-23T14:15:31.740+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>16</_messageId>
+        <_subject></_subject>
+        <_content>asdfasdf</_content>
+        <_date>2010-04-23T14:15:37.245+03:00</_date>
         <_father>-1</_father>
         <_creator>dahany</_creator>
     </_allMessages>
