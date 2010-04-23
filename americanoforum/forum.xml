@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ForumType>
-    <_numOfMsgs>21</_numOfMsgs>
+    <_numOfMsgs>22</_numOfMsgs>
     <_allUsers>
         <_username>sepetnit</_username>
         <_password>b59c67bf196a4758191e42f76670ceba</_password>
@@ -20,6 +20,26 @@
         <_address>bash</_address>
         <_gender>male</_gender>
         <_permission>ModeratorPermission</_permission>
+    </_allUsers>
+    <_allUsers>
+        <_username>a</_username>
+        <_password>92eb5ffee6ae2fec3ad71c777531578f</_password>
+        <_email>c</_email>
+        <_firstName>d</_firstName>
+        <_lastName>f</_lastName>
+        <_address>e</_address>
+        <_gender>male</_gender>
+        <_permission>LoggedInPermission</_permission>
+    </_allUsers>
+    <_allUsers>
+        <_username>tikva</_username>
+        <_password>92eb5ffee6ae2fec3ad71c777531578f</_password>
+        <_email>f</_email>
+        <_firstName>c</_firstName>
+        <_lastName>d</_lastName>
+        <_address>e</_address>
+        <_gender>male</_gender>
+        <_permission>LoggedInPermission</_permission>
     </_allUsers>
     <_allMessages>
         <_messageId>0</_messageId>
@@ -188,5 +208,13 @@
         <_date>2010-04-23T19:43:15.645+03:00</_date>
         <_father>-1</_father>
         <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>21</_messageId>
+        <_subject>pppppppppp</_subject>
+        <_content>ooooooooooo</_content>
+        <_date>2010-04-23T20:58:34.033+03:00</_date>
+        <_father>-1</_father>
+        <_creator>tikva</_creator>
     </_allMessages>
 </ForumType>

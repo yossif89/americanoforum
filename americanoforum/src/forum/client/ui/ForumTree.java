@@ -24,7 +24,10 @@ import javax.swing.tree.DefaultTreeModel;
 import forum.client.controllerlayer.ControllerHandler;
 import forum.client.controllerlayer.ControllerHandlerFactory;
 import forum.client.controllerlayer.ControllerHandlerImpl;
+import forum.tcpcommunicationlayer.AddMessageMessage;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 import java.util.logging.Handler;
@@ -46,7 +49,8 @@ public class ForumTree implements ForumTreeHandler {
 	 * The JPanel GUI component.
 	 */
 	private JPanel m_panel;
-	
+
+        private JButton  registerButton,loginButton,logoffButton;
 	/**
 	 * A pipe interface to communicate with the controller layer.
 	 */
@@ -96,12 +100,45 @@ public class ForumTree implements ForumTreeHandler {
 		m_panel.setBackground(Color.WHITE);
 		JScrollPane pane = new JScrollPane(m_tree);
 		pane.setPreferredSize(new Dimension(610,435));
-		JButton registerButton = new JButton("Register");
-                JButton loginButton = new JButton("Login");
-                JButton logoffButton = new JButton("Logoff");
+		registerButton = new JButton("Register");
+                 loginButton = new JButton("Login");
+                logoffButton = new JButton("Logoff");
 		temp.add(registerButton);
                 temp.add(loginButton);
                 temp.add(logoffButton);
+
+                registerButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+                                 java.awt.EventQueue.invokeLater(new Runnable() {
+                                 public void run() {
+                                           JPanel x =  new RegistrationForm(m_pipe,registerButton);
+                                           JFrame y = new JFrame();
+                                           y.setSize(new Dimension(500, 350));
+                                           y.add(x);
+                                           x.setVisible(true);
+                                             y.setVisible(true);
+                                     }
+                                    });
+			}
+		});
+
+                loginButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+                                 java.awt.EventQueue.invokeLater(new Runnable() {
+                                 public void run() {
+                                           JFrame x =  new LoginFrame(m_pipe,loginButton);
+                                           x.setVisible(true);
+                                     }
+                                    });
+			}
+		});
+
+
+
                 m_panel.add(temp);
                 m_panel.add(pane);
 		m_panel.setPreferredSize(new Dimension(620,460));

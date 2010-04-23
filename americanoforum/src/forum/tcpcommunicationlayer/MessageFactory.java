@@ -39,8 +39,8 @@ public class MessageFactory {
          return new PromoteMessage(user1,user2);
        }
 
-        public RegisterMessage CreateRegisterMessage(String user,String pass,String mail,String first,String last,String address,String gender,String u ){
-              return new RegisterMessage(user, pass, mail, first, last, address, gender, u);
+        public RegisterMessage CreateRegisterMessage(String user,String pass,String mail,String first,String last,String address,String gender ){
+              return new RegisterMessage(user, pass, mail, first, last, address, gender);
           }
 
                public  SearchByContentMessage  CreateSearchByContentMessage(String toSearch, int from, int to){

@@ -48,6 +48,8 @@ public abstract class ControllerHandler extends Observable {
 	 */
 	public abstract void addReplyToMessage(long id, String subject,String content, Component comp);
 
+        public abstract void login(String user,String pass, Component comp) ;
+
         public abstract  void register( String username, String password, String first, String last, String email, String address, String gender, Component  comp) ;
 	/**
 	 * Deletes recursively the message id and all his sons.

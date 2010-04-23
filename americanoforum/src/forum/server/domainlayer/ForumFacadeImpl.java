@@ -146,7 +146,7 @@ public class ForumFacadeImpl implements ForumFacade{
        return toRet;
     }
 
-    public ServerResponse register(String us,String username,String password,String email,String first,String last , String address,String gender) {
+    public ServerResponse register(String username,String password,String first,String last,String email , String address,String gender) {
          User u = _facadeForum.getRegisteredUsers().get(username);
           ServerResponse toRet = new ServerResponse();
         if (u==null){

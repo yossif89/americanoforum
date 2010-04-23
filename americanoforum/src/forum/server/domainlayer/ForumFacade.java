@@ -14,7 +14,7 @@ public interface ForumFacade {
                ServerResponse addMessage(String aSubj,String aCont,String u);
                ServerResponse login(String user,String pass);
                ServerResponse logoff(String u);
-               ServerResponse register(String user,String username,String password,String email,String first,String last , String address,String gender);
+               ServerResponse register(String username,String password,String email,String first,String last , String address,String gender);
                ServerResponse deleteMessage(long id,String u);
                ServerResponse promoteMessage(String u, String a);
                ServerResponse modifyMessage(long messageId,String cont,String u) ;

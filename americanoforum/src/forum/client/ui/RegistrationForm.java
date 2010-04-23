@@ -10,19 +10,20 @@
  */
 
 package forum.client.ui;
+import forum.client.controllerlayer.ControllerHandler;
 import javax.swing.JButton;
 /**
  *
  * @author Ilya
  */
-public class RegisterationForm extends javax.swing.JPanel {
+public class RegistrationForm extends javax.swing.JPanel {
 
-       private ForumTree _forumTree;
-        private JButton _replyButton;
+       private ControllerHandler _pipe;
+        private JButton _registerButton;
     /** Creates new form RegisterationForm */
-      public RegisterationForm(ForumTree _forumTree, JButton _addMessageButton) {
-        this._forumTree = _forumTree;
-        this._replyButton = _addMessageButton;
+      public RegistrationForm(ControllerHandler _pipe, JButton _reg) {
+        this._pipe = _pipe;
+        this._registerButton = _reg;
         initComponents();
     }
 
@@ -86,6 +87,11 @@ public class RegisterationForm extends javax.swing.JPanel {
         jLabel8.setText("Gender:");
 
         registerButton.setText("Register Now!");
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
+            }
+        });
 
         _passField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,6 +201,15 @@ public class RegisterationForm extends javax.swing.JPanel {
     private void _emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event__emailActionPerformed
+
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+       String gender="";
+       if (male.isSelected())
+           gender="male";
+       else
+           gender="female";
+        _pipe.register(_usernameField.getText(), _passField.getText(), _firstField.getText(), _lastField.getText(), _email.getText(), _address.getText(), gender, _registerButton);
+    }//GEN-LAST:event_registerButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

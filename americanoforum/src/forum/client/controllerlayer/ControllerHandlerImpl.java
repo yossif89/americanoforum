@@ -71,6 +71,20 @@ public class ControllerHandlerImpl extends ControllerHandler {
 	}
 
         @Override
+	public void login(String user,String pass, Component comp) {
+		Object[] args = new Object[2];
+                args[0] = user;
+                args[1] = pass;
+                
+	        if ((this._connectionController.communicate("login",args)).equals(user)){
+                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
+                                }
+                else{
+                    ClientConnectionController.log.severe("Client: couldn't login ");
+                }
+	}
+
+        @Override
 	public void register( String username, String password, String first, String last, String email, String address, String gender, Component  comp) {
 		Object[] args = new Object[7];
                 args[0]= username;

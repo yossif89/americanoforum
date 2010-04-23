@@ -243,7 +243,7 @@ public class ClientConnectionController extends Thread {
 					String f=(String)args[5];
 					String g=(String)args[6];
 					this.log.log(Level.INFO,"entering constructor: ");
-					return new RegisterMessage(a,b,c,d,e,f,g,this.getUser());
+					return new RegisterMessage(a,b,c,d,e,f,g);
 				}
 				if (command.equals("add_reply")) {
 					String subject = (String)args[1];
