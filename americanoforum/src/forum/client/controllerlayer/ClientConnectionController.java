@@ -246,16 +246,14 @@ public class ClientConnectionController extends Thread {
 					return new RegisterMessage(a,b,c,d,e,f,g,this.getUser());
 				}
 				if (command.equals("add_reply")) {
-					String messageIdS = (String)args[0];
 					String subject = (String)args[1];
 					String message = (String)args[2];
-					int messageId = Integer.parseInt(messageIdS);
+					long messageId = (Long)args[0];
 					return new AddReplyMessage(messageId,subject,message,this.getUser());
 				}
 				if (command.equals("modify_message")) {
-					String messageIdS =(String)args[0];
 					String message = (String)args[1];
-					int messageId = Integer.parseInt(messageIdS);
+					long messageId = (Long)args[0];
 					return new ModifyMessageMessage(messageId,message,this.getUser());
 				}
 				if (command.equals("promote")) {
@@ -263,7 +261,7 @@ public class ClientConnectionController extends Thread {
 					return new PromoteMessage(userName,this.getUser());
 				}
 				if (command.equals("delete_message")) {
-					int idToDelate = Integer.parseInt((String)args[0]);
+					long idToDelate = (Long)args[0];
 					return new DeleteMessageMessage(idToDelate,this.getUser());
 				}
 				if (command.equals("searchByAuthor")) {

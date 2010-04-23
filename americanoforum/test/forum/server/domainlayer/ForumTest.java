@@ -71,7 +71,7 @@ public class ForumTest extends TestCase{
 	    m.marshal(forumtype,out);
             out.close();
 
-    //    this._forum.setMessages(new HashMap<Integer, Message>());
+    //    this._forum.setMessages(new HashMap<Long, Message>());
     }
 
 
@@ -128,7 +128,7 @@ public class ForumTest extends TestCase{
      */
     public void testDelete() {
            System.out.println("delete test: ");
-       Integer n1=0,n2=0,n3=0;
+       Long n1=0,n2=0,n3=0;
         try{
             n1=Message.getGensym();
 
@@ -143,7 +143,7 @@ public class ForumTest extends TestCase{
             assertTrue(false);
         }
         assertEquals(this._forum.getMessages().size(), 3);
-        HashMap<Integer,Message>  forumMess =  this._forum.getMessages();
+        HashMap<Long,Message>  forumMess =  this._forum.getMessages();
         Message m1 = forumMess.get(n1);
         Message m2 = forumMess.get(n2);
         Message m3 = forumMess.get(n3);
@@ -189,7 +189,7 @@ public class ForumTest extends TestCase{
 
 
     public void testChangePermission() {
-        Integer n1 = Message.getGensym();
+        Long n1 = Message.getGensym();
         try{
           this._forum.addMessage("shemesh", "cont", _u1);
         }

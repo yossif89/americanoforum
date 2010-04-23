@@ -7,7 +7,7 @@ import java.util.logging.Level;
 public class User {
 	private UserPermission _up;
 	private Details _details;
-	private HashMap<Integer, Message> _myMessages = new HashMap<Integer, Message>();
+	private HashMap<Long, Message> _myMessages = new HashMap<Long, Message>();
         
 /**
  * constractor
@@ -126,7 +126,7 @@ public class User {
  * gets the message of the user
  * @return - a hashmap of the messages of the user
  */
-    public HashMap<Integer, Message> getMyMessages() {
+    public HashMap<Long, Message> getMyMessages() {
         return _myMessages;
     }
 /**

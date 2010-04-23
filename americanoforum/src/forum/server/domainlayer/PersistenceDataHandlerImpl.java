@@ -42,32 +42,32 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
    // }
 
     //creates all the messages and adds them to the users.
-    private HashMap<Integer, Message>[] getMsgs(List<MessageType> msgs, HashMap<String,User> users){
-        HashMap<Integer, Message> all_messages = new HashMap<Integer,Message>();
+    private HashMap<Long, Message>[] getMsgs(List<MessageType> msgs, HashMap<String,User> users){
+        HashMap<Long, Message> all_messages = new HashMap<Long,Message>();
         for (MessageType msg : msgs){
             User creator = users.get(msg.getCreator());
             Message newMsg = new Message(msg.getSubject(), msg.getContent(), creator);
             newMsg.setMsg_id(msg.getMessageId());
             GregorianCalendar c = msg.getDate().toGregorianCalendar();
             newMsg.setDate(c.getTime());
-            all_messages.put(new Integer(msg.getMessageId()), newMsg);
-            creator.getMyMessages().put(new Integer(newMsg.getMsg_id()), newMsg);
+            all_messages.put(new Long(msg.getMessageId()), newMsg);
+            creator.getMyMessages().put(new Long(newMsg.getMsg_id()), newMsg);
 
         }
-        HashMap<Integer,Message>[] myarr = (HashMap<Integer,Message>[])Array.newInstance(HashMap.class,2);
-        myarr[0]=new HashMap<Integer,Message>();
-        myarr[1]=new HashMap<Integer,Message>();
+        HashMap<Long,Message>[] myarr = (HashMap<Long,Message>[])Array.newInstance(HashMap.class,2);
+        myarr[0]=new HashMap<Long,Message>();
+        myarr[1]=new HashMap<Long,Message>();
         for (MessageType msg : msgs){
-            Message parent = all_messages.get(new Integer(msg.getFather()));
-            Message child = all_messages.get(new Integer(msg.getMessageId()));
+            Message parent = all_messages.get(new Long(msg.getFather()));
+            Message child = all_messages.get(new Long(msg.getMessageId()));
             if (parent != null){
                 parent.getChild().add(child);
                 child.setParent(parent);
-                myarr[1].put(new Integer(child.getMsg_id()), child);
+                myarr[1].put(new Long(child.getMsg_id()), child);
             }
             else{
-                myarr[0].put(new Integer(child.getMsg_id()), child);
-                myarr[1].put(new Integer(child.getMsg_id()), child);
+                myarr[0].put(new Long(child.getMsg_id()), child);
+                myarr[1].put(new Long(child.getMsg_id()), child);
             }
         }
         return myarr;
@@ -107,9 +107,9 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
             ForumType data_forum = (ForumType)u.unmarshal(in);
 
             forum = new Forum();
-            Message.setGensym(new Integer(data_forum.getNumOfMsgs()));
+            Message.setGensym(new Long(data_forum.getNumOfMsgs()));
             HashMap<String,User> users = getUsers(data_forum.getAllUsers());
-            HashMap<Integer,Message>[] messages = getMsgs(data_forum.getAllMessages(), users);
+            HashMap<Long,Message>[] messages = getMsgs(data_forum.getAllMessages(), users);
 
             forum.setMessages(messages[0]);
             forum.setAllMessages(messages[1]);
@@ -194,7 +194,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
  * @param username
  * @param datetime
  */
-    public void addMsgToXml(String sbj, String cont, int msg_id, int parent_id, String username, Date datetime) {
+    public void addMsgToXml(String sbj, String cont, long msg_id, long parent_id, String username, Date datetime) {
         MessageType data_msg =  oFactory.createMessageType();
         FileInputStream in = null;
         FileOutputStream out = null;
@@ -246,7 +246,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
  * @param id_toChange - the message id we want to change
  * @param newCont - the new content
  */
-    public void modifyMsgInXml(int id_toChange, String newCont) {
+    public void modifyMsgInXml(long id_toChange, String newCont) {
         FileInputStream in = null;
         FileOutputStream out = null;
 	try {
@@ -324,7 +324,7 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
 	}
     }
 
-    public void deleteMsgFromXml(int msg_id) {
+    public void deleteMsgFromXml(long msg_id) {
         FileInputStream in = null;
         FileOutputStream out = null;
 	try {

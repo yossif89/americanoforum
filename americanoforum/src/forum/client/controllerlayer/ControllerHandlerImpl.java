@@ -47,10 +47,11 @@ public class ControllerHandlerImpl extends ControllerHandler {
 	}
 
 	@Override
-	public void addReplyToMessage(long id, String string, Component comp) {
-		Object[] args = new Object[2];
+	public void addReplyToMessage(long id, String subj,String cont, Component comp) {
+		Object[] args = new Object[3];
                 args[0]= id;
-                args[1] = string;
+                args[1] = subj;
+                args[2]= cont;
 	        if ((this._connectionController.communicate("add_reply",args)).equals("ok"))
                         	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
                 else{
@@ -66,6 +67,23 @@ public class ControllerHandlerImpl extends ControllerHandler {
                         	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
                 else{
                     ClientConnectionController.log.severe("Client: couldn't delete to the  message");
+                }
+	}
+
+        @Override
+	public void register( String username, String password, String first, String last, String email, String address, String gender, Component  comp) {
+		Object[] args = new Object[7];
+                args[0]= username;
+                args[1]= password;
+                args[2]= first;
+                args[3]= last;
+                args[4]= email;
+                args[5]= address;
+                args[6]= gender;
+	        if ((this._connectionController.communicate("register",args)).equals(username))
+                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
+                else{
+                    ClientConnectionController.log.severe("Client: couldn't register");
                 }
 	}
 

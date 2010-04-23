@@ -58,15 +58,17 @@ public class ForumFacadeImpl implements ForumFacade{
        return toRet;
     }
 
-    public ServerResponse deleteMessage(int id,String us) {
+    public ServerResponse deleteMessage(long id,String us) {
+        System.out.println("in delete");
          User u = _facadeForum.getRegisteredUsers().get(us);
         if (u==null)
             u= new User();
       ServerResponse toRet = new ServerResponse();
         try{
-       _facadeForum.deleteMessage(_facadeForum.getAllMessages().get(new Integer(id)), u);
+       _facadeForum.deleteMessage(_facadeForum.getAllMessages().get(new Long(id)), u);
         }
         catch(Exception e){
+           e.printStackTrace();
             toRet.setEx(e);
             return toRet;
         }
@@ -110,15 +112,17 @@ public class ForumFacadeImpl implements ForumFacade{
        return toRet;
     }
 
-    public ServerResponse modifyMessage(int messageId,String cont,String us) {
+    public ServerResponse modifyMessage(long messageId,String cont,String us) {
          User u = _facadeForum.getRegisteredUsers().get(us);
         if (u==null)
             u= new User();
       ServerResponse toRet = new ServerResponse();
         try{
-          _facadeForum.modifyMessage(_facadeForum.getAllMessages().get(new Integer(messageId)), cont, u);
+          _facadeForum.modifyMessage(_facadeForum.getAllMessages().get(new Long(messageId)), cont, u);
         }
         catch(Exception e){
+            System.out.print("99999999999999999999999999999999:");
+            e.printStackTrace();
             toRet.setEx(e);
             return toRet;
         }
@@ -166,7 +170,7 @@ public class ForumFacadeImpl implements ForumFacade{
        return toRet;
     }
 
-    public ServerResponse reply(String subj,String cont,String us , int id) {
+    public ServerResponse reply(String subj,String cont,String us , long id) {
          User u = _facadeForum.getRegisteredUsers().get(us);
         if (u==null)
             u= new User();

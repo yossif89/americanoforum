@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.Vector;
 
 public class Message implements Serializable{
-        private static Integer gensym = 0;
-	private int _msg_id;
+        private static Long gensym = (long)0;
+	private long _msg_id;
 	private String _subject;
 	private String _content;
 	private Date _date;
@@ -67,7 +67,7 @@ public class Message implements Serializable{
  * gets the message id of the message
  * @return the number as int
  */
-    public int getMsg_id() {
+    public long getMsg_id() {
         return _msg_id;
     }
 /**
@@ -89,7 +89,7 @@ public class Message implements Serializable{
  * return the current counter of the message id
  * @return the counter
  */
-    public static Integer getGensym() {
+    public static Long getGensym() {
         return gensym;
     }
 /**
@@ -124,7 +124,7 @@ public class Message implements Serializable{
  * set the message id of the message
  * @param _msg_id - the message id as int
  */
-    public void setMsg_id(int _msg_id) {
+    public void setMsg_id(long _msg_id) {
         this._msg_id = _msg_id;
     }
 /**
@@ -145,7 +145,7 @@ public class Message implements Serializable{
  * sets the counter fo the message
  * @param gensym - the new counter
  */
-    public static void setGensym(Integer gensym) {
+    public static void setGensym(Long gensym) {
         Message.gensym = gensym;
     }
     

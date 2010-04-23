@@ -24,7 +24,7 @@ public class NonSelectedForumTreeCellPanel extends JPanel {
 	private JTextArea m_area;
 	
 	public void updatePanel(ForumCell cell) {
-		m_area.setText(cell.toString());
+		m_area.setText(cell.getM_userName()+"  |  "+cell.getM_subject());
 	}
 
 	public NonSelectedForumTreeCellPanel() {

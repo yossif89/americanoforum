@@ -13,16 +13,16 @@ import java.util.logging.Logger;
  * */
 public class Forum {
         static Logger logger = Logger.getLogger("americanoforum");
-	HashMap<Integer, Message> _messages;
-        HashMap<Integer, Message> _allMessages;
+	HashMap<Long, Message> _messages;
+        HashMap<Long, Message> _allMessages;
 	HashMap<String, User> _registered;
 	HashMap<String, User> _online_users;
         SearchEngine _searchEng;
        PersistenceDataHandler pipe;
 
        public Forum(){
-           _messages = new HashMap<Integer,Message>();
-         _allMessages = new HashMap<Integer,Message>();
+           _messages = new HashMap<Long,Message>();
+         _allMessages = new HashMap<Long,Message>();
 	 _registered = new HashMap<String, User>();
 	 _online_users = new HashMap<String, User>();
          System.out.println("ktovet "+_allMessages);
@@ -57,11 +57,11 @@ public class Forum {
      * sets a collection (hash map)  of messages in the forum
      * @param msgs
      */
-        public void setMessages(HashMap<Integer, Message> msgs){
+        public void setMessages(HashMap<Long, Message> msgs){
             this._messages=msgs;
         }
 
-    public void setAllMessages(HashMap<Integer, Message> _allMessages) {
+    public void setAllMessages(HashMap<Long, Message> _allMessages) {
         this._allMessages = _allMessages;
         this._searchEng.setAllMessages(_allMessages);
     }
@@ -144,6 +144,7 @@ public class Forum {
  * @param tUsr
  */
         public void deleteMessage(Message msg, User tUsr){
+
             tUsr.deleteMessage(msg);
             Vector<Message> child = msg.getChild();
             
@@ -151,15 +152,16 @@ public class Forum {
                 deleteMessage(child.elementAt(i), tUsr);
             }
             if (msg.getParent() == null){
-                this._messages.remove(new Integer(msg.getMsg_id()));
-                _allMessages.remove(new Integer(msg.getMsg_id()));
+                this._messages.remove(new Long(msg.getMsg_id()));
+                _allMessages.remove(new Long(msg.getMsg_id()));
             }
             else{
                 msg.getParent().getChild().remove(msg);
-                _allMessages.remove(new Integer(msg.getMsg_id()));
+                _allMessages.remove(new Long(msg.getMsg_id()));
             }
             this._searchEng.removeMessage(msg);
-            pipe.deleteMsgFromXml(msg.getMsg_id()); 
+            pipe.deleteMsgFromXml(msg.getMsg_id());
+            System.out.println("histayem behzlaha");
         }
 
 
@@ -206,11 +208,11 @@ public class Forum {
   * .gets the root messages
   * @return a hash map with the root messages
   */
-        public HashMap<Integer, Message> getMessages(){
+        public HashMap<Long, Message> getMessages(){
             return this._messages;
         }
 
-    public HashMap<Integer, Message> getAllMessages() {
+    public HashMap<Long, Message> getAllMessages() {
         return _allMessages;
     }
 
@@ -353,9 +355,9 @@ public class Forum {
     * @param fatherId
     * @return
     */
-   private String createString(Message message,int fatherId){
+   private String createString(Message message,long fatherId){
        String toRet="";
-       String subj,cont;
+       String subj,cont,user;
            if (message.getSubject().equals(""))
                     subj="EMPTY SUBJECT";
            else
@@ -364,7 +366,8 @@ public class Forum {
                     cont="EMPTY CONTENT";
            else
                cont = message.getContent();
-        toRet = fatherId+","+message.getMsg_id()+"$$"+subj+"$$"+cont+"\n";
+       user = message.getCreator().getDetails().getUsername();
+        toRet = fatherId+","+message.getMsg_id()+"$$"+subj+"$$"+cont+"$$"+user+"\n";
         if (message.getChild().size() ==0){
             return toRet;
         }
@@ -380,6 +383,7 @@ public class Forum {
     public String toString(){
         String ans="";
         String subj="";
+        String user="";
         String cont = "";
         ans = "onlineUsers$$"+this._online_users.size() + "\n";
 //        for(User user : this._online_users.values()){
@@ -396,7 +400,8 @@ public class Forum {
                     cont="EMPTY CONTENT";
            else
                cont = msg.getContent();
-               ans +=  msg.getMsg_id()+"$$"+subj+"$$"+cont+"\n";
+            user = msg.getCreator().getDetails().getUsername();
+               ans +=  msg.getMsg_id()+"$$"+subj+"$$"+cont+"$$"+user+"\n";
                 if (msg.getChild().size() !=0)
                 for(Message m : msg.getChild()){
                     ans+= createString(m, msg.getMsg_id());

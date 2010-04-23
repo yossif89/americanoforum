@@ -14,11 +14,11 @@ import forum.server.domainlayer.User;
  */
 
 public class ModifyMessageMessage implements ClientMessage{
-     int _id;
+     long _id;
     String _message;
      String _u;
 
-    public ModifyMessageMessage(int _id, String _message, String _u) {
+    public ModifyMessageMessage(long _id, String _message, String _u) {
         this._id = _id;
         this._message = _message;
         this._u = _u;

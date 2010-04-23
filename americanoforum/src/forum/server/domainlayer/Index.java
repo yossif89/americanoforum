@@ -15,37 +15,37 @@ import java.util.Vector;
  */
 public class Index {
 
-    private static Integer curr_word_id =0;
+    private static Long curr_word_id =(long)0;
 
-    private HashMap<String,Integer> words;
-    private HashMap<Integer, Message> _allMessages;
-    private Hashtable<Integer, Vector<Integer>> relations;
+    private HashMap<String,Long> words;
+    private HashMap<Long, Message> _allMessages;
+    private Hashtable<Long, Vector<Long>> relations;
 
-    public Index(HashMap<Integer, Message> allMsgs){
-        this.words = new HashMap<String,Integer>();
+    public Index(HashMap<Long, Message> allMsgs){
+        this.words = new HashMap<String,Long>();
         this._allMessages = allMsgs;
         System.out.println("index ktovet "+allMsgs);
-        this.relations = new Hashtable<Integer, Vector<Integer>>();
+        this.relations = new Hashtable<Long, Vector<Long>>();
     }
 
-    public void setAllMegs(HashMap<Integer, Message>  allMsgs){
+    public void setAllMegs(HashMap<Long, Message>  allMsgs){
         this._allMessages = allMsgs;
     }
 
-    public Integer addWord(String word){
+    public Long addWord(String word){
         if (!words.containsKey(word)){
             words.put(word, curr_word_id);
-            int tmp = curr_word_id.intValue();
+            long tmp = curr_word_id.longValue();
             curr_word_id++;
-            return new Integer(tmp);
+            return new Long(tmp);
         }
         else
             return words.get(word);
     }
 
-    public void addRelation(Integer word_id, Integer message_id){
+    public void addRelation(Long word_id, Long message_id){
         if (!this.relations.containsKey(word_id)){
-            Vector<Integer> msg_ids = new Vector<Integer>();
+            Vector<Long> msg_ids = new Vector<Long>();
             msg_ids.add(message_id);
             this.relations.put(word_id, msg_ids);
         }
@@ -56,29 +56,29 @@ public class Index {
         }
     }
 
-    public Vector<Integer> getMsgsIDsForWord(Integer word_id){
+    public Vector<Long> getMsgsIDsForWord(Long word_id){
         return this.relations.get(word_id);
     }
 
-    public Vector<Message> getMsgsByWordID(Integer word_id){
-        Vector<Integer> msgs_ids = this.getMsgsIDsForWord(word_id);
+    public Vector<Message> getMsgsByWordID(Long word_id){
+        Vector<Long> msgs_ids = this.getMsgsIDsForWord(word_id);
         Vector<Message> result = new Vector<Message>();
-        for(Integer id : msgs_ids){
+        for(Long id : msgs_ids){
             result.add(this._allMessages.get(id));
         }
         return result;
     }
 
-    public HashMap<Integer, Message> getAllMsgs(){
+    public HashMap<Long, Message> getAllMsgs(){
         return this._allMessages;
     }
 
-    public Integer getWordID(String word) {
+    public Long getWordID(String word) {
         return this.words.get(word);
     }
 
-    public void removeWord(String word, Integer word_id, Integer msg_id) {
-        Vector<Integer> msg_vect = this.relations.get(word_id);
+    public void removeWord(String word, Long word_id, Long msg_id) {
+        Vector<Long> msg_vect = this.relations.get(word_id);
         if (msg_vect.size() == 1){
             this.relations.remove(word_id);
             this.words.remove(word);

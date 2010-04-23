@@ -65,7 +65,7 @@ public class UserTest extends TestCase {
         Message m = this._u1.addMessage("test", "test");
         assertTrue(m.getParent() == null);
         assertTrue(m.getCreator().equals(_u1));
-        Message m2 = this._u1.getMyMessages().get(new Integer(m.getMsg_id()));
+        Message m2 = this._u1.getMyMessages().get(new Long(m.getMsg_id()));
         assertEquals(m,m2);
         int flag=0;
         try{
@@ -83,7 +83,7 @@ public class UserTest extends TestCase {
     public void testModifyMessage() {
         Message m = this._u1.addMessage("test", "test");
         this._u1.modifyMessage(m, "hello");
-        Message m2 = this._u1.getMyMessages().get(new Integer(m.getMsg_id()));
+        Message m2 = this._u1.getMyMessages().get(new Long(m.getMsg_id()));
         assertEquals(m2.getContent(),"hello");
         int flag=0;
         try{
@@ -104,7 +104,7 @@ public class UserTest extends TestCase {
         Message m2 = this._u1.reply(m, "test2", "test2");
         assertTrue(m2.getParent() == m);
         assertTrue(m.getCreator().equals(_u1));
-        Message m3 = this._u1.getMyMessages().get(new Integer(m2.getMsg_id()));
+        Message m3 = this._u1.getMyMessages().get(new Long(m2.getMsg_id()));
         assertEquals(m3,m2);
     }
 

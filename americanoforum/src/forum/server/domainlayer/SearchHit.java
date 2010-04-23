@@ -9,7 +9,7 @@ public class SearchHit {
 	
 	private Message m_message;
 	private double m_score;
-        private int msg_id;
+        private long msg_id;
 
         /**
          * constructor
@@ -26,7 +26,7 @@ public class SearchHit {
          * @param msgID msg id of the hit
          * @param score score of the hit
          */
-        public SearchHit(int msgID, double score) {
+        public SearchHit(long msgID, double score) {
 		msg_id = msgID;
 		m_score = score;
                 m_message = null;
@@ -38,7 +38,7 @@ public class SearchHit {
          * @param score the score of the hit
          * @param msgID the message id
          */
-        public SearchHit(Message message, double score, int msgID) {
+        public SearchHit(Message message, double score, long msgID) {
 		msg_id = msgID;
 		m_score = score;
                 m_message = message;

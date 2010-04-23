@@ -63,6 +63,6 @@ public interface SearchEngine {
          * set the all messages field
          * @param _allMessages the new all messages DB
          */
-        public void setAllMessages(HashMap<Integer, Message> _allMessages);
+        public void setAllMessages(HashMap<Long, Message> _allMessages);
 
 }

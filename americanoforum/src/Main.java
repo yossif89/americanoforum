@@ -21,7 +21,7 @@ public class Main {
                     int msg_ind=scanner.nextInt();
                     Message msg=null;
                     if (vect == null) 
-                        msg = forum.getMessages().get(new Integer(msg_ind));
+                        msg = forum.getMessages().get(new Long(msg_ind));
                     else{
                         for (int i=0; i<vect.size(); i++){
                             if (msg_ind == vect.elementAt(i).getMsg_id())

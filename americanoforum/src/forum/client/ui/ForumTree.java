@@ -24,9 +24,12 @@ import javax.swing.tree.DefaultTreeModel;
 import forum.client.controllerlayer.ControllerHandler;
 import forum.client.controllerlayer.ControllerHandlerFactory;
 import forum.client.controllerlayer.ControllerHandlerImpl;
+import java.awt.GridBagLayout;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 import java.util.logging.Handler;
+import javax.swing.BoxLayout;
+import javax.swing.SpringLayout;
 
 /**
  * @author Tomer Heber
@@ -88,11 +91,19 @@ public class ForumTree implements ForumTreeHandler {
 		});
 		
 		m_panel = new JPanel();
+                JPanel temp = new JPanel();
+                temp.setBackground(Color.WHITE);
 		m_panel.setBackground(Color.WHITE);
 		JScrollPane pane = new JScrollPane(m_tree);
 		pane.setPreferredSize(new Dimension(610,435));
-		m_panel.add(pane);
-		
+		JButton registerButton = new JButton("Register");
+                JButton loginButton = new JButton("Login");
+                JButton logoffButton = new JButton("Logoff");
+		temp.add(registerButton);
+                temp.add(loginButton);
+                temp.add(logoffButton);
+                m_panel.add(temp);
+                m_panel.add(pane);
 		m_panel.setPreferredSize(new Dimension(620,460));
 	}
 	
@@ -152,9 +163,12 @@ public class ForumTree implements ForumTreeHandler {
                  String cont="";
                if (tempTok.hasMoreTokens())
                     cont = tempTok.nextToken();
+                 String username="";
+               if (tempTok.hasMoreTokens())
+                    username = tempTok.nextToken();
 
                    System.out.println("ConTent= "+cont);
-               toRet = new ForumCell(id, subject, cont);
+               toRet = new ForumCell(id, username, subject, cont);
                 return  toRet;
         }
 
@@ -166,7 +180,7 @@ public class ForumTree implements ForumTreeHandler {
 	 */
 	private ForumCell decodeView(String encodedView) {
             HashMap<Long,ForumCell> mapping = new HashMap<Long, ForumCell>();
-            ForumCell toRet=new ForumCell(-2,"66666666666","66666666666666666");;
+            ForumCell toRet=new ForumCell(-2,"666666666666","66666666666","66666666666666666");;
              ForumCell temp;
             StringTokenizer lineTok = new StringTokenizer(encodedView,"\n");
             lineTok.nextToken();
@@ -202,7 +216,6 @@ public class ForumTree implements ForumTreeHandler {
 	public void modifyMessage(final String newContent, final JButton button) {
 		button.setEnabled(false);
 		m_pool.execute(new Runnable() {
-			
 			@Override
 			public void run() {
 				DefaultMutableTreeNode node = (DefaultMutableTreeNode)m_tree.getSelectionPath().getLastPathComponent();
@@ -211,20 +224,35 @@ public class ForumTree implements ForumTreeHandler {
 			}
 		});
 	}
+
+        /**
+	 * Modifies a message, and updates the forum accordingly.
+	 *
+	 * @param newContent The new content of the message.
+	 */
+	public void Register(final String username,final String password,final String first,final String last,final String email,final String address,final String gender, final JButton button) {
+		button.setEnabled(false);
+		m_pool.execute(new Runnable() {
+			@Override
+			public void run() {
+				m_pipe.register(username, password, first, last, email, address, gender, button);
+			}
+		});
+	}
 	
 	/**
 	 * Replies to the selected message.
 	 */
-	public void replyToMessage(final JButton button) {
+	public void replyToMessage(final String subj,final String cont,final JButton button) {
 		button.setEnabled(false);
 		m_pool.execute(new Runnable() {
 			
-			@Override
-			public void run() {
-				DefaultMutableTreeNode node = (DefaultMutableTreeNode)m_tree.getSelectionPath().getLastPathComponent();
-				ForumCell cell = (ForumCell) node.getUserObject();				
-				m_pipe.addReplyToMessage(cell.getId(),"",button);					
-			}
+                    @Override
+                    public void run() {
+                            DefaultMutableTreeNode node = (DefaultMutableTreeNode)m_tree.getSelectionPath().getLastPathComponent();
+                            ForumCell cell = (ForumCell) node.getUserObject();
+                            m_pipe.addReplyToMessage(cell.getId(),subj,cont,button);
+                    }
 		});			
 	}
 

@@ -52,7 +52,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class MessageType {
 
     @XmlElement(name = "_messageId")
-    protected int messageId;
+    protected long messageId;
     @XmlElement(name = "_subject", required = true)
     protected String subject;
     @XmlElement(name = "_content", required = true)
@@ -61,7 +61,7 @@ public class MessageType {
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar date;
     @XmlElement(name = "_father")
-    protected int father;
+    protected long father;
     @XmlElement(name = "_creator", required = true)
     protected String creator;
 
@@ -69,7 +69,7 @@ public class MessageType {
      * Gets the value of the messageId property.
      * 
      */
-    public int getMessageId() {
+    public long getMessageId() {
         return messageId;
     }
 
@@ -77,7 +77,7 @@ public class MessageType {
      * Sets the value of the messageId property.
      * 
      */
-    public void setMessageId(int value) {
+    public void setMessageId(long value) {
         this.messageId = value;
     }
 
@@ -157,7 +157,7 @@ public class MessageType {
      * Gets the value of the father property.
      * 
      */
-    public int getFather() {
+    public long getFather() {
         return father;
     }
 
@@ -165,7 +165,7 @@ public class MessageType {
      * Sets the value of the father property.
      * 
      */
-    public void setFather(int value) {
+    public void setFather(long value) {
         this.father = value;
     }
 

@@ -15,10 +15,10 @@ public interface ForumFacade {
                ServerResponse login(String user,String pass);
                ServerResponse logoff(String u);
                ServerResponse register(String user,String username,String password,String email,String first,String last , String address,String gender);
-               ServerResponse deleteMessage(int id,String u);
+               ServerResponse deleteMessage(long id,String u);
                ServerResponse promoteMessage(String u, String a);
-               ServerResponse modifyMessage(int messageId,String cont,String u) ;
-               ServerResponse reply(String subj,String cont,String u , int id);
+               ServerResponse modifyMessage(long messageId,String cont,String u) ;
+               ServerResponse reply(String subj,String cont,String u , long id);
                ServerResponse searchByAuthor(String username, int from, int to);
                ServerResponse searchByContent(String toSearch, int from, int to);
 	

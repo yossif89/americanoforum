@@ -113,10 +113,10 @@ public class PersistenceDataHandlerImplTest extends TestCase {
         Forum  forum = pipe.getForumFromXml();
         HashMap<String,User>  registers  = forum.getRegisteredUsers();
        User u1 = registers.get("shassaf");
-        HashMap<Integer, Message> myMsg  = u1.getMyMessages();
+        HashMap<Long, Message> myMsg  = u1.getMyMessages();
         
-         Message m2 = myMsg.get(new Integer(2));
-        Message m1 = myMsg.get(new Integer(1));
+         Message m2 = myMsg.get(new Long(2));
+        Message m1 = myMsg.get(new Long(1));
         System.out.println(myMsg.toString());
      assertTrue(m2.getContent().equals("test22"));
        assertTrue(m2.getSubject().equals("test2"));
@@ -128,8 +128,8 @@ public class PersistenceDataHandlerImplTest extends TestCase {
 
        
 
-       Message forumsMessage = forum.getMessages().get(new Integer(1));
-       Message forumsMessage2 = forum.getMessages().get(new Integer(2));
+       Message forumsMessage = forum.getMessages().get(new Long(1));
+       Message forumsMessage2 = forum.getMessages().get(new Long(2));
        assertTrue(forumsMessage==m1);
        assertTrue(forumsMessage2==null);
        assertTrue(forumsMessage.getChild().size()==1);
@@ -153,9 +153,9 @@ public class PersistenceDataHandlerImplTest extends TestCase {
            Forum  forum = pipe.getForumFromXml();
           HashMap<String,User>  registers  = forum.getRegisteredUsers();
        User u1 = registers.get("shassaf");
-        HashMap<Integer, Message> myMsg  = u1.getMyMessages();
-       Message m1 = myMsg.get(new Integer(1));
-         Message m2 = myMsg.get(new Integer(2));
+        HashMap<Long, Message> myMsg  = u1.getMyMessages();
+       Message m1 = myMsg.get(new Long(1));
+         Message m2 = myMsg.get(new Long(2));
 
          assertTrue(m1.getContent().equals("modi3"));
          assertTrue(m2.getContent().equals("modi2"));

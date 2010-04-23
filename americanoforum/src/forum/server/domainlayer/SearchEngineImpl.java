@@ -25,7 +25,7 @@ public class SearchEngineImpl implements SearchEngine{
      * constructor
      * @param allMsgs all the messages in the system
      */
-    public SearchEngineImpl(HashMap<Integer, Message> allMsgs){
+    public SearchEngineImpl(HashMap<Long, Message> allMsgs){
         this._index = new Index(allMsgs);
         Collection<Message> msgs = allMsgs.values();
         for(Message msg : msgs){
@@ -58,13 +58,13 @@ public class SearchEngineImpl implements SearchEngine{
         StringTokenizer toki_cont = new StringTokenizer(cont,"[ \t\n\r\f.-]");
         while(toki_sbj.hasMoreTokens()){
             String tmp = toki_sbj.nextToken();
-            Integer word_id = this._index.addWord(tmp);
-            this._index.addRelation(word_id, new Integer(msg.getMsg_id()));
+            Long word_id = this._index.addWord(tmp);
+            this._index.addRelation(word_id, new Long(msg.getMsg_id()));
         }
         while(toki_cont.hasMoreTokens()){
             String tmp = toki_cont.nextToken();
-            Integer word_id = this._index.addWord(tmp);
-            this._index.addRelation(word_id, new Integer(msg.getMsg_id()));
+            Long word_id = this._index.addWord(tmp);
+            this._index.addRelation(word_id, new Long(msg.getMsg_id()));
         }
     }
 
@@ -140,7 +140,7 @@ public class SearchEngineImpl implements SearchEngine{
         while(toki_phrase.hasMoreTokens()){
             numOfTokInPhrase++;
             String word = toki_phrase.nextToken();
-            Integer word_id = this._index.getWordID(word);
+            Long word_id = this._index.getWordID(word);
             Vector<Message> word_msgs = this._index.getMsgsByWordID(word_id);
             int flag=0;
             for (Message msg : word_msgs){
@@ -193,12 +193,12 @@ public class SearchEngineImpl implements SearchEngine{
         StringTokenizer toki_cont = new StringTokenizer(msg.getContent(),"[ \t\n\r\f.-]");
         while(toki_cont.hasMoreTokens()){
             String word = toki_cont.nextToken();
-            Integer word_id = this._index.getWordID(word);
+            Long word_id = this._index.getWordID(word);
             this._index.removeWord(word,word_id,msg.getMsg_id());
         }
         while(toki_sbj.hasMoreTokens()){
             String word = toki_sbj.nextToken();
-            Integer word_id = this._index.getWordID(word);
+            Long word_id = this._index.getWordID(word);
             this._index.removeWord(word,word_id,msg.getMsg_id());
         }
     }
@@ -207,7 +207,7 @@ public class SearchEngineImpl implements SearchEngine{
          * set the all messages field
          * @param _allMessages the new all messages DB
          */
-    public void setAllMessages(HashMap<Integer, Message> _allMessages) {
+    public void setAllMessages(HashMap<Long, Message> _allMessages) {
         this._index.setAllMegs(_allMessages);
     }
 

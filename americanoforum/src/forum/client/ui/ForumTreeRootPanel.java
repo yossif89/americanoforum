@@ -18,7 +18,7 @@ public class ForumTreeRootPanel extends JPanel {
 	private static final long serialVersionUID = -6952266542697445089L;
 	private ForumTree m_forumTree;
 	private JButton m_addMessageButton;
-	
+	private JButton m_registerButton;
 	public ForumTreeRootPanel(ForumTree forumTree) {
 		super();
 		
@@ -39,6 +39,8 @@ public class ForumTreeRootPanel extends JPanel {
 		});
 		
 		this.add(m_addMessageButton);
+
+     
 		
 		m_forumTree = forumTree;
 	}

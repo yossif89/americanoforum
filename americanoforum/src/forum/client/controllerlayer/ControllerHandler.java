@@ -46,8 +46,9 @@ public abstract class ControllerHandler extends Observable {
 	 * @param id The id of the message to which we reply.
 	 * @param string The content of the new message.
 	 */
-	public abstract void addReplyToMessage(long id, String string, Component comp);
+	public abstract void addReplyToMessage(long id, String subject,String content, Component comp);
 
+        public abstract  void register( String username, String password, String first, String last, String email, String address, String gender, Component  comp) ;
 	/**
 	 * Deletes recursively the message id and all his sons.
 	 * 

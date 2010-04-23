@@ -13,12 +13,12 @@ import forum.server.domainlayer.User;
  * @author Ilya
  */
 public class AddReplyMessage implements ClientMessage{
-  int _id;
+  long _id;
   String _subj;
   String _message;
   String _user;
 
-    public AddReplyMessage(int id, String subj, String message,String u) {
+    public AddReplyMessage(long id, String subj, String message,String u) {
         this._id = id;
         this._subj = subj;
         this._message = message;

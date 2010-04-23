@@ -21,7 +21,7 @@ public class SearchEngineImplTest extends TestCase {
     private User _u1;
     private User _u2;
 
- private   HashMap<Integer, Message> allMsgs;
+ private   HashMap<Long, Message> allMsgs;
   private Index  ind;
  private  SearchEngineImpl searchEngine;
 
@@ -31,7 +31,7 @@ public class SearchEngineImplTest extends TestCase {
 
     @Override
     protected void setUp() throws Exception {
-        allMsgs = new HashMap<Integer, Message>();
+        allMsgs = new HashMap<Long, Message>();
         searchEngine = new SearchEngineImpl(allMsgs);
         this.ind = this.searchEngine.getIndex();
         Details d1 = new Details("shassaf", Forum.encryptPassword("123"), "1", "assaf", "sun", "b", "male");
@@ -75,24 +75,24 @@ public class SearchEngineImplTest extends TestCase {
          this.searchEngine.addData(m2);
 
 
-         Integer w1 = this.ind.getWordID("test");
+         Long w1 = this.ind.getWordID("test");
 
          Vector<Message>  msgs1 =this.ind.getMsgsByWordID(w1);
          assertEquals(1, msgs1.size());
          assertTrue(msgs1.contains(m1));
 
-         Integer w2 = this.ind.getWordID("bla2");
+         Long w2 = this.ind.getWordID("bla2");
          Vector<Message>  msgs2 =this.ind.getMsgsByWordID(w2);
          assertEquals(1, msgs2.size());
          assertTrue(msgs2.contains(m2));
 
-         Integer w3 = this.ind.getWordID("david");
+         Long w3 = this.ind.getWordID("david");
          Vector<Message>  msgs3 =this.ind.getMsgsByWordID(w3);
          assertEquals(2, msgs3.size());
          assertTrue(msgs3.contains(m2));
          assertTrue(msgs3.contains(m1));
 
-          Integer w4 = this.ind.getWordID("nothing");
+          Long w4 = this.ind.getWordID("nothing");
          assertEquals(null,w4);
        
     }
