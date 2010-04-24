@@ -1,15 +1,18 @@
-package Tests;
-
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
+package forum.server.acceptance;
 
 //There is no real implementation yet so no real connection making was possible!
+
+import forum.client.controllerlayer.ClientConnectionController;
+import forum.client.controllerlayer.ControllerHandler;
+import forum.client.controllerlayer.ControllerHandlerFactory;
+import forum.client.controllerlayer.ControllerHandlerImpl;
+import forum.server.controllerlayer.ServerConnectionController;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import javax.swing.JButton;
+
 //The class is build for compiling only.
 
-import Impl.Category;
-import Impl.Request;
-import Impl.Systemi;
 /**
  * This class Is simulating the case in which a real implementation exists ,
  * and if so , this real bridge connects the real implementation of the project to the
@@ -17,109 +20,56 @@ import Impl.Systemi;
  */
 public class RealBridge implements ForumBridge {
 
-	private Systemi sys ;
+       ClientConnectionController _driver;
 
 	public RealBridge(){
-		sys = new Systemi();
-		build();
+            try{
 
+              _driver = new ClientConnectionController("127.0.0.1", (short)1234);
+            }
+            catch(Exception e){
+                _driver = null;
+                System.out.println("failed communication with the server");
+            }
+		build();
 	}
 
 	public void build(){
-		sys.addUser("Hila", "Hila", "1111", "034741736", "DeptUser");
-		sys.addUser("Hila", "Hila", "1111", "123", "DeptUser" );
-		sys.addUser("Ilya", "Ilya", "2222", "307011049", "OshUser");
-		sys.addUser("Mayer Goldberg", "may", "9999", "111111111", "DeptUser");
-		sys.addUser("Igal Meital", "igi", "8888", "22222222", "DeptUser");
-		sys.addUser("Mayer Algem", "may2", "7777", "33333333", "DeptUser");
-		sys.addFormToDept(1, "repository", "Mlai");
-		Category.getInstance("Mlai");
+                Object[] args = new Object[7];
+                args[0]= "iluxa13";
+                args[1]= "abcd";
+                args[2]= "ilya";
+                args[3]= "g"   ;
+                args[4]= "@";
+                args[5]= "Haifa";
+                args[6]= "male";
+               _driver.communicate("register", args);
 	}
 
 //The explanations(javadoc) for each method exists in the interface AutomatingFormBridge
 
-
-	public boolean loginDept(String username , String password , String id,String userType){
-		return sys.login(username, password, id, userType);
+        public boolean login(String username , String password) {
+                Object[] args = new Object[2];
+                args[0]= username;
+                args[1]= password;
+                String ans = _driver.communicate("login", args);
+                return (ans.equals(username));
 	}
 
-	public boolean loginOsh(String username , String password , String id,String userType){
-		return sys.login(username, password, id, userType);
+	public boolean register( String username, String password, String first, String last, String email, String address, String gender){
+                 Object[] args = new Object[7];
+                args[0]= username;
+                args[1]= password;
+                args[2]= first;
+                args[3]= last;
+                args[4]= email;
+                args[5]= address;
+                args[6]= gender;
+                String ans = _driver.communicate("register", args);
+                return (ans.equals(username));
 	}
 
-	public boolean fillForm(int depId, String formName){
-		return sys.fillForm(depId, "repository");
-	}
-
-	public Set viewByName(String name){
-		sys = new Systemi();
-		Category.eraseAll();
-		build();
-
-		Set<String> toRet = new HashSet<String>();
-		sys.login("may", "9999", "111111111", "DeptUser");
-		Category.getInstance("Education");
-		sys.addFormToDept(700, "student education form", "Education");
-		sys.fillForm(700, "student education form");
-
-		Set<Request> temp = sys.viewByName(name);
-
-		for (Request r : temp){
-			toRet.add(r.getName()+" - "+r.getInititator().getName());
-		}
-
-
-		return toRet;
-	}
-
-	public Set viewByCategory(String category){
-		sys = new Systemi();
-		Category.eraseAll();
-		build();
-
-		Set<String> toRet = new HashSet<String>();
-		sys.login("may2", "7777", "33333333", "DeptUser");
-		Category.getInstance("Miscellaneous");
-		sys.addFormToDept(707, "student failure form", "Miscellaneous");
-		sys.fillForm(707, "student failure form");
-
-		sys.login("igi", "8888", "22222222", "DeptUser");
-		Category.getInstance("Equipment");
-		sys.addFormToDept(708, "get cable form", "Equipment");
-		sys.addFormToDept(708, "get pic18 form", "Equipment");
-		sys.fillForm(708, "get cable form");
-		sys.fillForm(708, "get pic18 form");
-		Set<Request> temp = sys.viewByCategory(category);
-
-		for (Request r : temp){
-			toRet.add(r.getName()+" - "+r.getInititator().getName());
-		}
-
-		return toRet;
-	}
-
-	public Set viewByNumber(int number){
-		sys = new Systemi();
-		Category.eraseAll();
-		build();
-		sys.login("igi" , "8888", "22222222", "DeptUser");
-		Category.getInstance("Equipment");
-		sys.addFormToDept(708, "get cable form", "Equipment");
-		sys.addFormToDept(708, "get pic18 form", "Equipment");
-		sys.fillForm(708, "get cable form");
-		sys.fillForm(708, "get pic18 form");
-
-		Set<String> toRet = new HashSet<String>();
-		Set<Request> temp = sys.viewByNumber(number);
-		if (temp==null)
-			return toRet;
-		for (Request r : temp){
-			toRet.add(r.getName()+" - "+r.getInititator().getName());
-		}
-		return toRet;
-	}
-
-
+	
 
 
 

@@ -72,7 +72,7 @@ public class ClientConnectionController extends Thread {
 			}
 			res = (ServerResponse)o;
                         if (res.getEx() != null){
-                            System.out.println("res.exception!=null ");
+                       
                         }
 			if (res.hasExecuted()) {
                             log.info("server succeded handling the client message");
@@ -112,9 +112,7 @@ public class ClientConnectionController extends Thread {
                             else
                               return "$You don't have the permission to perform this operation \n Try logging in or contact the administrator";
                           }
-                          else{
-                              System.out.println("so the exception is : "+res.getEx());
-                          }
+                         
                         
                         }
                 }
@@ -126,109 +124,7 @@ public class ClientConnectionController extends Thread {
                 }
                 
 
-		//	@Override
-		//	public void run() {
-		//		BufferedReader prompt = new BufferedReader(new InputStreamReader(System.in));
-		//		try {
-		//			printHelp();
-		//			while (true) {
-		//
-		//
-		////				if (str.equals("disconnect")) {
-		////					break;
-		////				}
-		//
-		//
-		//				ClientMessage msg;
-		//				try {
-		//					/* Handles the command. */
-		//					msg = handleCommand(str);
-		//				} catch (BadCommandException e) {
-		//					log.info("The user has inputed an invalid command.");
-		//					//e.printStackTrace();
-		//					System.out.println();
-		//					continue;
-		//				}
-		//				/* send the message to the server. */
-		//				out.writeObject(msg);
-		//                                this.log.log(Level.INFO, "sent command from client");
-		//				/* receive response from the server. */
-		//				Object o = in.readObject();
-		//                                this.log.log(Level.INFO, "recieved response from server");
-		//				if (o == null) {
-		//					log.severe("Lost connection to server.");
-		//					break;
-		//				}
-		//				if (!(o instanceof ServerResponse)) {
-		//					log.severe("Received an invalid response from server.");
-		//					break;
-		//				}
-		//
-		//				ServerResponse res = (ServerResponse)o;
-		//				/* Check if the server has done the command. */
-		//				if (res.hasExecuted()) {
-		//					System.out.println("done!");
-		//				}
-		//				else {
-		//					System.out.println("failed!");
-		//				}
-		//				/* Print the response from the server */
-		//
-		//                                if (msg instanceof LoginMessage){
-		//                                    this._user = res.getResponse();
-		//                                    log.log(Level.INFO,"Changed username to "+res.getResponse());
-		//                                }
-		//                                else if (msg instanceof ViewForumMessage){
-		//                                    	System.out.println(res.getResponse());
-		//                                }
-		//                                 else if (msg instanceof LogoffMessage){
-		//                                      this._user = null;
-		//                                    log.log(Level.INFO,"Changed username to null");
-		//                                }
-		//                                else if (msg instanceof RegisterMessage){
-		//                                    if (res.getResponse().equals("")){
-		//                                          log.log(Level.INFO,"didn't change the user in the client");
-		//                                    }
-		//                                    else{
-		//                                      this._user = res.getResponse();
-		//
-		//                                    log.log(Level.INFO,"Changed username to "+this._user);
-		//                                }
-		//                                }
-		//                                // *~*~*~*~*~*~*~**~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
-		//                                //*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
-		//                                else if (msg instanceof SearchByAuthorMessage){
-		//                                    System.out.println(res.getResponse());
-		//
-		//                                }
-		//                                else if (msg instanceof SearchByContentMessage){
-		//                                    System.out.println(res.getResponse());
-		//
-		//                                }
-		//			}
-		//		} catch (ClassNotFoundException e) {
-		//			log.severe("Received an invalid object from the server.");
-		//			e.printStackTrace();
-		//		} catch (IOException e) {
-		//			log.severe("IOException occured while trying to read/send/write.");
-		//			e.printStackTrace();
-		//		}
-		//                catch (Exception e){
-		//                    log.severe("unknown exception catched: \n");
-		//                    e.printStackTrace();
-		//                }
-		//		finally {
-		//			try {
-		//				/* Closing all the streams. */
-		//				prompt.close();
-		//				closeConnection();
-		//			} catch (IOException e) {
-		//				log.severe("IOException while trying to close streams.");
-		//				e.printStackTrace();
-		//			}
-		//		}
-		//	}
-
+	
 
 
 		/**

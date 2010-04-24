@@ -1,8 +1,6 @@
 package forum.server.acceptance;
 
 
-import java.util.Set;
-
 
 /**
  * The interface of the tested operations
@@ -26,7 +24,7 @@ public interface ForumBridge {
 	 * @param password
 	 * @return true if the login succeeded, false otherwise
 	 */
-	public boolean login(String username , String password);
+	public boolean register( String username, String password, String first, String last, String email, String address, String gender);
 
 
 }

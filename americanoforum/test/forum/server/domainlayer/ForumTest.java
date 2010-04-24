@@ -80,8 +80,13 @@ public class ForumTest extends TestCase{
      */
     public void testLogoff() {
         System.out.println("logoff");
+        try{
         this._forum.login("shassaf", "123");
         this._forum.login("felberba", "1233");
+        }
+        catch(Exception e){
+            assertTrue(false);
+        }
         this._forum.logoff(_u1);
         HashMap<String,User> online_users = this._forum.getOnlineUsers();
         HashMap<String,User> registered_users = this._forum.getRegisteredUsers();
@@ -128,7 +133,7 @@ public class ForumTest extends TestCase{
      */
     public void testDelete() {
            System.out.println("delete test: ");
-       Long n1=0,n2=0,n3=0;
+       Long n1=(long)0,n2=(long)0,n3=(long)0;
         try{
             n1=Message.getGensym();
 
@@ -175,7 +180,12 @@ public class ForumTest extends TestCase{
      */
     public void testLogin() {
         System.out.println("login");
+        try{
         this._forum.login("shassaf", "123");
+        }
+        catch(Exception e){
+            assertTrue(false);
+        }
         HashMap<String,User> online_users = this._forum.getOnlineUsers();
         HashMap<String,User> registered_users = this._forum.getRegisteredUsers();
         assertTrue(online_users.containsKey(_u1.getDetails().getUsername()));
