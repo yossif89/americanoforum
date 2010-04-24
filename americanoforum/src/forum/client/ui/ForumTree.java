@@ -50,6 +50,8 @@ public class ForumTree implements ForumTreeHandler {
 	 */
 	private JPanel m_panel;
 
+        private  StatusPanel statusPanel;
+
         private JButton  registerButton,loginButton,logoffButton;
 	/**
 	 * A pipe interface to communicate with the controller layer.
@@ -72,11 +74,11 @@ public class ForumTree implements ForumTreeHandler {
 		
 		m_tree = new JTree();
 		m_tree.putClientProperty("JTree.lineStyle", "None");		
+                statusPanel = new StatusPanel();
+                 String ans = m_pipe.getForumView("null");
+                 refreshForum(ans);
 
-                 String ans = m_pipe.getForumView();
-                  refreshForum(ans);
-
-       
+                 
 		
 		
 		ForumTreeCellRenderer renderer = new ForumTreeCellRenderer(this);
@@ -103,6 +105,15 @@ public class ForumTree implements ForumTreeHandler {
 		registerButton = new JButton("Register");
                  loginButton = new JButton("Login");
                 logoffButton = new JButton("Logoff");
+                registerButton.setForeground(Color.GRAY);
+                registerButton.setOpaque(false);
+                registerButton.setFocusPainted(false);
+                loginButton.setForeground(Color.GRAY);
+                loginButton.setOpaque(false);
+                loginButton.setFocusPainted(false);
+                logoffButton.setForeground(Color.GRAY);
+                logoffButton.setOpaque(false);
+                logoffButton.setFocusPainted(false);
 		temp.add(registerButton);
                 temp.add(loginButton);
                 temp.add(logoffButton);
@@ -137,10 +148,22 @@ public class ForumTree implements ForumTreeHandler {
 			}
 		});
 
+                logoffButton.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+                                 java.awt.EventQueue.invokeLater(new Runnable() {
+                                 public void run() {
+                                        m_pipe.logoff(logoffButton);
+                                     }
+                                    });
+			}
+		});
 
                 m_panel.add(temp);
+                pane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 102)));
                 m_panel.add(pane);
+                m_panel.add(statusPanel);
 		m_panel.setPreferredSize(new Dimension(620,460));
 	}
 	
@@ -154,7 +177,6 @@ public class ForumTree implements ForumTreeHandler {
 	
 	@Override
 	public synchronized void refreshForum(String encodedView) {
-                System.out.println("encoded \n"+ encodedView);
 		ForumCell rootCell = decodeView(encodedView);
 		DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode(rootCell); 
 		
@@ -189,22 +211,17 @@ public class ForumTree implements ForumTreeHandler {
 	}
 
         public ForumCell  getDataFromLine(String line){
-            ForumCell toRet=null;
-               System.out.println("line "+line);
+                ForumCell toRet=null;
                StringTokenizer tempTok = new StringTokenizer(line, "$$");
                String num = tempTok.nextToken();
-               System.out.println("next token"+num);
                long id = Long.parseLong(num);
                String subject = tempTok.nextToken();
-               System.out.println("suBjEct= "+subject);
-                 String cont="";
+               String cont = "";
                if (tempTok.hasMoreTokens())
                     cont = tempTok.nextToken();
                  String username="";
                if (tempTok.hasMoreTokens())
                     username = tempTok.nextToken();
-
-                   System.out.println("ConTent= "+cont);
                toRet = new ForumCell(id, username, subject, cont);
                 return  toRet;
         }
@@ -216,16 +233,34 @@ public class ForumTree implements ForumTreeHandler {
 	 * @return The tree representing the forum.
 	 */
 	private ForumCell decodeView(String encodedView) {
+            System.out.println(encodedView);
             HashMap<Long,ForumCell> mapping = new HashMap<Long, ForumCell>();
             ForumCell toRet=new ForumCell(-2,"666666666666","66666666666","66666666666666666");
              ForumCell temp;
             StringTokenizer lineTok = new StringTokenizer(encodedView,"\n");
-            lineTok.nextToken();
+            
+            statusPanel.setSize(610,statusPanel.getHeight());
+            
+            this.statusPanel.get_Name().setText(lineTok.nextToken());
+            this.statusPanel.get_Size().setText("There are "+lineTok.nextToken()+" online users:");
+            String users = lineTok.nextToken();
+            StringTokenizer psikTok = new StringTokenizer(users,",");
+            int counter =0;
+            String newUsers="";
+            while (psikTok.hasMoreTokens()){
+                if (counter>7){
+                    counter=0;
+                    newUsers+="\n";
+                }
+                newUsers+=psikTok.nextToken()+",";
+                counter++;
+            }
+            this.statusPanel.get_Online().setText(newUsers.substring(0,newUsers.length()-1));
+
               StringTokenizer tempTok;
             while(lineTok.hasMoreTokens()){
 
                 String line = lineTok.nextToken();
-                System.out.println("aaaaaaaaaa line = "+line);
                 tempTok = new StringTokenizer(line, "$$");
                 String first = tempTok.nextToken();
                 if(first.indexOf(",")<=0){
@@ -332,9 +367,10 @@ public class ForumTree implements ForumTreeHandler {
 	public static void main(String[] args) {
 		ForumTree tree = new ForumTree();
 		
-		JFrame frame = new JFrame("test");
-		frame.setSize(new Dimension(640,480));
-		
+		JFrame frame = new JFrame("Americano Forum");
+		frame.setSize(new Dimension(800,700));
+		frame.setResizable(false);
+                frame.setLocation(300, 15);
 		frame.getContentPane().add(tree.getForumTreeUI());	
 		frame.setVisible(true);		
 		

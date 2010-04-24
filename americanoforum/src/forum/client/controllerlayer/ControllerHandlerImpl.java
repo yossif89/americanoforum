@@ -28,9 +28,13 @@ public class ControllerHandlerImpl extends ControllerHandler {
 	 * @see forumtree.contol.ControllerHandler#getForumView()
 	 */
 	@Override
-	public String getForumView( ) {
-           String ans=  this._connectionController.communicate("view_forum",null);
-           System.out.println("Forum view : \n "+ans);
+	public String getForumView( String username) {
+
+           String ans;
+           if (username.equals("null"))
+               username="guest";
+             ans=username+"\n";
+            ans+= this._connectionController.communicate("view_forum",null);
            return ans;
 	}
 
@@ -39,9 +43,12 @@ public class ControllerHandlerImpl extends ControllerHandler {
                 Object[] args = new Object[2];
                 args[0]= id;
                 args[1] = newContent;
-	        if ((this._connectionController.communicate("modify_message",args)).equals("ok"))
-                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
+                    String res = this._connectionController.communicate("modify_message",args);
+	        if ((res.charAt(0)!='$')&&(res.equals("ok"))){
+                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView(this._connectionController.getUser())));
+                }
                 else{
+                     notifyObservers(new ForumTreeRefreshEvent(comp,"$$"+res.substring(1)));
                     ClientConnectionController.log.severe("Client: couldn't modify message");
                 }
 	}
@@ -52,9 +59,12 @@ public class ControllerHandlerImpl extends ControllerHandler {
                 args[0]= id;
                 args[1] = subj;
                 args[2]= cont;
-	        if ((this._connectionController.communicate("add_reply",args)).equals("ok"))
-                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
+                String res = this._connectionController.communicate("add_reply",args);
+	        if ((res.charAt(0)!='$')&&(res.equals("ok"))){
+                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView(this._connectionController.getUser())));
+                }
                 else{
+                          notifyObservers(new ForumTreeRefreshEvent(comp,"$$"+res.substring(1)));
                     ClientConnectionController.log.severe("Client: couldn't reply to the  message");
                 }
 	}
@@ -63,9 +73,12 @@ public class ControllerHandlerImpl extends ControllerHandler {
 	public void deleteMessage(long id, Component comp) {
 		Object[] args = new Object[1];
                 args[0]= id;
-	        if ((this._connectionController.communicate("delete_message",args)).equals("ok"))
-                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
+                 String res = this._connectionController.communicate("delete_message",args);
+	        if ((res.charAt(0)!='$')&&(res.equals("ok"))){
+                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView(this._connectionController.getUser())));
+                }
                 else{
+                      notifyObservers(new ForumTreeRefreshEvent(comp,"$$"+res.substring(1)));
                     ClientConnectionController.log.severe("Client: couldn't delete to the  message");
                 }
 	}
@@ -75,12 +88,26 @@ public class ControllerHandlerImpl extends ControllerHandler {
 		Object[] args = new Object[2];
                 args[0] = user;
                 args[1] = pass;
-                
-	        if ((this._connectionController.communicate("login",args)).equals(user)){
-                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
-                                }
+               String res = this._connectionController.communicate("login",args);
+	        if ((res.charAt(0)!='$')&&(res.equals(user))){
+                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView(this._connectionController.getUser())));
+                  }
                 else{
+                    notifyObservers(new ForumTreeRefreshEvent(comp,new String("$$"+res.substring(1))));
                     ClientConnectionController.log.severe("Client: couldn't login ");
+                }
+	}
+
+        @Override
+	public void logoff(Component comp) {
+		Object[] args = null;
+                 String res = this._connectionController.communicate("logoff",args);
+	       if ((res.charAt(0)!='$')&&(res.equals("ok"))){
+                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView(this._connectionController.getUser())));
+                }
+                else{
+                    notifyObservers(new ForumTreeRefreshEvent(comp,"$$"+res.substring(1)));
+                    ClientConnectionController.log.info("Client: couldn't logoff ");
                 }
 	}
 
@@ -94,9 +121,12 @@ public class ControllerHandlerImpl extends ControllerHandler {
                 args[4]= email;
                 args[5]= address;
                 args[6]= gender;
-	        if ((this._connectionController.communicate("register",args)).equals(username))
-                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
+                 String res = this._connectionController.communicate("register",args);
+	       if ((res.charAt(0)!='$')&&(res.equals(username))){
+                       notifyObservers(new ForumTreeRefreshEvent(comp,getForumView(this._connectionController.getUser())));
+               }
                 else{
+                      notifyObservers(new ForumTreeRefreshEvent(comp,"$$"+res.substring(1)));
                     ClientConnectionController.log.severe("Client: couldn't register");
                 }
 	}
@@ -106,9 +136,12 @@ public class ControllerHandlerImpl extends ControllerHandler {
 		Object[] args = new Object[2];
                 args[0]= subj  ;
                 args[1] = cont;
-	        if ((this._connectionController.communicate("add_message",args)).equals("ok"))
-                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView()));
+                String res = this._connectionController.communicate("add_message",args);
+	        if (res.equals("ok"))
+                        	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView(this._connectionController.getUser())));
                 else{
+             
+                      notifyObservers(new ForumTreeRefreshEvent(comp,new String("$$"+res.substring(1))));
                     ClientConnectionController.log.severe("Client: couldn't add to the  message");
                 }
 		

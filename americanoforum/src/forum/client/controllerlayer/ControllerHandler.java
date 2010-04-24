@@ -30,7 +30,7 @@ public abstract class ControllerHandler extends Observable {
   	 *		</message>
 	 * </message>
 	 */
-	public abstract String getForumView();
+	public abstract String getForumView( String username);
 
 	/**
 	 * Tries to modify a message.
@@ -47,6 +47,8 @@ public abstract class ControllerHandler extends Observable {
 	 * @param string The content of the new message.
 	 */
 	public abstract void addReplyToMessage(long id, String subject,String content, Component comp);
+
+        public abstract void logoff(Component comp) ;
 
         public abstract void login(String user,String pass, Component comp) ;
 

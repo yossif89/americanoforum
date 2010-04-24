@@ -87,6 +87,7 @@ public class ForumFacadeImpl implements ForumFacade{
             return toRet;
         }
           catch(IllegalAccessError e){
+
             return toRet;
         }
        toRet.setResponse(user);

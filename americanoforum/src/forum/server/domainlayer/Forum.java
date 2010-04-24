@@ -225,11 +225,11 @@ public class Forum {
          * @return the user that logged in
          * @throws IllegalAccessError
          */
-	public User login(String aUsername, String aPass) throws IllegalAccessError {
+	public User login(String aUsername, String aPass) throws IllegalAccessException {
 	   User tUsr = this._registered.get(aUsername);
            if (tUsr==null){
                Forum.logger.log(Level.SEVERE,"Forum: unregistered user trying to login");
-               throw new IllegalAccessError();
+               throw new IllegalAccessException();
            }
            String encryptedPass="";
             try {
@@ -239,7 +239,7 @@ public class Forum {
             }
            if ( !tUsr.getDetails().getPassword().equals(encryptedPass)){
                Forum.logger.log(Level.SEVERE,"Forum: registered user" + aUsername +" entered unvalid password "+encryptedPass+" =? " +tUsr.getDetails().getPassword());
-               throw new IllegalAccessError();
+               throw new IllegalAccessException();
            }
            this._online_users.put(aUsername, tUsr);
           // tUsr.setUp(LoggedInPermission.getInstance());
@@ -253,7 +253,7 @@ public class Forum {
          */
 	public void logoff(User aUser)  {
                 if (aUser.getUp() instanceof GuestPermission){
-                   throw new IllegalArgumentException();
+                   throw new UnsupportedOperationException();
                 }
 		this._online_users.remove(aUser.getDetails().getUsername());
         //        aUser.setUp(GuestPermission.getInstance());
@@ -385,11 +385,15 @@ public class Forum {
         String subj="";
         String user="";
         String cont = "";
-        ans = "onlineUsers$$"+this._online_users.size() + "\n";
-//        for(User user : this._online_users.values()){
-//            ans = ans+user.getDetails().getUsername()+ " ";
-//        }
-
+        ans = this._online_users.size() + "\n";
+        int counter=0;
+        if (this._online_users.size()==0)
+            ans+="none,";
+        else
+            for(User useri : this._online_users.values()){
+                ans +=useri.getDetails().getUsername()+ ",";
+            }
+        ans+="\n";
 
         for (Message msg : this._messages.values()){
             if (msg.getSubject().equals(""))

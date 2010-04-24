@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import forum.Settings;
 import forum.server.domainlayer.User;
 import forum.tcpcommunicationlayer.*;
+import java.lang.UnsupportedOperationException;
 import java.util.logging.Level;
 
 /**
@@ -45,10 +46,11 @@ public class ClientConnectionController extends Thread {
 				}
 		InetAddress ia = InetAddress.getByName(addr);
 		connect(ia,port);
-		_user= "dahany";
+		_user= "";
 	}
 
 	public String communicate(String operation,Object[] args){
+            ServerResponse res=null;
 		ClientMessage msg=null;
 		try {
 			/* Handles the command. */
@@ -68,7 +70,10 @@ public class ClientConnectionController extends Thread {
 				log.severe("Received an invalid response from server.");
 				return "";
 			}
-			ServerResponse res = (ServerResponse)o;
+			res = (ServerResponse)o;
+                        if (res.getEx() != null){
+                            System.out.println("res.exception!=null ");
+                        }
 			if (res.hasExecuted()) {
                             log.info("server succeded handling the client message");
 
@@ -77,7 +82,7 @@ public class ClientConnectionController extends Thread {
                                     log.log(Level.INFO,"Changed username to "+res.getResponse());
                             }
                             else if (msg instanceof LogoffMessage){
-                                    this._user = null;
+                                    this._user = "null";
                                     log.log(Level.INFO,"Changed username to null");
                             }
                             else if (msg instanceof RegisterMessage){
@@ -93,10 +98,30 @@ public class ClientConnectionController extends Thread {
                             }
                               return res.getResponse();
 		}
+                        else{
+                          if ((res.getEx() instanceof UnsupportedOperationException) ||(res.getEx() instanceof IllegalArgumentException)||(res.getEx() instanceof IllegalAccessException)){
+                                 if (msg instanceof LoginMessage){
+                                    return "$One of your details is not correct";
+                            }
+                            else if (msg instanceof LogoffMessage){
+                                      return "$You are not logged in";
+                            }
+                            else if (msg instanceof RegisterMessage){
+                                   return "$Your username is already in use, try another one";
+                            }
+                            else
+                              return "$You don't have the permission to perform this operation \n Try logging in or contact the administrator";
+                          }
+                          else{
+                              System.out.println("so the exception is : "+res.getEx());
+                          }
+                        
+                        }
                 }
                         catch(Exception e){
-
+                                      log.log(Level.SEVERE,"exception in the connection controller");
                         }
+
                 return "";
                 }
                 

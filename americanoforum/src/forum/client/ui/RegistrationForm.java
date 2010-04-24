@@ -12,6 +12,7 @@
 package forum.client.ui;
 import forum.client.controllerlayer.ControllerHandler;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Ilya
@@ -87,6 +88,7 @@ public class RegistrationForm extends javax.swing.JPanel {
         jLabel8.setText("Gender:");
 
         registerButton.setText("Register Now!");
+        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.W_RESIZE_CURSOR));
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
@@ -207,8 +209,13 @@ public class RegistrationForm extends javax.swing.JPanel {
        if (male.isSelected())
            gender="male";
        else
-           gender="female";
+          gender="female";
+       if ((this._usernameField.getText().equals(""))||(this._passField.getText().equals(""))){
+           JOptionPane.showMessageDialog(null,"Please fill all the fields", "Error",JOptionPane.ERROR_MESSAGE);
+           return;
+       }
         _pipe.register(_usernameField.getText(), _passField.getText(), _firstField.getText(), _lastField.getText(), _email.getText(), _address.getText(), gender, _registerButton);
+         this.setVisible(false);
     }//GEN-LAST:event_registerButtonActionPerformed
 
 

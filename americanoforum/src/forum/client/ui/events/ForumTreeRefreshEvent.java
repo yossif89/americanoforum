@@ -2,6 +2,7 @@ package forum.client.ui.events;
 
 import java.awt.Component;
 import forum.client.ui.ForumTreeHandler;
+import javax.swing.JOptionPane;
 
 /**
  * This event enables a component (if there is one). And updates the forum view in the GUI.
@@ -29,11 +30,18 @@ public class ForumTreeRefreshEvent implements ForumTreeEvent {
 	 */
 	@Override
 	public void respondToEvent(ForumTreeHandler handler) {
+                if ((this.m_forumView.charAt(0)=='$')&&(this.m_forumView.charAt(1)=='$')){
+                     JOptionPane.showMessageDialog(null,"The operation couldn't complete \n"+ this.m_forumView.substring(2), "Error",JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                      JOptionPane.showMessageDialog(null,"The operation ended successfully");
+                         handler.refreshForum(m_forumView);
+                }
 		if (m_comp != null) {
-			m_comp.setEnabled(true);
+			m_comp.setEnabled(true);  
 		}
 		
-		handler.refreshForum(m_forumView);
+		
 
 	}
 
