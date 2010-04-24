@@ -65,4 +65,8 @@ public abstract class ControllerHandler extends Observable {
 	 */
 	public abstract void addNewMessage(String subj,String cont , Component comp);
 
+        public abstract void searchByAuthor(String userToSearch,int from,int to, Component comp);
+
+        public abstract void searchByContent(String phraseToSearch,int from,int to,Component comp);
+
 }

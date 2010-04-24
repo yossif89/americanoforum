@@ -21,5 +21,6 @@ public interface ForumFacade {
                ServerResponse reply(String subj,String cont,String u , long id);
                ServerResponse searchByAuthor(String username, int from, int to);
                ServerResponse searchByContent(String toSearch, int from, int to);
+               String encode_msgs(SearchHit[] msgs); //for decoding the msgs returning to the cliend
 	
 }

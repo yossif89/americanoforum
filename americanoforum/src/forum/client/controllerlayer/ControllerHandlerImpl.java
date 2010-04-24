@@ -147,4 +147,19 @@ public class ControllerHandlerImpl extends ControllerHandler {
 		
 	}
 
+    @Override
+    public void searchByAuthor(String userToSearch, int from, int to, Component comp) {
+        Object[] args = new Object[3];
+        args[0] = userToSearch;
+        args[1] = new Integer(from);
+        args[2] = new Integer(to);
+        String res = this._connectionController.communicate("searchByAuthor", args);
+        notifyObservers(new SearchResultEvent(comp,res));
+    }
+
+    @Override
+    public void searchByContent(String phraseToSearch, int from, int to, Component comp) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

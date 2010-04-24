@@ -52,7 +52,7 @@ public class ForumTree implements ForumTreeHandler {
 
         private  StatusPanel statusPanel;
 
-        private JButton  registerButton,loginButton,logoffButton;
+        private JButton  registerButton,loginButton,logoffButton,searchButton;
 	/**
 	 * A pipe interface to communicate with the controller layer.
 	 */
@@ -105,6 +105,7 @@ public class ForumTree implements ForumTreeHandler {
 		registerButton = new JButton("Register");
                  loginButton = new JButton("Login");
                 logoffButton = new JButton("Logoff");
+                searchButton = new JButton("Search");
                 registerButton.setForeground(Color.GRAY);
                 registerButton.setOpaque(false);
                 registerButton.setFocusPainted(false);
@@ -114,9 +115,13 @@ public class ForumTree implements ForumTreeHandler {
                 logoffButton.setForeground(Color.GRAY);
                 logoffButton.setOpaque(false);
                 logoffButton.setFocusPainted(false);
+                searchButton.setForeground(Color.GRAY);
+                searchButton.setOpaque(false);
+                searchButton.setFocusPainted(false);
 		temp.add(registerButton);
                 temp.add(loginButton);
                 temp.add(logoffButton);
+                temp.add(searchButton);
 
                 registerButton.addActionListener(new ActionListener() {
 
@@ -160,13 +165,147 @@ public class ForumTree implements ForumTreeHandler {
 			}
 		});
 
+                searchButton.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e){
+                        java.awt.EventQueue.invokeLater(new Runnable() {
+                            public void run() {
+                                JFrame x =  new SearchFrame(m_pipe,searchButton);
+                                x.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                                x.setVisible(true);
+                            }
+                        });
+                    }
+                });
+
                 m_panel.add(temp);
                 pane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 102)));
                 m_panel.add(pane);
                 m_panel.add(statusPanel);
 		m_panel.setPreferredSize(new Dimension(620,460));
 	}
-	
+
+        public ForumTree(JTree searchResultsTree) { //used for search results only!
+		UIManager.put("Tree.collapsedIcon", new ImageIcon("./images/plus-8.png"));
+		UIManager.put("Tree.expandedIcon", new ImageIcon("./images/minus-8.png"));
+
+		m_pipe = null;
+            //    m_pipe = new ControllerHandlerImpl();
+		/* Add an observer to the controller (The observable). */
+		//m_pipe.addObserver(new ForumTreeObserver(this));
+
+		m_tree = searchResultsTree;
+		m_tree.putClientProperty("JTree.lineStyle", "None");
+                //statusPanel = new StatusPanel();
+                 //String ans = m_pipe.getForumView("null");
+                 //refreshForum(ans);
+
+		ForumTreeCellRenderer renderer = new ForumTreeCellRenderer(this);
+		m_tree.setCellRenderer(renderer);
+		m_tree.setCellEditor(new ForumTreeCellEditor(renderer));
+		m_tree.setEditable(true);
+
+		m_tree.addTreeSelectionListener(new TreeSelectionListener() {
+
+			@Override
+			public void valueChanged(TreeSelectionEvent e) {
+				BasicTreeUI ui = (BasicTreeUI) m_tree.getUI();
+				ui.setLeftChildIndent(ui.getLeftChildIndent());
+				ui.setRightChildIndent(ui.getRightChildIndent());
+			}
+		});
+
+		m_panel = new JPanel();
+                JPanel temp = new JPanel();
+                temp.setBackground(Color.WHITE);
+		m_panel.setBackground(Color.WHITE);
+		JScrollPane pane = new JScrollPane(m_tree);
+		pane.setPreferredSize(new Dimension(610,435));
+//		registerButton = new JButton("Register");
+//                 loginButton = new JButton("Login");
+//                logoffButton = new JButton("Logoff");
+//                searchButton = new JButton("Search");
+//                registerButton.setForeground(Color.GRAY);
+//                registerButton.setOpaque(false);
+//                registerButton.setFocusPainted(false);
+//                loginButton.setForeground(Color.GRAY);
+//                loginButton.setOpaque(false);
+//                loginButton.setFocusPainted(false);
+//                logoffButton.setForeground(Color.GRAY);
+//                logoffButton.setOpaque(false);
+//                logoffButton.setFocusPainted(false);
+//                searchButton.setForeground(Color.GRAY);
+//                searchButton.setOpaque(false);
+//                searchButton.setFocusPainted(false);
+//		temp.add(registerButton);
+//                temp.add(loginButton);
+//                temp.add(logoffButton);
+//                temp.add(searchButton);
+
+//                registerButton.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//                                 java.awt.EventQueue.invokeLater(new Runnable() {
+//                                 public void run() {
+//                                           JPanel x =  new RegistrationForm(m_pipe,registerButton);
+//                                           JFrame y = new JFrame();
+//                                           y.setSize(new Dimension(500, 350));
+//                                           y.add(x);
+//                                           x.setVisible(true);
+//                                             y.setVisible(true);
+//                                     }
+//                                    });
+//			}
+//		});
+//
+//                loginButton.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//                                 java.awt.EventQueue.invokeLater(new Runnable() {
+//                                 public void run() {
+//                                           JFrame x =  new LoginFrame(m_pipe,loginButton);
+//                                           x.setVisible(true);
+//                                     }
+//                                    });
+//			}
+//		});
+//
+//                logoffButton.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//                                 java.awt.EventQueue.invokeLater(new Runnable() {
+//                                 public void run() {
+//                                        m_pipe.logoff(logoffButton);
+//                                     }
+//                                    });
+//			}
+//		});
+//
+//                searchButton.addActionListener(new ActionListener() {
+//
+//                    @Override
+//                    public void actionPerformed(ActionEvent e){
+//                        java.awt.EventQueue.invokeLater(new Runnable() {
+//                            public void run() {
+//                                JFrame x =  new SearchFrame(m_pipe,searchButton);
+//                                x.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+//                                x.setVisible(true);
+//                            }
+//                        });
+//                    }
+//                });
+//
+//                m_panel.add(temp);
+                pane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 102)));
+                m_panel.add(pane);
+                //m_panel.add(statusPanel);
+		m_panel.setPreferredSize(new Dimension(620,460));
+	}
+
 	/**
 	 * 
 	 * @return The forum tree GUI component. 
@@ -280,6 +419,34 @@ public class ForumTree implements ForumTreeHandler {
             return toRet;
 	}
 
+        private ForumCell decodeSearchResults(String decRes){
+            HashMap<Long,ForumCell> mapping = new HashMap<Long, ForumCell>();
+            ForumCell toRet=new ForumCell(-2,"666666666666","66666666666","66666666666666666");
+             ForumCell temp;
+            StringTokenizer lineTok = new StringTokenizer(decRes,"\n");
+            while(lineTok.hasMoreTokens()){
+                String msg = lineTok.nextToken();
+                StringTokenizer dollarTok = new StringTokenizer(msg,"$$");
+                String subj = "NO SUBJECT";
+                String cont = "NO CONTENT";
+                String username = "";
+                long msg_id = -1;
+                if(dollarTok.hasMoreTokens()){
+                    String id=dollarTok.nextToken();
+                    msg_id = Long.parseLong(id);
+                }
+                if(dollarTok.hasMoreTokens())
+                    subj = dollarTok.nextToken();
+                if(dollarTok.hasMoreTokens())
+                    cont = dollarTok.nextToken();
+                if(dollarTok.hasMoreTokens())
+                    username = dollarTok.nextToken();
+                temp = new ForumCell(msg_id, username, subj, cont);
+                toRet.add(temp);
+            }
+            return toRet;
+        }
+
 	/**
 	 * Modifies a message, and updates the forum accordingly.
 	 * 
@@ -376,5 +543,59 @@ public class ForumTree implements ForumTreeHandler {
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+
+    public void showSearchResults(String encodedResults) {
+        ForumCell ans = decodeSearchResults(encodedResults);
+        DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode(ans);
+
+	Stack<DefaultMutableTreeNode> stack = new Stack<DefaultMutableTreeNode>();
+	stack.add(rootNode);
+
+	while (!stack.isEmpty()) {
+		DefaultMutableTreeNode node = stack.pop();
+		ForumCell cell = (ForumCell)(node.getUserObject());
+		for (ForumCell sonCell : cell.getSons()) {
+			DefaultMutableTreeNode sonNode = new DefaultMutableTreeNode(sonCell);
+			node.add(sonNode);
+			stack.add(sonNode);
+		}
+	}
+
+	DefaultTreeModel model = new DefaultTreeModel(rootNode);
+	//m_tree.setModel(model);
+	//for (int i = 0; i < m_tree.getRowCount(); i++) {
+	//        m_tree.expandRow(i);
+	//}
+ /*       forum resultTree = new JTree();
+        resultTree.putClientProperty("JTree.lineStyle", "None");
+        //ForumTreeCellRenderer renderer = new ForumTreeCellRenderer();
+        resultTree.setCellRenderer(renderer);
+	resultTree.setCellEditor(new ForumTreeCellEditor(renderer));
+	resultTree.setEditable(true);
+        resultTree.setModel(model);
+
+
+        JFrame searchResultsFrame = new JFrame("Results");
+        searchResultsFrame.setSize(new Dimension(800,700));
+	searchResultsFrame.setResizable(false);
+        searchResultsFrame.setLocation(300, 15);
+        searchResultsFrame.getContentPane().add(resultTree);
+        searchResultsFrame.pack();
+        searchResultsFrame.setVisible(true);
+        searchResultsFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+  *
+  */
+
+         JTree resultTree = new JTree();
+         resultTree.setModel(model);
+        ForumTree tree = new ForumTree(resultTree);
+
+	JFrame frame = new JFrame("Search Results");
+	frame.setSize(new Dimension(800,700));
+	frame.setResizable(false);
+        frame.setLocation(300, 15);
+	frame.getContentPane().add(tree.getForumTreeUI());
+	frame.setVisible(true);
+    }
 
 }

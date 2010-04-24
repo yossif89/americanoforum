@@ -97,7 +97,7 @@ public class ClientConnectionController extends Thread {
                                   
                             }
                               return res.getResponse();
-		}
+                        }
                         else{
                           if ((res.getEx() instanceof UnsupportedOperationException) ||(res.getEx() instanceof IllegalArgumentException)||(res.getEx() instanceof IllegalAccessException)){
                                  if (msg instanceof LoginMessage){
@@ -187,8 +187,8 @@ public class ClientConnectionController extends Thread {
 				}
 				if (command.equals("searchByAuthor")) {
 					String username = (String)args[0];
-					int fromInd = Integer.parseInt((String)args[0]);
-					int toInd = Integer.parseInt((String)args[1]);
+					int fromInd = ((Integer)args[1]).intValue();
+					int toInd = ((Integer)args[2]).intValue();
 					return new SearchByAuthorMessage(username, fromInd, toInd);
 				}
 				if (command.equals("searchByContent")) {

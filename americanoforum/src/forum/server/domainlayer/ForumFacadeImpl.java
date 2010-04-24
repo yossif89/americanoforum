@@ -194,7 +194,25 @@ public class ForumFacadeImpl implements ForumFacade{
        return toRet;
     }
 
- public ServerResponse searchByAuthor(String username, int from, int to) {
+    public String encode_msgs(SearchHit[] msgs){
+        String ans = "";
+        for(int i=0; i<msgs.length; i++){
+            String subj="";
+            String cont="";
+            if (msgs[i].getMessage().getSubject().equals(""))
+                    subj="EMPTY SUBJECT";
+            else
+                    subj = msgs[i].getMessage().getSubject();
+            if (msgs[i].getMessage().getContent().equals(""))
+                    cont="EMPTY CONTENT";
+            else
+                    cont = msgs[i].getMessage().getContent();
+            ans = ans + msgs[i].getMessage().getMsg_id() + "$$" + subj + "$$" + cont + "$$" + msgs[i].getMessage().getCreator().getDetails().getUsername() + "\n";
+        }
+        return ans;
+    }
+
+    public ServerResponse searchByAuthor(String username, int from, int to) {
         // User u = _facadeForum.getRegisteredUsers().get(us);
         //if (u==null)
         //    u= new User();
@@ -204,10 +222,11 @@ public class ForumFacadeImpl implements ForumFacade{
           //toRet = new ServerSearchResponse(results);
            String ans="";
 
-           for (int i=0; i<results.length; i++){
-               ans = ans + results[i].toString() + "\n";
-           }
-           System.out.println("ans = "+ans);
+        //   for (int i=0; i<results.length; i++){
+         //      ans = ans + results[i].toString() + "\n";
+          // }
+           //System.out.println("ans = "+ans);
+           ans = encode_msgs(results);
            toRet.setResponse(ans);
 
         }
