@@ -159,7 +159,12 @@ public class ControllerHandlerImpl extends ControllerHandler {
 
     @Override
     public void searchByContent(String phraseToSearch, int from, int to, Component comp) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Object[] args = new Object[3];
+        args[0] = phraseToSearch;
+        args[1] = new Integer(from);
+        args[2] = new Integer(to);
+        String res = this._connectionController.communicate("searchByContent", args);
+        notifyObservers(new SearchResultEvent(comp,res));
     }
 
 }

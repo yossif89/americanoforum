@@ -53,6 +53,7 @@ public class ClientConnectionController extends Thread {
             ServerResponse res=null;
 		ClientMessage msg=null;
 		try {
+                    System.out.println("operation: "+operation);
 			/* Handles the command. */
 			msg = handleCommand(operation,args);
 
@@ -192,11 +193,9 @@ public class ClientConnectionController extends Thread {
 					return new SearchByAuthorMessage(username, fromInd, toInd);
 				}
 				if (command.equals("searchByContent")) {
-					String from = (String)args[0];
-					String to = (String)args[1];
-					int fromInd = Integer.parseInt(from);
-					int toInd = Integer.parseInt(to);
-					String toSearch = (String)args[2];
+                                        String toSearch = (String)args[0];
+					int fromInd = ((Integer)args[1]).intValue();
+					int toInd = ((Integer)args[2]).intValue();
 					return new SearchByContentMessage(toSearch, fromInd, toInd);
 				}
 

@@ -246,10 +246,13 @@ public class ForumFacadeImpl implements ForumFacade{
           //toRet = new ServerSearchResponse(results);
            String ans="";
 
-           for (int i=0; i<results.length; i++){
+         /*  for (int i=0; i<results.length; i++){
                ans = ans + results[i].toString() + "\n";
-           }
-           System.out.println("ans = "+ans);
+           }*/
+           //System.out.println("ans = "+ans);
+           System.out.println("************ RESULTS **************");
+           ans = encode_msgs(results);
+           System.out.println(ans);
            toRet.setResponse(ans);
 
         }

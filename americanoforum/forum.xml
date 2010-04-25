@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ForumType>
-    <_numOfMsgs>29</_numOfMsgs>
+    <_numOfMsgs>33</_numOfMsgs>
     <_allUsers>
         <_username>sepetnit</_username>
         <_password>b59c67bf196a4758191e42f76670ceba</_password>
@@ -160,5 +160,37 @@
         <_date>2010-04-23T21:10:37.613+03:00</_date>
         <_father>-1</_father>
         <_creator>tikva</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>29</_messageId>
+        <_subject>ggg bla</_subject>
+        <_content>bla bla bla</_content>
+        <_date>2010-04-25T11:08:09.093+03:00</_date>
+        <_father>-1</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>30</_messageId>
+        <_subject>nothing</_subject>
+        <_content>nothing</_content>
+        <_date>2010-04-25T11:08:26.468+03:00</_date>
+        <_father>29</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>31</_messageId>
+        <_subject>bla</_subject>
+        <_content>bla bla</_content>
+        <_date>2010-04-25T11:08:42.703+03:00</_date>
+        <_father>30</_father>
+        <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>32</_messageId>
+        <_subject>fff</_subject>
+        <_content>bla ggg boo</_content>
+        <_date>2010-04-25T11:10:04.515+03:00</_date>
+        <_father>15</_father>
+        <_creator>dahany</_creator>
     </_allMessages>
 </ForumType>

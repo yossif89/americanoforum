@@ -201,9 +201,9 @@ public class ForumTree implements ForumTreeHandler {
                  //String ans = m_pipe.getForumView("null");
                  //refreshForum(ans);
 
-		ForumTreeCellRenderer renderer = new ForumTreeCellRenderer(this);
+		SearchForumTreeCellRenderer renderer = new SearchForumTreeCellRenderer(this);
 		m_tree.setCellRenderer(renderer);
-		m_tree.setCellEditor(new ForumTreeCellEditor(renderer));
+		m_tree.setCellEditor(new SearchForumTreeCellEditor(renderer));
 		m_tree.setEditable(true);
 
 		m_tree.addTreeSelectionListener(new TreeSelectionListener() {
