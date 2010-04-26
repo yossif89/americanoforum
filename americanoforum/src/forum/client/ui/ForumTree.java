@@ -32,6 +32,8 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 import java.util.logging.Handler;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
+import javax.swing.JLabel;
 import javax.swing.SpringLayout;
 
 /**
@@ -220,6 +222,7 @@ public class ForumTree implements ForumTreeHandler {
                 JPanel temp = new JPanel();
                 temp.setBackground(Color.WHITE);
 		m_panel.setBackground(Color.WHITE);
+                //m_panel.add(label);
 		JScrollPane pane = new JScrollPane(m_tree);
 		pane.setPreferredSize(new Dimension(610,435));
 //		registerButton = new JButton("Register");
@@ -595,6 +598,7 @@ public class ForumTree implements ForumTreeHandler {
 	frame.setResizable(false);
         frame.setLocation(300, 15);
 	frame.getContentPane().add(tree.getForumTreeUI());
+        frame.pack();
 	frame.setVisible(true);
     }
 

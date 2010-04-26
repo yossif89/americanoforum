@@ -1775,3 +1775,527 @@
   <thread>11</thread>
   <message>Closing connection with client /127.0.0.1.</message>
 </record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2010-04-25T11:25:06</date>
+  <millis>1272183906968</millis>
+  <sequence>0</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server has started running on port 1234.</message>
+</record>
+<record>
+  <date>2010-04-25T11:25:14</date>
+  <millis>1272183914234</millis>
+  <sequence>1</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>A connection was accepted from: /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:25:14</date>
+  <millis>1272183914546</millis>
+  <sequence>2</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Communication has started between /127.0.0.1 and the server.</message>
+</record>
+<record>
+  <date>2010-04-25T11:25:14</date>
+  <millis>1272183914562</millis>
+  <sequence>3</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:25:14</date>
+  <millis>1272183914562</millis>
+  <sequence>4</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:25:20</date>
+  <millis>1272183920843</millis>
+  <sequence>5</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:25:20</date>
+  <millis>1272183920843</millis>
+  <sequence>6</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:25:25</date>
+  <millis>1272183925718</millis>
+  <sequence>7</sequence>
+  <logger>americanoforum</logger>
+  <level>SEVERE</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>A readObject operation failed with client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:25:25</date>
+  <millis>1272183925750</millis>
+  <sequence>8</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Closing connection with client /127.0.0.1.</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2010-04-25T11:25:47</date>
+  <millis>1272183947593</millis>
+  <sequence>0</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server has started running on port 1234.</message>
+</record>
+<record>
+  <date>2010-04-25T11:25:52</date>
+  <millis>1272183952125</millis>
+  <sequence>1</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>A connection was accepted from: /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:25:52</date>
+  <millis>1272183952406</millis>
+  <sequence>2</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Communication has started between /127.0.0.1 and the server.</message>
+</record>
+<record>
+  <date>2010-04-25T11:25:52</date>
+  <millis>1272183952421</millis>
+  <sequence>3</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:25:52</date>
+  <millis>1272183952421</millis>
+  <sequence>4</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:26:00</date>
+  <millis>1272183960156</millis>
+  <sequence>5</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:26:00</date>
+  <millis>1272183960156</millis>
+  <sequence>6</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:27:03</date>
+  <millis>1272184023000</millis>
+  <sequence>7</sequence>
+  <logger>americanoforum</logger>
+  <level>SEVERE</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>A readObject operation failed with client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:27:03</date>
+  <millis>1272184023078</millis>
+  <sequence>8</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Closing connection with client /127.0.0.1.</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2010-04-25T11:27:10</date>
+  <millis>1272184030250</millis>
+  <sequence>0</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server has started running on port 1234.</message>
+</record>
+<record>
+  <date>2010-04-25T11:27:15</date>
+  <millis>1272184035359</millis>
+  <sequence>1</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>A connection was accepted from: /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:27:15</date>
+  <millis>1272184035640</millis>
+  <sequence>2</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Communication has started between /127.0.0.1 and the server.</message>
+</record>
+<record>
+  <date>2010-04-25T11:27:15</date>
+  <millis>1272184035656</millis>
+  <sequence>3</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:27:15</date>
+  <millis>1272184035656</millis>
+  <sequence>4</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:27:24</date>
+  <millis>1272184044171</millis>
+  <sequence>5</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:27:24</date>
+  <millis>1272184044203</millis>
+  <sequence>6</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:27:43</date>
+  <millis>1272184063500</millis>
+  <sequence>7</sequence>
+  <logger>americanoforum</logger>
+  <level>SEVERE</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>A readObject operation failed with client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:27:43</date>
+  <millis>1272184063546</millis>
+  <sequence>8</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Closing connection with client /127.0.0.1.</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2010-04-25T11:32:03</date>
+  <millis>1272184323812</millis>
+  <sequence>0</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server has started running on port 1234.</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2010-04-25T11:32:30</date>
+  <millis>1272184350109</millis>
+  <sequence>0</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server has started running on port 1234.</message>
+</record>
+<record>
+  <date>2010-04-25T11:32:34</date>
+  <millis>1272184354406</millis>
+  <sequence>1</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>A connection was accepted from: /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:32:34</date>
+  <millis>1272184354687</millis>
+  <sequence>2</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Communication has started between /127.0.0.1 and the server.</message>
+</record>
+<record>
+  <date>2010-04-25T11:32:34</date>
+  <millis>1272184354703</millis>
+  <sequence>3</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:32:34</date>
+  <millis>1272184354703</millis>
+  <sequence>4</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:34:10</date>
+  <millis>1272184450953</millis>
+  <sequence>5</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:34:10</date>
+  <millis>1272184450984</millis>
+  <sequence>6</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:34:28</date>
+  <millis>1272184468343</millis>
+  <sequence>7</sequence>
+  <logger>americanoforum</logger>
+  <level>SEVERE</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>A readObject operation failed with client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:34:28</date>
+  <millis>1272184468421</millis>
+  <sequence>8</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Closing connection with client /127.0.0.1.</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2010-04-25T11:38:20</date>
+  <millis>1272184700359</millis>
+  <sequence>0</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server has started running on port 1234.</message>
+</record>
+<record>
+  <date>2010-04-25T11:38:25</date>
+  <millis>1272184705421</millis>
+  <sequence>1</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>A connection was accepted from: /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:38:25</date>
+  <millis>1272184705921</millis>
+  <sequence>2</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Communication has started between /127.0.0.1 and the server.</message>
+</record>
+<record>
+  <date>2010-04-25T11:38:25</date>
+  <millis>1272184705921</millis>
+  <sequence>3</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:38:25</date>
+  <millis>1272184705937</millis>
+  <sequence>4</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:38:32</date>
+  <millis>1272184712906</millis>
+  <sequence>5</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:38:32</date>
+  <millis>1272184712921</millis>
+  <sequence>6</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:38:43</date>
+  <millis>1272184723437</millis>
+  <sequence>7</sequence>
+  <logger>americanoforum</logger>
+  <level>SEVERE</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>A readObject operation failed with client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-04-25T11:38:43</date>
+  <millis>1272184723468</millis>
+  <sequence>8</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Closing connection with client /127.0.0.1.</message>
+</record>
