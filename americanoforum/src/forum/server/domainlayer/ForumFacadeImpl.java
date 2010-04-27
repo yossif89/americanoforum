@@ -7,6 +7,7 @@ package forum.server.domainlayer;
 
 import forum.tcpcommunicationlayer.ServerResponse;
 import forum.tcpcommunicationlayer.ServerSearchResponse;
+import java.util.Set;
 import java.util.logging.Level;
 
 
@@ -250,9 +251,9 @@ public class ForumFacadeImpl implements ForumFacade{
                ans = ans + results[i].toString() + "\n";
            }*/
            //System.out.println("ans = "+ans);
-           System.out.println("************ RESULTS **************");
+         //  System.out.println("************ RESULTS **************");
            ans = encode_msgs(results);
-           System.out.println(ans);
+           //System.out.println(ans);
            toRet.setResponse(ans);
 
         }
@@ -264,4 +265,20 @@ public class ForumFacadeImpl implements ForumFacade{
        return toRet;
     }
 
+    public ServerResponse encode_allUsers(){
+        ServerResponse toRet = new ServerResponse();
+        String ans = "all_users:";
+        try{
+            Set<String> all_users = _facadeForum.getRegisteredUsers().keySet();
+            for(String username: all_users){
+                ans+= username + "$$";
+            }
+        } catch (Exception e){
+            toRet.setEx(e);
+            return toRet;
+        }
+        toRet.setResponse(ans);
+        return toRet;
+        
+    }
 }

@@ -140,7 +140,6 @@ public class ControllerHandlerImpl extends ControllerHandler {
 	        if (res.equals("ok"))
                         	notifyObservers(new ForumTreeRefreshEvent(comp,getForumView(this._connectionController.getUser())));
                 else{
-             
                       notifyObservers(new ForumTreeRefreshEvent(comp,new String("$$"+res.substring(1))));
                     ClientConnectionController.log.severe("Client: couldn't add to the  message");
                 }
@@ -165,6 +164,26 @@ public class ControllerHandlerImpl extends ControllerHandler {
         args[2] = new Integer(to);
         String res = this._connectionController.communicate("searchByContent", args);
         notifyObservers(new SearchResultEvent(comp,res));
+    }
+
+    @Override
+    public void showUsersToPromote(Component c) {
+        String res = this._connectionController.communicate("getAllUsers", new Object[0]);
+        
+        notifyObservers(new ShowAllUsersEvent(c,res));
+    }
+
+    @Override
+    public void promoteUserToModerator(String toPromote, Component comp) {
+        Object[] args = new Object[1];
+        args[0] = toPromote;
+        String res = this._connectionController.communicate("promote", args);
+        if (res.equals("ok"))
+           	notifyObservers(new PromoteEvent(comp,res));
+        else{
+                notifyObservers(new PromoteEvent(comp,new String("$$"+res.substring(1))));
+                ClientConnectionController.log.severe("Client: couldn't promote user");
+        }
     }
 
 }

@@ -11,11 +11,26 @@
 
 package forum.client.ui;
 
+import forum.client.controllerlayer.ControllerHandler;
+import java.util.Vector;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+
 /**
  *
  * @author Yossi
  */
 public class PromoteFrame extends javax.swing.JFrame {
+
+    private ControllerHandler _pipe;
+
+    public PromoteFrame(ControllerHandler handler,Vector<String> users){
+        this._pipe=handler;
+         initComponents();
+        ComboBoxModel model = new DefaultComboBoxModel(users);
+        this.jComboBox1.setModel(model);
+    }
 
     /** Creates new form PromoteFrame */
     public PromoteFrame() {
@@ -94,19 +109,13 @@ public class PromoteFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        this.jButton1.setEnabled(false);
+        String userName = (String)jComboBox1.getSelectedItem();
+        this._pipe.promoteUserToModerator(userName, this.jButton1);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PromoteFrame().setVisible(true);
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

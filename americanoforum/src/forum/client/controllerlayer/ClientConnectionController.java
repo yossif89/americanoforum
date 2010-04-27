@@ -147,6 +147,9 @@ public class ClientConnectionController extends Thread {
 				if (command.equals("view_forum")) {
 					return new ViewForumMessage();
 				}
+                                if (command.equals("getAllUsers")) {
+                                    return new ShowAllUsersMessage();
+                                }
 				if (command.equals("login")) {
 					String a=(String)args[0];
 					String b=(String)args[1];

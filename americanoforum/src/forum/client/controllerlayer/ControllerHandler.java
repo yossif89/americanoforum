@@ -69,4 +69,8 @@ public abstract class ControllerHandler extends Observable {
 
         public abstract void searchByContent(String phraseToSearch,int from,int to,Component comp);
 
+        public abstract void showUsersToPromote(Component c);
+
+        public abstract void promoteUserToModerator(String toPromote,Component comp);
+
 }

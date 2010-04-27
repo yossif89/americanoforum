@@ -39,7 +39,17 @@
         <_lastName>d</_lastName>
         <_address>e</_address>
         <_gender>male</_gender>
-        <_permission>LoggedInPermission</_permission>
+        <_permission>ModeratorPermission</_permission>
+    </_allUsers>
+    <_allUsers>
+        <_username>felberba</_username>
+        <_password>dbc4d84bfcfe2284ba11beffb853a8c4</_password>
+        <_email>yossif89@gmail.com</_email>
+        <_firstName>Yossi</_firstName>
+        <_lastName>F</_lastName>
+        <_address>BGU</_address>
+        <_gender>male</_gender>
+        <_permission>ModeratorPermission</_permission>
     </_allUsers>
     <_allMessages>
         <_messageId>0</_messageId>
@@ -68,7 +78,7 @@
     <_allMessages>
         <_messageId>3</_messageId>
         <_subject>nana</_subject>
-        <_content>banana banana ba</_content>
+        <_content>banana banana ba addition</_content>
         <_date>2010-04-07T23:13:13.926+03:00</_date>
         <_father>4</_father>
         <_creator>dahany</_creator>

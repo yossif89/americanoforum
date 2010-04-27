@@ -30,6 +30,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.StringTokenizer;
+import java.util.Vector;
 import java.util.logging.Handler;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
@@ -54,7 +55,7 @@ public class ForumTree implements ForumTreeHandler {
 
         private  StatusPanel statusPanel;
 
-        private JButton  registerButton,loginButton,logoffButton,searchButton;
+        private JButton  registerButton,loginButton,logoffButton,searchButton,promoteButton;
 	/**
 	 * A pipe interface to communicate with the controller layer.
 	 */
@@ -108,6 +109,7 @@ public class ForumTree implements ForumTreeHandler {
                  loginButton = new JButton("Login");
                 logoffButton = new JButton("Logoff");
                 searchButton = new JButton("Search");
+                promoteButton = new JButton("Promote");
                 registerButton.setForeground(Color.GRAY);
                 registerButton.setOpaque(false);
                 registerButton.setFocusPainted(false);
@@ -120,10 +122,14 @@ public class ForumTree implements ForumTreeHandler {
                 searchButton.setForeground(Color.GRAY);
                 searchButton.setOpaque(false);
                 searchButton.setFocusPainted(false);
+                promoteButton.setForeground(Color.GRAY);
+                promoteButton.setOpaque(false);
+                promoteButton.setFocusPainted(false);
 		temp.add(registerButton);
                 temp.add(loginButton);
                 temp.add(logoffButton);
                 temp.add(searchButton);
+                temp.add(promoteButton);
 
                 registerButton.addActionListener(new ActionListener() {
 
@@ -176,6 +182,19 @@ public class ForumTree implements ForumTreeHandler {
                                 JFrame x =  new SearchFrame(m_pipe,searchButton);
                                 x.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                                 x.setVisible(true);
+                            }
+                        });
+                    }
+                });
+
+                promoteButton.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e){
+                        java.awt.EventQueue.invokeLater(new Runnable() {
+                            public void run(){
+                                promoteButton.setEnabled(false);
+                                m_pipe.showUsersToPromote(promoteButton);
                             }
                         });
                     }
@@ -600,6 +619,28 @@ public class ForumTree implements ForumTreeHandler {
 	frame.getContentPane().add(tree.getForumTreeUI());
         frame.pack();
 	frame.setVisible(true);
+    }
+    
+    public void showPromoteFrame(final String m_results) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                Vector<String> users = new Vector<String>();
+                if (m_results.startsWith("all_users:")){
+                    StringTokenizer toki = new StringTokenizer(m_results.substring(10), "$$");
+                    while(toki.hasMoreTokens()){
+                        users.add(toki.nextToken());
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error: cannot read users from forum!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                JFrame x =  new PromoteFrame(m_pipe,users);
+                x.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                x.setVisible(true);
+            }
+         });
     }
 
 }

@@ -29,4 +29,6 @@ public interface ForumTreeHandler {
 	public void NotifyError(String errorMessage);
 
         public void showSearchResults(String encodedResults);
+
+        public void showPromoteFrame(String m_results);
 }
