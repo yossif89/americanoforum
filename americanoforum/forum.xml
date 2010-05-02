@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ForumType>
-    <_numOfMsgs>33</_numOfMsgs>
+    <_numOfMsgs>36</_numOfMsgs>
     <_allUsers>
         <_username>sepetnit</_username>
         <_password>b59c67bf196a4758191e42f76670ceba</_password>
@@ -51,6 +51,26 @@
         <_gender>male</_gender>
         <_permission>ModeratorPermission</_permission>
     </_allUsers>
+    <_allUsers>
+        <_username>tomer</_username>
+        <_password>81dc9bdb52d04dc20036dbd8313ed055</_password>
+        <_email>heber@ffds.com</_email>
+        <_firstName>fdsfds</_firstName>
+        <_lastName>fdsfds</_lastName>
+        <_address>dsfdsf</_address>
+        <_gender>male</_gender>
+        <_permission>ModeratorPermission</_permission>
+    </_allUsers>
+    <_allUsers>
+        <_username>jas</_username>
+        <_password>81dc9bdb52d04dc20036dbd8313ed055</_password>
+        <_email>b</_email>
+        <_firstName>jas</_firstName>
+        <_lastName>f</_lastName>
+        <_address>a</_address>
+        <_gender>female</_gender>
+        <_permission>LoggedInPermission</_permission>
+    </_allUsers>
     <_allMessages>
         <_messageId>0</_messageId>
         <_subject>test1</_subject>
@@ -76,25 +96,9 @@
         <_creator>dahany</_creator>
     </_allMessages>
     <_allMessages>
-        <_messageId>3</_messageId>
-        <_subject>nana</_subject>
-        <_content>banana banana ba addition</_content>
-        <_date>2010-04-07T23:13:13.926+03:00</_date>
-        <_father>4</_father>
-        <_creator>dahany</_creator>
-    </_allMessages>
-    <_allMessages>
-        <_messageId>4</_messageId>
-        <_subject>tik</_subject>
-        <_content>tak</_content>
-        <_date>2010-04-08T00:03:40.239+03:00</_date>
-        <_father>-1</_father>
-        <_creator>dahany</_creator>
-    </_allMessages>
-    <_allMessages>
         <_messageId>5</_messageId>
         <_subject>ba</_subject>
-        <_content>test a b ba</_content>
+        <_content>test a b bafdsfd</_content>
         <_date>2010-04-11T15:43:52.265+03:00</_date>
         <_father>4</_father>
         <_creator>dahany</_creator>
@@ -202,5 +206,29 @@
         <_date>2010-04-25T11:10:04.515+03:00</_date>
         <_father>15</_father>
         <_creator>dahany</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>33</_messageId>
+        <_subject>hello</_subject>
+        <_content>hello world</_content>
+        <_date>2010-04-27T16:13:08.703+03:00</_date>
+        <_father>2</_father>
+        <_creator>tomer</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>34</_messageId>
+        <_subject>cool</_subject>
+        <_content>hello 2sdsds</_content>
+        <_date>2010-04-27T16:13:36.234+03:00</_date>
+        <_father>-1</_father>
+        <_creator>tomer</_creator>
+    </_allMessages>
+    <_allMessages>
+        <_messageId>35</_messageId>
+        <_subject>wow</_subject>
+        <_content>nice 123</_content>
+        <_date>2010-05-01T17:24:59.817+03:00</_date>
+        <_father>34</_father>
+        <_creator>jas</_creator>
     </_allMessages>
 </ForumType>

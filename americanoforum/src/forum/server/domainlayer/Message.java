@@ -22,7 +22,7 @@ public class Message implements Serializable{
      */
     public Message(String _subject, String _content, User _creator) {
         this._date = new Date();
-       this._msg_id= Message.gensym.intValue();
+       this._msg_id= Message.gensym.longValue();
         this._subject = _subject;
         this._content = _content;
         this._creator = _creator;

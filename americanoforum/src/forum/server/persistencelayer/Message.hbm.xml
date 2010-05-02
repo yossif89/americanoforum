@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="domain">
+  <class name="Message" table="messages">
+
+  <id name="_msg_id" column="messageId" >
+  </id>
+  <property name="_subject" column="subject" />
+  <property name="_content" column="content" />
+  <property name="_date" column="date" />
+  <property name="_parent" column="father" />
+  <set name 
+  <property name="_creator" column="creator" />
+  </class>
+</hibernate-mapping>
