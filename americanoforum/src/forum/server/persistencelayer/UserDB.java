@@ -9,7 +9,7 @@ package forum.server.persistencelayer;
  *
  * @author Yossi
  */
-class UserDB {
+public class UserDB {
 
     private String username;
     private String password;
@@ -19,6 +19,10 @@ class UserDB {
     private String address;
     private String gender;
     private String permission;
+
+    public UserDB(){
+        
+    }
 
     public void setAddress(String address) {
         this.address = address;
