@@ -8,6 +8,7 @@ package forum.server.domainlayer;
 import forum.server.persistencelayer.*;
 import java.util.Date;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -18,7 +19,10 @@ import org.hibernate.Transaction;
 public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 
     public Forum getForumFromXml() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Forum forum = new Forum();
+
+
+        return forum;
     }
 
     private void createUser(UserDB user) {

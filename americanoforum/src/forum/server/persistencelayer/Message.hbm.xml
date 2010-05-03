@@ -23,4 +23,10 @@
       <property name="gender" column="gender" />
       <property name="permission" column="permission" />
   </class>
+
+  <class name="ForumDB" table="forums">
+      <id name="forumName" column="forumName" />
+      <property name="msgIndex" column="msgIndex" />
+      
+  </class>
 </hibernate-mapping>
