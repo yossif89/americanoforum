@@ -28,7 +28,7 @@ public class ForumFacadeImpl implements ForumFacade{
     }
 
     public ForumFacadeImpl() {
-             _pipe = new PersistenceDataHandlerImpl();
+             _pipe = new PersistenceDataHandlerDBImpl();
              _facadeForum = _pipe.getForumFromXml();
               User u = _facadeForum.getRegisteredUsers().get("sepetnit");
               if (u==null){

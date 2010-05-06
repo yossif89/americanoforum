@@ -394,7 +394,7 @@ public class ForumTree implements ForumTreeHandler {
 	 * @return The tree representing the forum.
 	 */
 	private ForumCell decodeView(String encodedView) {
-            System.out.println(encodedView);
+            System.out.println("encoded view: "+encodedView);
             HashMap<Long,ForumCell> mapping = new HashMap<Long, ForumCell>();
             ForumCell toRet=new ForumCell(-2,"666666666666","66666666666","66666666666666666");
              ForumCell temp;

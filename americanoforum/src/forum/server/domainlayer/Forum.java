@@ -27,7 +27,7 @@ public class Forum {
 	 _online_users = new HashMap<String, User>();
          System.out.println("ktovet "+_allMessages);
          _searchEng = new SearchEngineImpl(_allMessages);
-        pipe = new PersistenceDataHandlerImpl();
+        pipe = new PersistenceDataHandlerDBImpl();
        }
 
     /**
@@ -386,6 +386,7 @@ public class Forum {
         String user="";
         String cont = "";
         ans = this._online_users.size() + "\n";
+        System.out.println("online users: "+ans);
         int counter=0;
         if (this._online_users.size()==0)
             ans+="none,";

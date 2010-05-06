@@ -10,6 +10,7 @@ import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -29,6 +30,16 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
         forum.setMessages(messages[0]);
         forum.setAllMessages(messages[1]);
 
+        //finding max index for msgs
+        Set<Long> msgs_ids = messages[1].keySet();
+        long max = 1;
+        for(Long id : msgs_ids){
+            if (id.longValue() > max)
+                max = id.longValue();
+        }
+        Message.setGensym(max + 1);
+        forum.setRegistered(users);
+        forum.updateSearchEngine();
         return forum;
     }
 
@@ -204,7 +215,9 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
         msg.setContent(cont);
         msg.setCreator(username);
         msg.setDate(datetime);
-        Long father = new Long(parent_id);
+        Long father = null;
+        if (parent_id != -1)
+            father = new Long(parent_id);
         msg.setFather(father);
         msg.setMessageId(msg_id);
         msg.setSubject(sbj);
@@ -230,14 +243,33 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
     }
 
     private HashMap<String, User> getUsers() {
-        Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+        Transaction tx = null;
         List allUsers=null;
-	String hql = "from users";
-	Query queryRes = session.createQuery(hql);
-        allUsers = queryRes.list();
+	Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+	try {
+		tx = session.beginTransaction();
+		String hql = "from UserDB";
+                Query queryRes = session.createQuery(hql);
+                tx.commit();
+                allUsers = queryRes.list();
+	} catch (RuntimeException e) {
+		if (tx != null && tx.isActive()) {
+			try {
+				// Second try catch as the rollback could fail as well
+				tx.rollback();
+			} catch (HibernateException e1) {
+			// add logging
+			}
+			// throw again the first exception
+			throw e;
+		}
+	}
 
         HashMap<String,User> usersRes = new HashMap<String, User>();
-        for(int i=0; i<allUsers.size(); i++){
+        int size = 0;
+        if (allUsers != null)
+            size = allUsers.size();
+        for(int i=0; i<size; i++){
             UserDB user_data = (UserDB)allUsers.get(i);
             User user = new User();
             user.setUp(PermissionFactory.getUserPermission(user_data.getPermission()));
@@ -250,14 +282,33 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 
     //myArr[0] - rootMsgs, myArr[1] - allMsgs
     private HashMap<Long, Message>[] getMsgs(HashMap<String,User> allUsers) {
-        HashMap<Long, Message> all_messages = new HashMap<Long,Message>();
+        Transaction tx = null;
         Session session = SessionFactoryUtil.getInstance().getCurrentSession();
         List allMsgs_data=null;
-	String hql = "from messages";
-	Query queryRes = session.createQuery(hql);
-        allMsgs_data = queryRes.list();
+        try {
+		tx = session.beginTransaction();
+		String hql = "from MessageDB";
+                Query queryRes = session.createQuery(hql);
+		tx.commit();
+                allMsgs_data = queryRes.list();
+	} catch (RuntimeException e) {
+		if (tx != null && tx.isActive()) {
+			try {
+				// Second try catch as the rollback could fail as well
+				tx.rollback();
+			} catch (HibernateException e1) {
+			// add logging
+			}
+			// throw again the first exception
+			throw e;
+		}
+	}
 
-        for (int i=0; i<allMsgs_data.size(); i++){
+        HashMap<Long, Message> all_messages = new HashMap<Long,Message>();
+        int size = 0;
+        if(allMsgs_data != null)
+            size = allMsgs_data.size();
+        for (int i=0; i<size; i++){
             MessageDB msg = (MessageDB)allMsgs_data.get(i);
             User creator = allUsers.get(msg.getCreator());
             Message newMsg = new Message(msg.getSubject(), msg.getContent(), creator);
@@ -270,10 +321,10 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
         HashMap<Long,Message>[] myarr = (HashMap<Long,Message>[])Array.newInstance(HashMap.class,2);
         myarr[0]=new HashMap<Long,Message>();
         myarr[1]=new HashMap<Long,Message>();
-        //for (int i=0; i<allMsgs_data; i++){
-         //  Message parent = all_messages.get(new Long(msg.getFather()));
-          //  Message child = all_messages.get(new Long(msg.getMessageId()));
-    /*        if (parent != null){
+        for (int i=0; i<size; i++){
+            Message parent = all_messages.get(new Long(((MessageDB)allMsgs_data.get(i)).getFather()));
+            Message child = all_messages.get(new Long(((MessageDB)allMsgs_data.get(i)).getFather()));
+            if (parent != null){
                 parent.getChild().add(child);
                 child.setParent(parent);
                 myarr[1].put(new Long(child.getMsg_id()), child);
@@ -282,7 +333,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
                 myarr[0].put(new Long(child.getMsg_id()), child);
                 myarr[1].put(new Long(child.getMsg_id()), child);
             }
-        //}*/
+        }
         return myarr;
     }
 
