@@ -17,8 +17,8 @@ public class MessageDB {
     private String subject;
     private String content;
     private Date date;
-    private MessageDB father;
-    private UserDB creator;
+    private Long father;
+    private String creator;
 
     public String getContent() {
         return content;
@@ -28,11 +28,11 @@ public class MessageDB {
         this.content = content;
     }
 
-    public UserDB getCreator() {
+    public String getCreator() {
         return creator;
     }
 
-    public void setCreator(UserDB creator) {
+    public void setCreator(String creator) {
         this.creator = creator;
     }
 
@@ -44,11 +44,11 @@ public class MessageDB {
         this.date = date;
     }
 
-    public MessageDB getFather() {
+    public Long getFather() {
         return father;
     }
 
-    public void setFather(MessageDB father) {
+    public void setFather (Long father) {
         this.father = father;
     }
 

@@ -7,6 +7,8 @@ package forum.server.domainlayer;
 
 import forum.server.persistencelayer.*;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -20,7 +22,11 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 
     public Forum getForumFromXml() {
         Forum forum = new Forum();
+        HashMap<String,User> users = getUsers();
+       // HashMap<Long,Message>[] messages = getMsgs();
 
+     //   forum.setMessages(messages[0]);
+      //  forum.setAllMessages(messages[1]);
 
         return forum;
     }
@@ -69,17 +75,50 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 	}
     }
 
-    private UserDB getUserDB(String username) {
-
-	Session session = SessionFactoryUtil.getInstance().getCurrentSession();		
-        UserDB user = (UserDB)session.get(UserDB.class,username);
-	return user;
+    private UserDB getUser(String username) {
+	Transaction tx = null;
+	Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+        UserDB user = null;
+	try {
+            tx = session.beginTransaction();
+            user = ((UserDB)session.get(UserDB.class, username));
+            tx.commit();
+	} catch (RuntimeException e) {
+		if (tx != null && tx.isActive()) {
+			try {
+				// Second try catch as the rollback could fail as well
+				tx.rollback();
+			} catch (HibernateException e1) {
+			// add logging
+			}
+			// throw again the first exception
+			throw e;
+		}
+	}
+        return user;
     }
 
-    private MessageDB getMessageDB(long parent_id) {
-        Session session = SessionFactoryUtil.getInstance().getCurrentSession();
-        MessageDB msg = (MessageDB)session.get(MessageDB.class,parent_id);
-	return msg;
+    private MessageDB getMessage(long id) {
+	Transaction tx = null;
+	Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+        MessageDB msg = null;
+	try {
+            tx = session.beginTransaction();
+            msg = ((MessageDB)session.get(MessageDB.class, id));
+            tx.commit();
+	} catch (RuntimeException e) {
+		if (tx != null && tx.isActive()) {
+			try {
+				// Second try catch as the rollback could fail as well
+				tx.rollback();
+			} catch (HibernateException e1) {
+			// add logging
+			}
+			// throw again the first exception
+			throw e;
+		}
+	}
+        return msg;
     }
 
     private void updateMessageDB(MessageDB msg) {
@@ -162,10 +201,9 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
     public void addMsgToXml(String sbj, String cont, long msg_id, long parent_id, String username, Date datetime) {
         MessageDB msg = new MessageDB();
         msg.setContent(cont);
-        UserDB creator = getUserDB(username);
-        msg.setCreator(creator);
+        msg.setCreator(username);
         msg.setDate(datetime);
-        MessageDB father = getMessageDB(parent_id);
+        Long father = new Long(parent_id);
         msg.setFather(father);
         msg.setMessageId(msg_id);
         msg.setSubject(sbj);
@@ -174,20 +212,37 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
     }
 
     public void modifyMsgInXml(long id_toChange, String newCont) {
-        MessageDB msg = getMessageDB(id_toChange);
+        MessageDB msg = getMessage(id_toChange);
         msg.setContent(newCont);
         updateMessageDB(msg);
     }
 
     public void changeUserPermission(String username, String permission) {
-        UserDB user = getUserDB(username);
+        UserDB user = getUser(username);
         user.setPermission(permission);
         updateUserDB(user);
     }
 
     public void deleteMsgFromXml(long msg_id) {
-        MessageDB msg = getMessageDB(msg_id);
+        MessageDB msg = getMessage(msg_id);
         deleteMessageDB(msg);
+    }
+
+    private HashMap<String, User> getUsers() {
+        Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+        List allUsers=null;
+	String hql = "from users";
+	Query queryRes = session.createQuery(hql);
+        allUsers = queryRes.list();
+
+        HashMap<String,User> usersRes = new HashMap<String, User>();
+        for(int i=0; i<allUsers.size(); i++){
+            UserDB user = (UserDB)allUsers.get(i);
+
+        }
+
+
+        return usersRes;
     }
 
 

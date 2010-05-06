@@ -4,6 +4,8 @@ package forum.server.persistencelayer;
 import forum.server.persistencelayer.MessageDB;
 import forum.server.persistencelayer.SessionFactoryUtil;
 import forum.server.persistencelayer.UserDB;
+import java.util.Date;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -84,6 +86,29 @@ public class main {
         return user;
     }
 
+    private static MessageDB getMessage(long id) {
+	Transaction tx = null;
+	Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+        MessageDB msg = null;
+	try {
+            tx = session.beginTransaction();
+            msg = ((MessageDB)session.get(MessageDB.class, id));
+            tx.commit();
+	} catch (RuntimeException e) {
+		if (tx != null && tx.isActive()) {
+			try {
+				// Second try catch as the rollback could fail as well
+				tx.rollback();
+			} catch (HibernateException e1) {
+			// add logging
+			}
+			// throw again the first exception
+			throw e;
+		}
+	}
+        return msg;
+    }
+
     public static void main(String[] args){
         UserDB user = new UserDB();
         user.setAddress("aaa");
@@ -99,6 +124,16 @@ public class main {
 
         UserDB test = getUser("felberba");
 
+        MessageDB msg = new MessageDB();
+        msg.setContent("bla bla bla");
+        msg.setCreator(test.getUsername());
+        msg.setDate(new Date());
+        msg.setFather(null);
+        msg.setMessageId(2);
+        msg.setSubject("hello");
+
+        createMessage(msg);
+
         System.out.println("username: " + test.getUsername());
         System.out.println("address: " + test.getAddress());
         System.out.println("email: " + test.getEmail());
@@ -106,6 +141,17 @@ public class main {
         System.out.println("last: " + test.getLastName());
         System.out.println("pass: " + test.getPassword());
         System.out.println("permission: " + test.getPermission());
+
+
+        MessageDB test2 = getMessage(2);
+
+        System.out.println("content: " + test2.getContent());
+        System.out.println("creator: " + test2.getCreator());
+        System.out.println("equals? "+(test2.getCreator().equals(test)));
+        System.out.println("date: " + test2.getDate());
+        System.out.println("father: " + test2.getFather());
+        System.out.println("id: " + test2.getMessageId());
+        System.out.println("subject: " + test2.getSubject());
 
         /*MessageDB message1 = new MessageDB();
         message1.setContent("bla bla");
