@@ -6,6 +6,7 @@
 package forum.server.domainlayer;
 
 import forum.server.persistencelayer.*;
+import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -23,10 +24,10 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
     public Forum getForumFromXml() {
         Forum forum = new Forum();
         HashMap<String,User> users = getUsers();
-       // HashMap<Long,Message>[] messages = getMsgs();
+        HashMap<Long,Message>[] messages = getMsgs(users);
 
-     //   forum.setMessages(messages[0]);
-      //  forum.setAllMessages(messages[1]);
+        forum.setMessages(messages[0]);
+        forum.setAllMessages(messages[1]);
 
         return forum;
     }
@@ -237,12 +238,52 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 
         HashMap<String,User> usersRes = new HashMap<String, User>();
         for(int i=0; i<allUsers.size(); i++){
-            UserDB user = (UserDB)allUsers.get(i);
+            UserDB user_data = (UserDB)allUsers.get(i);
+            User user = new User();
+            user.setUp(PermissionFactory.getUserPermission(user_data.getPermission()));
+            Details details = new Details(user_data.getUsername(), user_data.getPassword(), user_data.getEmail(), user_data.getFirstName(), user_data.getLastName(), user_data.getAddress(), user_data.getGender());
+            user.setDetails(details);
+            usersRes.put(user.getDetails().getUsername(), user);
+        }
+        return usersRes;
+    }
 
+    //myArr[0] - rootMsgs, myArr[1] - allMsgs
+    private HashMap<Long, Message>[] getMsgs(HashMap<String,User> allUsers) {
+        HashMap<Long, Message> all_messages = new HashMap<Long,Message>();
+        Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+        List allMsgs_data=null;
+	String hql = "from messages";
+	Query queryRes = session.createQuery(hql);
+        allMsgs_data = queryRes.list();
+
+        for (int i=0; i<allMsgs_data.size(); i++){
+            MessageDB msg = (MessageDB)allMsgs_data.get(i);
+            User creator = allUsers.get(msg.getCreator());
+            Message newMsg = new Message(msg.getSubject(), msg.getContent(), creator);
+            newMsg.setMsg_id(msg.getMessageId());
+            newMsg.setDate(msg.getDate());
+            all_messages.put(new Long(msg.getMessageId()), newMsg);
+            creator.getMyMessages().put(new Long(newMsg.getMsg_id()), newMsg);
         }
 
-
-        return usersRes;
+        HashMap<Long,Message>[] myarr = (HashMap<Long,Message>[])Array.newInstance(HashMap.class,2);
+        myarr[0]=new HashMap<Long,Message>();
+        myarr[1]=new HashMap<Long,Message>();
+        //for (int i=0; i<allMsgs_data; i++){
+         //  Message parent = all_messages.get(new Long(msg.getFather()));
+          //  Message child = all_messages.get(new Long(msg.getMessageId()));
+    /*        if (parent != null){
+                parent.getChild().add(child);
+                child.setParent(parent);
+                myarr[1].put(new Long(child.getMsg_id()), child);
+            }
+            else{
+                myarr[0].put(new Long(child.getMsg_id()), child);
+                myarr[1].put(new Long(child.getMsg_id()), child);
+            }
+        //}*/
+        return myarr;
     }
 
 

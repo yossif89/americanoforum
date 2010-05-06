@@ -8,8 +8,8 @@
       <property name="subject" column="subject" />
       <property name="content" column="content" />
       <property name="date" column="date" />
-      <many-to-one name="father" class="MessageDB" column="father" cascade="all"/>
-      <many-to-one name="creator" class="UserDB" column="creator" cascade="all"/>
+      <property name="father" column="father" />
+      <property name="creator" column="creator" />
   </class>
 
   <class name="UserDB" table="users">
