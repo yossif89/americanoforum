@@ -63,6 +63,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
+        SessionFactoryUtil.close();
     }
 
     private void createMessage(MessageDB msg) {
@@ -85,6 +86,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
+        SessionFactoryUtil.close();
     }
 
     private UserDB getUser(String username) {
@@ -107,6 +109,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
+        SessionFactoryUtil.close();
         return user;
     }
 
@@ -130,6 +133,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
+        SessionFactoryUtil.close();
         return msg;
     }
 
@@ -152,6 +156,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 				throw e;
 			}
 		}
+                SessionFactoryUtil.close();
 	}
      private void updateUserDB(UserDB user) {
             Transaction tx = null;
@@ -172,6 +177,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
                     throw e;
 		}
             }
+            SessionFactoryUtil.close();
      }
 
      private void deleteMessageDB(MessageDB msg) {
@@ -193,6 +199,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
+        SessionFactoryUtil.close();
      }
 
     public void addRegUserToXml(String username, String password, String email, String firstname, String lastname, String address, String gender, String up) {
@@ -250,7 +257,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 		tx = session.beginTransaction();
 		String hql = "from UserDB";
                 Query queryRes = session.createQuery(hql);
-                tx.commit();
+                //tx.commit();
                 allUsers = queryRes.list();
 	} catch (RuntimeException e) {
 		if (tx != null && tx.isActive()) {
@@ -264,11 +271,13 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
+        SessionFactoryUtil.close();
 
         HashMap<String,User> usersRes = new HashMap<String, User>();
         int size = 0;
         if (allUsers != null)
             size = allUsers.size();
+        System.out.println("size ="+size);
         for(int i=0; i<size; i++){
             UserDB user_data = (UserDB)allUsers.get(i);
             User user = new User();
@@ -289,7 +298,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 		tx = session.beginTransaction();
 		String hql = "from MessageDB";
                 Query queryRes = session.createQuery(hql);
-		tx.commit();
+		//tx.commit();
                 allMsgs_data = queryRes.list();
 	} catch (RuntimeException e) {
 		if (tx != null && tx.isActive()) {
@@ -303,6 +312,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
+        SessionFactoryUtil.close();
 
         HashMap<Long, Message> all_messages = new HashMap<Long,Message>();
         int size = 0;
@@ -323,7 +333,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
         myarr[1]=new HashMap<Long,Message>();
         for (int i=0; i<size; i++){
             Message parent = all_messages.get(new Long(((MessageDB)allMsgs_data.get(i)).getFather()));
-            Message child = all_messages.get(new Long(((MessageDB)allMsgs_data.get(i)).getFather()));
+            Message child = all_messages.get(new Long(((MessageDB)allMsgs_data.get(i)).getMessageId()));
             if (parent != null){
                 parent.getChild().add(child);
                 child.setParent(parent);
