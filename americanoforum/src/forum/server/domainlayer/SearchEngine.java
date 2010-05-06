@@ -1,6 +1,7 @@
 package forum.server.domainlayer;
 
 import java.util.HashMap;
+import org.compass.core.CompassHit;
 
 /**
  * @author Tomer Heber
@@ -30,7 +31,7 @@ public interface SearchEngine {
 	 * 
 	 * @return The search hits from index from till index to - 1
 	 */
-	public SearchHit[] searchByAuthor(String username, int from, int to);
+	public CompassHit[] searchByAuthor(String username, int from, int to);
 	
 	/**
 	 * Search for all the messages(SearchHit) which contain the phrase.<br><br>
@@ -51,7 +52,7 @@ public interface SearchEngine {
 	 * 
 	 * @return The search hits from index from till index to - 1
 	 */
-	public SearchHit[] searchByContent(String phrase, int from, int to);
+	public CompassHit[] searchByContent(String phrase, int from, int to);
 
         /**
          * removing a message fro DB
@@ -59,10 +60,5 @@ public interface SearchEngine {
          */
         public void removeMessage(Message msg);
 
-        /**
-         * set the all messages field
-         * @param _allMessages the new all messages DB
-         */
-        public void setAllMessages(HashMap<Long, Message> _allMessages);
 
 }

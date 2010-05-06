@@ -9,6 +9,7 @@ import forum.tcpcommunicationlayer.ServerResponse;
 import forum.tcpcommunicationlayer.ServerSearchResponse;
 import java.util.Set;
 import java.util.logging.Level;
+import org.compass.core.CompassHit;
 
 
 
@@ -195,20 +196,20 @@ public class ForumFacadeImpl implements ForumFacade{
        return toRet;
     }
 
-    public String encode_msgs(SearchHit[] msgs){
+    public String encode_msgs(CompassHit[] msgs){
         String ans = "";
         for(int i=0; i<msgs.length; i++){
             String subj="";
             String cont="";
-            if (msgs[i].getMessage().getSubject().equals(""))
+            if (((Message)(msgs[i].getData())).getSubject().equals(""))
                     subj="EMPTY SUBJECT";
             else
-                    subj = msgs[i].getMessage().getSubject();
-            if (msgs[i].getMessage().getContent().equals(""))
+                    subj = ((Message)(msgs[i].getData())).getSubject();
+            if (((Message)(msgs[i].getData())).getContent().equals(""))
                     cont="EMPTY CONTENT";
             else
-                    cont = msgs[i].getMessage().getContent();
-            ans = ans + msgs[i].getMessage().getMsg_id() + "$$" + subj + "$$" + cont + "$$" + msgs[i].getMessage().getCreator().getDetails().getUsername() + "\n";
+                    cont = ((Message)(msgs[i].getData())).getContent();
+            ans = ans + ((Message)(msgs[i].getData())).getMsg_id() + "$$" + subj + "$$" + cont + "$$" + ((Message)(msgs[i].getData())).getCreator().getDetails().getUsername() + "\n";
         }
         return ans;
     }
@@ -219,7 +220,7 @@ public class ForumFacadeImpl implements ForumFacade{
         //    u= new User();
         ServerResponse toRet=new ServerResponse();
         try{
-          SearchHit[] results = _facadeForum.searchByAuthor(username, from, to);
+          CompassHit[] results = _facadeForum.searchByAuthor(username, from, to);
           //toRet = new ServerSearchResponse(results);
            String ans="";
 
@@ -243,7 +244,7 @@ public class ForumFacadeImpl implements ForumFacade{
         ServerResponse toRet=new ServerResponse();
         try{
            // System.out.println("in search by content");
-          SearchHit[] results = _facadeForum.searchByContent(toSearch,from,to);
+          CompassHit[] results = _facadeForum.searchByContent(toSearch,from,to);
           //toRet = new ServerSearchResponse(results);
            String ans="";
 

@@ -3,12 +3,23 @@ package forum.server.domainlayer;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Vector;
+import org.compass.annotations.Searchable;
+import org.compass.annotations.SearchableId;
+import org.compass.annotations.SearchableProperty;
 
+/**
+ * http://www.compass-project.org/docs/2.2.0/reference/html/core-osem.html
+ * @author Tomer Heber
+ */
+@Searchable
 public class Message implements Serializable{
         private static Long gensym = (long)0;
 	private long _msg_id;
 	private String _subject;
+
+        @SearchableProperty (name = "content")
 	private String _content;
+
 	private Date _date;
 	Message _parent;
 	Vector<Message> _child = new Vector<Message>();
@@ -55,6 +66,11 @@ public class Message implements Serializable{
  */
     public User getCreator() {
         return _creator;
+    }
+
+   @SearchableProperty (name = "creator")
+    public String getCreatorString(){
+        return _creator.getDetails().getUsername();
     }
 /**
  * gets the date of the message

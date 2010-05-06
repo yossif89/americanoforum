@@ -1,0 +1,21 @@
+<compass-core-config xmlns="http://www.compass-project.org/schema/core-config"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.compass-project.org/schema/core-config
+           http://www.compass-project.org/schema/compass-core-config-2.2.xsd">
+
+   <compass name="default">
+      <connection>
+         <jdbc dialect="org.apache.lucene.store.jdbc.dialect.MySQLDialect">
+             <dataSourceProvider>
+                 <driverManager url="jdbc:mysql://localhost:3307/aaa?emulateLocators=true" username="root" password=""
+driverClass="com.mysql.jdbc.Driver" />
+             </dataSourceProvider>
+         </jdbc>
+     </connection>
+
+      <mappings>
+          <class name="testcompass.testMessage" />
+      </mappings>
+
+   </compass>
+</compass-core-config>

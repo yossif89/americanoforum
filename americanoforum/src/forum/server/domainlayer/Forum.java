@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.compass.core.CompassHit;
 /**
  * This class represents the main class of the forum, all the operations on the forum are done through this
  * class.
@@ -63,7 +64,6 @@ public class Forum {
 
     public void setAllMessages(HashMap<Long, Message> _allMessages) {
         this._allMessages = _allMessages;
-        this._searchEng.setAllMessages(_allMessages);
     }
 
     public void updateSearchEngine(){
@@ -421,8 +421,8 @@ public class Forum {
      * @param u
      * @return
      */
-    SearchHit[] searchByAuthor(String username, int from, int to) {
-        SearchHit[] result = this._searchEng.searchByAuthor(username, from, to);
+    CompassHit[] searchByAuthor(String username, int from, int to) {
+        CompassHit[] result = this._searchEng.searchByAuthor(username, from, to);
         //String[] stringMsgs = new String[result.length];
         System.out.println("***************************************");
         for(int i=0; i<result.length; i++){
@@ -431,8 +431,8 @@ public class Forum {
         return result;
     }
 
-    SearchHit[] searchByContent(String toSearch, int from, int to) {
-        SearchHit[] result = this._searchEng.searchByContent(toSearch, from, to);
+    CompassHit[] searchByContent(String toSearch, int from, int to) {
+        CompassHit[] result = this._searchEng.searchByContent(toSearch, from, to);
         return result;
     }
 }//class
