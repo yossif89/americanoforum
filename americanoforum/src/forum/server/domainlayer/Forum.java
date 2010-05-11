@@ -421,7 +421,7 @@ public class Forum {
      * @param u
      * @return
      */
-    CompassHit[] searchByAuthor(String username, int from, int to) {
+        CompassHit[] searchByAuthor(String username, int from, int to) {
         CompassHit[] result = this._searchEng.searchByAuthor(username, from, to);
         //String[] stringMsgs = new String[result.length];
         System.out.println("***************************************");

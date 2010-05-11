@@ -63,7 +63,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-        SessionFactoryUtil.close();
+       // SessionFactoryUtil.close();
     }
 
     private void createMessage(MessageDB msg) {
@@ -86,7 +86,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-        SessionFactoryUtil.close();
+        //SessionFactoryUtil.close();
     }
 
     private UserDB getUser(String username) {
@@ -109,7 +109,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-        SessionFactoryUtil.close();
+       // SessionFactoryUtil.close();
         return user;
     }
 
@@ -133,7 +133,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-        SessionFactoryUtil.close();
+      //  SessionFactoryUtil.close();
         return msg;
     }
 
@@ -156,7 +156,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 				throw e;
 			}
 		}
-                SessionFactoryUtil.close();
+          //      SessionFactoryUtil.close();
 	}
      private void updateUserDB(UserDB user) {
             Transaction tx = null;
@@ -177,7 +177,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
                     throw e;
 		}
             }
-            SessionFactoryUtil.close();
+    //        SessionFactoryUtil.close();
      }
 
      private void deleteMessageDB(MessageDB msg) {
@@ -199,7 +199,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-        SessionFactoryUtil.close();
+     //   SessionFactoryUtil.close();
      }
 
     public void addRegUserToXml(String username, String password, String email, String firstname, String lastname, String address, String gender, String up) {
@@ -271,7 +271,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-        SessionFactoryUtil.close();
+   //     SessionFactoryUtil.close();
 
         HashMap<String,User> usersRes = new HashMap<String, User>();
         int size = 0;
@@ -312,7 +312,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-        SessionFactoryUtil.close();
+        //SessionFactoryUtil.close();
 
         HashMap<Long, Message> all_messages = new HashMap<Long,Message>();
         int size = 0;
@@ -332,8 +332,14 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
         myarr[0]=new HashMap<Long,Message>();
         myarr[1]=new HashMap<Long,Message>();
         for (int i=0; i<size; i++){
-            Message parent = all_messages.get(new Long(((MessageDB)allMsgs_data.get(i)).getFather()));
-            Message child = all_messages.get(new Long(((MessageDB)allMsgs_data.get(i)).getMessageId()));
+            Message parent=null;
+            Message child=null;
+            Long parent_id = ((MessageDB)allMsgs_data.get(i)).getFather();
+            Long child_id = ((MessageDB)allMsgs_data.get(i)).getMessageId();
+            if(parent_id != null)
+                parent = all_messages.get(parent_id);
+            if(child_id != null)
+                child = all_messages.get(child_id);
             if (parent != null){
                 parent.getChild().add(child);
                 child.setParent(parent);

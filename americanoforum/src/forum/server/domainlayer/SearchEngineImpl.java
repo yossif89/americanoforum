@@ -38,7 +38,7 @@ public class SearchEngineImpl implements SearchEngine{
      */
     public SearchEngineImpl(HashMap<Long, Message> allMsgs){
        conf.setSetting("org.apache.lucene.store.jdbc.dialect.MySQLDialect","MyDriver");
-        session = compass.openSession();
+        openSession();
         Collection<Message> msgs = allMsgs.values();
         for(Message msg : msgs){
             addData(msg);
@@ -54,7 +54,9 @@ public class SearchEngineImpl implements SearchEngine{
 	 * @param msg The message which we want to add to the indexing data base of the search engine.
 	 */
     public void addData(Message msg){
+        openSession();
        session.save(msg);
+       Forum.logger.info("Added the message with subject "+ msg.getSubject());
     }
 
     /**
@@ -70,8 +72,16 @@ public class SearchEngineImpl implements SearchEngine{
 	 * @return The search hits from index from till index to - 1
 	 */
     public CompassHit[] searchByAuthor(String username, int from, int to) {
+        openSession();
        CompassHits hits = session.find("creator:\""+username+"\"");
-        return hits.detach(to, from).getHits();
+       Forum.logger.info("aaaaaaaaaaaaaaaaaaai_"+ ((Message)hits.data(0)).getUsername());
+       Forum.logger.info("username to search _"+"creator:\""+username+"\"");
+       Forum.logger.info("hitsize= "+hits.length());
+       return hits.detach(from,to).getHits();
+//       CompassHit[] toRet = new CompassHit[hits.length()];
+//       for(int i =0;i<hits.length();i++)
+//        toRet[i] = hits.detach().getHits()
+//       return toRet;
     }
 
     /**
@@ -94,8 +104,9 @@ public class SearchEngineImpl implements SearchEngine{
 	 * @return The search hits from index from till index to - 1
 	 */
     public CompassHit[] searchByContent(String phrase, int from, int to) {
-      CompassHits hits = session.find("content:\""+phrase+"\"");
-        return hits.detach(to, from).getHits();
+      openSession();
+        CompassHits hits = session.find("allCont:\""+phrase+"\"");
+        return hits.detach(from, to).getHits();
     }
 
     /**
@@ -104,6 +115,11 @@ public class SearchEngineImpl implements SearchEngine{
          */
     public void removeMessage(Message msg) {
       session.delete(msg);
+    }
+
+    private void openSession(){
+        if(this.session == null)
+            this.session = compass.openSession();
     }
 
 }

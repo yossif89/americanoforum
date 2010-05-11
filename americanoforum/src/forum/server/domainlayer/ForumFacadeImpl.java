@@ -199,17 +199,30 @@ public class ForumFacadeImpl implements ForumFacade{
     public String encode_msgs(CompassHit[] msgs){
         String ans = "";
         for(int i=0; i<msgs.length; i++){
+            if (msgs[i].getData() instanceof Message){
+                System.out.println("its a message!!!!!!!!!");
+            }
+            System.out.println("its not a message!!!!!!!!!");
             String subj="";
             String cont="";
-            if (((Message)(msgs[i].getData())).getSubject().equals(""))
+            System.out.println(((Message)(msgs[i].getData())).getContent());
+            if (((Message)(msgs[i].getData())).getSubject()==null){
+                System.out.println("1");
                     subj="EMPTY SUBJECT";
-            else
+            }
+            else{
+                    System.out.println("sub if eifffff");
                     subj = ((Message)(msgs[i].getData())).getSubject();
-            if (((Message)(msgs[i].getData())).getContent().equals(""))
+                   System.out.println("there is a subject--->" +subj);
+            }
+
+            if (((Message)(msgs[i].getData())).getContent()==null)
                     cont="EMPTY CONTENT";
             else
                     cont = ((Message)(msgs[i].getData())).getContent();
-            ans = ans + ((Message)(msgs[i].getData())).getMsg_id() + "$$" + subj + "$$" + cont + "$$" + ((Message)(msgs[i].getData())).getCreator().getDetails().getUsername() + "\n";
+
+            System.out.println("finish check subj and content");
+            ans = ans + ((Message)(msgs[i].getData())).getMsg_id() + "$$" + subj + "$$" + cont + "$$" + ((Message)(msgs[i].getData())).getUsername() + "\n";
         }
         return ans;
     }
@@ -221,6 +234,8 @@ public class ForumFacadeImpl implements ForumFacade{
         ServerResponse toRet=new ServerResponse();
         try{
           CompassHit[] results = _facadeForum.searchByAuthor(username, from, to);
+          Forum.logger.info("after detach "+results.length);
+          
           //toRet = new ServerSearchResponse(results);
            String ans="";
 
@@ -228,7 +243,9 @@ public class ForumFacadeImpl implements ForumFacade{
          //      ans = ans + results[i].toString() + "\n";
           // }
            //System.out.println("ans = "+ans);
+           System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
            ans = encode_msgs(results);
+           System.out.println("&&&&&&&&&&" + ans);
            toRet.setResponse(ans);
 
         }

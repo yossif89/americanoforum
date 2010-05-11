@@ -14,16 +14,31 @@ import org.compass.annotations.SearchableProperty;
 @Searchable
 public class Message implements Serializable{
         private static Long gensym = (long)0;
+
+        @SearchableId
 	private long _msg_id;
+
+        
+        @SearchableProperty (name = "subject")
 	private String _subject;
 
         @SearchableProperty (name = "content")
 	private String _content;
 
+        @SearchableProperty (name = "allCont")
+        private String _allWords;
+
+        @SearchableProperty (name = "creator")
+        private String username;
+
+        @SearchableProperty (name = "date")
 	private Date _date;
+
 	Message _parent;
+
 	Vector<Message> _child = new Vector<Message>();
-	User _creator;
+
+        User _creator;
 
     /**
      * constractor
@@ -37,8 +52,12 @@ public class Message implements Serializable{
         this._subject = _subject;
         this._content = _content;
         this._creator = _creator;
+        this._allWords = this._subject + " " + this._content;
+        this.username = this._creator.getDetails().getUsername();
         this._parent=null;
     }
+
+    public Message(){}
 
     /**
      * inc the msg id counter
@@ -46,7 +65,24 @@ public class Message implements Serializable{
     public static void incId(){
         gensym += 1;
     }
-/**
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getAllWords() {
+        return _allWords;
+    }
+
+    public void setAllWords(String _allWords) {
+        this._allWords = _allWords;
+    }
+
+    /**
  * gets the vector of all replys messages to the message
  * @return the replys messages as a vector of messages
  */
@@ -68,7 +104,7 @@ public class Message implements Serializable{
         return _creator;
     }
 
-   @SearchableProperty (name = "creator")
+  
     public String getCreatorString(){
         return _creator.getDetails().getUsername();
     }
