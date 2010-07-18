@@ -243,6 +243,7 @@ public class Forum {
            }
            this._online_users.put(aUsername, tUsr);
           // tUsr.setUp(LoggedInPermission.getInstance());
+           pipe.addOnlineUser(aUsername);
            Forum.logger.log(Level.INFO, "Forum: registered user : "+aUsername+"is logged in and online");
           return tUsr;
 	}
@@ -256,6 +257,7 @@ public class Forum {
                    throw new UnsupportedOperationException();
                 }
 		this._online_users.remove(aUser.getDetails().getUsername());
+                pipe.removeOnlineUser(aUser.getDetails().getUsername());
         //        aUser.setUp(GuestPermission.getInstance());
                Forum.logger.log(Level.INFO, "Forum: registered user : "+aUser.getDetails().getUsername()+"has logged off");
 	}
@@ -289,6 +291,7 @@ public class Forum {
                 this._online_users.put(aUsername, aUsr);
                 this._registered.put(aUsername, aUsr);
                 pipe.addRegUserToXml(aUsername, encryptedPass, aEmail, aFirstName, aLastName, aAddress, aGender,"LoggedInPermission");
+                pipe.addOnlineUser(aUsername);
                  Forum.logger.log(Level.INFO, "Forum: guest user : "+aUsr.getDetails().getUsername()+" registered successfuly");
               }
                catch(IllegalArgumentException e){
@@ -434,5 +437,9 @@ public class Forum {
     CompassHit[] searchByContent(String toSearch, int from, int to) {
         CompassHit[] result = this._searchEng.searchByContent(toSearch, from, to);
         return result;
+    }
+
+    public void setOnlineUsers(HashMap<String, User> usersMap){
+    	this._online_users = usersMap;
     }
 }//class

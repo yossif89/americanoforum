@@ -370,4 +370,12 @@ public class PersistenceDataHandlerImpl implements PersistenceDataHandler {
            
     //    }
     }
+
+    public void addOnlineUser(String aUsername) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void removeOnlineUser(String username) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

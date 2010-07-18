@@ -191,6 +191,7 @@ public class ForumFacadeImpl implements ForumFacade{
 
     public ServerResponse viewForum() {
       ServerResponse toRet = new ServerResponse();
+    _facadeForum = _pipe.getForumFromXml();
 
        toRet.setResponse(_facadeForum.toString());
        return toRet;

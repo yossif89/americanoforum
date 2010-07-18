@@ -22,4 +22,8 @@
       <property name="gender" column="gender" />
       <property name="permission" column="permission" />
   </class>
+
+  <class name="OnlineUserDB" table="online_users" >
+  	<id name="username" column="username"/>
+  </class>
 </hibernate-mapping>

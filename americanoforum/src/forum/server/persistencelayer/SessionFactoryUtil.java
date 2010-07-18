@@ -27,7 +27,7 @@ public class SessionFactoryUtil {
 	public static void close() {
 		if (sessionFactory != null)
 			sessionFactory.close();
-		sessionFactory = null;
+		//sessionFactory = null;
 	}
 
 }

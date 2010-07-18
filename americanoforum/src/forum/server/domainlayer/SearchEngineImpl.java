@@ -29,8 +29,8 @@ public class SearchEngineImpl implements SearchEngine{
 
     static File file = new File("compassSettings.xml");
     static CompassConfiguration conf = CompassConfigurationFactory.newConfiguration().configure(file);
-    private Compass compass = conf.buildCompass();
-    private CompassSession session;
+    static private Compass compass = conf.buildCompass();
+    static private CompassSession session;
 
     /**
      * constructor
@@ -54,9 +54,12 @@ public class SearchEngineImpl implements SearchEngine{
 	 * @param msg The message which we want to add to the indexing data base of the search engine.
 	 */
     public void addData(Message msg){
-        openSession();
-       session.save(msg);
+    	openSession();
+        System.out.println("before saving - msg: "+msg.getSubject());
+        session.save(msg);
+       System.out.println("after saving");
        Forum.logger.info("Added the message with subject "+ msg.getSubject());
+       closeSession();
     }
 
     /**
@@ -77,6 +80,7 @@ public class SearchEngineImpl implements SearchEngine{
        Forum.logger.info("aaaaaaaaaaaaaaaaaaai_"+ ((Message)hits.data(0)).getUsername());
        Forum.logger.info("username to search _"+"creator:\""+username+"\"");
        Forum.logger.info("hitsize= "+hits.length());
+       closeSession();
        return hits.detach(from,to).getHits();
 //       CompassHit[] toRet = new CompassHit[hits.length()];
 //       for(int i =0;i<hits.length();i++)
@@ -106,6 +110,7 @@ public class SearchEngineImpl implements SearchEngine{
     public CompassHit[] searchByContent(String phrase, int from, int to) {
       openSession();
         CompassHits hits = session.find("allCont:\""+phrase+"\"");
+        closeSession();
         return hits.detach(from, to).getHits();
     }
 
@@ -114,12 +119,24 @@ public class SearchEngineImpl implements SearchEngine{
          * @param msg the message to remove
          */
     public void removeMessage(Message msg) {
+      openSession();
       session.delete(msg);
+      closeSession();
     }
 
     private void openSession(){
-        if(this.session == null)
+        if(this.session == null){
+        	System.out.println("open session");
             this.session = compass.openSession();
+        }
+    }
+
+    private void closeSession(){
+    	if (this.session != null){
+    		System.out.println("close session");
+    		this.session.close();
+    		this.session=null;
+    	}
     }
 
 }

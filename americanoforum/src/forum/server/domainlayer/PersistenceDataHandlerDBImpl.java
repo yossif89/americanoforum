@@ -26,9 +26,11 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
         Forum forum = new Forum();
         HashMap<String,User> users = getUsers();
         HashMap<Long,Message>[] messages = getMsgs(users);
+        HashMap<String,User> onlineUsers = getOnlineUsers(users);
 
         forum.setMessages(messages[0]);
         forum.setAllMessages(messages[1]);
+        forum.setOnlineUsers(onlineUsers);
 
         //finding max index for msgs
         Set<Long> msgs_ids = messages[1].keySet();
@@ -43,10 +45,48 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
         return forum;
     }
 
+    private HashMap<String, User> getOnlineUsers(HashMap<String,User> allUsersMap) {
+		Transaction tx = null;
+        List allUsers=null;
+    	Session session = SessionFactoryUtil.getInstance().openSession();
+    	try {
+    		tx = session.beginTransaction();
+    		String hql = "from OnlineUserDB";
+                    Query queryRes = session.createQuery(hql);
+                    //tx.commit();
+                    allUsers = queryRes.list();
+    	} catch (RuntimeException e) {
+    		if (tx != null && tx.isActive()) {
+    			try {
+    				// Second try catch as the rollback could fail as well
+    				tx.rollback();
+    			} catch (HibernateException e1) {
+    			// add logging
+    			}
+    			// throw again the first exception
+    			throw e;
+    		}
+    	}
+            SessionFactoryUtil.close();
+
+            HashMap<String,User> usersRes = new HashMap<String, User>();
+            int size = 0;
+            if (allUsers != null)
+                size = allUsers.size();
+            System.out.println("size ="+size);
+            for(int i=0; i<size; i++){
+                OnlineUserDB user_data = (OnlineUserDB)allUsers.get(i);
+                usersRes.put(user_data.getUsername(),allUsersMap.get(user_data.getUsername()));
+            }
+            return usersRes;
+
+	}
+
+
     private void createUser(UserDB user) {
         Transaction tx = null;
 
-	Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+	Session session = SessionFactoryUtil.getInstance().openSession();
 	try {
 		tx = session.beginTransaction();
 		session.save(user);
@@ -63,13 +103,13 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-       // SessionFactoryUtil.close();
+        SessionFactoryUtil.close();
     }
 
     private void createMessage(MessageDB msg) {
         Transaction tx = null;
 
-	Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+	Session session = SessionFactoryUtil.getInstance().openSession();
 	try {
 		tx = session.beginTransaction();
 		session.save(msg);
@@ -86,12 +126,12 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-        //SessionFactoryUtil.close();
+        SessionFactoryUtil.close();
     }
 
     private UserDB getUser(String username) {
 	Transaction tx = null;
-	Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+	Session session = SessionFactoryUtil.getInstance().openSession();
         UserDB user = null;
 	try {
             tx = session.beginTransaction();
@@ -109,13 +149,13 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-       // SessionFactoryUtil.close();
+        SessionFactoryUtil.close();
         return user;
     }
 
     private MessageDB getMessage(long id) {
 	Transaction tx = null;
-	Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+	Session session = SessionFactoryUtil.getInstance().openSession();
         MessageDB msg = null;
 	try {
             tx = session.beginTransaction();
@@ -133,13 +173,13 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-      //  SessionFactoryUtil.close();
+        SessionFactoryUtil.close();
         return msg;
     }
 
     private void updateMessageDB(MessageDB msg) {
 		Transaction tx = null;
-		Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+		Session session = SessionFactoryUtil.getInstance().openSession();
 		try {
 			tx = session.beginTransaction();
 			session.update(msg);
@@ -156,11 +196,11 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 				throw e;
 			}
 		}
-          //      SessionFactoryUtil.close();
+                SessionFactoryUtil.close();
 	}
      private void updateUserDB(UserDB user) {
             Transaction tx = null;
-            Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+            Session session = SessionFactoryUtil.getInstance().openSession();
             try {
                 tx = session.beginTransaction();
 		session.update(user);
@@ -177,12 +217,12 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
                     throw e;
 		}
             }
-    //        SessionFactoryUtil.close();
+            SessionFactoryUtil.close();
      }
 
      private void deleteMessageDB(MessageDB msg) {
 	Transaction tx = null;
-	Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+	Session session = SessionFactoryUtil.getInstance().openSession();
 	try {
 		tx = session.beginTransaction();
 		session.delete(msg);
@@ -199,7 +239,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-     //   SessionFactoryUtil.close();
+        SessionFactoryUtil.close();
      }
 
     public void addRegUserToXml(String username, String password, String email, String firstname, String lastname, String address, String gender, String up) {
@@ -252,7 +292,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
     private HashMap<String, User> getUsers() {
         Transaction tx = null;
         List allUsers=null;
-	Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+	Session session = SessionFactoryUtil.getInstance().openSession();
 	try {
 		tx = session.beginTransaction();
 		String hql = "from UserDB";
@@ -271,7 +311,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-   //     SessionFactoryUtil.close();
+        SessionFactoryUtil.close();
 
         HashMap<String,User> usersRes = new HashMap<String, User>();
         int size = 0;
@@ -292,7 +332,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
     //myArr[0] - rootMsgs, myArr[1] - allMsgs
     private HashMap<Long, Message>[] getMsgs(HashMap<String,User> allUsers) {
         Transaction tx = null;
-        Session session = SessionFactoryUtil.getInstance().getCurrentSession();
+        Session session = SessionFactoryUtil.getInstance().openSession();
         List allMsgs_data=null;
         try {
 		tx = session.beginTransaction();
@@ -312,7 +352,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
 			throw e;
 		}
 	}
-        //SessionFactoryUtil.close();
+        SessionFactoryUtil.close();
 
         HashMap<Long, Message> all_messages = new HashMap<Long,Message>();
         int size = 0;
@@ -353,6 +393,65 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
         return myarr;
     }
 
+    @Override
+    public void addOnlineUser(String username) {
+    	OnlineUserDB user = new OnlineUserDB();
+	user.setUsername(username);
+	createOnlineUser(user);
+    }
+
+    @Override
+    public void removeOnlineUser(String username) {
+    	OnlineUserDB user = new OnlineUserDB();
+	user.setUsername(username);
+	logoffOnlineUser(user);
+    }
+
+    private void createOnlineUser(OnlineUserDB user) {
+		Transaction tx = null;
+
+		Session session = SessionFactoryUtil.getInstance().openSession();
+		try {
+			tx = session.beginTransaction();
+			session.save(user);
+			tx.commit();
+		} catch (RuntimeException e) {
+			if (tx != null && tx.isActive()) {
+				try {
+					// Second try catch as the rollback could fail as well
+					tx.rollback();
+				} catch (HibernateException e1) {
+				// add logging
+				}
+				// throw again the first exception
+				throw e;
+			}
+		}
+	        SessionFactoryUtil.close();
+
+    }
+
+    private void logoffOnlineUser(OnlineUserDB user) {
+		Transaction tx = null;
+		Session session = SessionFactoryUtil.getInstance().openSession();
+		try {
+			tx = session.beginTransaction();
+			session.delete(user);
+			tx.commit();
+		} catch (RuntimeException e) {
+			if (tx != null && tx.isActive()) {
+				try {
+					// Second try catch as the rollback could fail as well
+					tx.rollback();
+				} catch (HibernateException e1) {
+				// add logging
+				}
+				// throw again the first exception
+				throw e;
+			}
+		}
+                SessionFactoryUtil.close();
+	}
 
 
 

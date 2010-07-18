@@ -19,5 +19,7 @@ public interface PersistenceDataHandler {
     void modifyMsgInXml(long id_toChange, String newCont);
     void changeUserPermission(String username, String permission);
     void deleteMsgFromXml(long msg_id);
+    void addOnlineUser(String aUsername);
+    void removeOnlineUser(String username);
 
 }
