@@ -513,6 +513,7 @@ public class ForumTree implements ForumTreeHandler {
                             DefaultMutableTreeNode node = (DefaultMutableTreeNode)m_tree.getSelectionPath().getLastPathComponent();
                             ForumCell cell = (ForumCell) node.getUserObject();
                             m_pipe.addReplyToMessage(cell.getId(),subj,cont,button);
+                            
                     }
 		});			
 	}

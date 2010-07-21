@@ -35,7 +35,7 @@ public class UserTest extends TestCase {
         _u2 = new User();
         _u1.setDetails(d1);
         _u2.setDetails(d2);
-        this._forum=new Forum();
+        this._forum=new Forum(false);
         this._forum.addToRegistered(_u1);
         this._forum.addToRegistered(_u2);
         _u1.setUp(PermissionFactory.getUserPermission("LoggedInPermission"));

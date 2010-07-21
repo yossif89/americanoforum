@@ -21,6 +21,8 @@ public class Forum {
         SearchEngine _searchEng;
        PersistenceDataHandler pipe;
 
+       boolean flagForTest;
+
        public Forum(){
            _messages = new HashMap<Long,Message>();
          _allMessages = new HashMap<Long,Message>();
@@ -29,6 +31,16 @@ public class Forum {
          System.out.println("ktovet "+_allMessages);
          _searchEng = new SearchEngineImpl(_allMessages);
         pipe = new PersistenceDataHandlerDBImpl();
+        flagForTest=true;
+       }
+
+       public Forum(boolean flag){
+            _messages = new HashMap<Long,Message>();
+         _allMessages = new HashMap<Long,Message>();
+	 _registered = new HashMap<String, User>();
+	 _online_users = new HashMap<String, User>();
+         System.out.println("ktovet "+_allMessages);
+        flagForTest=flag;
        }
 
     /**
@@ -92,8 +104,10 @@ public class Forum {
            Message tMsg =  aUsr.addMessage(aSbj,aCont);
            _messages.put(tMsg.getMsg_id(), tMsg);
            _allMessages.put(tMsg.getMsg_id(), tMsg);
-           _searchEng.addData(tMsg);
-           pipe.addMsgToXml(aSbj, aCont, tMsg.getMsg_id(), -1, aUsr.getDetails().getUsername(), tMsg.getDate());
+           if(flagForTest){
+                _searchEng.addData(tMsg);
+                pipe.addMsgToXml(aSbj, aCont, tMsg.getMsg_id(), -1, aUsr.getDetails().getUsername(), tMsg.getDate());
+           }
             }
             catch(Exception e){
             Forum.logger.log(Level.FINE, "Forum:couldn't add a message with the header : "+aSbj);
@@ -108,11 +122,14 @@ public class Forum {
          * @param aUsr , the user that initiated the modification
          */
         public void modifyMessage(Message aMsg, String aNewCont, User aUsr){
-            this._searchEng.removeMessage(aMsg);
+            if(flagForTest)
+                this._searchEng.removeMessage(aMsg);
             aUsr.modifyMessage(aMsg, aNewCont);
             //exceptions!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            this._searchEng.addData(aMsg);
-            pipe.modifyMsgInXml(aMsg.getMsg_id(), aNewCont);
+            if(flagForTest){
+                this._searchEng.addData(aMsg);
+                pipe.modifyMsgInXml(aMsg.getMsg_id(), aNewCont);
+            }
         }
 
 /**
@@ -128,8 +145,10 @@ public class Forum {
                 tMsg.setParent(parent);
                 parent.getChild().add(tMsg);
                 _allMessages.put(tMsg.getMsg_id(), tMsg);
-                this._searchEng.addData(tMsg);
-                pipe.addMsgToXml(aSbj, aCont,tMsg.getMsg_id(), parent.getMsg_id(), aUsr.getDetails().getUsername(), tMsg.getDate());
+                if(flagForTest){
+                    this._searchEng.addData(tMsg);
+                    pipe.addMsgToXml(aSbj, aCont,tMsg.getMsg_id(), parent.getMsg_id(), aUsr.getDetails().getUsername(), tMsg.getDate());
+                }
             }
             catch(Exception e){
                  Forum.logger.log(Level.FINE, "Forum:couldn't add a reply  message with the header : "+aSbj);
@@ -159,9 +178,11 @@ public class Forum {
                 msg.getParent().getChild().remove(msg);
                 _allMessages.remove(new Long(msg.getMsg_id()));
             }
-            this._searchEng.removeMessage(msg);
-            pipe.deleteMsgFromXml(msg.getMsg_id());
-            System.out.println("histayem behzlaha");
+            if(flagForTest){
+                this._searchEng.removeMessage(msg);
+                pipe.deleteMsgFromXml(msg.getMsg_id());
+                System.out.println("histayem behzlaha");
+            }
         }
 
 
@@ -243,7 +264,8 @@ public class Forum {
            }
            this._online_users.put(aUsername, tUsr);
           // tUsr.setUp(LoggedInPermission.getInstance());
-           pipe.addOnlineUser(aUsername);
+           if(flagForTest)
+                pipe.addOnlineUser(aUsername);
            Forum.logger.log(Level.INFO, "Forum: registered user : "+aUsername+"is logged in and online");
           return tUsr;
 	}
@@ -257,7 +279,8 @@ public class Forum {
                    throw new UnsupportedOperationException();
                 }
 		this._online_users.remove(aUser.getDetails().getUsername());
-                pipe.removeOnlineUser(aUser.getDetails().getUsername());
+                if(flagForTest)
+                    pipe.removeOnlineUser(aUser.getDetails().getUsername());
         //        aUser.setUp(GuestPermission.getInstance());
                Forum.logger.log(Level.INFO, "Forum: registered user : "+aUser.getDetails().getUsername()+"has logged off");
 	}
@@ -290,8 +313,10 @@ public class Forum {
                 aUsr.setUp(LoggedInPermission.getInstance());
                 this._online_users.put(aUsername, aUsr);
                 this._registered.put(aUsername, aUsr);
-                pipe.addRegUserToXml(aUsername, encryptedPass, aEmail, aFirstName, aLastName, aAddress, aGender,"LoggedInPermission");
-                pipe.addOnlineUser(aUsername);
+                if(flagForTest){
+                    pipe.addRegUserToXml(aUsername, encryptedPass, aEmail, aFirstName, aLastName, aAddress, aGender,"LoggedInPermission");
+                    pipe.addOnlineUser(aUsername);
+                }
                  Forum.logger.log(Level.INFO, "Forum: guest user : "+aUsr.getDetails().getUsername()+" registered successfuly");
               }
                catch(IllegalArgumentException e){
@@ -311,7 +336,8 @@ public class Forum {
          */
         public void changeToModerator(User curr_user, User to_change){
             curr_user.changeToModerator(to_change);
-            pipe.changeUserPermission(to_change.getDetails().getUsername(), "ModeratorPermission");
+            if(flagForTest)
+                pipe.changeUserPermission(to_change.getDetails().getUsername(), "ModeratorPermission");
         }
 
    /**
@@ -329,6 +355,7 @@ public class Forum {
        vit.setDetails(d);
        vit.setUp(PermissionFactory.getUserPermission("AdminPermission"));
        this.addToRegistered(vit);
+       if(flagForTest)
         pipe.addRegUserToXml("sepetnit", encryptedPass, "@","vitaly","sepetnizki", "bash", "male","AdminPermission");
 
    }
@@ -348,7 +375,8 @@ public class Forum {
        yak.setDetails(d);
        yak.setUp(PermissionFactory.getUserPermission("ModeratorPermission"));
          this.addToRegistered(yak);
-       pipe.addRegUserToXml("dahany", encryptedPass, "@","yakir","dahan", "bash", "male","ModeratorPermission");
+       if(flagForTest)
+            pipe.addRegUserToXml("dahany", encryptedPass, "@","yakir","dahan", "bash", "male","ModeratorPermission");
    }
 
    /**

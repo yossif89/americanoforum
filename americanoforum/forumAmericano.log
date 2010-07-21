@@ -16834,3 +16834,4438 @@
   <thread>11</thread>
   <message>Closing connection with client /127.0.0.1.</message>
 </record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2010-07-18T17:11:41</date>
+  <millis>1279462301265</millis>
+  <sequence>0</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server has started running on port 1234.</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:18</date>
+  <millis>1279462338062</millis>
+  <sequence>1</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>A connection was accepted from: /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:27</date>
+  <millis>1279462347609</millis>
+  <sequence>8</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:28</date>
+  <millis>1279462348078</millis>
+  <sequence>9</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:28</date>
+  <millis>1279462348671</millis>
+  <sequence>10</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:29</date>
+  <millis>1279462349093</millis>
+  <sequence>11</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject hi3</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:29</date>
+  <millis>1279462349468</millis>
+  <sequence>12</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject hi4</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:29</date>
+  <millis>1279462349906</millis>
+  <sequence>13</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject boo</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:30</date>
+  <millis>1279462350296</millis>
+  <sequence>14</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:30</date>
+  <millis>1279462350687</millis>
+  <sequence>15</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject Hello</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:31</date>
+  <millis>1279462351281</millis>
+  <sequence>16</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject new message</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:31</date>
+  <millis>1279462351859</millis>
+  <sequence>17</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject Ez mitadken</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:32</date>
+  <millis>1279462352046</millis>
+  <sequence>18</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:32</date>
+  <millis>1279462352281</millis>
+  <sequence>19</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:32</date>
+  <millis>1279462352546</millis>
+  <sequence>20</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:32</date>
+  <millis>1279462352843</millis>
+  <sequence>21</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:33</date>
+  <millis>1279462353328</millis>
+  <sequence>22</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:33</date>
+  <millis>1279462353703</millis>
+  <sequence>23</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:33</date>
+  <millis>1279462353953</millis>
+  <sequence>24</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Communication has started between /127.0.0.1 and the server.</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:33</date>
+  <millis>1279462353968</millis>
+  <sequence>25</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:34</date>
+  <millis>1279462354187</millis>
+  <sequence>26</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:34</date>
+  <millis>1279462354656</millis>
+  <sequence>27</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:35</date>
+  <millis>1279462355359</millis>
+  <sequence>28</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:35</date>
+  <millis>1279462355578</millis>
+  <sequence>29</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi3</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:35</date>
+  <millis>1279462355812</millis>
+  <sequence>30</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi4</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:36</date>
+  <millis>1279462356078</millis>
+  <sequence>31</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject boo</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:36</date>
+  <millis>1279462356375</millis>
+  <sequence>32</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:36</date>
+  <millis>1279462356671</millis>
+  <sequence>33</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Hello</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:37</date>
+  <millis>1279462357000</millis>
+  <sequence>34</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject new message</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:37</date>
+  <millis>1279462357390</millis>
+  <sequence>35</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Ez mitadken</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:37</date>
+  <millis>1279462357968</millis>
+  <sequence>36</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:38</date>
+  <millis>1279462358515</millis>
+  <sequence>37</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:38</date>
+  <millis>1279462358687</millis>
+  <sequence>38</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:38</date>
+  <millis>1279462358906</millis>
+  <sequence>39</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:39</date>
+  <millis>1279462359156</millis>
+  <sequence>40</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:39</date>
+  <millis>1279462359437</millis>
+  <sequence>41</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-18T17:12:39</date>
+  <millis>1279462359796</millis>
+  <sequence>42</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:26</date>
+  <millis>1279462406640</millis>
+  <sequence>43</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:26</date>
+  <millis>1279462406875</millis>
+  <sequence>44</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.Forum</class>
+  <method>login</method>
+  <thread>11</thread>
+  <message>Forum: registered user : josis logged in and online</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:26</date>
+  <millis>1279462406875</millis>
+  <sequence>45</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:26</date>
+  <millis>1279462406906</millis>
+  <sequence>46</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:27</date>
+  <millis>1279462407031</millis>
+  <sequence>47</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:27</date>
+  <millis>1279462407359</millis>
+  <sequence>48</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:27</date>
+  <millis>1279462407687</millis>
+  <sequence>49</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:28</date>
+  <millis>1279462408031</millis>
+  <sequence>50</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi3</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:28</date>
+  <millis>1279462408453</millis>
+  <sequence>51</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi4</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:29</date>
+  <millis>1279462409062</millis>
+  <sequence>52</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject boo</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:29</date>
+  <millis>1279462409593</millis>
+  <sequence>53</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:29</date>
+  <millis>1279462409781</millis>
+  <sequence>54</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Hello</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:29</date>
+  <millis>1279462409984</millis>
+  <sequence>55</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject new message</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:30</date>
+  <millis>1279462410218</millis>
+  <sequence>56</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Ez mitadken</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:30</date>
+  <millis>1279462410500</millis>
+  <sequence>57</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:30</date>
+  <millis>1279462410796</millis>
+  <sequence>58</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:31</date>
+  <millis>1279462411343</millis>
+  <sequence>59</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:31</date>
+  <millis>1279462411703</millis>
+  <sequence>60</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:32</date>
+  <millis>1279462412109</millis>
+  <sequence>61</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:32</date>
+  <millis>1279462412625</millis>
+  <sequence>62</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:32</date>
+  <millis>1279462412750</millis>
+  <sequence>63</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:44</date>
+  <millis>1279462424671</millis>
+  <sequence>64</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:44</date>
+  <millis>1279462424671</millis>
+  <sequence>65</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.User</class>
+  <method>addMessage</method>
+  <thread>11</thread>
+  <message>succesfully added  message number 21</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:44</date>
+  <millis>1279462424734</millis>
+  <sequence>66</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:44</date>
+  <millis>1279462424937</millis>
+  <sequence>67</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:44</date>
+  <millis>1279462424937</millis>
+  <sequence>68</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:45</date>
+  <millis>1279462425062</millis>
+  <sequence>69</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:45</date>
+  <millis>1279462425359</millis>
+  <sequence>70</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:45</date>
+  <millis>1279462425843</millis>
+  <sequence>71</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:46</date>
+  <millis>1279462426234</millis>
+  <sequence>72</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi3</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:46</date>
+  <millis>1279462426562</millis>
+  <sequence>73</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi4</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:46</date>
+  <millis>1279462426968</millis>
+  <sequence>74</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject boo</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:47</date>
+  <millis>1279462427468</millis>
+  <sequence>75</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:47</date>
+  <millis>1279462427968</millis>
+  <sequence>76</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Hello</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:48</date>
+  <millis>1279462428140</millis>
+  <sequence>77</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject new message</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:48</date>
+  <millis>1279462428343</millis>
+  <sequence>78</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Ez mitadken</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:48</date>
+  <millis>1279462428703</millis>
+  <sequence>79</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:48</date>
+  <millis>1279462428984</millis>
+  <sequence>80</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:49</date>
+  <millis>1279462429281</millis>
+  <sequence>81</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:49</date>
+  <millis>1279462429671</millis>
+  <sequence>82</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:50</date>
+  <millis>1279462430093</millis>
+  <sequence>83</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:50</date>
+  <millis>1279462430531</millis>
+  <sequence>84</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:51</date>
+  <millis>1279462431062</millis>
+  <sequence>85</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-18T17:13:51</date>
+  <millis>1279462431171</millis>
+  <sequence>86</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:28</date>
+  <millis>1279462468000</millis>
+  <sequence>87</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:28</date>
+  <millis>1279462468093</millis>
+  <sequence>88</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.Forum</class>
+  <method>logoff</method>
+  <thread>11</thread>
+  <message>Forum: registered user : joshas logged off</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:28</date>
+  <millis>1279462468093</millis>
+  <sequence>89</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:28</date>
+  <millis>1279462468109</millis>
+  <sequence>90</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:28</date>
+  <millis>1279462468187</millis>
+  <sequence>91</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:28</date>
+  <millis>1279462468390</millis>
+  <sequence>92</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:28</date>
+  <millis>1279462468625</millis>
+  <sequence>93</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:28</date>
+  <millis>1279462468875</millis>
+  <sequence>94</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi3</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:29</date>
+  <millis>1279462469140</millis>
+  <sequence>95</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi4</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:29</date>
+  <millis>1279462469453</millis>
+  <sequence>96</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject boo</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:29</date>
+  <millis>1279462469796</millis>
+  <sequence>97</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:30</date>
+  <millis>1279462470312</millis>
+  <sequence>98</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Hello</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:30</date>
+  <millis>1279462470765</millis>
+  <sequence>99</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject new message</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:31</date>
+  <millis>1279462471218</millis>
+  <sequence>100</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Ez mitadken</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:31</date>
+  <millis>1279462471390</millis>
+  <sequence>101</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:31</date>
+  <millis>1279462471609</millis>
+  <sequence>102</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:31</date>
+  <millis>1279462471828</millis>
+  <sequence>103</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:32</date>
+  <millis>1279462472140</millis>
+  <sequence>104</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:32</date>
+  <millis>1279462472515</millis>
+  <sequence>105</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:32</date>
+  <millis>1279462472859</millis>
+  <sequence>106</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:33</date>
+  <millis>1279462473390</millis>
+  <sequence>107</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:33</date>
+  <millis>1279462473625</millis>
+  <sequence>108</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:39</date>
+  <millis>1279462479156</millis>
+  <sequence>109</sequence>
+  <logger>americanoforum</logger>
+  <level>SEVERE</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>A readObject operation failed with client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-18T17:14:39</date>
+  <millis>1279462479640</millis>
+  <sequence>110</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Closing connection with client /127.0.0.1.</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2010-07-19T19:23:14</date>
+  <millis>1279556594656</millis>
+  <sequence>0</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server has started running on port 1234.</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:24</date>
+  <millis>1279556604984</millis>
+  <sequence>1</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>A connection was accepted from: /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:34</date>
+  <millis>1279556614203</millis>
+  <sequence>8</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:34</date>
+  <millis>1279556614968</millis>
+  <sequence>9</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:35</date>
+  <millis>1279556615484</millis>
+  <sequence>10</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:35</date>
+  <millis>1279556615984</millis>
+  <sequence>11</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject hi3</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:36</date>
+  <millis>1279556616453</millis>
+  <sequence>12</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject hi4</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:36</date>
+  <millis>1279556616843</millis>
+  <sequence>13</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject boo</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:37</date>
+  <millis>1279556617390</millis>
+  <sequence>14</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:37</date>
+  <millis>1279556617781</millis>
+  <sequence>15</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject Hello</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:38</date>
+  <millis>1279556618015</millis>
+  <sequence>16</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject new message</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:38</date>
+  <millis>1279556618265</millis>
+  <sequence>17</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject Ez mitadken</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:38</date>
+  <millis>1279556618562</millis>
+  <sequence>18</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:38</date>
+  <millis>1279556618890</millis>
+  <sequence>19</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:39</date>
+  <millis>1279556619218</millis>
+  <sequence>20</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:39</date>
+  <millis>1279556619765</millis>
+  <sequence>21</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:40</date>
+  <millis>1279556620203</millis>
+  <sequence>22</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:40</date>
+  <millis>1279556620765</millis>
+  <sequence>23</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:40</date>
+  <millis>1279556620953</millis>
+  <sequence>24</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:41</date>
+  <millis>1279556621078</millis>
+  <sequence>25</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Communication has started between /127.0.0.1 and the server.</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:41</date>
+  <millis>1279556621093</millis>
+  <sequence>26</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:41</date>
+  <millis>1279556621250</millis>
+  <sequence>27</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:41</date>
+  <millis>1279556621671</millis>
+  <sequence>28</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:41</date>
+  <millis>1279556621921</millis>
+  <sequence>29</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:42</date>
+  <millis>1279556622281</millis>
+  <sequence>30</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi3</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:42</date>
+  <millis>1279556622734</millis>
+  <sequence>31</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi4</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:43</date>
+  <millis>1279556623109</millis>
+  <sequence>32</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject boo</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:43</date>
+  <millis>1279556623562</millis>
+  <sequence>33</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:44</date>
+  <millis>1279556624281</millis>
+  <sequence>34</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Hello</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:44</date>
+  <millis>1279556624671</millis>
+  <sequence>35</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject new message</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:44</date>
+  <millis>1279556624859</millis>
+  <sequence>36</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Ez mitadken</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:45</date>
+  <millis>1279556625125</millis>
+  <sequence>37</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:45</date>
+  <millis>1279556625390</millis>
+  <sequence>38</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:45</date>
+  <millis>1279556625734</millis>
+  <sequence>39</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:46</date>
+  <millis>1279556626125</millis>
+  <sequence>40</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:46</date>
+  <millis>1279556626671</millis>
+  <sequence>41</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:47</date>
+  <millis>1279556627062</millis>
+  <sequence>42</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:47</date>
+  <millis>1279556627562</millis>
+  <sequence>43</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-19T19:23:47</date>
+  <millis>1279556627656</millis>
+  <sequence>44</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:07</date>
+  <millis>1279556767156</millis>
+  <sequence>45</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:07</date>
+  <millis>1279556767328</millis>
+  <sequence>46</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.Forum</class>
+  <method>login</method>
+  <thread>11</thread>
+  <message>Forum: registered user : sepetnitis logged in and online</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:07</date>
+  <millis>1279556767328</millis>
+  <sequence>47</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:07</date>
+  <millis>1279556767390</millis>
+  <sequence>48</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:07</date>
+  <millis>1279556767484</millis>
+  <sequence>49</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:07</date>
+  <millis>1279556767812</millis>
+  <sequence>50</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:08</date>
+  <millis>1279556768046</millis>
+  <sequence>51</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:08</date>
+  <millis>1279556768328</millis>
+  <sequence>52</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi3</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:08</date>
+  <millis>1279556768640</millis>
+  <sequence>53</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi4</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:09</date>
+  <millis>1279556769000</millis>
+  <sequence>54</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject boo</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:09</date>
+  <millis>1279556769328</millis>
+  <sequence>55</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:09</date>
+  <millis>1279556769718</millis>
+  <sequence>56</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Hello</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:10</date>
+  <millis>1279556770171</millis>
+  <sequence>57</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject new message</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:10</date>
+  <millis>1279556770578</millis>
+  <sequence>58</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Ez mitadken</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:10</date>
+  <millis>1279556770921</millis>
+  <sequence>59</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:11</date>
+  <millis>1279556771265</millis>
+  <sequence>60</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:11</date>
+  <millis>1279556771515</millis>
+  <sequence>61</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:11</date>
+  <millis>1279556771812</millis>
+  <sequence>62</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:12</date>
+  <millis>1279556772218</millis>
+  <sequence>63</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:12</date>
+  <millis>1279556772593</millis>
+  <sequence>64</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:13</date>
+  <millis>1279556773046</millis>
+  <sequence>65</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:13</date>
+  <millis>1279556773484</millis>
+  <sequence>66</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:26</date>
+  <millis>1279556786328</millis>
+  <sequence>67</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:26</date>
+  <millis>1279556786531</millis>
+  <sequence>68</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:26</date>
+  <millis>1279556786531</millis>
+  <sequence>69</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:26</date>
+  <millis>1279556786765</millis>
+  <sequence>70</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:26</date>
+  <millis>1279556786984</millis>
+  <sequence>71</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:27</date>
+  <millis>1279556787203</millis>
+  <sequence>72</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:27</date>
+  <millis>1279556787453</millis>
+  <sequence>73</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi3</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:27</date>
+  <millis>1279556787703</millis>
+  <sequence>74</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi4</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:27</date>
+  <millis>1279556787984</millis>
+  <sequence>75</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject boo</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:28</date>
+  <millis>1279556788281</millis>
+  <sequence>76</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:28</date>
+  <millis>1279556788640</millis>
+  <sequence>77</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Hello</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:29</date>
+  <millis>1279556789109</millis>
+  <sequence>78</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject new message</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:29</date>
+  <millis>1279556789578</millis>
+  <sequence>79</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:29</date>
+  <millis>1279556789984</millis>
+  <sequence>80</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:30</date>
+  <millis>1279556790171</millis>
+  <sequence>81</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:30</date>
+  <millis>1279556790375</millis>
+  <sequence>82</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:30</date>
+  <millis>1279556790640</millis>
+  <sequence>83</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:30</date>
+  <millis>1279556790937</millis>
+  <sequence>84</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:31</date>
+  <millis>1279556791343</millis>
+  <sequence>85</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:31</date>
+  <millis>1279556791609</millis>
+  <sequence>86</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:37</date>
+  <millis>1279556797671</millis>
+  <sequence>87</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:37</date>
+  <millis>1279556797984</millis>
+  <sequence>88</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:37</date>
+  <millis>1279556797984</millis>
+  <sequence>89</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:38</date>
+  <millis>1279556798156</millis>
+  <sequence>90</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:38</date>
+  <millis>1279556798546</millis>
+  <sequence>91</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:39</date>
+  <millis>1279556799234</millis>
+  <sequence>92</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:39</date>
+  <millis>1279556799421</millis>
+  <sequence>93</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi4</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:39</date>
+  <millis>1279556799640</millis>
+  <sequence>94</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject boo</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:39</date>
+  <millis>1279556799875</millis>
+  <sequence>95</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:40</date>
+  <millis>1279556800140</millis>
+  <sequence>96</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject Hello</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:40</date>
+  <millis>1279556800437</millis>
+  <sequence>97</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject new message</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:40</date>
+  <millis>1279556800796</millis>
+  <sequence>98</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:41</date>
+  <millis>1279556801375</millis>
+  <sequence>99</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:41</date>
+  <millis>1279556801781</millis>
+  <sequence>100</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:42</date>
+  <millis>1279556802234</millis>
+  <sequence>101</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:42</date>
+  <millis>1279556802390</millis>
+  <sequence>102</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:42</date>
+  <millis>1279556802578</millis>
+  <sequence>103</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:42</date>
+  <millis>1279556802781</millis>
+  <sequence>104</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:42</date>
+  <millis>1279556802937</millis>
+  <sequence>105</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:46</date>
+  <millis>1279556806250</millis>
+  <sequence>106</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:46</date>
+  <millis>1279556806890</millis>
+  <sequence>107</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:46</date>
+  <millis>1279556806906</millis>
+  <sequence>108</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:47</date>
+  <millis>1279556807046</millis>
+  <sequence>109</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:47</date>
+  <millis>1279556807500</millis>
+  <sequence>110</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:47</date>
+  <millis>1279556807906</millis>
+  <sequence>111</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:48</date>
+  <millis>1279556808328</millis>
+  <sequence>112</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject boo</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:48</date>
+  <millis>1279556808687</millis>
+  <sequence>113</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:49</date>
+  <millis>1279556809171</millis>
+  <sequence>114</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject new message</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:49</date>
+  <millis>1279556809359</millis>
+  <sequence>115</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:49</date>
+  <millis>1279556809578</millis>
+  <sequence>116</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:49</date>
+  <millis>1279556809796</millis>
+  <sequence>117</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:50</date>
+  <millis>1279556810031</millis>
+  <sequence>118</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:50</date>
+  <millis>1279556810468</millis>
+  <sequence>119</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:50</date>
+  <millis>1279556810781</millis>
+  <sequence>120</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:51</date>
+  <millis>1279556811140</millis>
+  <sequence>121</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:51</date>
+  <millis>1279556811375</millis>
+  <sequence>122</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:57</date>
+  <millis>1279556817578</millis>
+  <sequence>123</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:57</date>
+  <millis>1279556817953</millis>
+  <sequence>124</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:57</date>
+  <millis>1279556817953</millis>
+  <sequence>125</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:58</date>
+  <millis>1279556818125</millis>
+  <sequence>126</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:58</date>
+  <millis>1279556818625</millis>
+  <sequence>127</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:58</date>
+  <millis>1279556818843</millis>
+  <sequence>128</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:59</date>
+  <millis>1279556819093</millis>
+  <sequence>129</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:59</date>
+  <millis>1279556819328</millis>
+  <sequence>130</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-19T19:26:59</date>
+  <millis>1279556819781</millis>
+  <sequence>131</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:00</date>
+  <millis>1279556820125</millis>
+  <sequence>132</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:00</date>
+  <millis>1279556820453</millis>
+  <sequence>133</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:00</date>
+  <millis>1279556820796</millis>
+  <sequence>134</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:01</date>
+  <millis>1279556821203</millis>
+  <sequence>135</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:01</date>
+  <millis>1279556821671</millis>
+  <sequence>136</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject new message</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:01</date>
+  <millis>1279556821875</millis>
+  <sequence>137</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:02</date>
+  <millis>1279556822171</millis>
+  <sequence>138</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:08</date>
+  <millis>1279556828265</millis>
+  <sequence>139</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:08</date>
+  <millis>1279556828515</millis>
+  <sequence>140</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:08</date>
+  <millis>1279556828531</millis>
+  <sequence>141</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:08</date>
+  <millis>1279556828625</millis>
+  <sequence>142</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:08</date>
+  <millis>1279556828906</millis>
+  <sequence>143</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:09</date>
+  <millis>1279556829187</millis>
+  <sequence>144</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:09</date>
+  <millis>1279556829671</millis>
+  <sequence>145</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:10</date>
+  <millis>1279556830000</millis>
+  <sequence>146</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:10</date>
+  <millis>1279556830359</millis>
+  <sequence>147</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:10</date>
+  <millis>1279556830750</millis>
+  <sequence>148</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:11</date>
+  <millis>1279556831234</millis>
+  <sequence>149</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:11</date>
+  <millis>1279556831593</millis>
+  <sequence>150</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:11</date>
+  <millis>1279556831812</millis>
+  <sequence>151</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject what</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:12</date>
+  <millis>1279556832078</millis>
+  <sequence>152</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:12</date>
+  <millis>1279556832250</millis>
+  <sequence>153</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:17</date>
+  <millis>1279556837593</millis>
+  <sequence>154</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:17</date>
+  <millis>1279556837875</millis>
+  <sequence>155</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:17</date>
+  <millis>1279556837875</millis>
+  <sequence>156</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:18</date>
+  <millis>1279556838015</millis>
+  <sequence>157</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:18</date>
+  <millis>1279556838328</millis>
+  <sequence>158</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:18</date>
+  <millis>1279556838671</millis>
+  <sequence>159</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:19</date>
+  <millis>1279556839125</millis>
+  <sequence>160</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:19</date>
+  <millis>1279556839703</millis>
+  <sequence>161</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:20</date>
+  <millis>1279556840156</millis>
+  <sequence>162</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:20</date>
+  <millis>1279556840343</millis>
+  <sequence>163</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:20</date>
+  <millis>1279556840578</millis>
+  <sequence>164</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:20</date>
+  <millis>1279556840796</millis>
+  <sequence>165</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:21</date>
+  <millis>1279556841078</millis>
+  <sequence>166</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-19T19:27:21</date>
+  <millis>1279556841250</millis>
+  <sequence>167</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:49</date>
+  <millis>1279557229765</millis>
+  <sequence>168</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:49</date>
+  <millis>1279557229828</millis>
+  <sequence>169</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.Forum</class>
+  <method>logoff</method>
+  <thread>11</thread>
+  <message>Forum: registered user : sepetnithas logged off</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:49</date>
+  <millis>1279557229828</millis>
+  <sequence>170</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:49</date>
+  <millis>1279557229828</millis>
+  <sequence>171</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:49</date>
+  <millis>1279557229968</millis>
+  <sequence>172</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:50</date>
+  <millis>1279557230359</millis>
+  <sequence>173</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:50</date>
+  <millis>1279557230781</millis>
+  <sequence>174</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:51</date>
+  <millis>1279557231218</millis>
+  <sequence>175</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:51</date>
+  <millis>1279557231671</millis>
+  <sequence>176</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:51</date>
+  <millis>1279557231843</millis>
+  <sequence>177</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:52</date>
+  <millis>1279557232078</millis>
+  <sequence>178</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:52</date>
+  <millis>1279557232593</millis>
+  <sequence>179</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:52</date>
+  <millis>1279557232843</millis>
+  <sequence>180</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:53</date>
+  <millis>1279557233109</millis>
+  <sequence>181</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-19T19:33:53</date>
+  <millis>1279557233375</millis>
+  <sequence>182</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:37:26</date>
+  <millis>1279557446296</millis>
+  <sequence>183</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:37:26</date>
+  <millis>1279557446296</millis>
+  <sequence>184</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:42:00</date>
+  <millis>1279557720890</millis>
+  <sequence>185</sequence>
+  <logger>americanoforum</logger>
+  <level>SEVERE</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>A readObject operation failed with client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-19T19:42:01</date>
+  <millis>1279557721062</millis>
+  <sequence>186</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Closing connection with client /127.0.0.1.</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2010-07-20T09:16:34</date>
+  <millis>1279606594000</millis>
+  <sequence>0</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server has started running on port 1234.</message>
+</record>
+<record>
+  <date>2010-07-20T09:16:46</date>
+  <millis>1279606606203</millis>
+  <sequence>1</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>A connection was accepted from: /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:01</date>
+  <millis>1279606621968</millis>
+  <sequence>8</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:02</date>
+  <millis>1279606622453</millis>
+  <sequence>9</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:03</date>
+  <millis>1279606623171</millis>
+  <sequence>10</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:03</date>
+  <millis>1279606623734</millis>
+  <sequence>11</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:04</date>
+  <millis>1279606624203</millis>
+  <sequence>12</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:04</date>
+  <millis>1279606624593</millis>
+  <sequence>13</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:05</date>
+  <millis>1279606625140</millis>
+  <sequence>14</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:05</date>
+  <millis>1279606625453</millis>
+  <sequence>15</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:05</date>
+  <millis>1279606625671</millis>
+  <sequence>16</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:05</date>
+  <millis>1279606625953</millis>
+  <sequence>17</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>10</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:06</date>
+  <millis>1279606626203</millis>
+  <sequence>18</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Communication has started between /127.0.0.1 and the server.</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:06</date>
+  <millis>1279606626218</millis>
+  <sequence>19</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:06</date>
+  <millis>1279606626406</millis>
+  <sequence>20</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:06</date>
+  <millis>1279606626734</millis>
+  <sequence>21</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:07</date>
+  <millis>1279606627187</millis>
+  <sequence>22</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:07</date>
+  <millis>1279606627562</millis>
+  <sequence>23</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:08</date>
+  <millis>1279606628062</millis>
+  <sequence>24</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:08</date>
+  <millis>1279606628562</millis>
+  <sequence>25</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:08</date>
+  <millis>1279606628781</millis>
+  <sequence>26</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:09</date>
+  <millis>1279606629062</millis>
+  <sequence>27</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:09</date>
+  <millis>1279606629453</millis>
+  <sequence>28</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:09</date>
+  <millis>1279606629734</millis>
+  <sequence>29</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-20T09:17:09</date>
+  <millis>1279606629921</millis>
+  <sequence>30</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:40</date>
+  <millis>1279606780218</millis>
+  <sequence>31</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:40</date>
+  <millis>1279606780343</millis>
+  <sequence>32</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.Forum</class>
+  <method>login</method>
+  <thread>11</thread>
+  <message>Forum: registered user : sepetnitis logged in and online</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:40</date>
+  <millis>1279606780343</millis>
+  <sequence>33</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:40</date>
+  <millis>1279606780500</millis>
+  <sequence>34</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:40</date>
+  <millis>1279606780781</millis>
+  <sequence>35</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:41</date>
+  <millis>1279606781093</millis>
+  <sequence>36</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:41</date>
+  <millis>1279606781437</millis>
+  <sequence>37</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:41</date>
+  <millis>1279606781828</millis>
+  <sequence>38</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:42</date>
+  <millis>1279606782296</millis>
+  <sequence>39</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:42</date>
+  <millis>1279606782468</millis>
+  <sequence>40</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:42</date>
+  <millis>1279606782796</millis>
+  <sequence>41</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:43</date>
+  <millis>1279606783015</millis>
+  <sequence>42</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:43</date>
+  <millis>1279606783281</millis>
+  <sequence>43</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:43</date>
+  <millis>1279606783578</millis>
+  <sequence>44</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-20T09:19:43</date>
+  <millis>1279606783781</millis>
+  <sequence>45</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:39</date>
+  <millis>1279606959546</millis>
+  <sequence>46</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:39</date>
+  <millis>1279606959875</millis>
+  <sequence>47</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.User</class>
+  <method>modifyMessage</method>
+  <thread>11</thread>
+  <message>succesfully modifing message number 20</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:39</date>
+  <millis>1279606959984</millis>
+  <sequence>48</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:40</date>
+  <millis>1279606960296</millis>
+  <sequence>49</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:40</date>
+  <millis>1279606960312</millis>
+  <sequence>50</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:40</date>
+  <millis>1279606960468</millis>
+  <sequence>51</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:40</date>
+  <millis>1279606960875</millis>
+  <sequence>52</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:41</date>
+  <millis>1279606961546</millis>
+  <sequence>53</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:41</date>
+  <millis>1279606961703</millis>
+  <sequence>54</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:41</date>
+  <millis>1279606961953</millis>
+  <sequence>55</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:42</date>
+  <millis>1279606962265</millis>
+  <sequence>56</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:42</date>
+  <millis>1279606962531</millis>
+  <sequence>57</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:42</date>
+  <millis>1279606962812</millis>
+  <sequence>58</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:43</date>
+  <millis>1279606963109</millis>
+  <sequence>59</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:43</date>
+  <millis>1279606963468</millis>
+  <sequence>60</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-20T09:22:43</date>
+  <millis>1279606963875</millis>
+  <sequence>61</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:06</date>
+  <millis>1279607046015</millis>
+  <sequence>62</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:06</date>
+  <millis>1279607046015</millis>
+  <sequence>63</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.User</class>
+  <method>addMessage</method>
+  <thread>11</thread>
+  <message>succesfully added  message number 22</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:06</date>
+  <millis>1279607046156</millis>
+  <sequence>64</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject this is a reply</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:06</date>
+  <millis>1279607046640</millis>
+  <sequence>65</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:06</date>
+  <millis>1279607046640</millis>
+  <sequence>66</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:06</date>
+  <millis>1279607046734</millis>
+  <sequence>67</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testint-multiple clients</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:06</date>
+  <millis>1279607046906</millis>
+  <sequence>68</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:07</date>
+  <millis>1279607047093</millis>
+  <sequence>69</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:07</date>
+  <millis>1279607047562</millis>
+  <sequence>70</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:07</date>
+  <millis>1279607047828</millis>
+  <sequence>71</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:08</date>
+  <millis>1279607048109</millis>
+  <sequence>72</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:08</date>
+  <millis>1279607048437</millis>
+  <sequence>73</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:08</date>
+  <millis>1279607048828</millis>
+  <sequence>74</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:09</date>
+  <millis>1279607049218</millis>
+  <sequence>75</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject plzzz</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:09</date>
+  <millis>1279607049718</millis>
+  <sequence>76</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject this is a reply</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:09</date>
+  <millis>1279607049921</millis>
+  <sequence>77</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-20T09:24:10</date>
+  <millis>1279607050203</millis>
+  <sequence>78</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:52</date>
+  <millis>1279607212890</millis>
+  <sequence>79</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:53</date>
+  <millis>1279607213375</millis>
+  <sequence>80</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:53</date>
+  <millis>1279607213375</millis>
+  <sequence>81</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:53</date>
+  <millis>1279607213484</millis>
+  <sequence>82</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:53</date>
+  <millis>1279607213718</millis>
+  <sequence>83</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:53</date>
+  <millis>1279607213968</millis>
+  <sequence>84</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:54</date>
+  <millis>1279607214281</millis>
+  <sequence>85</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:54</date>
+  <millis>1279607214750</millis>
+  <sequence>86</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:55</date>
+  <millis>1279607215140</millis>
+  <sequence>87</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:55</date>
+  <millis>1279607215593</millis>
+  <sequence>88</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:56</date>
+  <millis>1279607216125</millis>
+  <sequence>89</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject this is a reply</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:56</date>
+  <millis>1279607216296</millis>
+  <sequence>90</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-20T09:26:56</date>
+  <millis>1279607216421</millis>
+  <sequence>91</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:28:39</date>
+  <millis>1279607319421</millis>
+  <sequence>92</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:28:39</date>
+  <millis>1279607319656</millis>
+  <sequence>93</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:28:39</date>
+  <millis>1279607319656</millis>
+  <sequence>94</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:28:39</date>
+  <millis>1279607319765</millis>
+  <sequence>95</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-20T09:28:40</date>
+  <millis>1279607320000</millis>
+  <sequence>96</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-20T09:28:40</date>
+  <millis>1279607320359</millis>
+  <sequence>97</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-20T09:28:40</date>
+  <millis>1279607320828</millis>
+  <sequence>98</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-20T09:28:41</date>
+  <millis>1279607321218</millis>
+  <sequence>99</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-20T09:28:41</date>
+  <millis>1279607321640</millis>
+  <sequence>100</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-20T09:28:42</date>
+  <millis>1279607322140</millis>
+  <sequence>101</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-20T09:28:42</date>
+  <millis>1279607322609</millis>
+  <sequence>102</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-20T09:28:42</date>
+  <millis>1279607322718</millis>
+  <sequence>103</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:53</date>
+  <millis>1279607633031</millis>
+  <sequence>104</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:53</date>
+  <millis>1279607633218</millis>
+  <sequence>105</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.User</class>
+  <method>modifyMessage</method>
+  <thread>11</thread>
+  <message>succesfully modifing message number 21</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:53</date>
+  <millis>1279607633281</millis>
+  <sequence>106</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:53</date>
+  <millis>1279607633468</millis>
+  <sequence>107</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:53</date>
+  <millis>1279607633484</millis>
+  <sequence>108</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Received a message from client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:53</date>
+  <millis>1279607633593</millis>
+  <sequence>109</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject pretty good</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:53</date>
+  <millis>1279607633937</millis>
+  <sequence>110</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject just to update</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:54</date>
+  <millis>1279607634281</millis>
+  <sequence>111</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hii</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:54</date>
+  <millis>1279607634578</millis>
+  <sequence>112</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject tests refresh</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:55</date>
+  <millis>1279607635093</millis>
+  <sequence>113</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject hi2</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:55</date>
+  <millis>1279607635484</millis>
+  <sequence>114</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:55</date>
+  <millis>1279607635890</millis>
+  <sequence>115</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject good</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:56</date>
+  <millis>1279607636421</millis>
+  <sequence>116</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.domainlayer.SearchEngineImpl</class>
+  <method>addData</method>
+  <thread>11</thread>
+  <message>Added the message with subject testing..</message>
+</record>
+<record>
+  <date>2010-07-20T09:33:56</date>
+  <millis>1279607636500</millis>
+  <sequence>117</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Sending a response back to client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:34:08</date>
+  <millis>1279607648906</millis>
+  <sequence>118</sequence>
+  <logger>americanoforum</logger>
+  <level>SEVERE</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>A readObject operation failed with client /127.0.0.1.</message>
+</record>
+<record>
+  <date>2010-07-20T09:34:09</date>
+  <millis>1279607649062</millis>
+  <sequence>119</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerSingleConnectionController</class>
+  <method>run</method>
+  <thread>11</thread>
+  <message>Closing connection with client /127.0.0.1.</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2010-07-20T16:35:54</date>
+  <millis>1279632954968</millis>
+  <sequence>0</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server has started running on port 1234.</message>
+</record>
+<record>
+  <date>2010-07-20T16:36:07</date>
+  <millis>1279632967734</millis>
+  <sequence>1</sequence>
+  <logger>americanoforum</logger>
+  <level>INFO</level>
+  <class>forum.server.controllerlayer.ServerConnectionController</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>A connection was accepted from: /127.0.0.1.</message>
+</record>
+</log>

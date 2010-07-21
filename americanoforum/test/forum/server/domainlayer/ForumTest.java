@@ -32,7 +32,7 @@ public class ForumTest extends TestCase{
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-         this._forum=new Forum();
+         this._forum=new Forum(false);
         Details d1 = new Details("shassaf", Forum.encryptPassword("123") , "1", "assaf", "sun", "b", "male");
         Details d2 = new Details("felberba", Forum.encryptPassword("1233"), "1", "yossi", "sun", "b", "male");
          Details d3 = new Details("iluxa13", Forum.encryptPassword("8888"), "4", "ilya", "g", "b", "male");
@@ -57,7 +57,9 @@ public class ForumTest extends TestCase{
 
     @Override
     protected void tearDown() throws Exception {
-              super.tearDown();
+
+
+   /*           super.tearDown();
 
         FileOutputStream out = null;
   
@@ -70,7 +72,7 @@ public class ForumTest extends TestCase{
             out = new FileOutputStream("forum.xml");
 	    m.marshal(forumtype,out);
             out.close();
-
+*/
     //    this._forum.setMessages(new HashMap<Long, Message>());
     }
 
@@ -162,9 +164,9 @@ public class ForumTest extends TestCase{
             assertTrue(true);
         }
         try{
-        this._forum.deleteMessage(m1, _u3);
-        this._forum.deleteMessage(m2, _u3);
-       this._forum.deleteMessage(m3, _u3);
+            this._forum.deleteMessage(m1, _u3);
+            this._forum.deleteMessage(m2, _u3);
+            this._forum.deleteMessage(m3, _u3);
         }
         catch(Exception e){
 
