@@ -33,4 +33,22 @@ public class ProxyBridge implements ForumBridge{
                   return _bridge.register(username, password, first, last, email, address, gender);
 	}
 
+    public void disconect() {
+        if (_bridge==null)
+            return;
+        _bridge.disconect();
+    }
+
+    public boolean logoff() {
+        if (_bridge==null)
+                   return true;
+            return _bridge.logoff();
+    }
+
+    public boolean addFictiveMessage() {
+        if (_bridge==null)
+                   return true;
+            return _bridge.addFictiveMessage();
+    }
+
 }

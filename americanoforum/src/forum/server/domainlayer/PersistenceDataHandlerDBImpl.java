@@ -361,6 +361,7 @@ public class PersistenceDataHandlerDBImpl implements PersistenceDataHandler{
         for (int i=0; i<size; i++){
             MessageDB msg = (MessageDB)allMsgs_data.get(i);
             User creator = allUsers.get(msg.getCreator());
+            System.out.println("PROBLEM:"+msg.getSubject()+" "+msg.getContent());
             Message newMsg = new Message(msg.getSubject(), msg.getContent(), creator);
             newMsg.setMsg_id(msg.getMessageId());
             newMsg.setDate(msg.getDate());

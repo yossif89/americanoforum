@@ -18,6 +18,8 @@ public class RegisterTestStory extends TestForumProject{
                 assertTrue(register("felberba", "abcde", "yos", "fel", "@", "kiryat yam", "male"));
                 assertFalse(register("iluxa13", "abcde", "yos", "fel", "@", "kiryat yam", "male"));
                 assertFalse(register("felberba", "abcde", "yos", "fel", "@", "kiryat yam", "male"));
+                //disconect();
+                logoff();
 	}
 
 }

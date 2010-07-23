@@ -191,8 +191,8 @@ public class Forum {
  * @param aUser - the user we want to add
  */
         public void addToRegistered (User aUser){
-            Forum.logger.log(Level.INFO, "Forum:is adding a new registered user : "+aUser.getDetails().getUsername());
-            this._registered.put(aUser.getDetails().getUsername(),aUser);
+              Forum.logger.log(Level.INFO, "Forum:is adding a new registered user : "+aUser.getDetails().getUsername());
+              this._registered.put(aUser.getDetails().getUsername(),aUser);
         }
 /**
  * adds a new user as a on line user

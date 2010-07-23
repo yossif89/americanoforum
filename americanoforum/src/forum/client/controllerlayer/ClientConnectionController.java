@@ -73,7 +73,6 @@ public class ClientConnectionController extends Thread {
 			}
 			res = (ServerResponse)o;
                         if (res.getEx() != null){
-                       
                         }
 			if (res.hasExecuted()) {
                             log.info("server succeded handling the client message");

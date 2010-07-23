@@ -60,6 +60,7 @@ public class MainTesting {
 		//adding the "donate item test" class to the test suit
 		suite.addTest( new TestSuite(LoginTestStory.class));
 		suite.addTest( new TestSuite(RegisterTestStory.class));
+                suite.addTest( new TestSuite(LogoffTestStory.class));
 		return suite;
 		}
 

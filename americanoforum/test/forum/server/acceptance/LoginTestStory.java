@@ -22,6 +22,9 @@ public class LoginTestStory extends TestForumProject{
                     assertFalse(login("iluxa13","abcde"));
                     assertFalse(login("rostik","1234"));
                     assertFalse(login("iluxa14","abcd"));
+                    //disconect();
+                    logoff();
+                    
 	}
 
 

@@ -49,6 +49,16 @@ public class TestForumProject extends TestCase{
 		return _bridge.register( username,  password,  first,  last,  email,  address,  gender);
 	}
 
-	
+        public void disconect(){
+            _bridge.disconect();
+        }
+
+        public boolean logoff(){
+		return _bridge.logoff();
+	}
+
+        public boolean addFictiveMessage(){
+            return _bridge.addFictiveMessage();
+        }
 
 }

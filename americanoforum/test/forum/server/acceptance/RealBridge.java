@@ -7,8 +7,11 @@ import forum.client.controllerlayer.ControllerHandler;
 import forum.client.controllerlayer.ControllerHandlerFactory;
 import forum.client.controllerlayer.ControllerHandlerImpl;
 import forum.server.controllerlayer.ServerConnectionController;
+import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 
 //The class is build for compiling only.
@@ -44,6 +47,7 @@ public class RealBridge implements ForumBridge {
                 args[5]= "Haifa";
                 args[6]= "male";
                _driver.communicate("register", args);
+               _driver.communicate("logoff", null);
 	}
 
 //The explanations(javadoc) for each method exists in the interface AutomatingFormBridge
@@ -53,6 +57,7 @@ public class RealBridge implements ForumBridge {
                 args[0]= username;
                 args[1]= password;
                 String ans = _driver.communicate("login", args);
+                System.out.println("ans for login: "+ans);
                 return (ans.equals(username));
 	}
 
@@ -69,7 +74,26 @@ public class RealBridge implements ForumBridge {
                 return (ans.equals(username));
 	}
 
-	
+    public void disconect() {
+        try {
+            this._driver = new ClientConnectionController("127.0.0.1", (short) 1234);
+        } catch (IOException ex) {
+            Logger.getLogger(RealBridge.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public boolean logoff() {
+                String ans = _driver.communicate("logoff", null);
+                return (ans.equals("ok"));
+	}
+
+    public boolean addFictiveMessage() {
+                Object[] args = new Object[7];
+                args[0]= "fictive Subject";
+                args[1]= "fictive Cont";
+                String ans = _driver.communicate("add_message", args);
+                return (ans.equals("ok"));
+    }
 
 
 
